@@ -1,0 +1,21 @@
+Subject: quick note about fisherchiropracticcenter.com
+
+Hi {{first_name}},
+
+Ran an accessibility scan on fisherchiropracticcenter.com this morning and found 49 elements that put it at ADA Title III risk — the same category of issues driving 5,000+ small-business lawsuits in 2025 (69% against companies under $25M).
+
+The three most urgent on your site:
+
+1. 1 link(s) with no discernible text — screen readers announce them as 'link' with no destination. Booking/contact flows are especially exposed.
+
+2. Elements must only use permitted ARIA attributes (1 element)
+
+3. 3 UI elements with color contrast below WCAG minimum (4.5:1). This is the #1 trigger for ADA drive-by lawsuits against small practices.
+
+I can send you the full audit (17-point report with remediation code your webmaster can copy-paste) — free, no strings. If you want me to fix it, flat $1,200, done in 2 weeks.
+
+Want the report?
+
+— Emilio Ranucoli
+Systems Engineer — accessibility & compliance audits
+ranuk.dev  |  ranucoliemilio@gmail.com

@@ -1,0 +1,21 @@
+Subject: quick note about miamispineclinic.com
+
+Hi {{first_name}},
+
+Ran an accessibility scan on miamispineclinic.com this morning and found 20 elements that put it at ADA Title III risk — the same category of issues driving 5,000+ small-business lawsuits in 2025 (69% against companies under $25M).
+
+The three most urgent on your site:
+
+1. 1+ content block(s) sitting outside semantic landmarks. Screen-reader users can't jump-navigate the page.
+
+2. 19+ content block(s) sitting outside semantic landmarks. Screen-reader users can't jump-navigate the page.
+
+3. (no 3rd issue)
+
+I can send you the full audit (17-point report with remediation code your webmaster can copy-paste) — free, no strings. If you want me to fix it, flat $1,200, done in 2 weeks.
+
+Want the report?
+
+— Emilio Ranucoli
+Systems Engineer — accessibility & compliance audits
+ranuk.dev  |  ranucoliemilio@gmail.com

@@ -1,0 +1,158 @@
+#!/usr/bin/env bash
+# ada — CLI para el flujo ADA Audits. Se usa directo en terminal o desde el bot Ranuk.
+#
+# Subcomandos:
+#   ada scan <url>                     → escaneo 30s, muestra score + top issues
+#   ada scan-batch <file>              → escanea lista de URLs (una por línea)
+#   ada pitch <url>                    → genera email cold personalizado (requiere scan previo)
+#   ada report <url>                   → genera auditoría completa con Claude API
+#   ada add-lead <url> [email]         → agrega a leads.csv
+#   ada status                         → resumen del pipeline
+#   ada next                           → imprime la acción concreta del día
+#   ada help
+
+set -uo pipefail
+
+ROOT="/Users/emilioranucoli/Desktop/ADA-AUDITS"
+SCRIPTS="$ROOT/scripts"
+PROSPECTOS="$ROOT/prospectos"
+ENTREGABLES="$ROOT/entregables"
+LEADS="$PROSPECTOS/leads.csv"
+
+cmd="${1:-help}"
+shift || true
+
+case "$cmd" in
+  scan)
+    URL="${1:-}"
+    if [[ -z "$URL" ]]; then echo "uso: ada scan <url>"; exit 1; fi
+    "$SCRIPTS/quick-scan.sh" "$URL" | python3 -c "
+import json, sys
+d = json.loads(sys.stdin.read())
+if d.get('error'):
+    print(f\"❌ {d['url']} — {d['error']}\"); sys.exit()
+flag = '🎯 LEAD' if d['qualifies_as_lead'] else '⚪ no-lead'
+print(f\"{flag}  {d['url']}\")
+print(f\"  score={d['score']}  crit={d['critical_count']}  serious={d['serious_count']}  nodes={d['total_nodes_affected']}\")
+print('  top issues:')
+for i,t in enumerate(d['top_issues'],1):
+    print(f'    {i}. [{t[\"impact\"]}] {t[\"help\"]} ({t[\"nodes_affected\"]} elementos)')
+"
+    ;;
+
+  scan-batch)
+    FILE="${1:-$PROSPECTOS/urls-del-dia.txt}"
+    if [[ ! -f "$FILE" ]]; then echo "archivo no existe: $FILE"; exit 1; fi
+    OUT="$PROSPECTOS/scan-results.json"
+    echo "→ Escaneando $(grep -cvE '^(#|$)' "$FILE") URLs. Esto toma 30-60s por sitio…"
+    "$SCRIPTS/quick-scan.sh" -f "$FILE" > "$OUT"
+    python3 -c "
+import json
+d = json.load(open('$OUT'))
+leads = [r for r in d if r.get('qualifies_as_lead')]
+print(f'✅ {len(leads)}/{len(d)} califican como lead')
+print()
+for r in sorted(d, key=lambda x: -(x.get('total_nodes_affected') or 0)):
+    if r.get('error'): continue
+    flag = '🎯' if r.get('qualifies_as_lead') else '  '
+    print(f\"  {flag} {r['url'][:48]:48} score={r['score']:3} nodes={r['total_nodes_affected']}\")
+"
+    echo
+    echo "→ Resultados guardados en $OUT"
+    echo "→ Próximo paso: 'ada pitch <url>' para generar email listo"
+    ;;
+
+  pitch)
+    URL="${1:-}"
+    if [[ -z "$URL" ]]; then echo "uso: ada pitch <url>"; exit 1; fi
+    SCAN_FILE="$PROSPECTOS/scan-results.json"
+    if [[ ! -f "$SCAN_FILE" ]]; then
+        echo "no hay scan previo. Corré: ada scan-batch primero"; exit 1
+    fi
+    python3 "$SCRIPTS/generate-pitch.py" "$URL" "$SCAN_FILE"
+    ;;
+
+  report)
+    URL="${1:-}"
+    if [[ -z "$URL" ]]; then echo "uso: ada report <url>"; exit 1; fi
+    python3 "$SCRIPTS/generate-report.py" "$URL"
+    ;;
+
+  add-lead)
+    URL="${1:-}"
+    EMAIL="${2:-}"
+    if [[ -z "$URL" ]]; then echo "uso: ada add-lead <url> [email]"; exit 1; fi
+    DOMAIN=$(echo "$URL" | sed -E 's|https?://(www\.)?||' | cut -d/ -f1)
+    TODAY=$(date +%Y-%m-%d)
+    echo "pending,$DOMAIN,,,$EMAIL,,,,,,,,,$TODAY,false,false,0," >> "$LEADS"
+    echo "→ agregado: $DOMAIN"
+    ;;
+
+  status)
+    python3 -c "
+import csv
+rows = list(csv.DictReader(open('$LEADS')))
+pending = [r for r in rows if r.get('status')=='pending']
+sent = [r for r in rows if r.get('email_sent_date') and r['email_sent_date'] not in ('','false')]
+replied = [r for r in rows if r.get('replied','').lower()=='true']
+closed = [r for r in rows if r.get('closed','').lower()=='true']
+revenue = sum(float(r.get('amount_usd') or 0) for r in rows)
+print(f'📊 Pipeline ADA Audits')
+print(f'  leads totales:   {len(rows)}')
+print(f'  pending:         {len(pending)}')
+print(f'  emails enviados: {len(sent)}')
+print(f'  respondieron:    {len(replied)}')
+print(f'  cerrados:        {len(closed)}')
+print(f'  revenue:         USD \${revenue:.0f}')
+"
+    ;;
+
+  next)
+    python3 "$SCRIPTS/next-action.py"
+    ;;
+
+  outbox|emails)
+    python3 "$SCRIPTS/outbox.py" list
+    ;;
+
+  email)
+    N="${1:-}"
+    if [[ -z "$N" ]]; then echo "uso: ada email <n>"; exit 1; fi
+    python3 "$SCRIPTS/outbox.py" show "$N"
+    ;;
+
+  sent)
+    N="${1:-}"
+    if [[ -z "$N" ]]; then echo "uso: ada sent <n>"; exit 1; fi
+    python3 "$SCRIPTS/outbox.py" sent "$N"
+    ;;
+
+  daily)
+    # Dispara el daily-auto on-demand (busca leads nuevos y pitchea)
+    python3 "$SCRIPTS/daily-auto.py"
+    ;;
+
+  help|*)
+    cat <<'HELP'
+ada — CLI ADA Audits
+
+  ada scan <url>              escanea 1 URL, devuelve score + top issues
+  ada scan-batch [file]       escanea lista (default: prospectos/urls-del-dia.txt)
+  ada pitch <url>             email cold listo (necesita scan previo)
+  ada report <url>            auditoría completa con Claude API
+  ada add-lead <url> [email]  agrega lead al pipeline
+  ada status                  resumen del pipeline
+  ada next                    próxima acción concreta
+  ada outbox                  lista emails pendientes (usá esto)
+  ada email <n>               muestra email #N listo para copy-paste
+  ada sent <n>                marca email #N como enviado + actualiza leads
+  ada daily                   dispara búsqueda nueva (rotación vertical/ciudad)
+
+Flujo ideal desde Telegram:
+  1. ada outbox               → ves qué hay pendiente
+  2. ada email 4              → el bot te manda el email limpio
+  3. copy-paste a Gmail → Send
+  4. ada sent 4               → marcado + loggeado automáticamente
+HELP
+    ;;
+esac

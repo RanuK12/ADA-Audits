@@ -1,0 +1,34 @@
+EMAIL #4 — Fisher Chiropractic Center
+============================================================
+
+TO:       fisherchiropractic@gmail.com
+SUBJECT:  quick note about fisherchiropracticcenter.com
+
+────────────────────────────────────────────────────────────
+BODY (copy from the line below — do not copy this header)
+────────────────────────────────────────────────────────────
+
+Hi there,
+
+Ran an accessibility scan on fisherchiropracticcenter.com this morning and found 49 elements that put the site at ADA Title III risk — the same category of issues driving 5,000+ small-business lawsuits in 2025 (69% against companies under $25M).
+
+Three most urgent on your site:
+
+1. 1 links with no discernible text — screen readers announce them as 'link' with no destination. Booking and contact flows are especially exposed.
+
+2. ARIA attributes used incorrectly on 1 element(s), breaking screen-reader navigation.
+
+3. 3 UI elements with color contrast below 4.5:1 (WCAG minimum). This is the #1 trigger for ADA drive-by lawsuits against small practices.
+
+I can send you the full 17-point audit (with remediation code your webmaster can copy-paste) — free, no strings. If you want me to fix it, flat $1,200, done in 2 weeks.
+
+Want the report?
+
+— Emilio Ranucoli
+Systems Engineer — accessibility & compliance audits
+ranuk.dev  |  ranucoliemilio@gmail.com
+
+────────────────────────────────────────────────────────────
+STATUS:   pending
+URL:      https://fisherchiropracticcenter.com/
+CREATED:  2026-04-17

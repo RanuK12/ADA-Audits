@@ -1,0 +1,21 @@
+Subject: quick note about miamichiropractic.us
+
+Hi {{first_name}},
+
+Ran an accessibility scan on miamichiropractic.us this morning and found 26 elements that put it at ADA Title III risk — the same category of issues driving 5,000+ small-business lawsuits in 2025 (69% against companies under $25M).
+
+The three most urgent on your site:
+
+1. 5 image(s) without alt text — screen-reader users lose critical context. Most-litigated issue category in 2025.
+
+2. ARIA commands must have an accessible name (1 element)
+
+3. 5 UI elements with color contrast below WCAG minimum (4.5:1). This is the #1 trigger for ADA drive-by lawsuits against small practices.
+
+I can send you the full audit (17-point report with remediation code your webmaster can copy-paste) — free, no strings. If you want me to fix it, flat $1,200, done in 2 weeks.
+
+Want the report?
+
+— Emilio Ranucoli
+Systems Engineer — accessibility & compliance audits
+ranuk.dev  |  ranucoliemilio@gmail.com

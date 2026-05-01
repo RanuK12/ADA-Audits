@@ -1,0 +1,580 @@
+[
+  {
+    "url": "https://www.brooklynfamilydentalcare.com/",
+    "score": 73,
+    "critical_count": 0,
+    "serious_count": 4,
+    "moderate_count": 5,
+    "total_violations": 10,
+    "total_nodes_affected": 30,
+    "top_issues": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "nodes_affected": 2,
+        "sample_html": "<a class=\"primary-button-style\" href=\"/dental-services/general-dentistry/teeth-cleanings/\">Teeth Cleanings</a>"
+      },
+      {
+        "id": "label-title-only",
+        "impact": "serious",
+        "help": "Form elements should have a visible label",
+        "nodes_affected": 1,
+        "sample_html": "<input type=\"search\" name=\"s\" title=\"Search\" placeholder=\"Search\" class=\"rmp-search-box\">"
+      },
+      {
+        "id": "link-name",
+        "impact": "serious",
+        "help": "Links must have discernible text",
+        "nodes_affected": 5,
+        "sample_html": "<a data-localmed-toggle=\"modal\" href=\"https://www.zocdoc.com/practice/brooklyn-family-dental-9720?referrerType=widget\" class=\"zd-plugin-initialized\" data-type=\"book-button\" data-practice-id=\"9720\" tar"
+      }
+    ],
+    "qualifies_as_lead": true
+  },
+  {
+    "url": "https://dentistbrooklyn.com/",
+    "error": "scan_failed",
+    "qualifies_as_lead": false
+  },
+  {
+    "url": "https://www.brooklynheightsdental.com/",
+    "score": 86,
+    "critical_count": 0,
+    "serious_count": 3,
+    "moderate_count": 1,
+    "total_violations": 4,
+    "total_nodes_affected": 25,
+    "top_issues": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "nodes_affected": 9,
+        "sample_html": "<span class=\"subtitle color-scheme-1-subtitle\">\n        for General, Restorative, and Cosmetic Dentistry      </span>"
+      },
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "nodes_affected": 1,
+        "sample_html": "<a href=\"https://www.cdc.gov/oralhealth/fast-facts/gum-disease/index.html\">half of Americans 30 and older</a>"
+      },
+      {
+        "id": "link-name",
+        "impact": "serious",
+        "help": "Links must have discernible text",
+        "nodes_affected": 1,
+        "sample_html": "<a href=\"javascript:void(0)\" class=\"overlay-close slide-menu__control color-scheme-1-svg\" data-action=\"close\" data-ga-event=\"Overlay, Close\">\n      <svg class=\"svg-close\">\n        <use xlink:href=\"#sv"
+      }
+    ],
+    "qualifies_as_lead": true
+  },
+  {
+    "url": "https://brooklyndentalcollective.com/",
+    "score": 92,
+    "critical_count": 0,
+    "serious_count": 2,
+    "moderate_count": 0,
+    "total_violations": 2,
+    "total_nodes_affected": 6,
+    "top_issues": [
+      {
+        "id": "frame-title",
+        "impact": "serious",
+        "help": "Frames must have an accessible name",
+        "nodes_affected": 1,
+        "sample_html": "<iframe class=\"vimeo-video\" src=\"https://player.vimeo.com/video/1038576636?autoplay=1&amp;loop=1&amp;background=1&amp;badge=0&amp;player_id=0&amp;app_id=58479&amp;muted=1\" webkitallowfullscreen=\"\" moz"
+      },
+      {
+        "id": "link-name",
+        "impact": "serious",
+        "help": "Links must have discernible text",
+        "nodes_affected": 5,
+        "sample_html": "<a href=\"#\" class=\"nav-opener\"><span></span></a>"
+      }
+    ],
+    "qualifies_as_lead": true
+  },
+  {
+    "url": "https://www.brooklyndentalspa.com/",
+    "score": 86,
+    "critical_count": 1,
+    "serious_count": 1,
+    "moderate_count": 1,
+    "total_violations": 3,
+    "total_nodes_affected": 3,
+    "top_issues": [
+      {
+        "id": "select-name",
+        "impact": "critical",
+        "help": "Select element must have an accessible name",
+        "nodes_affected": 1,
+        "sample_html": "<select id=\"swal2-select\" class=\"swal2-select\" style=\"display: flex;\">"
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "nodes_affected": 1,
+        "sample_html": "<span>DENTAL SPA</span>"
+      },
+      {
+        "id": "meta-viewport",
+        "impact": "moderate",
+        "help": "Zooming and scaling must not be disabled",
+        "nodes_affected": 1,
+        "sample_html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no\">"
+      }
+    ],
+    "qualifies_as_lead": true
+  },
+  {
+    "url": "https://flatbushdental.com/",
+    "score": 92,
+    "critical_count": 1,
+    "serious_count": 0,
+    "moderate_count": 0,
+    "total_violations": 1,
+    "total_nodes_affected": 1,
+    "top_issues": [
+      {
+        "id": "meta-refresh",
+        "impact": "critical",
+        "help": "Delayed refresh under 20 hours must not be used",
+        "nodes_affected": 1,
+        "sample_html": "<meta http-equiv=\"refresh\" content=\"360\">"
+      }
+    ],
+    "qualifies_as_lead": false
+  },
+  {
+    "url": "https://www.dentistinbrooklyn.com/",
+    "score": 88,
+    "critical_count": 1,
+    "serious_count": 0,
+    "moderate_count": 2,
+    "total_violations": 3,
+    "total_nodes_affected": 22,
+    "top_issues": [
+      {
+        "id": "image-alt",
+        "impact": "critical",
+        "help": "Images must have alternative text",
+        "nodes_affected": 1,
+        "sample_html": "<img class=\"zd-alert-box-provide...\" src=\"//d1k13df5m14swc.clo...\" style=\"\n            \n    az...\">"
+      },
+      {
+        "id": "landmark-one-main",
+        "impact": "moderate",
+        "help": "Document should have one main landmark",
+        "nodes_affected": 1,
+        "sample_html": "<html lang=\"en-US\" class=\" sizes customelement...\">"
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "help": "All page content should be contained by landmarks",
+        "nodes_affected": 20,
+        "sample_html": "<div class=\"banner_left\">"
+      }
+    ],
+    "qualifies_as_lead": true
+  },
+  {
+    "url": "https://www.downtowndentalbrooklyn.com/",
+    "score": 92,
+    "critical_count": 0,
+    "serious_count": 1,
+    "moderate_count": 2,
+    "total_violations": 3,
+    "total_nodes_affected": 7,
+    "top_issues": [
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "nodes_affected": 1,
+        "sample_html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>"
+      },
+      {
+        "id": "landmark-one-main",
+        "impact": "moderate",
+        "help": "Document should have one main landmark",
+        "nodes_affected": 1,
+        "sample_html": "<html class=\"no-js\" lang=\"en-US\">"
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "help": "All page content should be contained by landmarks",
+        "nodes_affected": 5,
+        "sample_html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_ac"
+      }
+    ],
+    "qualifies_as_lead": false
+  },
+  {
+    "url": "https://www.dentistrybrooklyn.com/",
+    "score": 86,
+    "critical_count": 0,
+    "serious_count": 2,
+    "moderate_count": 3,
+    "total_violations": 5,
+    "total_nodes_affected": 5,
+    "top_issues": [
+      {
+        "id": "document-title",
+        "impact": "serious",
+        "help": "Documents must have <title> element to aid in navigation",
+        "nodes_affected": 1,
+        "sample_html": "<html><head><meta name=\"color-scheme\" content=\"light dark\"></head><body><pre style=\"word-wrap: break-word; white-space: pre-wrap;\">403 Unauthorized</pre></body></html>"
+      },
+      {
+        "id": "html-has-lang",
+        "impact": "serious",
+        "help": "<html> element must have a lang attribute",
+        "nodes_affected": 1,
+        "sample_html": "<html><head><meta name=\"color-scheme\" content=\"light dark\"></head><body><pre style=\"word-wrap: break-word; white-space: pre-wrap;\">403 Unauthorized</pre></body></html>"
+      },
+      {
+        "id": "landmark-one-main",
+        "impact": "moderate",
+        "help": "Document should have one main landmark",
+        "nodes_affected": 1,
+        "sample_html": "<html><head><meta name=\"color-scheme\" content=\"light dark\"></head><body><pre style=\"word-wrap: break-word; white-space: pre-wrap;\">403 Unauthorized</pre></body></html>"
+      }
+    ],
+    "qualifies_as_lead": true
+  },
+  {
+    "url": "https://philly-injury-law.com/",
+    "score": 85,
+    "critical_count": 0,
+    "serious_count": 2,
+    "moderate_count": 3,
+    "total_violations": 6,
+    "total_nodes_affected": 10,
+    "top_issues": [
+      {
+        "id": "aria-hidden-focus",
+        "impact": "serious",
+        "help": "ARIA hidden element must not be focusable or contain focusable elements",
+        "nodes_affected": 2,
+        "sample_html": "<nav class=\"elementor-nav-menu--dropdown elementor-nav-menu__container\" aria-hidden=\"true\">"
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "nodes_affected": 3,
+        "sample_html": "<span style=\"font-size:32px;padding-top:10px !important\"> <i class=\"fa fa-phone-alt\"> </i> (215) 298-9143 </span>"
+      },
+      {
+        "id": "landmark-one-main",
+        "impact": "moderate",
+        "help": "Document should have one main landmark",
+        "nodes_affected": 1,
+        "sample_html": "<html lang=\"en-US\" prefix=\"og: https://ogp.me/ns#\">"
+      }
+    ],
+    "qualifies_as_lead": true
+  },
+  {
+    "url": "https://www.erlegalteam.com/",
+    "score": 85,
+    "critical_count": 0,
+    "serious_count": 3,
+    "moderate_count": 1,
+    "total_violations": 5,
+    "total_nodes_affected": 6,
+    "top_issues": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "nodes_affected": 1,
+        "sample_html": "<span>Start your free consultation</span>"
+      },
+      {
+        "id": "link-name",
+        "impact": "serious",
+        "help": "Links must have discernible text",
+        "nodes_affected": 2,
+        "sample_html": "<a class=\"cw_video_open_popup_customized btn-play\" href=\"javascript:void(0);\" video_id=\"KT5hfTd2Tiw\" video_autoplay=\"1\" video_type=\"youtube\" video_showinfo=\"\" video_rel=\"0\"> </a>"
+      },
+      {
+        "id": "tabindex",
+        "impact": "serious",
+        "help": "Elements should not have tabindex greater than zero",
+        "nodes_affected": 1,
+        "sample_html": "<a href=\"#main-wrapper\" class=\"skiplink\" tabindex=\"1\">Skip Navigation</a>"
+      }
+    ],
+    "qualifies_as_lead": true
+  },
+  {
+    "url": "https://gentledentalfamilycare.com/",
+    "score": 82,
+    "critical_count": 0,
+    "serious_count": 3,
+    "moderate_count": 3,
+    "total_violations": 6,
+    "total_nodes_affected": 37,
+    "top_issues": [
+      {
+        "id": "aria-prohibited-attr",
+        "impact": "serious",
+        "help": "Elements must only use permitted ARIA attributes",
+        "nodes_affected": 3,
+        "sample_html": "<div class=\"elementor-testimonial__icon elementor-icon elementor-icon-\" aria-label=\"Read More\"></div>"
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "nodes_affected": 1,
+        "sample_html": "<a href=\"tel:7188499797\">(718) 849-9797</a>"
+      },
+      {
+        "id": "link-name",
+        "impact": "serious",
+        "help": "Links must have discernible text",
+        "nodes_affected": 2,
+        "sample_html": "<a href=\"https://www.facebook.com/gentledentalfamilycare/\" class=\"wp-block-social-link-anchor\">"
+      }
+    ],
+    "qualifies_as_lead": true
+  },
+  {
+    "url": "https://www.queenssmile.com/",
+    "score": 92,
+    "critical_count": 0,
+    "serious_count": 1,
+    "moderate_count": 2,
+    "total_violations": 3,
+    "total_nodes_affected": 7,
+    "top_issues": [
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "nodes_affected": 1,
+        "sample_html": "<a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a>"
+      },
+      {
+        "id": "landmark-one-main",
+        "impact": "moderate",
+        "help": "Document should have one main landmark",
+        "nodes_affected": 1,
+        "sample_html": "<html class=\"no-js\" lang=\"en-US\">"
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "help": "All page content should be contained by landmarks",
+        "nodes_affected": 5,
+        "sample_html": "<div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_ac"
+      }
+    ],
+    "qualifies_as_lead": false
+  },
+  {
+    "url": "https://www.dermofmiami.com/",
+    "score": 84,
+    "critical_count": 1,
+    "serious_count": 1,
+    "moderate_count": 2,
+    "total_violations": 4,
+    "total_nodes_affected": 25,
+    "top_issues": [
+      {
+        "id": "button-name",
+        "impact": "critical",
+        "help": "Buttons must have discernible text",
+        "nodes_affected": 1,
+        "sample_html": "<button class=\"popup-section-close-btn\"><div class=\"popup-section-close-btn-inner\"></div></button>"
+      },
+      {
+        "id": "aria-command-name",
+        "impact": "serious",
+        "help": "ARIA commands must have an accessible name",
+        "nodes_affected": 1,
+        "sample_html": "<div role=\"button\" class=\"open_close\" onclick=\"(function(){\n       ...\">"
+      },
+      {
+        "id": "landmark-one-main",
+        "impact": "moderate",
+        "help": "Document should have one main landmark",
+        "nodes_affected": 1,
+        "sample_html": "<html lang=\"en\" style=\"--identity-width: 140px; --links-height: 51px; --buttons-height: 51px; --num-of-links: 7; --compensation-to-middle: 52px; --side-menu-space: 71px; --stick-top-section-height: 39"
+      }
+    ],
+    "qualifies_as_lead": true
+  },
+  {
+    "url": "https://www.miamidermskin.com/",
+    "score": 92,
+    "critical_count": 0,
+    "serious_count": 1,
+    "moderate_count": 2,
+    "total_violations": 3,
+    "total_nodes_affected": 21,
+    "top_issues": [
+      {
+        "id": "aria-command-name",
+        "impact": "serious",
+        "help": "ARIA commands must have an accessible name",
+        "nodes_affected": 1,
+        "sample_html": "<div role=\"button\" class=\"open_close\" onclick=\"(function(){\n       ...\">"
+      },
+      {
+        "id": "landmark-one-main",
+        "impact": "moderate",
+        "help": "Document should have one main landmark",
+        "nodes_affected": 1,
+        "sample_html": "<html lang=\"en\" style=\"--identity-width: 120px; --links-height: 100px; --buttons-height: 100px; --num-of-links: 6; --compensation-to-middle: 40px; --side-menu-space: 78px; --menu-height: -120px; --dyn"
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "help": "All page content should be contained by landmarks",
+        "nodes_affected": 19,
+        "sample_html": "<div class=\"identity section-item\"><div class=\"logotype\"><a style=\"width:inherit\" target=\"_self\"><div id=\"vbid-17763569-14411e81\" class=\"element title_preset_1 \" data-elementtype=\"TITLE\" contenteditab"
+      }
+    ],
+    "qualifies_as_lead": true
+  },
+  {
+    "url": "https://advanceddentistryofqueens.com/",
+    "score": 78,
+    "critical_count": 0,
+    "serious_count": 3,
+    "moderate_count": 5,
+    "total_violations": 8,
+    "total_nodes_affected": 56,
+    "top_issues": [
+      {
+        "id": "aria-prohibited-attr",
+        "impact": "serious",
+        "help": "Elements must only use permitted ARIA attributes",
+        "nodes_affected": 10,
+        "sample_html": "<div class=\"elementor-testimonial__icon elementor-icon elementor-icon-google\" aria-label=\"Slides\">"
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "nodes_affected": 14,
+        "sample_html": "<span class=\"elementor-button-text\">CALL NOW</span>"
+      },
+      {
+        "id": "link-name",
+        "impact": "serious",
+        "help": "Links must have discernible text",
+        "nodes_affected": 2,
+        "sample_html": "<a href=\"https://advanceddentistryofqueens.com\">"
+      }
+    ],
+    "qualifies_as_lead": true
+  },
+  {
+    "url": "https://www.marinaplasticsurgery.com/",
+    "score": 88,
+    "critical_count": 0,
+    "serious_count": 2,
+    "moderate_count": 2,
+    "total_violations": 4,
+    "total_nodes_affected": 62,
+    "top_issues": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "nodes_affected": 1,
+        "sample_html": "<span class=\"accent-color intro block\">M.D., FACS</span>"
+      },
+      {
+        "id": "tabindex",
+        "impact": "serious",
+        "help": "Elements should not have tabindex greater than zero",
+        "nodes_affected": 1,
+        "sample_html": "<div class=\"menu-button is-visible-desktop\" aria-label=\"Menu Button\" tabindex=\"1\">\n            <div>\n              <span></span>\n              <span></span>\n              <span></span>\n            </d"
+      },
+      {
+        "id": "meta-viewport",
+        "impact": "moderate",
+        "help": "Zooming and scaling must not be disabled",
+        "nodes_affected": 1,
+        "sample_html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=yes, user-scalable=no\">"
+      }
+    ],
+    "qualifies_as_lead": true
+  },
+  {
+    "url": "https://www.myphillylawyer.com/",
+    "score": 78,
+    "critical_count": 0,
+    "serious_count": 4,
+    "moderate_count": 3,
+    "total_violations": 7,
+    "total_nodes_affected": 34,
+    "top_issues": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "nodes_affected": 8,
+        "sample_html": "<span class=\"uabb-tab-title\">Workplace Injuries</span>"
+      },
+      {
+        "id": "frame-title",
+        "impact": "serious",
+        "help": "Frames must have an accessible name",
+        "nodes_affected": 1,
+        "sample_html": "<iframe src=\"https://www.google.c...\" width=\"460\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-dow...\">"
+      },
+      {
+        "id": "link-name",
+        "impact": "serious",
+        "help": "Links must have discernible text",
+        "nodes_affected": 3,
+        "sample_html": "<a href=\"https://www.facebook.com/MyPhillyLawyer/\" target=\"_blank\" rel=\"noopener\">\n\t\t\t\t\t\t\t<i class=\"ua-icon ua-icon-facebook-with-circle\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t</a>"
+      }
+    ],
+    "qualifies_as_lead": true
+  },
+  {
+    "url": "https://injurylawpartners.com/",
+    "score": 89,
+    "critical_count": 0,
+    "serious_count": 2,
+    "moderate_count": 1,
+    "total_violations": 4,
+    "total_nodes_affected": 15,
+    "top_issues": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "nodes_affected": 3,
+        "sample_html": "<span class=\"elementor-button-text\">CONTACT</span>"
+      },
+      {
+        "id": "link-name",
+        "impact": "serious",
+        "help": "Links must have discernible text",
+        "nodes_affected": 4,
+        "sample_html": "<a href=\"https://injurylawpartners.com/attorneys-2/david-j-langsam-2/\">"
+      },
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "help": "Heading levels should only increase by one",
+        "nodes_affected": 5,
+        "sample_html": "<h5 class=\"elementor-heading-title elementor-size-default\">Founding Partner</h5>"
+      }
+    ],
+    "qualifies_as_lead": true
+  }
+]
