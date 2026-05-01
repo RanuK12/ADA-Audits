@@ -1,0 +1,34 @@
+EMAIL #5 — Miami Chiropractic
+============================================================
+
+TO:       wweeiihhuuaanngg@gmail.com
+SUBJECT:  quick note about miamichiropractic.us
+
+────────────────────────────────────────────────────────────
+BODY (copy from the line below — do not copy this header)
+────────────────────────────────────────────────────────────
+
+Hi Wei,
+
+Ran an accessibility scan on miamichiropractic.us this morning and found 26 elements that put the site at ADA Title III risk — the same category of issues driving 5,000+ small-business lawsuits in 2025 (69% against companies under $25M).
+
+Three most urgent on your site:
+
+1. 5 images without alt text — screen-reader users lose critical context. Most-litigated issue category in 2025.
+
+2. An interactive control (1 element) has no accessible name — blind users can't reach the function.
+
+3. 5 UI elements with color contrast below 4.5:1 (WCAG minimum). This is the #1 trigger for ADA drive-by lawsuits against small practices.
+
+I can send you the full 17-point audit (with remediation code your webmaster can copy-paste) — free, no strings. If you want me to fix it, flat $1,200, done in 2 weeks.
+
+Want the report?
+
+— Emilio Ranucoli
+Systems Engineer — accessibility & compliance audits
+ranuk.dev  |  ranucoliemilio@gmail.com
+
+────────────────────────────────────────────────────────────
+STATUS:   pending
+URL:      https://miamichiropractic.us/
+CREATED:  2026-04-17

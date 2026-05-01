@@ -1,0 +1,34 @@
+EMAIL #6 — Miami Spine Clinic
+============================================================
+
+TO:       info@miamispineclinic.com
+SUBJECT:  quick note about miamispineclinic.com
+
+────────────────────────────────────────────────────────────
+BODY (copy from the line below — do not copy this header)
+────────────────────────────────────────────────────────────
+
+Hi there,
+
+Ran an accessibility scan on miamispineclinic.com this morning and found 20 elements that put the site at ADA Title III risk — the same category of issues driving 5,000+ small-business lawsuits in 2025 (69% against companies under $25M).
+
+Three most urgent on your site:
+
+1. The page lacks a main landmark — screen-reader users cannot skip directly to content.
+
+2. 19 content blocks sitting outside semantic landmarks — blind users can't jump-navigate.
+
+3. Multiple interactive elements lack proper accessibility metadata, affecting screen-reader users.
+
+I can send you the full 17-point audit (with remediation code your webmaster can copy-paste) — free, no strings. If you want me to fix it, flat $1,200, done in 2 weeks.
+
+Want the report?
+
+— Emilio Ranucoli
+Systems Engineer — accessibility & compliance audits
+ranuk.dev  |  ranucoliemilio@gmail.com
+
+────────────────────────────────────────────────────────────
+STATUS:   pending
+URL:      https://www.miamispineclinic.com/
+CREATED:  2026-04-17
