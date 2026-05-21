@@ -2,38 +2,96 @@
 
 **Objetivo:** recuperar Mac + costo Claude en 2–3 semanas cerrando 1 cliente/semana a USD 800–1.200.
 
-## Estructura
+## Qué es esto
+
+Sistema de outbound personalizado para vender auditorías de accesibilidad digital (ADA / WCAG 2.1 AA) a negocios en EE.UU. Combina escaneo automatizado, inteligencia de mercado y plantillas de email frías para cerrar clientes de forma predecible.
+
+## Stack / Tecnologías
+
+- **Escaneo:** axe-core CLI, Lighthouse, Puppeteer
+- **Scripting:** Bash + Python 3
+- **Reportes:** Markdown + pandoc (PDF) o `npx md-to-pdf`
+- **Outbound:** Gmail manual (Fase 1) / scripts de apoyo Python
+- **LLM:** Claude Sonnet 4 (para generar reportes finales)
+
+## Estructura de carpetas
 
 ```
 ADA-AUDITS/
 ├── README.md                       ← este archivo
 ├── FLUJO-DIARIO.md                 ← rutina de 2h/día. Leer primero.
+├── CHEATSHEET-BOT.md               ← comandos rápidos para el bot
 ├── templates/
 │   ├── PLANTILLA-AUDITORIA.md      ← formato del entregable final
 │   └── PROMPT-GENERAR-AUDITORIA.md ← prompt maestro para Claude
 ├── scripts/
 │   ├── fetch-site.sh               ← descarga HTML + axe + lighthouse
-│   └── quick-scan.sh               ← escaneo 30s → decide si es lead
+│   ├── quick-scan.sh               ← escaneo 30s → decide si es lead
+│   ├── daily-auto.py               ← automatización diaria
+│   ├── generate-pitch.py           ← genera pitch personalizado
+│   ├── generate-report.py          ← genera reporte desde scan
+│   ├── find-emails.py              ← extracción de emails
+│   ├── find-urls.py                ← extracción de URLs
+│   ├── next-action.py              ← sugiere siguiente acción
+│   ├── outbox.py                   ← gestión de outbox
+│   └── tg-send.py                  ← envío vía Telegram
 ├── prospectos/
 │   ├── CRITERIOS-TARGETING.md      ← quién es ICP, quién no
 │   ├── EMAIL-TEMPLATES.md          ← 5 plantillas cold + follow-up + objeciones
-│   └── leads.csv                   ← pipeline
-└── entregables/
-    └── EJEMPLO-auditoria-dentista-palermo.md  ← muestra terminada
+│   ├── leads.csv                   ← pipeline
+│   └── urls-del-dia.txt            ← URLs a escanear hoy
+├── entregables/
+│   └── EJEMPLO-auditoria-dentista-palermo.md  ← muestra terminada
+└── logs/                           ← logs de escaneos y envíos
 ```
 
-## Primer día (hoy, 90 min)
+## Cómo correrlo localmente
 
-1. Leer `FLUJO-DIARIO.md` completo (10 min).
-2. Leer `prospectos/CRITERIOS-TARGETING.md` y `EMAIL-TEMPLATES.md` (15 min).
-3. Instalar herramientas:
-   ```bash
-   npm i -g @axe-core/cli puppeteer lighthouse
-   ```
-4. Elegir 1 vertical + 1 ciudad US del target list. Ej: `dentistas Brooklyn NY`.
-5. Buscar en Google Maps, copiar 10 URLs a `prospectos/urls-del-dia.txt`.
-6. Correr `./scripts/quick-scan.sh -f prospectos/urls-del-dia.txt`.
-7. Mandar 5 emails personalizados con Template 1.
+### Setup inicial (una sola vez)
+
+```bash
+# Instalar herramientas de escaneo
+npm i -g @axe-core/cli puppeteer lighthouse
+
+# Verificar
+axe --version
+lighthouse --version
+```
+
+### Escaneo rápido (decide si es lead en 30s)
+
+```bash
+./scripts/quick-scan.sh https://cliente.com
+# o batch
+./scripts/quick-scan.sh -f prospectos/urls-del-dia.txt
+```
+
+### Auditoría completa (cuando cierra cliente)
+
+```bash
+./scripts/fetch-site.sh https://cliente.com entregables/cliente-01/
+# Luego usá templates/PROMPT-GENERAR-AUDITORIA.md con Claude
+```
+
+### Generar PDF del reporte
+
+```bash
+pandoc entregables/cliente-01/reporte.md -o reporte.pdf --pdf-engine=xelatex
+# fallback:
+npx md-to-pdf entregables/cliente-01/reporte.md
+```
+
+## Deploy
+
+No aplica. Todo corre localmente. Los reportes se entregan por email como PDF.
+
+## Estado actual
+
+- ✅ Sistema de escaneo funcional (axe + lighthouse + script propio)
+- ✅ Plantillas de email y auditoría listas
+- ✅ Pipeline de leads (`leads.csv`) operativo
+- ⚠️ Outbound 100% manual en Fase 1 (sin automatización de envío)
+- 🔄 Evolución futura: Fase 2 pasiva (Gumroad/Twitter/Reddit) y Fase 3 (Micro-SaaS)
 
 ## Reglas que no se negocian
 
