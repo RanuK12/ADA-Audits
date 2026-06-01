@@ -104,3 +104,7 @@ No aplica. Todo corre localmente. Los reportes se entregan por email como PDF.
 ## Siguiente fase
 
 Mientras este sistema genera cash, Gumroad/Twitter/Reddit corren en background (Fase 2 pasiva). Después del 3er cliente cerrado, arrancar Fase 3 (Micro-SaaS) en paralelo.
+
+## Licencia
+
+MIT — © 2026 Ranuk IT Solutions | ranuk.dev
