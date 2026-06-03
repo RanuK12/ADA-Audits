@@ -1,0 +1,65 @@
+# === Dependencies ===
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+*.whl
+venv/
+.venv/
+env/
+
+# === Environment & Secrets ===
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets/
+
+# === Logs ===
+*.log
+logs/
+*.err
+
+# === OS ===
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# === IDE / Editors ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# === Outputs / Generated ===
+*.pdf
+!entregables/EJEMPLO-*.pdf
+outbox/*.txt
+*.tmp
+tmp/
+
+# === Claude / AI worktrees ===
+.claude/
+
+# === Node / JS artifacts ===
+*.tsbuildinfo
+.eslintcache
