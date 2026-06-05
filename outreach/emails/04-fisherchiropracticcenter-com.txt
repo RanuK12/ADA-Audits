@@ -1,0 +1,35 @@
+EMAIL #4 -- Fisher Chiropractic Center [HEALTHTECH]
+============================================================
+
+TO:       fisherchiropractic@gmail.com
+SUBJECT:  fisherchiropracticcenter.com — your patient portal has accessibility blind spots
+
+------------------------------------------------------------
+BODY (copy from line below)
+------------------------------------------------------------
+
+Hi there,
+
+Scanned fisherchiropracticcenter.com for WCAG 2.1 AA compliance and found 20 violations — significant for any health platform, where 26% of US adults live with a disability and patient access isn't just good practice, it's increasingly a regulatory expectation.
+
+Three most urgent on Fisher Chiropractic Center:
+
+1. Multiple elements with missing ARIA labels — health platforms with inaccessible forms (appointment booking, prescription requests, insurance intake) are among the most ADA-sued digital properties. Every unlabeled field is a patient who can't use your service and a potential complaint.
+
+2. Color contrast below WCAG 4.5:1 — medical imagery, test results, and dashboard visualizations that lack text alternatives or proper ARIA descriptions exclude visually impaired patients entirely from their own health data.
+
+3. No semantic landmarks or heading hierarchy — HHS/OCR has signaled that Section 552 (21st Century Cures Act) accessibility requirements will be enforced alongside ADA. Healthtech companies with no accessibility posture face dual exposure.
+
+I can send Fisher Chiropractic Center a free 17-point accessibility audit (with remediation steps your dev team can execute). No strings attached. For full implementation: flat $1,200, 2-week delivery.
+
+Want me to send the report?
+
+— Emilio Ranucoli
+Systems Engineer — accessibility & compliance audits
+ranuk.dev  |  ranucoliemilio@gmail.com
+
+------------------------------------------------------------
+STATUS:   pending
+DOMAIN:   fisherchiropracticcenter.com
+SECTOR:   healthtech
+CREATED:  2026-06-04

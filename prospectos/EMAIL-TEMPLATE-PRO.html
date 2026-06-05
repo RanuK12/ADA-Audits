@@ -1,0 +1,70 @@
+<!--
+  Ranuk IT Solutions — Plantilla de email profesional para outreach ADA/WCAG.
+  Reemplazá {{first_name}}, {{business_name}}, {{domain}}, {{issue_1..3}} con datos REALES.
+  Logo inline: Content-ID "ranuklogo" (cid:ranuklogo) -> adjuntar
+  ~/Apps/ranukita-bridge/assets/ranuk-it-logo.png  (logo de la EMPRESA Ranuk IT, NO el lobo).
+  OBLIGATORIO enviar con: rk-skymailer-send --html-file <este> --inline ranuklogo=<ruta logo>
+  Subject (minúscula, <=6 palabras): "accessibility issues on {{domain}}" / "quick note on {{domain}}"
+-->
+<div style="background:#f4f6f8;padding:24px 0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+<div style="background:#ffffff;max-width:600px;margin:0 auto;border:1px solid #e6e9ee;border-radius:10px;overflow:hidden;">
+
+  <!-- Header -->
+  <div style="background:#0f172a;padding:22px 28px;">
+    <img src="cid:ranuklogo" alt="Ranuk IT Solutions" height="34" style="display:block;">
+  </div>
+
+  <!-- Body -->
+  <div style="padding:28px;font-size:15px;line-height:1.6;color:#1f2937;">
+    <p style="margin:0 0 16px;">Hi {{first_name}},</p>
+
+    <p style="margin:0 0 16px;">I ran an accessibility scan on <strong>{{domain}}</strong> and found a
+    few issues that currently expose {{business_name}} to risk under <strong>ADA Title III</strong>
+    &mdash; the basis for 4,000+ website lawsuits filed against U.S. small businesses in 2025
+    (the majority against companies under $25M in revenue).</p>
+
+    <p style="margin:0 0 10px;">The three most pressing on your site:</p>
+    <ol style="margin:0 0 18px;padding-left:20px;">
+      <li style="margin-bottom:6px;">{{issue_1_with_location}}</li>
+      <li style="margin-bottom:6px;">{{issue_2_with_location}}</li>
+      <li style="margin-bottom:6px;">{{issue_3_with_location}}</li>
+    </ol>
+
+    <p style="margin:0 0 16px;">I'd be glad to send you the <strong>full audit</strong> &mdash; a
+    17-point WCAG 2.1 report with the exact remediation code &mdash; <strong>at no cost</strong>.
+    If you'd like us to implement the fixes, we do it for a flat <strong>$1,200</strong>, completed
+    within two weeks and backed by a compliance guarantee.</p>
+
+    <p style="margin:0 0 4px;">Would you like me to send the report?</p>
+
+    <!-- CTA -->
+    <div style="margin:22px 0 8px;">
+      <a href="https://ranuk.dev" style="background:#f97316;color:#ffffff;text-decoration:none;
+         font-weight:600;font-size:14px;padding:11px 22px;border-radius:6px;display:inline-block;">
+         Send me the free audit</a>
+    </div>
+  </div>
+
+  <!-- Signature -->
+  <div style="border-top:1px solid #e6e9ee;padding:20px 28px;background:#fafbfc;">
+    <table cellpadding="0" cellspacing="0" style="font-family:inherit;">
+      <tr>
+        <td style="vertical-align:middle;">
+          <div style="font-size:15px;font-weight:600;color:#0f172a;">Emilio Ranucoli</div>
+          <div style="font-size:13px;color:#64748b;margin:2px 0 6px;">Founder &middot; Ranuk IT Solutions</div>
+          <div style="font-size:13px;color:#475569;">
+            <a href="https://ranuk.dev" style="color:#0ea5e9;text-decoration:none;">ranuk.dev</a>
+            &nbsp;&middot;&nbsp;
+            <a href="mailto:emilio@ranuk.dev" style="color:#0ea5e9;text-decoration:none;">emilio@ranuk.dev</a>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <div style="font-size:11px;color:#94a3b8;margin-top:14px;line-height:1.5;">
+      Ranuk IT Solutions &mdash; Web accessibility &amp; ADA/WCAG compliance audits.<br>
+      If this isn't relevant, just reply "no thanks" and I won't follow up.
+    </div>
+  </div>
+
+</div>
+</div>
