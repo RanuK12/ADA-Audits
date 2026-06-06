@@ -10,7 +10,7 @@ Sistema de outbound personalizado para vender auditorías de accesibilidad digit
 
 - **Escaneo:** axe-core CLI, Lighthouse, Puppeteer
 - **Scripting:** Bash + Python 3
-- **Reportes:** Markdown + pandoc (PDF) o `npx md-to-pdf`
+- **Reportes:** WeasyPrint (PDF branded) + Jinja2 templates + Markdown
 - **Outbound:** Gmail manual (Fase 1) / scripts de apoyo Python
 - **LLM:** Claude Sonnet 4 (para generar reportes finales)
 
@@ -25,16 +25,24 @@ ADA-AUDITS/
 │   ├── PLANTILLA-AUDITORIA.md      ← formato del entregable final
 │   └── PROMPT-GENERAR-AUDITORIA.md ← prompt maestro para Claude
 ├── scripts/
-│   ├── fetch-site.sh               ← descarga HTML + axe + lighthouse
-│   ├── quick-scan.sh               ← escaneo 30s → decide si es lead
-│   ├── daily-auto.py               ← automatización diaria
-│   ├── generate-pitch.py           ← genera pitch personalizado
-│   ├── generate-report.py          ← genera reporte desde scan
-│   ├── find-emails.py              ← extracción de emails
-│   ├── find-urls.py                ← extracción de URLs
-│   ├── next-action.py              ← sugiere siguiente acción
-│   ├── outbox.py                   ← gestión de outbox
-│   └── tg-send.py                  ← envío vía Telegram
+│   ├── audit-pipeline.py          ← 🆕 URL → Scan → Score → PDF branded (PIPELINE PRINCIPAL)
+│   ├── compliance-score.py        ← 🆕 Calculadora standalone de compliance WCAG
+│   ├── quick-audit.sh             ← 🆕 One-liner: scan + score + PDF en 30s
+│   ├── fetch-site.sh              ← descarga HTML + axe + lighthouse
+│   ├── quick-scan.sh              ← escaneo 30s → decide si es lead
+│   ├── daily-auto.py              ← automatización diaria
+│   ├── generate-pitch.py          ← genera pitch personalizado
+│   ├── generate-report.py         ← genera reporte desde scan
+│   ├── find-emails.py             ← extracción de emails
+│   ├── find-urls.py               ← extracción de URLs
+│   ├── next-action.py             ← sugiere siguiente acción
+│   ├── outbox.py                  ← gestión de outbox
+│   └── tg-send.py                 ← envío vía Telegram
+├── templates/
+│   ├── PLANTILLA-AUDITORIA.md     ← formato del entregable final
+│   ├── PROMPT-GENERAR-AUDITORIA.md← prompt maestro para Claude
+│   ├── pdf-template.html          ← 🆕 Template HTML branded para PDF
+│   └── pdf-style.css              ← 🆕 CSS profesional para PDF
 ├── prospectos/
 │   ├── CRITERIOS-TARGETING.md      ← quién es ICP, quién no
 │   ├── EMAIL-TEMPLATES.md          ← 5 plantillas cold + follow-up + objeciones
@@ -73,7 +81,28 @@ lighthouse --version
 # Luego usá templates/PROMPT-GENERAR-AUDITORIA.md con Claude
 ```
 
-### Generar PDF del reporte
+### 🆕 Pipeline completo: URL → PDF branded (NUEVO)
+
+```bash
+# One-liner: escanea, calcula score, genera PDF profesional
+./scripts/quick-audit.sh https://cliente.com "Nombre Empresa"
+
+# O paso a paso:
+python3 scripts/audit-pipeline.py https://cliente.com --company "Nombre Empresa"
+
+# Calculadora standalone de compliance score:
+python3 scripts/compliance-score.py entregables/dominio_com/axe-raw.json
+```
+
+El pipeline genera automáticamente:
+- Score de cumplimiento WCAG 2.1 AA (0-100)
+- Clasificación por severidad (crítico/alto/medio/bajo)
+- Top 3 riesgos urgentes con remediación
+- Plan de remediación por fases con pricing
+- PDF branded con portada, colores Ranuk IT Solutions, y pie de página
+- JSON resumen para tracking
+
+### Generar PDF del reporte (legacy)
 
 ```bash
 pandoc entregables/cliente-01/reporte.md -o reporte.pdf --pdf-engine=xelatex
@@ -88,6 +117,8 @@ No aplica. Todo corre localmente. Los reportes se entregan por email como PDF.
 ## Estado actual
 
 - ✅ Sistema de escaneo funcional (axe + lighthouse + script propio)
+- ✅ **🆕 Pipeline completo URL → PDF branded** (WeasyPrint + Jinja2)
+- ✅ **🆕 Calculadora de compliance score standalone**
 - ✅ Plantillas de email y auditoría listas
 - ✅ Pipeline de leads (`leads.csv`) operativo
 - ⚠️ Outbound 100% manual en Fase 1 (sin automatización de envío)
