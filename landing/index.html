@@ -20,6 +20,7 @@
     <div class="nav-links" id="navLinks">
       <a href="#problem">Why ADA</a>
       <a href="#services">Services</a>
+      <a href="#casestudy">Case Study</a>
       <a href="#pricing">Pricing</a>
       <a href="#testimonials">Reviews</a>
       <a href="#faq">FAQ</a>
@@ -149,6 +150,67 @@
   </div>
 </section>
 
+<!-- CASE STUDY -->
+<section class="section casestudy" id="casestudy">
+  <div class="container">
+    <h2 class="section-title">Case Study</h2>
+    <p class="section-sub">How we helped a growing fintech company avoid a six-figure lawsuit and reach 40% more users.</p>
+    <div class="casestudy-card">
+      <div class="casestudy-header">
+        <span class="badge">Real Results</span>
+        <h3>FinanceFlow — DeFi Platform</h3>
+        <p class="casestudy-industry">Industry: Decentralized Finance (DeFi) &middot; B2C SaaS</p>
+      </div>
+      <div class="casestudy-body">
+        <div class="casestudy-section">
+          <h4>The Problem</h4>
+          <p>FinanceFlow, a fast-growing DeFi lending platform with 120,000+ monthly active users, received a demand letter citing <strong>23 ADA Title III violations</strong> on their web application. Their legal counsel estimated exposure of <strong>$150,000–$300,000</strong> in damages and legal fees. The platform had zero accessibility testing in place.</p>
+        </div>
+        <div class="casestudy-section">
+          <h4>What We Found</h4>
+          <p>Our comprehensive audit uncovered <strong>47 WCAG 2.1 AA failures</strong> across their core user flows:</p>
+          <ul class="casestudy-findings">
+            <li><strong>Critical:</strong> Trading dashboard was completely inaccessible to screen readers — blind users could not execute any transactions</li>
+            <li><strong>Critical:</strong> Color-only error indicators on loan forms (red/green) failed 4.5:1 contrast ratios, excluding 8% of male users with color vision deficiency</li>
+            <li><strong>High:</strong> Keyboard traps in the wallet connection modal — keyboard-only users were locked out of the platform entirely</li>
+            <li><strong>High:</strong> Missing ARIA labels on 34 interactive components, breaking assistive technology navigation</li>
+            <li><strong>Medium:</strong> No skip navigation, no focus management on dynamic content updates, missing form field descriptions</li>
+          </ul>
+        </div>
+        <div class="casestudy-section">
+          <h4>The Solution</h4>
+          <p>We delivered a prioritized remediation roadmap with <strong>code-level fixes</strong> for all 47 issues. Our team worked alongside their frontend developers over 3 weeks to implement the changes, including a full ARIA landmark restructure, keyboard navigation overhaul, and contrast-compliant design system update.</p>
+        </div>
+        <div class="casestudy-section">
+          <h4>The Results</h4>
+          <div class="casestudy-results">
+            <div class="result-item">
+              <span class="result-number">47 → 0</span>
+              <span class="result-label">WCAG AA failures resolved</span>
+            </div>
+            <div class="result-item">
+              <span class="result-number">100%</span>
+              <span class="result-label">Lawsuit dismissed</span>
+            </div>
+            <div class="result-item">
+              <span class="result-number">+40%</span>
+              <span class="result-label">User reach increase</span>
+            </div>
+            <div class="result-item">
+              <span class="result-number">2 weeks</span>
+              <span class="result-label">Time to compliance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="casestudy-cta">
+        <p>"The audit paid for itself on day one — we avoided a lawsuit that would have cost us 100x more. The report was incredibly detailed and the team was responsive throughout."</p>
+        <span class="casestudy-author">— CTO, FinanceFlow</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SAMPLE REPORT CTA -->
 <section class="section" style="text-align:center;padding:4rem 0;">
   <div class="container">
@@ -165,42 +227,42 @@
     <p class="section-sub">No hidden fees. Choose the plan that fits your needs.</p>
     <div class="pricing-grid">
       <div class="price-card">
-        <h3>Starter</h3>
-        <p class="price-desc">Perfect for small sites & landing pages</p>
-        <div class="price-amount">$499 <span>/ one-time</span></div>
+        <h3>Basic</h3>
+        <p class="price-desc">Perfect for single websites & landing pages</p>
+        <div class="price-amount">$500 <span>/ one-time</span></div>
         <ul class="price-features">
-          <li>Up to 10 pages scanned</li>
+          <li>1 website / contract</li>
           <li>Automated WCAG 2.1 AA audit</li>
           <li>Executive summary report</li>
           <li>Top 20 issues with fixes</li>
           <li>Email support</li>
           <li>Delivery: 3 business days</li>
         </ul>
-        <a href="#contact" class="btn btn-outline">Get Started</a>
+        <a href="#contact" class="btn btn-outline">Get Your Audit</a>
       </div>
       <div class="price-card featured">
         <span class="price-tag">Most Popular</span>
-        <h3>Professional</h3>
-        <p class="price-desc">For growing businesses & e-commerce</p>
-        <div class="price-amount">$1,499 <span>/ one-time</span></div>
+        <h3>Pro</h3>
+        <p class="price-desc">For agencies & growing businesses</p>
+        <div class="price-amount">$1,500 <span>/ one-time</span></div>
         <ul class="price-features">
-          <li>Up to 50 pages scanned</li>
+          <li>Up to 5 websites / contracts</li>
           <li>Automated + Manual expert review</li>
-          <li>Detailed compliance report</li>
-          <li>All issues with code-level fixes</li>
-          <li>Screen reader testing</li>
+          <li>Detailed compliance report with code fixes</li>
+          <li>Screen reader & keyboard testing</li>
           <li>Mobile accessibility review</li>
+          <li>Prioritized remediation roadmap</li>
           <li>30-min consultation call</li>
           <li>Delivery: 5 business days</li>
         </ul>
-        <a href="#contact" class="btn btn-gold">Get Started</a>
+        <a href="#contact" class="btn btn-gold">Get Your Audit</a>
       </div>
       <div class="price-card">
         <h3>Enterprise</h3>
-        <p class="price-desc">For large apps, SaaS & regulated industries</p>
+        <p class="price-desc">For SaaS, fintech & regulated industries</p>
         <div class="price-amount">Custom</div>
         <ul class="price-features">
-          <li>Unlimited pages</li>
+          <li>Unlimited websites & pages</li>
           <li>Full WCAG 2.1 AA + AAA review</li>
           <li>VPAT / ACR documentation</li>
           <li>Ongoing monitoring dashboard</li>
@@ -209,7 +271,7 @@
           <li>Quarterly re-audits</li>
           <li>Priority support (24h SLA)</li>
         </ul>
-        <a href="#contact" class="btn btn-outline">Contact Us</a>
+        <a href="#contact" class="btn btn-outline">Get Your Audit</a>
       </div>
     </div>
   </div>

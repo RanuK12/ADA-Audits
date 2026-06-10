@@ -147,6 +147,29 @@ img{max-width:100%;height:auto;display:block}ul{list-style:none}
 .success-message h3{color:#fff;font-size:1.5rem;margin-bottom:.5rem}
 .success-message p{color:#aaa;font-size:1rem}
 
+/* CASE STUDY */
+.casestudy{background:linear-gradient(180deg,#16162a 0%,#1a1a2e 100%)}
+.casestudy-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;max-width:860px;margin:0 auto}
+.casestudy-header{padding:2.5rem 2.5rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.casestudy-header h3{color:#fff;font-size:1.4rem;margin-bottom:.3rem}
+.casestudy-industry{color:#888;font-size:.9rem}
+.casestudy-body{padding:2rem 2.5rem}
+.casestudy-section{margin-bottom:2rem}
+.casestudy-section:last-child{margin-bottom:0}
+.casestudy-section h4{color:#00d4ff;font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:.8rem}
+.casestudy-section p{color:#bbb;font-size:.95rem;line-height:1.7}
+.casestudy-findings{margin-top:1rem;padding-left:0}
+.casestudy-findings li{color:#ccc;font-size:.93rem;margin-bottom:.7rem;padding-left:1.4rem;position:relative;line-height:1.6}
+.casestudy-findings li::before{content:"";position:absolute;left:0;top:.55rem;width:8px;height:8px;border-radius:50%;background:#ffd700}
+.casestudy-findings li strong{color:#fff}
+.casestudy-results{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.2rem}
+.result-item{text-align:center;padding:1.2rem .8rem;background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.12);border-radius:10px}
+.result-number{display:block;font-size:1.5rem;font-weight:800;color:#00d4ff;margin-bottom:.3rem}
+.result-label{font-size:.8rem;color:#999}
+.casestudy-cta{padding:2rem 2.5rem;background:rgba(255,215,0,.04);border-top:1px solid rgba(255,215,0,.12);text-align:center}
+.casestudy-cta p{color:#ddd;font-style:italic;font-size:1.05rem;max-width:640px;margin:0 auto .8rem;line-height:1.7}
+.casestudy-author{color:#ffd700;font-weight:600;font-size:.9rem}
+
 /* RESPONSIVE */
 @media(max-width:768px){
   .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(26,26,46,.98);flex-direction:column;padding:1.5rem;gap:1rem;border-bottom:1px solid rgba(0,212,255,.15)}
@@ -166,6 +189,9 @@ img{max-width:100%;height:auto;display:block}ul{list-style:none}
   .contact-wrapper{grid-template-columns:1fr}
   .contact-info{padding-right:0}
   .contact-form{padding:1.5rem}
+  .casestudy-card{margin:0 -.5rem}
+  .casestudy-header,.casestudy-body,.casestudy-cta{padding-left:1.2rem;padding-right:1.2rem}
+  .casestudy-results{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:480px){
   .hero h1{font-size:1.7rem}
@@ -173,4 +199,5 @@ img{max-width:100%;height:auto;display:block}ul{list-style:none}
   .hero-buttons .btn{width:100%}
   .section{padding:3.5rem 0}
   .container{width:92%}
+  .casestudy-results{grid-template-columns:1fr 1fr}
 }
