@@ -23,7 +23,7 @@
       <a href="#pricing">Pricing</a>
       <a href="#testimonials">Reviews</a>
       <a href="#faq">FAQ</a>
-      <a href="#contact" class="nav-cta">Get Free Scan</a>
+      <a href="#contact" class="nav-cta">Get Free Audit</a>
     </div>
     <button class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('active')">
       <span></span><span></span><span></span>
@@ -268,18 +268,58 @@
   </div>
 </section>
 
-<!-- CTA -->
-<section class="section cta" id="contact">
+<!-- CONTACT FORM -->
+<section class="section contact" id="contact">
   <div class="container">
-    <div class="cta-box">
-      <h2>Get Your <span style="color:#00d4ff">Free</span> Accessibility Scan</h2>
-      <p>Drop your URL below and we'll run a complimentary automated scan. No commitment, no spam — just a clear picture of where you stand.</p>
-      <form class="cta-form" onsubmit="handleSubmit(event)">
-        <input type="url" name="website" placeholder="https://yourwebsite.com" required>
-        <input type="email" name="email" placeholder="your@email.com" required>
-        <button type="submit" class="btn btn-primary btn-lg">Scan My Site</button>
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <span class="badge">Free Consultation</span>
+        <h2>Get Your <span style="color:#ffd700">Free</span> ADA Audit Report</h2>
+        <p>Complete the form and our accessibility experts will analyze your website against WCAG 2.1 guidelines, ADA requirements, and EAA standards. You'll receive a detailed report within 48 hours.</p>
+        <div class="contact-benefits">
+          <div class="benefit-item">
+            <span class="benefit-icon">✓</span>
+            <span>Comprehensive WCAG 2.1 AA/AAA analysis</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">✓</span>
+            <span>Risk assessment for ADA lawsuits</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">✓</span>
+            <span>Prioritized remediation roadmap</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">✓</span>
+            <span>No obligation, 100% free</span>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" id="auditForm" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label for="company">Company Name *</label>
+          <input type="text" id="company" name="company" placeholder="Your Company Inc." required>
+        </div>
+        <div class="form-group">
+          <label for="website">Website URL *</label>
+          <input type="url" id="website" name="website" placeholder="https://yourwebsite.com" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Contact Email *</label>
+          <input type="email" id="email" name="email" placeholder="you@company.com" required>
+        </div>
+        <div class="form-group">
+          <label for="auditType">Audit Type *</label>
+          <select id="auditType" name="auditType" required>
+            <option value="" disabled selected>Select audit type...</option>
+            <option value="ada-wcag">ADA / WCAG Compliance Audit</option>
+            <option value="accessibility-scan">Accessibility Scan</option>
+            <option value="full-compliance">Full Compliance Report</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-gold btn-lg btn-block">Get Your Free ADA Audit Report</button>
+        <p class="form-note">We respect your privacy. No data shared with third parties.</p>
       </form>
-      <p style="color:#666;font-size:.8rem;margin-top:1rem;">We respect your privacy. No data shared with third parties.</p>
     </div>
   </div>
 </section>
@@ -321,12 +361,54 @@
 </footer>
 
 <script>
-function handleSubmit(e) {
+async function handleSubmit(e) {
   e.preventDefault();
-  const url = e.target.website.value;
-  const email = e.target.email.value;
-  window.location.href = 'mailto:emilio@ranuk.dev?subject=Free ADA Audit Request&body=Website: ' + encodeURIComponent(url) + '%0AEmail: ' + encodeURIComponent(email);
-  alert('Thanks! We\'ll send your free scan results to ' + email + ' within 24 hours.');
+  const form = e.target;
+  const data = {
+    company: form.company.value,
+    website: form.website.value,
+    email: form.email.value,
+    auditType: form.auditType.value
+  };
+
+  const auditLabels = {
+    'ada-wcag': 'ADA / WCAG Compliance Audit',
+    'accessibility-scan': 'Accessibility Scan',
+    'full-compliance': 'Full Compliance Report'
+  };
+
+  // Try POST to API endpoint first
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (response.ok) {
+      showSuccess(data.email);
+      return;
+    }
+  } catch (err) {
+    // API not available, fall through to mailto
+  }
+
+  // Fallback: mailto link
+  const subject = encodeURIComponent('ADA Audit Request - ' + auditLabels[data.auditType]);
+  const body = encodeURIComponent(
+    'ADA Audit Request\n' +
+    '================\n\n' +
+    'Company: ' + data.company + '\n' +
+    'Website: ' + data.website + '\n' +
+    'Email: ' + data.email + '\n' +
+    'Audit Type: ' + auditLabels[data.auditType]
+  );
+  window.location.href = 'mailto:emilio@ranuk.dev?subject=' + subject + '&body=' + body;
+  showSuccess(data.email);
+}
+
+function showSuccess(email) {
+  const form = document.getElementById('auditForm');
+  form.innerHTML = '<div class="success-message"><span class="success-icon">✓</span><h3>Request Submitted!</h3><p>Thanks! We\'ll send your free ADA audit report to <strong>' + email + '</strong> within 48 hours.</p></div>';
 }
 </script>
 </body>
