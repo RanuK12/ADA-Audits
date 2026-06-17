@@ -2,11 +2,12 @@
 """Genera auditoría completa usando Claude API + scan de axe-core.
 
 Uso: generate-report.py <url>
-Output: entregables/<domain>/reporte.md
+Output: entregables/<domain>/reporte.md y reporte.pdf
 """
 import os, sys, json, subprocess, re
 from pathlib import Path
 from datetime import date
+import subprocess as sp
 
 url = sys.argv[1]
 domain = re.sub(r'^https?://(www\.)?', '', url).rstrip('/').split('/')[0]
@@ -32,8 +33,8 @@ out_dir.mkdir(parents=True, exist_ok=True)
 # 1. Ejecutar axe profundo
 print(f"→ corriendo axe sobre {url}…")
 axe_json = out_dir / "axe-raw.json"
-subprocess.run(
-    ["axe", url, "--save", f"axe-raw.json",
+sp.run(
+    ["axe", url, "--save", "axe-raw.json",
      "--tags", "wcag2a,wcag2aa,wcag21aa,best-practice",
      "--timeout", "60"],
     cwd=out_dir, check=False, capture_output=True
@@ -65,7 +66,6 @@ for v in violations:
 
 # 3. Llamar a Claude API con prompt-caching
 prompt_template = Path("/Users/emilioranucoli/Desktop/ADA-AUDITS/templates/PROMPT-GENERAR-AUDITORIA.md").read_text()
-# Extraer sólo el cuerpo del prompt del template
 m = re.search(r"## PROMPT\s+```(.*?)```", prompt_template, re.DOTALL)
 system_prompt = m.group(1).strip() if m else prompt_template
 
@@ -104,8 +104,39 @@ md = "".join(b["text"] for b in result.get("content",[]) if b.get("type")=="text
 usage = result.get("usage",{})
 print(f"  tokens: in={usage.get('input_tokens')} cached_read={usage.get('cache_read_input_tokens',0)} out={usage.get('output_tokens')}")
 
+# Guardar Markdown
 report_file = out_dir / "reporte.md"
 report_file.write_text(md)
 print(f"✅ reporte guardado: {report_file}")
-print(f"   convertir a PDF:  pandoc '{report_file}' -o '{out_dir}/reporte.pdf' --pdf-engine=xelatex")
-print(f"   (o con npx md-to-pdf si no tenés latex)")
+
+# --- NUEVA LÓGICA DE PDF ---
+print("→ generando PDF de auditoría...")
+pdf_path = out_dir / "reporte.pdf"
+
+# Configuración para ranukita_report.py
+spec = {
+    "title": f"Auditoría de Accesibilidad - {domain}",
+    "content": md,
+    "branding": {
+        "logo_path": "/Users/emilioranucoli/Apps/ranukita-bridge/assets/ranukita-logo.png",
+        "watermark_logo": "/Users/emilioranucoli/Apps/ranukita-bridge/assets/minilogo2.png",
+        "footer": "Ranukita Bot — Propiedad de Ranuk IT Solutions | ranuk.dev | ranukorbit.com"
+    },
+    "styles": {
+        "background_color": "#1a1a2e",
+        "primary_color": "#00d4ff",
+        "accent_color": "#ffd700"
+    }
+}
+
+# Ejecutar la skill
+try:
+    sp.run([
+        "python3", "/Users/emilioranucoli/Apps/ranukita-bridge/scripts/ranukita_report.py",
+        "--spec", json.dumps(spec),
+        "--output", str(pdf_path)
+    ], check=True)
+    print(f"✅ PDF generado con éxito: {pdf_path}")
+except Exception as e:
+    print(f"❌ Error al generar PDF: {e}")
+    sys.exit(1)
