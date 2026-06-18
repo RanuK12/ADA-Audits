@@ -82,6 +82,8 @@ def main():
     for v in violations:
         buckets[v.get("impact", "minor")] += 1
 
+    legal_risk, recommendation = risk_info(score)
+
     output = {
         "url": data.get("url", "unknown"),
         "wcag_compliance_score": score,
@@ -96,7 +98,6 @@ def main():
              "violations": v["count"], "severity": v["worst"]}
             for k, v in sorted(criteria.items())
         ],
-        legal_risk, recommendation = risk_info(score)
         "legal_risk": legal_risk,
         "recommendation": recommendation,
     }
