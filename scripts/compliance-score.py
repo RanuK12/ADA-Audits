@@ -49,6 +49,17 @@ def get_criteria_status(violations):
                     violated[tag]["worst"] = impact
     return violated
 
+def risk_info(score):
+    """Return (legal_risk, recommendation) tuple based on score."""
+    if score < 30:
+        return "CRITICAL", "Immediate remediation required"
+    elif score < 60:
+        return "HIGH", "Prompt remediation strongly recommended"
+    elif score < 80:
+        return "MODERATE", "Improvements recommended for full compliance"
+    else:
+        return "LOW", "Minor adjustments recommended"
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: compliance-score.py <axe-json-file>")
@@ -85,13 +96,9 @@ def main():
              "violations": v["count"], "severity": v["worst"]}
             for k, v in sorted(criteria.items())
         ],
-        "legal_risk": "CRITICAL" if score < 30 else "HIGH" if score < 60 else "MODERATE" if score < 80 else "LOW",
-        "recommendation": (
-            "Immediate remediation required" if score < 30
-            else "Prompt remediation strongly recommended" if score < 60
-            else "Improvements recommended for full compliance" if score < 80
-            else "Minor adjustments recommended"
-        ),
+        legal_risk, recommendation = risk_info(score)
+        "legal_risk": legal_risk,
+        "recommendation": recommendation,
     }
     print(json.dumps(output, indent=2, ensure_ascii=False))
 
