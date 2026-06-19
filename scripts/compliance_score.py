@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Standalone WCAG compliance score calculator.
-Usage: python3 compliance-score.py <axe-json-file>
-       echo '{"violations":[...]}' | python3 compliance-score.py -
+Usage: python3 compliance_score.py <axe-json-file>
+       echo '{"violations":[...]}' | python3 compliance_score.py -
 """
 import json, sys
 
@@ -62,7 +62,7 @@ def risk_info(score):
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: compliance-score.py <axe-json-file>")
+        print("Usage: compliance_score.py <axe-json-file>")
         sys.exit(1)
 
     if sys.argv[1] == "-":

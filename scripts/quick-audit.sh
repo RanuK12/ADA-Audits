@@ -26,7 +26,7 @@ fi
 
 # 2. Calculate compliance score
 echo "[2/3] Calculating compliance score..."
-python3 "$SCRIPT_DIR/compliance-score.py" "$OUT_DIR/axe-raw.json" > "$OUT_DIR/score.json"
+python3 "$SCRIPT_DIR/compliance_score.py" "$OUT_DIR/axe-raw.json" > "$OUT_DIR/score.json"
 SCORE=$(python3 -c "import json; d=json.load(open('$OUT_DIR/score.json')); print(d['wcag_compliance_score'])")
 RISK=$(python3 -c "import json; d=json.load(open('$OUT_DIR/score.json')); print(d['legal_risk'])")
 VIOLATIONS=$(python3 -c "import json; d=json.load(open('$OUT_DIR/score.json')); print(d['total_violations'])")
