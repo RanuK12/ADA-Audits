@@ -62,7 +62,7 @@ python3 scripts/audit-pipeline.py https://example.com --company "Company Name"
 ### 3. Compliance Score Calculation
 Calculate a standalone score from a raw JSON output:
 ```bash
-python3 scripts/compliance-score.py entregables/domain_com/axe-raw.json
+python3 scripts/compliance_score.py entregables/domain_com/axe-raw.json
 ```
 
 ## 📂 Project Structure
