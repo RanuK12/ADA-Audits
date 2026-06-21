@@ -15,9 +15,8 @@ dependencies = [
     "requests",
     "beautifulsoup4",
 ]
-optional-dependencies = {
-    selenium = ["selenium"]
-}
+[project.optional-dependencies]
+selenium = ["selenium"]
 
 [project.scripts]
 ada-audit = "scripts.compliance_score:main"
