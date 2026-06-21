@@ -46,16 +46,17 @@ def tag_to_criterion(tag):
     elif rest.endswith("aa"):
         rest = rest[:-2]
     # Now rest should be digits only, e.g., '111', '244', '21'
-    # Insert dots: first digit is the main number, remaining digits form sub‑parts
     if len(rest) == 0:
         return tag
-    main = rest[0]          # e.g., '1', '2', '2'
-    sub = rest[1:]          # e.g., '11', '44', '1'
-    # Insert a dot after each digit in sub
-    parts = [main]
-    for ch in sub:
-        parts.append(ch)
-    return ".".join(parts)
+    # First digit = principle number
+    principle = rest[0]
+    # Second digit = sub-guide number
+    sub_guide = rest[1] if len(rest) >= 2 else ''
+    # Remaining digits = criterion number; if none, default to '1'
+    criterion = rest[2:] if len(rest) >= 3 else ''
+    if criterion == '':
+        criterion = '1'
+    return f"{principle}.{sub_guide}.{criterion}"
 
 def calc_score(violations):
     total_penalty = sum(IMPACT_WEIGHTS.get(v.get("impact","minor"), 1) for v in violations)
