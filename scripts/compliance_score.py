@@ -33,6 +33,31 @@ WCAG_CRITERIA = {
     "4.1.3": "Status Messages",
 }
 
+def tag_to_criterion(tag):
+    """Convert axe tag like 'wcag111' to '1.1.1', 'wcag244' to '2.4.4',
+    'wcag21aa' to '2.1.1' (ignoring trailing 'aa'/'aaa')."""
+    # Remove leading 'wcag'
+    if not tag.startswith("wcag"):
+        return tag
+    rest = tag[4:]  # e.g., '111', '244', '21aa', '21aaa'
+    # Remove trailing 'aa' or 'aaa' (level indicators)
+    if rest.endswith("aaa"):
+        rest = rest[:-3]
+    elif rest.endswith("aa"):
+        rest = rest[:-2]
+    # Now rest should be digits only, e.g., '111', '244', '21'
+    if len(rest) == 0:
+        return tag
+    # First digit = principle number
+    principle = rest[0]
+    # Second digit = sub-guide number
+    sub_guide = rest[1] if len(rest) >= 2 else ''
+    # Remaining digits = criterion number; if none, default to '1'
+    criterion = rest[2:] if len(rest) >= 3 else ''
+    if criterion == '':
+        criterion = '1'
+    return f"{principle}.{sub_guide}.{criterion}"
+
 def calc_score(violations):
     total_penalty = sum(IMPACT_WEIGHTS.get(v.get("impact","minor"), 1) for v in violations)
     return max(0, min(100, 100 - total_penalty))
@@ -42,11 +67,12 @@ def get_criteria_status(violations):
     for v in violations:
         for tag in v.get("tags", []):
             if tag.startswith("wcag") and "best" not in tag:
-                violated.setdefault(tag, {"count": 0, "worst": "minor"})
-                violated[tag]["count"] += 1
+                criterion = tag_to_criterion(tag)
+                violated.setdefault(criterion, {"count": 0, "worst": "minor"})
+                violated[criterion]["count"] += 1
                 impact = v.get("impact", "minor")
-                if IMPACT_WEIGHTS.get(impact, 0) > IMPACT_WEIGHTS.get(violated[tag]["worst"], 0):
-                    violated[tag]["worst"] = impact
+                if IMPACT_WEIGHTS.get(impact, 0) > IMPACT_WEIGHTS.get(violated[criterion]["worst"], 0):
+                    violated[criterion]["worst"] = impact
     return violated
 
 def risk_info(score):
@@ -94,7 +120,7 @@ def main():
         "criteria_passing": len(WCAG_CRITERIA) - len(criteria),
         "pass_rate": f"{((len(WCAG_CRITERIA) - len(criteria)) / len(WCAG_CRITERIA) * 100):.1f}%",
         "violated_criteria": [
-            {"criterion": k, "name": WCAG_CRITERIA.get(k.split(".")[0]+"."+k.split(".")[1], k),
+            {"criterion": k, "name": WCAG_CRITERIA.get(k, k),
              "violations": v["count"], "severity": v["worst"]}
             for k, v in sorted(criteria.items())
         ],
