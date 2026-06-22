@@ -48,14 +48,15 @@ def tag_to_criterion(tag):
     # Now rest should be digits only, e.g., '111', '244', '21'
     if len(rest) == 0:
         return tag
+    # Need at least 2 digits for a valid WCAG criterion (principle.sub-guide)
+    if len(rest) < 2:
+        return tag
     # First digit = principle number
     principle = rest[0]
     # Second digit = sub-guide number
-    sub_guide = rest[1] if len(rest) >= 2 else ''
+    sub_guide = rest[1]
     # Remaining digits = criterion number; if none, default to '1'
-    criterion = rest[2:] if len(rest) >= 3 else ''
-    if criterion == '':
-        criterion = '1'
+    criterion = rest[2:] if len(rest) >= 3 else '1'
     return f"{principle}.{sub_guide}.{criterion}"
 
 def calc_score(violations):
