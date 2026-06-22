@@ -1,3 +1,13 @@
 landing/index.html.bak
 __pycache__/
 .aider*
+*.egg-info/
+dist/
+build/
+.venv/
+.pytest_cache/
+.ruff_cache/
+.env
+entregables/*/
+!entregables/.gitkeep
+logs/*.log
