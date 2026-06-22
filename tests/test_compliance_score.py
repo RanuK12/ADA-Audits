@@ -1,5 +1,5 @@
 import pytest
-from scripts.compliance_score import calc_score, get_criteria_status, risk_info
+from scripts.compliance_score import calc_score, get_criteria_status, risk_info, tag_to_criterion
 
 def test_calc_score_perfect_score():
     # Sin violaciones debería ser 100
@@ -73,9 +73,10 @@ def test_get_criteria_status_single():
         }
     ]
     result = get_criteria_status(violations)
-    assert "wcag111" in result
-    assert result["wcag111"]["count"] == 1
-    assert result["wcag111"]["worst"] == "critical"
+    # wcag111 → 1.1.1; wcag2a → 2.0.1 (principle 2, no sub-guide → defaults)
+    assert "1.1.1" in result
+    assert result["1.1.1"]["count"] == 1
+    assert result["1.1.1"]["worst"] == "critical"
 
 def test_get_criteria_status_multiple():
     violations = [
@@ -84,10 +85,81 @@ def test_get_criteria_status_multiple():
         {"tags": ["wcag244"], "impact": "minor"},
     ]
     result = get_criteria_status(violations)
-    assert result["wcag111"]["count"] == 2
-    assert result["wcag111"]["worst"] == "critical"
-    assert result["wcag244"]["count"] == 1
-    assert result["wcag244"]["worst"] == "minor"
+    # wcag111 → 1.1.1, wcag244 → 2.4.4
+    assert result["1.1.1"]["count"] == 2
+    assert result["1.1.1"]["worst"] == "critical"
+    assert result["2.4.4"]["count"] == 1
+    assert result["2.4.4"]["worst"] == "minor"
+
+# ── tag_to_criterion ──────────────────────────────────────────────────
+
+def test_tag_to_criterion_wcag111():
+    """wcag111 → 1.1.1 (Non-text Content)"""
+    assert tag_to_criterion("wcag111") == "1.1.1"
+
+def test_tag_to_criterion_wcag244():
+    """wcag244 → 2.4.4 (Link Purpose)"""
+    assert tag_to_criterion("wcag244") == "2.4.4"
+
+def test_tag_to_criterion_wcag_with_level_aa():
+    """wcag21aa → 2.1.1 (ignores trailing 'aa')"""
+    assert tag_to_criterion("wcag21aa") == "2.1.1"
+
+def test_tag_to_criterion_wcag_with_level_aaa():
+    """wcag21aaa → 2.1.1 (ignores trailing 'aaa')"""
+    assert tag_to_criterion("wcag21aaa") == "2.1.1"
+
+def test_tag_to_criterion_wcag_with_three_level_aa():
+    """wcag111aa → 1.1.1 (trailing 'aa' ignored)"""
+    assert tag_to_criterion("wcag111aa") == "1.1.1"
+
+def test_tag_to_criterion_wcag_principle_only():
+    """wcag21 → 2.1.1 (no criterion number, defaults to 1)"""
+    assert tag_to_criterion("wcag21") == "2.1.1"
+
+def test_tag_to_criterion_wcag_principle_single_digit_returns_tag():
+    """wcag1 (solo 1 dígito, no es tag axe válido) devuelve el tag original"""
+    assert tag_to_criterion("wcag1") == "wcag1"
+
+def test_tag_to_criterion_non_wcag_tag():
+    """Non-wcag tags pasan sin cambios"""
+    assert tag_to_criterion("best-practice") == "best-practice"
+    assert tag_to_criterion("section508") == "section508"
+    assert tag_to_criterion("cat.aria") == "cat.aria"
+
+def test_tag_to_criterion_empty_rest():
+    """wcag solo (sin dígitos) devuelve el tag original"""
+    assert tag_to_criterion("wcag") == "wcag"
+
+def test_tag_to_criterion_wcag412():
+    """wcag412 → 4.1.2 (Name, Role, Value)"""
+    assert tag_to_criterion("wcag412") == "4.1.2"
+
+def test_tag_to_criterion_wcag131():
+    """wcag131 → 1.3.1 (Info and Relationships)"""
+    assert tag_to_criterion("wcag131") == "1.3.1"
+
+def test_tag_to_criterion_wcag251():
+    """wcag251 → 2.5.1 (Pointer Gestures)"""
+    assert tag_to_criterion("wcag251") == "2.5.1"
+
+def test_tag_to_criterion_wcag413():
+    """wcag413 → 4.1.3 (Status Messages)"""
+    assert tag_to_criterion("wcag413") == "4.1.3"
+
+def test_tag_to_criterion_wcag143():
+    """wcag143 → 1.4.3 (Contrast Minimum)"""
+    assert tag_to_criterion("wcag143") == "1.4.3"
+
+def test_tag_to_criterion_wcag2410():
+    """wcag2410 → 2.4.10 (Section Headings)"""
+    assert tag_to_criterion("wcag2410") == "2.4.10"
+
+def test_tag_to_criterion_wcag2410_aa():
+    """wcag2410aa → 2.4.10 (with level suffix)"""
+    assert tag_to_criterion("wcag2410aa") == "2.4.10"
+
+# ── get_criteria_status (existing) ────────────────────────────────────
 
 def test_get_criteria_status_ignores_best():
     violations = [
@@ -96,5 +168,6 @@ def test_get_criteria_status_ignores_best():
     result = get_criteria_status(violations)
     # "best-practice" should be ignored
     assert "best-practice" not in result
-    # wcag21aa should be included
-    assert "wcag21aa" in result
+    # wcag21aa → 2.1.1 should be included
+    assert "2.1.1" in result
+    assert "1.1.1" in result
