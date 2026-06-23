@@ -4,7 +4,9 @@
 Uso: generate-pitch.py <url> <scan-results.json>
 Imprime el email en stdout listo para copiar.
 """
-import json, sys, re, os
+import json
+import re
+import sys
 from pathlib import Path
 
 url, scan_file = sys.argv[1], sys.argv[2]
@@ -37,7 +39,7 @@ def humanize(issue):
     if 'landmark' in h:
         return f"{n}+ content block(s) sitting outside semantic landmarks. Screen-reader users can't jump-navigate the page."
     if 'color' in h and 'rely' in h:
-        return f"Links distinguishable only by color — fails WCAG 1.4.1 Use of Color."
+        return "Links distinguishable only by color — fails WCAG 1.4.1 Use of Color."
     if 'lang' in h:
         return "Missing language attribute on <html> — screen readers mispronounce content."
     if 'heading' in h or 'h1' in h:
