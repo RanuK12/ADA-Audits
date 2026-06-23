@@ -4,7 +4,11 @@
 Uso: find-emails.py <url>
 Imprime JSON: {"emails":[...], "best":"primero@dominio.com", "owner_name":"..."}
 """
-import sys, re, json, urllib.request, urllib.parse
+import json
+import re
+import sys
+import urllib.parse
+import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 
 url = sys.argv[1]

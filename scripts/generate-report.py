@@ -4,10 +4,13 @@
 Uso: generate-report.py <url>
 Output: entregables/<domain>/reporte.md y reporte.pdf
 """
-import os, sys, json, subprocess, re
-from pathlib import Path
-from datetime import date
+import json
+import os
+import re
 import subprocess as sp
+import sys
+from datetime import date
+from pathlib import Path
 
 url = sys.argv[1]
 domain = re.sub(r'^https?://(www\.)?', '', url).rstrip('/').split('/')[0]
@@ -71,7 +74,9 @@ system_prompt = m.group(1).strip() if m else prompt_template
 
 print(f"→ enviando a Claude API ({len(violations)} violaciones, {sum(len(v['nodes']) for v in compact)} elementos)…")
 
-import urllib.request, urllib.error
+import urllib.error
+import urllib.request
+
 req = urllib.request.Request(
     "https://api.anthropic.com/v1/messages",
     method="POST",

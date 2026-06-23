@@ -1,5 +1,5 @@
-import pytest
 from scripts.compliance_score import calc_score, get_criteria_status, risk_info, tag_to_criterion
+
 
 def test_calc_score_perfect_score():
     # Sin violaciones debería ser 100

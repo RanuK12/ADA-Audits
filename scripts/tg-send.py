@@ -6,7 +6,11 @@ Uso:
     tg-send.py "mensaje corto"
     tg-send.py --file /path/to/file.txt
 """
-import sys, os, urllib.request, urllib.parse, json
+import json
+import os
+import sys
+import urllib.parse
+import urllib.request
 from pathlib import Path
 
 env = {}
