@@ -3,7 +3,8 @@
 Usage: python3 compliance_score.py <axe-json-file>
        echo '{"violations":[...]}' | python3 compliance_score.py -
 """
-import json, sys
+import json
+import sys
 
 IMPACT_WEIGHTS = {"critical": 8, "serious": 4, "moderate": 2, "minor": 1}
 WCAG_CRITERIA = {
@@ -72,7 +73,8 @@ def get_criteria_status(violations):
                 violated.setdefault(criterion, {"count": 0, "worst": "minor"})
                 violated[criterion]["count"] += 1
                 impact = v.get("impact", "minor")
-                if IMPACT_WEIGHTS.get(impact, 0) > IMPACT_WEIGHTS.get(violated[criterion]["worst"], 0):
+                current = IMPACT_WEIGHTS.get(violated[criterion]["worst"], 0)
+                if IMPACT_WEIGHTS.get(impact, 0) > current:
                     violated[criterion]["worst"] = impact
     return violated
 

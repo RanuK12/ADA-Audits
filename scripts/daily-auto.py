@@ -8,9 +8,12 @@ Lógica:
  2. Si hay leads escaneados sin pitch → genera pitches y los manda.
  3. Si no → elige vertical+ciudad del día, busca URLs, escanea, pitchea, manda.
 """
-import csv, json, subprocess, sys, os, re
+import csv
+import json
+import re
+import subprocess
+from datetime import date, datetime
 from pathlib import Path
-from datetime import date, datetime, timedelta
 
 ROOT = Path("/Users/emilioranucoli/Desktop/ADA-AUDITS")
 SCRIPTS = ROOT / "scripts"
@@ -213,14 +216,14 @@ def main():
                 stdout=open(ROOT / "logs" / "scan.log", "a"),
                 stderr=subprocess.STDOUT,
             )
-            parts.append(f"  → Cuando termine, mañana vas a tener los pitches listos acá.")
-            parts.append(f"  → O pedile al bot: `próxima acción`")
+            parts.append("  → Cuando termine, mañana vas a tener los pitches listos acá.")
+            parts.append("  → O pedile al bot: `próxima acción`")
         else:
             parts.append("⚠️ No hubo resultados. Mañana probamos otro combo.")
 
     if len(parts) == 2:  # solo el header
         parts.append("✅ Día limpio. Todo bajo control.")
-        parts.append(f"Pipeline: usá `pipeline` en el bot para ver métricas.")
+        parts.append("Pipeline: usá `pipeline` en el bot para ver métricas.")
 
     msg = "\n".join(parts)
     tg(msg)
