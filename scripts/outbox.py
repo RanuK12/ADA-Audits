@@ -14,9 +14,13 @@ Comandos:
                               → genera un email nuevo en outbox desde un scan
   outbox.py rebuild           → reescribe todos los outbox files en formato nuevo desde scan-results.json
 """
-import json, sys, re, csv, os, shutil
-from pathlib import Path
+import csv
+import json
+import re
+import shutil
+import sys
 from datetime import date
+from pathlib import Path
 
 ROOT = Path("/Users/emilioranucoli/Desktop/ADA-AUDITS")
 OUTBOX = ROOT / "prospectos" / "outbox"
@@ -170,8 +174,8 @@ def list_cmd():
         for m in pending:
             print(f"  #{m['n']:>2}  {m['business_name'][:30]:30}  → {m['to']}")
         print()
-        print(f"Ver email N:       ada email <n>")
-        print(f"Marcar enviado:    ada sent <n>")
+        print("Ver email N:       ada email <n>")
+        print("Marcar enviado:    ada sent <n>")
     else:
         print("✅ Ningún email pendiente.")
     if sent:
@@ -188,16 +192,16 @@ def show(n):
         sys.exit(1)
     # Devolver formato ultra limpio para Telegram copy-paste
     print(f"📧 EMAIL #{m['n']} — {m['business_name']}\n")
-    print(f"━━━ TO ━━━")
+    print("━━━ TO ━━━")
     print(m['to'])
     print()
-    print(f"━━━ SUBJECT ━━━")
+    print("━━━ SUBJECT ━━━")
     print(m['subject'])
     print()
-    print(f"━━━ BODY ━━━")
+    print("━━━ BODY ━━━")
     print(m['body'].strip())
     print()
-    print(f"━━━ DESPUES DE ENVIAR ━━━")
+    print("━━━ DESPUES DE ENVIAR ━━━")
     print(f"ada sent {m['n']}")
 
 

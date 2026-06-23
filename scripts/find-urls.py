@@ -6,7 +6,11 @@ Ejemplo: find-urls.py "dentist" "Brooklyn NY"
 
 Output: una URL por línea, a stdout.
 """
-import sys, re, urllib.request, urllib.parse, time
+import re
+import sys
+import time
+import urllib.parse
+import urllib.request
 from pathlib import Path
 
 vertical = sys.argv[1] if len(sys.argv) > 1 else "dentist"

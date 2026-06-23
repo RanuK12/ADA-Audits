@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 """ADA Audit Pipeline: URL -> Scan -> Score -> Branded PDF."""
-import argparse, json, os, subprocess, sys, re
-from pathlib import Path
+import argparse
+import json
+import re
+import subprocess
 from datetime import date
+from pathlib import Path
+
 from jinja2 import Template
 
 BASE = Path(__file__).resolve().parent.parent
