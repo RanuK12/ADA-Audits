@@ -4,6 +4,7 @@
 Uso: find-emails.py <url>
 Imprime JSON: {"emails":[...], "best":"primero@dominio.com", "owner_name":"..."}
 """
+
 import json
 import re
 import sys
@@ -17,11 +18,15 @@ base = url.rstrip("/")
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}")
 NAME_PATTERNS = [
     re.compile(r"(?:Dr\.|Doctor|Mr\.|Mrs\.|Ms\.)\s+([A-Z][a-z]+\s+[A-Z][a-z]+)"),
-    re.compile(r"(?:founder|owner|CEO|Dr\.|dentist|attorney)[^a-zA-Z]{0,20}([A-Z][a-z]+\s+[A-Z][a-z]+)", re.IGNORECASE),
+    re.compile(
+        r"(?:founder|owner|CEO|Dr\.|dentist|attorney)[^a-zA-Z]{0,20}([A-Z][a-z]+\s+[A-Z][a-z]+)",
+        re.IGNORECASE,
+    ),
     re.compile(r"([A-Z][a-z]+\s+[A-Z][a-z]+)[,\s]+(?:DDS|DMD|MD|Esq|PhD|JD)"),
 ]
 
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_0) AppleWebKit/605.1.15"
+
 
 def fetch(u, timeout=12):
     try:
@@ -31,6 +36,7 @@ def fetch(u, timeout=12):
     except Exception:
         return ""
 
+
 def score_email(e, host):
     e = e.lower()
     s = 0
@@ -39,9 +45,23 @@ def score_email(e, host):
     if domain and domain in e:
         s += 20
     # penalizar obvios no-contacto
-    for bad in ["@sentry", "@wixpress", "@wordpress", "@godaddy", "@cloudflare",
-                "noreply", "no-reply", "donotreply", "example.com", "yoursite",
-                "domain.com", "@2x.png", ".jpg", ".png", ".svg"]:
+    for bad in [
+        "@sentry",
+        "@wixpress",
+        "@wordpress",
+        "@godaddy",
+        "@cloudflare",
+        "noreply",
+        "no-reply",
+        "donotreply",
+        "example.com",
+        "yoursite",
+        "domain.com",
+        "@2x.png",
+        ".jpg",
+        ".png",
+        ".svg",
+    ]:
         if bad in e:
             return -100
     # bonus por tipo de mailbox
@@ -49,12 +69,38 @@ def score_email(e, host):
         if e.startswith(good):
             s += 10
     # personal (firstname@) = highest
-    if re.match(r"^[a-z]+@", e) and not any(e.startswith(g) for g in ["info@","contact@","hello@","office@","admin@","reception@","support@","sales@","marketing@","hr@","jobs@"]):
+    if re.match(r"^[a-z]+@", e) and not any(
+        e.startswith(g)
+        for g in [
+            "info@",
+            "contact@",
+            "hello@",
+            "office@",
+            "admin@",
+            "reception@",
+            "support@",
+            "sales@",
+            "marketing@",
+            "hr@",
+            "jobs@",
+        ]
+    ):
         s += 15
     return s
 
+
 host = urllib.parse.urlparse(url).netloc
-paths = ["", "/contact", "/contact-us", "/contactus", "/about", "/about-us", "/aboutus", "/team", "/our-team"]
+paths = [
+    "",
+    "/contact",
+    "/contact-us",
+    "/contactus",
+    "/about",
+    "/about-us",
+    "/aboutus",
+    "/team",
+    "/our-team",
+]
 
 all_html = ""
 with ThreadPoolExecutor(max_workers=4) as ex:
