@@ -8,6 +8,7 @@ Lógica:
  2. Si hay leads escaneados sin pitch → genera pitches y los manda.
  3. Si no → elige vertical+ciudad del día, busca URLs, escanea, pitchea, manda.
 """
+
 import csv
 import json
 import re
@@ -54,8 +55,9 @@ def log(msg):
 
 
 def tg(msg):
-    p = subprocess.Popen([str(SCRIPTS / "tg-send.py")],
-                         stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+    p = subprocess.Popen(
+        [str(SCRIPTS / "tg-send.py")], stdin=subprocess.PIPE, stdout=subprocess.PIPE
+    )
     p.communicate(msg.encode())
 
 
@@ -80,7 +82,11 @@ def check_followups():
     d3, d7 = [], []
     for r in csv.DictReader(open(LEADS)):
         sent = r.get("email_sent_date", "")
-        if not sent or r.get("replied", "").lower() == "true" or r.get("closed", "").lower() == "true":
+        if (
+            not sent
+            or r.get("replied", "").lower() == "true"
+            or r.get("closed", "").lower() == "true"
+        ):
             continue
         try:
             sent_date = datetime.strptime(sent, "%Y-%m-%d").date()
@@ -108,7 +114,13 @@ def pending_pitches():
         if not r.get("qualifies_as_lead"):
             continue
         url = r.get("url", "")
-        host = url.replace("https://", "").replace("http://", "").replace("www.", "").rstrip("/").split("/")[0]
+        host = (
+            url.replace("https://", "")
+            .replace("http://", "")
+            .replace("www.", "")
+            .rstrip("/")
+            .split("/")[0]
+        )
         if host and host not in sent_domains:
             pending.append(r)
     return pending
@@ -134,6 +146,7 @@ def generate_pitch(url):
 
 # ============ MAIN FLOW ============
 
+
 def main():
     log("=== daily-auto start ===")
     parts = [f"🌅 *Daily Brief ADA Audits* — {date.today().isoformat()}"]
@@ -144,12 +157,12 @@ def main():
     if d3:
         parts.append(f"📨 *Follow-up día +3* ({len(d3)} leads):")
         for r in d3[:5]:
-            parts.append(f"  • {r.get('domain','?')} ({r.get('owner_email','')})")
+            parts.append(f"  • {r.get('domain', '?')} ({r.get('owner_email', '')})")
         parts.append("  → usar Template 2 de EMAIL-TEMPLATES.md\n")
     if d7:
         parts.append(f"📨 *Último follow-up día +7* ({len(d7)} leads):")
         for r in d7[:5]:
-            parts.append(f"  • {r.get('domain','?')}")
+            parts.append(f"  • {r.get('domain', '?')}")
         parts.append("  → usar Template 3 (cierre)\n")
 
     # 2. Pitches pendientes de scans previos → agregarlos al OUTBOX automáticamente
@@ -170,7 +183,11 @@ def main():
             # Ubicar el scan file correcto
             scan_file = SCAN  # default
             # buscar también en batches/
-            for candidate in (PROSPECTOS / "batches").glob("*-scan.json") if (PROSPECTOS / "batches").exists() else []:
+            for candidate in (
+                (PROSPECTOS / "batches").glob("*-scan.json")
+                if (PROSPECTOS / "batches").exists()
+                else []
+            ):
                 try:
                     data = json.load(open(candidate))
                     if any(r.get("url", "").rstrip("/") == url.rstrip("/") for r in data):
@@ -180,7 +197,10 @@ def main():
                     pass
 
             # Agregar al outbox
-            r = run([str(SCRIPTS / "outbox.py"), "add", url, to_email, first_name, str(scan_file)], timeout=30)
+            r = run(
+                [str(SCRIPTS / "outbox.py"), "add", url, to_email, first_name, str(scan_file)],
+                timeout=30,
+            )
             if r.returncode == 0 and "añadido" in (r.stdout or ""):
                 added_now.append({"url": url, "to": to_email, "first": first_name})
                 log(f"outbox+ {url} → {to_email}")
@@ -192,9 +212,9 @@ def main():
                 parts.append(f"  • {host}  →  {a['to']}")
             parts.append("")
             parts.append("📋 Para ver y mandar desde Telegram:")
-            parts.append("  `outbox`         → lista completa con números")
-            parts.append("  `email <n>`      → te paso el email #N listo para copiar")
-            parts.append("  `sent <n>`       → lo marco como enviado cuando lo mandes")
+            parts.append("  `outbox`     → lista completa con números")
+            parts.append("  `email <n>`    → te paso el email #N listo para copiar")
+            parts.append("  `sent <n>`     → lo marco como enviado cuando lo mandes")
             parts.append("")
 
     # 3. Si no hay pendientes, buscar nuevos
@@ -209,7 +229,9 @@ def main():
 
         if urls:
             URLS.write_text("\n".join(urls) + "\n")
-            parts.append("🔎 *Escaneando...* (esto puede tardar 5-15 min, el scan corre en background)")
+            parts.append(
+                "🔎 *Escaneando...* (esto puede tardar 5-15 min, el scan corre en background)"
+            )
             # Correr scan en background
             subprocess.Popen(
                 [str(SCRIPTS / "ada"), "scan-batch"],
