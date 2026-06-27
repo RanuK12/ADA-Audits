@@ -3,11 +3,12 @@
 
 Provides a unified CLI to run ADA audit tools.
 Usage:
-    python -m scripts scan <axe-json-file>
-    python -m scripts version
+  python -m scripts scan <axe-json-file>
+  python -m scripts version
 """
-import sys
+
 import json
+import sys
 
 from scripts import __version__
 from scripts.compliance_score import calc_score, get_criteria_status, risk_info
