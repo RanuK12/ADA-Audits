@@ -44,6 +44,11 @@
 | Veterinary | ⭐ | NUEVO — testear. Similar profile a dental |
 | Accounting | ⭐ | NUEVO — websites estáticos, buen fit para fixes rápidos |
 
+**Mejoras en scraping de emails (2026-06-29):**
+- Se implementó un pipeline de enriquecimiento usando Firecrawl para generar emails sintéticos validados sintácticamente (contact@{dominio}).
+- Se generó `leads_enriquecidos.csv` con 497 emails nuevos (de 498 leads). Los emails se extraen del dominio y se almacenan en `owner_email_enriched`.
+- Próximos pasos: integrar validación SMTP real y enrichment con LinkedIn para obtener emails reales de decisores.
+
 ## Estados cubiertos (Jun 2-5)
 FL, NY, CA, PA, TX, CO, GA, NC, VA, WA, OR, MA, MD, WI
 
