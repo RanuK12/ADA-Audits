@@ -1,0 +1,23 @@
+{
+  "title": "ADA Audits Brochure",
+  "logo": "/Users/emilioranucoli/Apps/ranukita-bridge/assets/ranukita-logo.png",
+  "watermark": "/Users/emilioranucoli/Apps/ranukita-bridge/assets/minilogo2.png",
+  "footer": "Ranukita Bot — Propiedad de Ranuk IT Solutions | ranuk.dev | ranukorbit.com",
+  "colors": ["#1a1a2e", "#00d4ff", "#ffd700"],
+  "content": [
+    {
+      "type": "section",
+      "title": "ADA Audit Services",
+      "text": "Our ADA audit services help you identify and fix accessibility issues on your website."
+    },
+    {
+      "type": "section",
+      "title": "Benefits",
+      "bullet_points": [
+        "Improve website accessibility",
+        "Reduce legal risks",
+        "Enhance user experience"
+      ]
+    }
+  ]
+}
