@@ -15,7 +15,7 @@ import subprocess
 from datetime import date, datetime
 from pathlib import Path
 
-ROOT = Path("/Users/emilioranucoli/Desktop/ADA-AUDITS")
+ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS = ROOT / "scripts"
 PROSPECTOS = ROOT / "prospectos"
 LEADS = PROSPECTOS / "leads.csv"
