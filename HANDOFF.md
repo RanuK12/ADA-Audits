@@ -25,7 +25,7 @@ Sistema de outbound manual + semi-automatizado para vender auditorías de accesi
 |--------|------|
 | ✅ | `quick-scan.sh` — escaneo rápido + scoring + flag de lead |
 | ✅ | `fetch-site.sh` — descarga de sitio + axe + lighthouse |
-| ✅ | Plantilla de auditoría (`PLANTILLA-AUDITORIA.md`) |
+| ✅ | Plantilla de auditoría (`PLANTILLA-AUDITORIA.md`) |\n| ✅ | Pipeline completo de auditoría WCAG (PDF entregable) |
 | ✅ | Plantillas de email cold + follow-up (`EMAIL-TEMPLATES.md`) |
 | ✅ | Pipeline de leads (`prospectos/leads.csv`) |
 | ⚠️ | Outbound 100% manual (no hay automatización de envío en Fase 1) |
