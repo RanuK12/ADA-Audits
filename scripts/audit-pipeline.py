@@ -1,5 +1,16 @@
 #!/usr/bin/env python3
-"""ADA Audit Pipeline: URL -> Scan -> Score -> Branded PDF."""
+"""ADA Audit Pipeline: URL -> Scan -> Score -> Branded PDF.
+
+[ranukita:ccbce0]
+
+Dependencies:
+    - axe-core CLI (npm install -g @axe-core/cli)
+    - weasyprint (pip install weasyprint)
+    - jinja2    (pip install jinja2)
+
+Usage:
+    python audit-pipeline.py https://example.com --company "Acme Inc"
+"""
 import argparse
 import json
 import re
@@ -206,6 +217,22 @@ def main():
     return pdf_path
 
 def generate_pdf(html_path, css_path, pdf_path):
+    """Render an HTML audit report into a branded PDF using WeasyPrint.
+
+    Args:
+        html_path: Path to the rendered HTML file.
+        css_path:  Path to the external stylesheet (currently unused by
+                   weasyprint CLI but kept for future inline-CSS injection).
+        pdf_path:  Destination path for the output PDF.
+
+    Raises:
+        subprocess.CalledProcessError: If weasyprint exits with a non-zero code.
+
+    TODO:
+        - Add fallback to wkhtmltopdf if weasyprint is not installed.
+        - Inject css_path as a <link> into html_path before rendering so the
+          PDF always picks up the latest styles regardless of relative paths.
+    """
     subprocess.run(["weasyprint", str(html_path), str(pdf_path)], check=True)
 
 if __name__ == "__main__":
