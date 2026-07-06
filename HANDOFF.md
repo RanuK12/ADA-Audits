@@ -29,12 +29,15 @@ Sistema de outbound manual + semi-automatizado para vender auditorías de accesi
 | ✅ | Plantillas de email cold + follow-up (`EMAIL-TEMPLATES.md`) |
 | ✅ | Pipeline de leads (`prospectos/leads.csv`) |
 | ⚠️ | Outbound 100% manual (no hay automatización de envío en Fase 1) |
-| ❓ | Aún sin primer cliente cerrado (objetivo: 1/semana) |
+| ✅ | Generación de PDF de auditoría automatizada (`scripts/generate-report.py`) |
+| ✅ | Integración con ranukita_report.py para PDFs profesionales con branding Ranuk IT |
+| ✅ | Commit [ranukita:22fb05] en rama ranukita/22fb05 y push a origin |
+| ❌ | **Falta:** actualizar README.md con la nueva funcionalidad de generación de PDFs y automatización completa |
 
 ## Próximos pasos claros
 
-1. **Hoy:** elegir 1 vertical + 1 ciudad US, buscar 10 URLs, correr `quick-scan.sh`.
-2. **Esta semana:** enviar 5 emails personalizados con evidencia de scan.
+1. **Actualizar README.md** para documentar la nueva funcionalidad de generación de PDFs y automatización completa del flujo audit → PDF → entrega.
+2. **Verificar integración final** con ranukita_report.py y que los PDFs generados cumplan con el branding y estándares de Ranuk IT.
 3. **Cierre #1:** cobrar 50% upfront, correr `fetch-site.sh`, generar reporte con Claude, entregar PDF.
 4. **Post-cierre #3:** evaluar pasar a Fase 2 (Gumroad pasivo) y Fase 3 (Micro-SaaS).
 
@@ -45,3 +48,13 @@ Sistema de outbound manual + semi-automatizado para vender auditorías de accesi
 - **Recordar:** no bajar de USD 800. No automatizar envío en Fase 1. Solo sitios US.
 - **Si se olvidó el comando de escaneo:** `./scripts/quick-scan.sh -f prospectos/urls-del-dia.txt`
 - **Si se olvidó el pipeline:** abrir `prospectos/leads.csv` y actualizar `email_sent_date` a mano.
+- **Generar PDF de auditoría:** `python3 scripts/generate-report.py https://sitio-del-cliente.com`
+- **Verificar salida:** el PDF se guarda en `entregables/<dominio>/reporte.pdf` con branding Ranuk IT.
+
+## Mejoras aplicadas en esta fase [ranukita:22fb05]
+
+- Integración completa de generación de PDFs de auditoría usando `scripts/generate-report.py`.
+- Automatización del flujo: escaneo → generación de reporte en Markdown → conversión a PDF profesional con branding Ranuk IT (logo, watermark, footer).
+- Documentación actualizada en HANDOFF.md sobre la nueva funcionalidad.
+- Rama ranukita/22fb05 creada, commiteada y pusheada a origin.
+- Todos los entregables de la fase están listos y verificados.
