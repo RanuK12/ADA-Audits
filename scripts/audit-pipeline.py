@@ -216,24 +216,73 @@ def main():
     print(f"\nDone! PDF ready at: {pdf_path}")
     return pdf_path
 
+import shutil
+
+def inject_css_into_html(html_path, css_path):
+    """Inject CSS into HTML as a <style> tag to ensure styles are applied.
+    
+    Args:
+        html_path: Path to the HTML file.
+        css_path: Path to the CSS file.
+        
+    Returns:
+        Path to the modified HTML file (temporary).
+    """
+    html_content = html_path.read_text()
+    css_content = css_path.read_text()
+    
+    # Inject CSS into HTML
+    modified_html = html_content.replace(
+        '</head>',
+        f'<style>{css_content}</style></head>'
+    )
+    
+    # Create a temporary HTML file
+    temp_html_path = html_path.with_suffix('.tmp.html')
+    temp_html_path.write_text(modified_html)
+    
+    return temp_html_path
+
 def generate_pdf(html_path, css_path, pdf_path):
     """Render an HTML audit report into a branded PDF using WeasyPrint.
+    Falls back to wkhtmltopdf if WeasyPrint is not available.
 
     Args:
         html_path: Path to the rendered HTML file.
-        css_path:  Path to the external stylesheet (currently unused by
-                   weasyprint CLI but kept for future inline-CSS injection).
+        css_path:  Path to the external stylesheet.
         pdf_path:  Destination path for the output PDF.
 
     Raises:
-        subprocess.CalledProcessError: If weasyprint exits with a non-zero code.
-
-    TODO:
-        - Add fallback to wkhtmltopdf if weasyprint is not installed.
-        - Inject css_path as a <link> into html_path before rendering so the
-          PDF always picks up the latest styles regardless of relative paths.
+        FileNotFoundError: If neither WeasyPrint nor wkhtmltopdf are installed.
     """
-    subprocess.run(["weasyprint", str(html_path), str(pdf_path)], check=True)
+    # Inject CSS into HTML
+    temp_html_path = inject_css_into_html(html_path, css_path)
+    
+    # Try WeasyPrint first
+    if shutil.which("weasyprint"):
+        try:
+            subprocess.run(["weasyprint", str(temp_html_path), str(pdf_path)], check=True)
+            temp_html_path.unlink()  # Clean up
+            return
+        except subprocess.CalledProcessError as e:
+            print(f"WeasyPrint failed: {e}")
+    
+    # Fallback to wkhtmltopdf
+    if shutil.which("wkhtmltopdf"):
+        try:
+            subprocess.run([
+                "wkhtmltopdf",
+                "--enable-local-file-access",
+                str(temp_html_path), str(pdf_path)
+            ], check=True)
+            temp_html_path.unlink()  # Clean up
+            return
+        except subprocess.CalledProcessError as e:
+            print(f"wkhtmltopdf failed: {e}")
+    
+    # Clean up and raise error
+    temp_html_path.unlink()
+    raise FileNotFoundError("Neither weasyprint nor wkhtmltopdf are installed.")
 
 if __name__ == "__main__":
     main()
