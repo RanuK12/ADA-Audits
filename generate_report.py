@@ -9,16 +9,18 @@ def generate_report(data):
     report.append("\n## Resumen Ejecutivo")
     report.append(f"{data['summary']}")
     
-    report.append("\n## Hallazgos Detallados")
-    report.append("| Hallazgo | Severidad | Impacto |")
-    report.append("| --- | --- | --- |")
+    if data['findings']:
+        report.append("\n## Hallazgos Detallados")
+        report.append("| Hallazgo | Severidad | Impacto |")
+        report.append("| --- | --- | --- |")
+        
+        for item in data['findings']:
+            report.append(f"| {item['issue']} | {item['severity']} | {item['impact']} |")
     
-    for item in data['findings']:
-        report.append(f"| {item['issue']} | {item['severity']} | {item['impact']} |")
-    
-    report.append("\n## Recomendaciones")
-    for rec in data['recommendations']:
-        report.append(f"- {rec}")
+    if data['recommendations']:
+        report.append("\n## Recomendaciones")
+        for rec in data['recommendations']:
+            report.append(f"- {rec}")
     
     return "\n".join(report)
 
