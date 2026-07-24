@@ -2,6 +2,8 @@
 
 Automated Data Accessibility Audits for Python projects.
 
+**Last updated:** 2025-03-19
+
 ## 📌 Features
 
 - Scans Python files and notebooks for data accessibility issues
