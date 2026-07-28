@@ -11,3 +11,4 @@ build/
 entregables/*/
 !entregables/.gitkeep
 logs/*.log
+ada-audits/
