@@ -1,0 +1,11 @@
+targets:
+  - src/
+  - notebooks/
+rules:
+  - missing-docstring
+  - missing-type-hint
+  - accessibility-issue
+  - new-accessibility-pattern
+output:
+  format: markdown
+  file: audit-report.md
