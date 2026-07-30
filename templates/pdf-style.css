@@ -45,3 +45,8 @@ pre code{background:none;padding:0;color:inherit;}
 .callout-warning{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;}
 .callout-info{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;}
 .two-col{display:flex;gap:20px;}.two-col>div{flex:1;}
+.legal-badge{display:inline-block;padding:4px 14px;border-radius:4px;font-size:8.5pt;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-top:12px;}
+.legal-critical{background:#dc2626;color:#fff;}
+.legal-high{background:#f97316;color:#fff;}
+.legal-moderate{background:#eab308;color:#1e293b;}
+.legal-low{background:#16a34a;color:#fff;}
