@@ -1,0 +1,14 @@
+Subject: paquitasservicecenter.com — detecté un problema de accesibilidad en tu web
+
+Hola,
+
+Revisé paquitasservicecenter.com y el sitio tiene buena presencia, pero detecté contenido sin estructura semántica de landmarks que organice la página. Esto puede estar impidiendo que clientes con discapacidad usen tu web, y además te expone a riesgos bajo la ADA.
+
+Adjunto una auditoría completa con el detalle y los pasos para solucionarlo.
+
+¿Charlamos 15 minutos esta semana? Te cuento cómo lo resolvemos.
+
+Saludos,
+Emilio Ranucoli
+Ranuk IT Solutions
+emilio@ranuk.dev | ranuk.dev

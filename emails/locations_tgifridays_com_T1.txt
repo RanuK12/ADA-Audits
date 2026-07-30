@@ -1,0 +1,14 @@
+Subject: locations.tgifridays.com — detecté un problema de accesibilidad en tu web
+
+Hola,
+
+Revisé locations.tgifridays.com y el sitio tiene buena presencia, pero detecté Zooming and scaling must not be disabled. Esto puede estar impidiendo que clientes con discapacidad usen tu web, y además te expone a riesgos bajo la ADA.
+
+Adjunto una auditoría completa con el detalle y los pasos para solucionarlo.
+
+¿Charlamos 15 minutos esta semana? Te cuento cómo lo resolvemos.
+
+Saludos,
+Emilio Ranucoli
+Ranuk IT Solutions
+emilio@ranuk.dev | ranuk.dev

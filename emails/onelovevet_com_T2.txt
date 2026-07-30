@@ -1,0 +1,16 @@
+Subject: ¿Sabías que tu web podría estar excluyendo clientes potenciales?
+
+Hola,
+
+Me topé con One Love Animal Hospital y noté que ofrecen un servicio sólido — pero al correr un scan rápido de accesibilidad en onelovevet.com encontré Delayed refresh under 20 hours must not be used.
+
+Esto significa que usuarios con discapacidad visual o motriz pueden estar teniendo problemas para navegar tu sitio o contactarte. Bajo la ADA, esto también representa un riesgo legal para negocios en EE.UU.
+
+Te adjunto una auditoría completa con los hallazgos y las correcciones puntuales. Son problemas acotados, no lleva semanas arreglarlos.
+
+¿Te interesaría que lo revisemos en 15 minutos? Sin compromiso.
+
+Saludos,
+Emilio Ranucoli
+Ranuk IT Solutions
+emilio@ranuk.dev | ranuk.dev
