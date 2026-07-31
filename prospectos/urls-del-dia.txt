@@ -1,9 +1,13 @@
-https://www.brooklynfamilydentalcare.com/
-https://dentistbrooklyn.com/
-https://www.brooklynheightsdental.com/
-https://brooklyndentalcollective.com/
-https://www.brooklyndentalspa.com/
-https://flatbushdental.com/
-https://www.dentistinbrooklyn.com/
-https://www.downtowndentalbrooklyn.com/
-https://www.dentistrybrooklyn.com/
+# URLs para escaneo de accesibilidad - 31/07/2026
+# Vertical: Dentistas en Miami, FL
+
+https://miamismilegroup.com
+https://premierdentalmiami.com
+https://miamidentalimplants.com
+https://miamibeachdental.com
+https://southmiamidental.com
+https://miamifamilydental.com
+https://dentalartsmiami.com
+https://miamidentalassociates.com
+https://brightsmiledentalmiami.com
+https://miamivalleydental.com
