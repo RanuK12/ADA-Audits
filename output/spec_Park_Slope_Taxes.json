@@ -1,0 +1,23 @@
+{
+  "title": "ADA Accessibility Audit: Park Slope Taxes",
+  "subtitle": "Automated Audit Report - July 31, 2026",
+  "sections": [
+    {
+      "heading": "Executive Summary",
+      "content": "\n                This report presents the findings of an automated accessibility audit performed on https://parkslopetaxes.com.\n                \n                <div class=\"score-box\">\n                    <h2>Accessibility Score: 98/100</h2>\n                    <p>Good risk level</p>\n                </div>\n                \n                <h3>Key Findings:</h3>\n                <ul>\n                    <li>Total issues found: 1</li>\n                    <li>Critical issues: 0</li>\n                    <li>WCAG 2.1 Level A violations: 0</li>\n                </ul>\n                "
+    },
+    {
+      "heading": "Top Issues Found",
+      "content": "\n                    <div class=\"issue-card\">\n                        <h4>#1: No description</h4>\n                        <p><strong>Impact:</strong> WARNING</p>\n                        <p><strong>Location:</strong> <code>N/A</code></p>\n                    </div>\n                    "
+    },
+    {
+      "heading": "Why This Matters",
+      "content": "\n                <h3>Legal Compliance</h3>\n                <p>Under the Americans with Disabilities Act (ADA), websites must be accessible to people with disabilities. \n                Non-compliance can result in lawsuits and financial penalties.</p>\n                \n                <h3>Business Impact</h3>\n                <ul>\n                    <li>Improved user experience for all visitors</li>\n                    <li>Better SEO rankings (Google prioritizes accessible sites)</li>\n                    <li>Wider audience reach (61 million Americans have disabilities)</li>\n                    <li>Reduced legal risk</li>\n                </ul>\n                "
+    },
+    {
+      "heading": "Recommended Actions",
+      "content": "\n                <ol>\n                    <li><strong>Immediate:</strong> Fix critical issues affecting navigation and content access</li>\n                    <li><strong>Short-term:</strong> Address moderate issues within 30 days</li>\n                    <li><strong>Long-term:</strong> Implement accessibility testing in your development workflow</li>\n                </ol>\n                \n                <p><strong>Ranuk IT Solutions</strong> can help you achieve full ADA compliance with our comprehensive \n                accessibility services, including audit, remediation, and ongoing monitoring.</p>\n                "
+    }
+  ],
+  "footer": "Ranuk IT Solutions | ranuk.dev | Audit performed on 2026-07-31"
+}

@@ -1,0 +1,25 @@
+{
+  "domain": "dentanet.es",
+  "scan_date": "2026-08-02",
+  "tool": "WAVE Web Accessibility Evaluation Tool",
+  "results": {
+    "aim_score": 4.7,
+    "errors": 8,
+    "contrast_errors": 22,
+    "alerts": 31,
+    "features": 36,
+    "structure": 68,
+    "aria": 68
+  },
+  "error_details": {
+    "missing_form_labels": 4,
+    "empty_form_labels": 1,
+    "empty_headings": 3,
+    "very_low_contrast": 22,
+    "skipped_heading_levels": 1,
+    "redundant_links": 12,
+    "very_small_text": 11,
+    "underlined_text": 7
+  },
+  "screenshot_path": "/tmp/ext_screenshot.png"
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "timestamp": "2026-08-04T09:28:11.136778",
+    "action": "verify_leads",
+    "details": {
+      "total_leads": 32,
+      "pending_leads": 12
+    }
+  },
+  {
+    "timestamp": "2026-08-04T09:28:20.358399",
+    "action": "send_outreach",
+    "details": {
+      "attempted": 5,
+      "sent": 0,
+      "limit_reached": false
+    }
+  },
+  {
+    "timestamp": "2026-08-04T09:28:20.456916",
+    "action": "followup_tracking",
+    "details": {
+      "status": "error",
+      "error": "Command '['/opt/homebrew/opt/python@3.14/bin/python3.14', '/Users/emilioranucoli/Desktop/Oficina_Ranuk/ADA-AUDITS/scripts/ada-follow-up-tracker.py']' returned non-zero exit status 1."
+    }
+  },
+  {
+    "timestamp": "2026-08-04T09:28:20.459497",
+    "action": "daily_automation_complete",
+    "details": {
+      "report": {
+        "date": "2026-08-04",
+        "total_leads": 0,
+        "pending_leads": 0,
+        "sent_leads": 0,
+        "replied_leads": 0,
+        "log_entries": [
+          {
+            "timestamp": "2026-08-04T09:28:11.136778",
+            "action": "verify_leads",
+            "details": {
+              "total_leads": 32,
+              "pending_leads": 12
+            }
+          },
+          {
+            "timestamp": "2026-08-04T09:28:20.358399",
+            "action": "send_outreach",
+            "details": {
+              "attempted": 5,
+              "sent": 0,
+              "limit_reached": false
+            }
+          },
+          {
+            "timestamp": "2026-08-04T09:28:20.456916",
+            "action": "followup_tracking",
+            "details": {
+              "status": "error",
+              "error": "Command '['/opt/homebrew/opt/python@3.14/bin/python3.14', '/Users/emilioranucoli/Desktop/Oficina_Ranuk/ADA-AUDITS/scripts/ada-follow-up-tracker.py']' returned non-zero exit status 1."
+            }
+          }
+        ]
+      },
+      "status": "success"
+    }
+  }
+]
