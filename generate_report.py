@@ -20,6 +20,7 @@ def generate_report(data):
         # Antes → Después sub‑sections
         for item in data['findings']:
             report.append(f"\n### {item['issue']}")
+            report.append(f"**Impacto en el negocio:** {item['business_impact']}")
             report.append("**Antes → Después**")
             report.append(f"**Antes:** {item['before']}")
             report.append(f"**Después:** {item['after']}")
