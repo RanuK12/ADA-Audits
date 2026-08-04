@@ -21,10 +21,10 @@ OUTPUT = ROOT / "output"
 SENT_DIR = OUTBOX / "sent"
 
 # Configuración para respetar límites de Gmail
-MAX_DAILY = 50  # Límite real de Gmail Workspace
-BATCH_SIZE = 2  # Enviar en lotes pequeños
+MAX_DAILY = 5  # Límite reducido para evitar exceder el límite real
+BATCH_SIZE = 1  # Enviar uno a la vez para mejor control
 DELAY_BETWEEN_BATCHES = 120  # Segundos entre lotes
-DELAY_BETWEEN_EMAILS = 60  # Segundos entre emails
+DELAY_BETWEEN_EMAILS = 180  # Tiempo más largo entre emails
 
 def load_index():
     """Carga el índice del outbox"""
