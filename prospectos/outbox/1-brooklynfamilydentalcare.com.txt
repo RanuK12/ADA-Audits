@@ -1,0 +1,20 @@
+Hi Terry,
+
+Ran an accessibility scan on brooklynfamilydentalcare.com this morning and found 22 elements that put the site at ADA Title III risk — the same category of issues driving 5,000+ small-business lawsuits in 2025 (69% against companies under M).
+
+Three most urgent on your site:
+
+1. Images on the homepage are missing descriptive alt text, so screen-reader users can't tell what they show (WCAG 1.1.1).
+
+2. Several text/background color pairs fall below the 4.5:1 contrast ratio, making copy hard to read for low-vision visitors (WCAG 1.4.3).
+
+3. Contact form fields have no associated labels, so assistive tech can't announce what to type (WCAG 3.3.2).
+
+I can send you the full 17-point audit (with remediation code your webmaster can copy-paste) — free, no strings. If you want me to fix it, flat ,200, done in 2 weeks.
+
+Want the report?
+
+— Emilio Ranucoli
+Systems Engineer — accessibility & compliance audits
+ranuk.dev  |  ranucoliemilio@gmail.com
+

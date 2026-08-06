@@ -1,0 +1,23 @@
+{
+  "date": "2026-08-06",
+  "total_prospects": 3,
+  "sent": 0,
+  "failed": 3,
+  "details": [
+    {
+      "business": "Brooklyn Family Dental Care",
+      "email": "info@brooklynfamilydentalcare.com",
+      "status": "failed"
+    },
+    {
+      "business": "Brooklyn Heights Dental",
+      "email": "info@brooklynheightsdental.com",
+      "status": "failed"
+    },
+    {
+      "business": "Quentin Smile Dental",
+      "email": "smile@dentistinbrooklyn.com",
+      "status": "failed"
+    }
+  ]
+}
