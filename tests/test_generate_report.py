@@ -11,8 +11,20 @@ def test_generate_report_structure():
         "date": "2026-07-12",
         "summary": "Resumen de prueba.",
         "findings": [
-            {"issue": "Hallazgo 1", "severity": "High", "impact": "Impacto 1"},
-            {"issue": "Hallazgo 2", "severity": "Medium", "impact": "Impacto 2"}
+            {
+                "issue": "Hallazgo 1",
+                "severity": "High",
+                "business_impact": "Impacto 1",
+                "before": "antes 1",
+                "after": "después 1"
+            },
+            {
+                "issue": "Hallazgo 2",
+                "severity": "Medium",
+                "business_impact": "Impacto 2",
+                "before": "antes 2",
+                "after": "después 2"
+            }
         ],
         "recommendations": [
             "Recomendación 1",
@@ -23,13 +35,13 @@ def test_generate_report_structure():
     report = generate_report(sample_data)
     
     # Verificar títulos
-    assert "# Auditoría de Seguridad: Test Client" in report
+    assert "# Auditoría de Accesibilidad WCAG: Test Client" in report
     assert "## Resumen Ejecutivo" in report
     assert "## Hallazgos Detallados" in report
     assert "## Recomendaciones" in report
     
     # Verificar tabla de hallazgos
-    assert "| Hallazgo | Severidad | Impacto |" in report
+    assert "| Hallazgo | Severidad | Impacto en el negocio |" in report
     assert "| --- | --- | --- |" in report
     assert "| Hallazgo 1 | High | Impacto 1 |" in report
     assert "| Hallazgo 2 | Medium | Impacto 2 |" in report
@@ -53,7 +65,7 @@ def test_generate_report_empty_findings():
     
     # Verificar que la sección de hallazgos NO esté presente
     assert "## Hallazgos Detallados" not in report
-    assert "| Hallazgo | Severidad | Impacto |" not in report
+    assert "| Hallazgo | Severidad | Impacto en el negocio |" not in report
     
     # Verificar que la sección de recomendaciones SÍ esté presente
     assert "## Recomendaciones" in report
@@ -66,7 +78,15 @@ def test_generate_report_empty_recommendations():
         "client_name": "Test Client",
         "date": "2026-07-12",
         "summary": "Resumen de prueba.",
-        "findings": [{"issue": "Hallazgo 1", "severity": "High", "impact": "Impacto 1"}],
+        "findings": [
+            {
+                "issue": "Hallazgo 1",
+                "severity": "High",
+                "business_impact": "Impacto 1",
+                "before": "antes 1",
+                "after": "después 1"
+            }
+        ],
         "recommendations": []
     }
     
