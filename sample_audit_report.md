@@ -1,5 +1,5 @@
 # Auditoría de Accesibilidad WCAG: TiendaOnline Demo
-**Fecha:** 2026-08-04
+**Fecha:** 2026-08-25
 **Estado:** Finalizado
 
 ## Resumen Ejecutivo
