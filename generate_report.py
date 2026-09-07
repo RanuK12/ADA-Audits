@@ -14,6 +14,52 @@ import subprocess
 import sys
 import tempfile
 from datetime import datetime
+from urllib.parse import quote
+
+
+def estimate_impact(item):
+    """Estimate monetary impact or legal risk for a finding."""
+    if item.get('business_impact'):
+        return item['business_impact']
+    
+    severity = item.get('severity', '').lower()
+    issue = item.get('issue', '').lower()
+    
+    if severity == 'critical':
+        return "Riesgo legal alto: posible demanda ADA Title III, multas hasta $75,000 por primera infracción"
+    elif severity == 'high':
+        return "Pérdida estimada de 10-15% conversión + riesgo demanda"
+    elif severity == 'medium':
+        return "Pérdida estimada de 5-10% usuarios con discapacidad + riesgo legal moderado"
+    elif severity == 'low':
+        return "Mejora UX y cumplimiento preventivo"
+    return "Impacto no estimado - revisar manualmente"
+
+
+def generate_diagram(item):
+    """Generate a simple text diagram showing before/after."""
+    before = item.get('before', '').strip()
+    after = item.get('after', '').strip()
+    
+    if not before and not after:
+        return ""
+    
+    lines = ["```text", "┌─ ANTES ──────────────────────────────────────────────┐"]
+    if before:
+        for line in before.split('\n'):
+            lines.append(f"│ {line[:60]:<60} │")
+    else:
+        lines.append(f"│ {'(sin código antes)':<60} │")
+    lines.append("├──────────────────────────────────────────────────────┤")
+    lines.append("│ DESPUÉS                                              │")
+    if after:
+        for line in after.split('\n'):
+            lines.append(f"│ {line[:60]:<60} │")
+    else:
+        lines.append(f"│ {'(sin código después)':<60} │")
+    lines.append("└──────────────────────────────────────────────────────┘")
+    lines.append("```")
+    return "\n".join(lines)
 
 
 def generate_report(data):
@@ -39,8 +85,23 @@ def generate_report(data):
 
         for item in data['findings']:
             report.append(f"\n### {item['issue']}")
-            if item.get('business_impact'):
-                report.append(f"**Impacto en el negocio:** {item['business_impact']}")
+            
+            # Impact line (estimated or provided)
+            impact_text = estimate_impact(item)
+            report.append(f"**Impacto estimado:** {impact_text}")
+            
+            # Visual representation (diagram)
+            diagram = generate_diagram(item)
+            if diagram:
+                report.append("**Representación visual (antes/después):**")
+                report.append(diagram)
+            
+            # CTA per finding
+            issue_encoded = quote(item['issue'])
+            cta_url = f"mailto:emilio@ranuk.dev?subject=Correcci%C3%B3n+de+{issue_encoded}"
+            report.append(f"**¿Querés corregir este issue?** [Contratarnos]({cta_url})")
+            
+            # Original before/after code blocks
             report.append("**Antes → Después**")
             before_code = item.get('before', '')
             after_code = item.get('after', '')
@@ -190,4 +251,25 @@ def main():
                     "severity": "Critical",
                     "business_impact": "Usuarios sin mouse no pueden navegar → abandono del sitio y posible demanda ADA",
                     "before": "<div class=\"menu\" onclick=\"toggleMenu()\">",
-                    "after": "<nav aria-label=\"Principal\"><ul role=\"menubar\"><li role=\"menuitem\">Inicio</li><li role=\"menuitem\">Productos</li><li role=\"menuitem\">Contacto</li></ul></nav>"
+                    "after": "<nav aria-label=\"Principal\"><ul role=\"menubar\"><li role=\"menuitem\">Inicio</li><li role=\"menuitem\">Productos</li><li role=\"menuitem\">Contacto</li></ul></nav>"                }
+            ],
+            "recommendations": [
+                "Aumentar contraste de botones críticos a 4.5:1 mínimo",
+                "Agregar alt text descriptivo a todas las imágenes de producto",
+                "Refactorizar navegación con elementos semánticos y roles ARIA"
+            ]
+        }
+
+    report = generate_report(data)
+
+    with open(args.output, "w") as f:
+        f.write(report)
+    print(f"✅ Informe generado: {args.output}")
+
+    if args.pdf:
+        pdf_path = args.output.replace('.md', '.pdf')
+        if markdown_to_pdf_spec(args.output, pdf_path):
+            print(f"✅ PDF generado: {pdf_path}")
+
+if __name__ == "__main__":
+    main()
