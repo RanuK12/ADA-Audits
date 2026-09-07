@@ -1,9 +1,14 @@
 # Auditoría de Accesibilidad WCAG: TiendaOnline Demo
-**Fecha:** 2026-08-25
+**Fecha:** 2026-09-07
 **Estado:** Finalizado
 
 ## Resumen Ejecutivo
 Auditoría de accesibilidad WCAG 2.1 AA — se detectaron barreras que afectan la experiencia de usuarios con discapacidad y exponen a la empresa a riesgos legales.
+
+## 💰 Impacto Financiero y Riesgo Legal
+- **Contraste bajo en botón de compra** → –12% conversión mobile / demanda ADA Title III
+- **Imágenes de producto sin alt text** → Lectores de pantalla no pueden describir los productos → pérdida de ventas y riesgo de demanda
+- **Menú de navegación no operable por teclado** → Usuarios sin mouse no pueden navegar → abandono del sitio y posible demanda ADA
 
 ## Hallazgos Detallados
 | Hallazgo | Severidad | Impacto en el negocio |
@@ -15,24 +20,46 @@ Auditoría de accesibilidad WCAG 2.1 AA — se detectaron barreras que afectan l
 ### Contraste bajo en botón de compra
 **Impacto en el negocio:** –12% conversión mobile / demanda ADA Title III
 **Antes → Después**
-**Antes:** `<button style="background: #FFA500; color: #FFFFFF;">Comprar</button>` (contraste 2.1:1)
-**Después:** `<button style="background: #D2691E; color: #FFFFFF;">Comprar</button>` (contraste 4.5:1)
+**Antes:**
+```html
+<button style="background: #FFA500; color: #FFFFFF;">Comprar</button>
+```
+**Después:**
+```html
+<button style="background: #D2691E; color: #FFFFFF;">Comprar</button>
+```
 
 ### Imágenes de producto sin alt text
 **Impacto en el negocio:** Lectores de pantalla no pueden describir los productos → pérdida de ventas y riesgo de demanda
 **Antes → Después**
-**Antes:** `<img src="producto.jpg">`
-**Después:** `<img src="producto.jpg" alt="Zapatillas running azul">`
+**Antes:**
+```html
+<img src="producto.jpg">
+```
+**Después:**
+```html
+<img src="producto.jpg" alt="Zapatillas running azul">
+```
 
 ### Menú de navegación no operable por teclado
 **Impacto en el negocio:** Usuarios sin mouse no pueden navegar → abandono del sitio y posible demanda ADA
 **Antes → Después**
-**Antes:** `<div class="menu" onclick="toggleMenu()">` (sin `tabindex` ni `role`)
-**Después:** `<nav aria-label="Principal"><ul role="menubar">…</ul></nav>` con manejo de teclado
+**Antes:**
+```html
+<div class="menu" onclick="toggleMenu()">
+```
+**Después:**
+```html
+<nav aria-label="Principal"><ul role="menubar"><li role="menuitem">Inicio</li><li role="menuitem">Productos</li><li role="menuitem">Contacto</li></ul></nav>
+```
 
 ## Recomendaciones
 - Corregir contraste de color en botones y elementos interactivos para cumplir WCAG 2.1 AA (mínimo 4.5:1).
 - Agregar texto alternativo descriptivo a todas las imágenes de producto.
 - Hacer el menú de navegación operable por teclado usando roles ARIA y gestión de foco.
 
-💡 Arreglamos esto por vos — [contratá el fix](mailto:emilio@ranuk.dev)
+> **💡 ¿Querés que arreglemos esto?**
+>
+> Respondé este informe o escribinos a **emilio@ranuk.dev** para coordinar las correcciones.
+>
+> **Ranuk IT Solutions** — [ranuk.dev](https://ranuk.dev)
