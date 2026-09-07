@@ -16,6 +16,12 @@ import tempfile
 from datetime import datetime
 from urllib.parse import quote
 
+from impact_map import get_impact_and_cta
+
+# Configurable: where CTAs point to
+ADA_LANDING_URL = os.environ.get("ADA_LANDING_URL", "https://ranuk.dev/ada-audits")
+ADA_EMAIL = os.environ.get("ADA_EMAIL", "emilio@ranuk.dev")
+
 
 def estimate_impact(item):
     """Estimate monetary impact or legal risk for a finding."""
@@ -86,8 +92,14 @@ def generate_report(data):
         for item in data['findings']:
             report.append(f"\n### {item['issue']}")
             
-            # Impact line (estimated or provided)
-            impact_text = estimate_impact(item)
+            # Impact line + CTA using axe-core rule_id mapping (fallback to severity-based)
+            rule_id = item.get('rule_id', '')
+            if rule_id:
+                impact_text, cta_text = get_impact_and_cta(rule_id)
+            else:
+                impact_text = estimate_impact(item)
+                cta_text = "Contratar el fix de accesibilidad"
+            
             report.append(f"**Impacto estimado:** {impact_text}")
             
             # Visual representation (diagram)
@@ -96,10 +108,10 @@ def generate_report(data):
                 report.append("**Representación visual (antes/después):**")
                 report.append(diagram)
             
-            # CTA per finding
+            # CTA per finding - configurable landing URL
             issue_encoded = quote(item['issue'])
-            cta_url = f"mailto:emilio@ranuk.dev?subject=Correcci%C3%B3n+de+{issue_encoded}"
-            report.append(f"**¿Querés corregir este issue?** [Contratarnos]({cta_url})")
+            cta_url = f"{ADA_LANDING_URL}?issue={issue_encoded}&rule_id={quote(rule_id)}"
+            report.append(f"**¿Querés corregir este issue?** [{cta_text}]({cta_url})")
             
             # Original before/after code blocks
             report.append("**Antes → Después**")
@@ -235,6 +247,7 @@ def main():
                 {
                     "issue": "Contraste bajo en botón de compra",
                     "severity": "High",
+                    "rule_id": "color-contrast",
                     "business_impact": "–12% conversión mobile / demanda ADA Title III",
                     "before": "<button style=\"background: #FFA500; color: #FFFFFF;\">Comprar</button>",
                     "after": "<button style=\"background: #D2691E; color: #FFFFFF;\">Comprar</button>"
@@ -242,6 +255,7 @@ def main():
                 {
                     "issue": "Imágenes de producto sin alt text",
                     "severity": "Medium",
+                    "rule_id": "image-alt",
                     "business_impact": "Lectores de pantalla no pueden describir los productos → pérdida de ventas y riesgo de demanda",
                     "before": "<img src=\"producto.jpg\">",
                     "after": "<img src=\"producto.jpg\" alt=\"Zapatillas running azul\">"
@@ -249,9 +263,11 @@ def main():
                 {
                     "issue": "Menú de navegación no operable por teclado",
                     "severity": "Critical",
+                    "rule_id": "keyboard",
                     "business_impact": "Usuarios sin mouse no pueden navegar → abandono del sitio y posible demanda ADA",
                     "before": "<div class=\"menu\" onclick=\"toggleMenu()\">",
-                    "after": "<nav aria-label=\"Principal\"><ul role=\"menubar\"><li role=\"menuitem\">Inicio</li><li role=\"menuitem\">Productos</li><li role=\"menuitem\">Contacto</li></ul></nav>"                }
+                    "after": "<nav aria-label=\"Principal\"><ul role=\"menubar\"><li role=\"menuitem\">Inicio</li><li role=\"menuitem\">Productos</li><li role=\"menuitem\">Contacto</li></ul></nav>"
+                }
             ],
             "recommendations": [
                 "Aumentar contraste de botones críticos a 4.5:1 mínimo",
