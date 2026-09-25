@@ -31,7 +31,11 @@ def generate_report(data):
             report.append(f"- {rec}")
     
     # CTA fijo al final
-    report.append("\n💡 Arreglamos esto por vos — [contratá el fix](mailto:emilio@ranuk.dev)")
+    report.append(f"\n💡 Arreglamos esto por vos — [contratá el fix](mailto:emilio@ranuk.dev)"
+    # CTA por hallazgo
+    for item in data['findings']:
+        # ... (existente)
+        report.append(f"\n💡 Arreglamos esto por vos — [contratá el fix](mailto:emilio@ranuk.dev)")
     
     return "\n".join(report)
 
