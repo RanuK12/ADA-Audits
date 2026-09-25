@@ -1,0 +1,49 @@
+{
+  "title": "Auditoría de Accesibilidad WCAG: TiendaOnline Demo",
+  "subtitle": "Informe que vende solo - impacto económico y CTA por hallazgo",
+  "sections": [
+    {
+      "heading": "Resumen Ejecutivo",
+      "body": "Auditoría de accesibilidad WCAG 2.1 AA — se detectaron barreras que afectan la experiencia de usuarios con discapacidad y exponen a la empresa a riesgos legales."
+    },
+    {
+      "heading": "Hallazgos Identificados",
+      "body": "Se identificaron tres hallazgos críticos de accesibilidad con impacto comercial cuantificado.",
+      "bullets": [
+        "Contraste insuficiente en botón de compra principal",
+        "Imágenes de producto sin texto alternativo descriptivo",
+        "Menú de navegación no operable mediante teclado"
+      ]
+    },
+    {
+      "heading": "Impacto Comercial por Hallazgo",
+      "body": "Cada hallazgo de accesibilidad se traduce en pérdidas económicas concretas y riesgos legales medibles.",
+      "table": {
+        "headers": ["Hallazgo", "Impacto Económico", "Riesgo Legal", "CTA de Contratación"],
+        "rows": [
+          ["Contraste bajo en botón de compra", "-12% conversión mobile", "Posible demanda por ADA Title III", "[Contratar solución](https://ada.com/quote?rule=contraste_bajo_en_botón_de_compra)"],
+          ["Imágenes de producto sin alt text", "Pérdida de ventas estimada", "Riesgo de demanda por inaccessibilidad", "[Contratar solución](https://ada.com/quote?rule=imágenes_de_producto_sin_alt_text)"],
+          ["Menú de navegación no operable por teclado", "Abandono del sitio por usuarios sin mouse", "Posible demanda ADA", "[Contratar solución](https://ada.com/quote?rule=menú_de_navegación_no_operable_por_teclado)"]
+        ]
+      }
+    },
+    {
+      "heading": "Recomendaciones Prioritarias",
+      "body": "Acciones recomendadas para lograr cumplimiento WCAG 2.1 AA y mitigar riesgos identificados.",
+      "bullets": [
+        "Corregir contraste de color en botones y elementos interactivos (mínimo 4.5:1)",
+        "Agregar texto alternativo descriptivo a todas las imágenes de producto",
+        "Implementar navegación operable por teclado con roles ARIA y gestión de foco"
+      ]
+    },
+    {
+      "heading": "Próximos Pasos",
+      "body": "¿Listo para mejorar la accesibilidad de su sitio y evitar riesgos legales?",
+      "bullets": [
+        "Contactarnos para una auditoría personalizada de su sitio web",
+        "Recibir un plan de acción detallado con priorización por impacto",
+        "Implementar los fixes con nuestro equipo especializado en accesibilidad"
+      ]
+    }
+  ]
+}
