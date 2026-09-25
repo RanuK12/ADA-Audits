@@ -40,9 +40,22 @@ def generate_report(data):
         for item in data['findings']:
             report.append(f"\n### {item['issue']}")
             report.append(f"**Impacto en el negocio:** {item['business_impact']}")
+            
+            # Línea de impacto económico/legal
+            impacto_legal = _estimate_legal_impact(item)
+            report.append(f"**⚖️ Impacto económico / riesgo legal:** {impacto_legal}")
+            
+            # Ejemplo visual simulado
+            visual_example = _generate_visual_example(item)
+            report.append(f"**🎨 Ejemplo visual de la corrección:**\n{visual_example}")
+            
             report.append("**Antes → Después**")
             report.append(f"**Antes:** {item['before']}")
             report.append(f"**Después:** {item['after']}")
+            
+            # CTA por hallazgo
+            cta = _generate_cta(item)
+            report.append(f"**💡 Próximo paso:** {cta}")
     
     if data['recommendations']:
         report.append("\n## Recomendaciones")
@@ -56,6 +69,64 @@ def generate_report(data):
     report.append(f"👉 [Contratá el servicio de fix ahora](mailto:emilio@ranuk.dev?subject=Auditoría%20y%20Fix%20de%20Accesibilidad)")
     
     return "\n".join(report)
+
+def _estimate_legal_impact(item):
+    """Estima el impacto económico o riesgo legal basado en el hallazgo."""
+    issue = item.get('issue', '').lower()
+    severity = item.get('severity', '').lower()
+    
+    if 'contraste' in issue or 'color' in issue:
+        return "Multas ADA hasta $4,000 + pérdida de conversiones por mala legibilidad"
+    elif 'alt text' in issue or 'imagen' in issue:
+        return "Riesgo de demanda por inaccessibilidad + pérdida de tráfico SEO y ventas"
+    elif 'navegación' in issue or 'menú' in issue or 'teclado' in issue:
+        return "Exclusión de usuarios con discapacidad motriz → abandono y posibles acciones legales"
+    elif 'formulario' in issue or 'input' in issue:
+        return "Imposibilidad de completar compras o leads → pérdida directa de ingresos"
+    elif 'encabezado' in issue or 'heading' in issue:
+        return "Mala estructura de contenido → confusión para usuarios de lectores de pantalla"
+    elif severity == 'critical':
+        return "Riesgo alto de demanda ADA + multas significativas por incumplimiento"
+    elif severity == 'high':
+        return "Impacto mediano-alto en accesibilidad y exposición legal"
+    elif severity == 'medium':
+        return "Mejora necesaria para evitar riesgos acumulativos y mejorar experiencia"
+    else:
+        return "Ajuste menor que contribuye al cumplimiento general y buena práctica"
+
+def _generate_visual_example(item):
+    """Genera un ejemplo visual simulado de cómo se vería la corrección."""
+    issue = item.get('issue', '').lower()
+    
+    if 'contraste' in issue or 'color' in issue:
+        return "Botón con colores ajustados para contraste mínimo 4.5:1 (ej: naranja oscuro sobre blanco)"
+    elif 'alt text' in issue or 'imagen' in issue:
+        return "Imagen con atributo alt descriptivo: alt='Zapatillas running azul'"
+    elif 'navegación' in issue or 'menú' in issue or 'teclado' in issue:
+        return "Menú con roles ARIA y tabindex para navegación completa por teclado"
+    elif 'formulario' in issue or 'input' in issue:
+        return "Formulario con labels asociados, placeholders apropiados y validación accesible"
+    elif 'encabezado' in issue or 'heading' in issue:
+        return "Jerarquía de encabezados correcta (H1 → H2 → H3) sin saltos de nivel"
+    else:
+        return "Elemento corregido según mejores prácticas WCAG 2.1"
+
+def _generate_cta(item):
+    """Genera una llamada a la acción específica para el hallazgo."""
+    issue = item.get('issue', '').lower()
+    
+    if 'contraste' in issue or 'color' in issue:
+        return "Ajustar colores en CSS/SCSS. Tiempo estimado: 10-15 minutos."
+    elif 'alt text' in issue or 'imagen' in issue:
+        return "Agregar texto alternativo descriptivo a todas las imágenes. Tiempo estimado: 5-10 minutos por imagen."
+    elif 'navegación' in issue or 'menú' in issue or 'teclado' in issue:
+        return "Implementar navegación por teclado con ARIA. Tiempo estimado: 20-30 minutos."
+    elif 'formulario' in issue or 'input' in issue:
+        return "Mejorar accesibilidad de formularios (labels, placeholders, validación). Tiempo estimado: 15-25 minutos."
+    elif 'encabezado' in issue or 'heading' in issue:
+        return "Corregir jerarquía de encabezados. Tiempo estimado: 5-10 minutos."
+    else:
+        return "Implementar corrección según recomendaciones WCAG. Tiempo estimado: variable."
 
 def main():
     sample_data = {
