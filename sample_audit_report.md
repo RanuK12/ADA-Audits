@@ -1,16 +1,16 @@
 # Auditoría de Accesibilidad WCAG: TiendaOnline Demo
-**Fecha:** 2026-08-25
+**Fecha:** 2026-09-25
 **Estado:** Finalizado
 
 ## Resumen Ejecutivo
 Auditoría de accesibilidad WCAG 2.1 AA — se detectaron barreras que afectan la experiencia de usuarios con discapacidad y exponen a la empresa a riesgos legales.
 
 ## Hallazgos Detallados
-| Hallazgo | Severidad | Impacto en el negocio |
-| --- | --- | --- |
-| Contraste bajo en botón de compra | High | –12% conversión mobile / demanda ADA Title III |
-| Imágenes de producto sin alt text | Medium | Lectores de pantalla no pueden describir los productos → pérdida de ventas y riesgo de demanda |
-| Menú de navegación no operable por teclado | Critical | Usuarios sin mouse no pueden navegar → abandono del sitio y posible demanda ADA |
+| Hallazgo | Severidad | Impacto en el negocio | Impacto financiero estimado |
+| --- | --- | --- | --- |
+| Contraste bajo en botón de compra | High | –12% conversión mobile / demanda ADA Title III | $500 - $2,000 (pérdida de conversiones) |
+| Imágenes de producto sin alt text | Medium | Lectores de pantalla no pueden describir los productos → pérdida de ventas y riesgo de demanda | $1,500 - $3,000 (pérdida de leads/ventas) |
+| Menú de navegación no operable por teclado | Critical | Usuarios sin mouse no pueden navegar → abandono del sitio y posible demanda ADA | $1,000 - $5,000 (abandono de sitio) |
 
 ### Contraste bajo en botón de compra
 **Impacto en el negocio:** –12% conversión mobile / demanda ADA Title III
@@ -35,4 +35,6 @@ Auditoría de accesibilidad WCAG 2.1 AA — se detectaron barreras que afectan l
 - Agregar texto alternativo descriptivo a todas las imágenes de producto.
 - Hacer el menú de navegación operable por teclado usando roles ARIA y gestión de foco.
 
-💡 Arreglamos esto por vos — [contratá el fix](mailto:emilio@ranuk.dev)
+💡 **¿Listo para hacer tu sitio accesible y evitar demandas?**
+Arreglamos estos problemas por vos. Presupuesto estimado: Consultá nuestro presupuesto personalizado (ej: arreglos básicos desde $800, auditoría completa + fix desde $1500).
+👉 [Contratá el servicio de fix ahora](mailto:emilio@ranuk.dev?subject=Auditoría%20y%20Fix%20de%20Accesibilidad)

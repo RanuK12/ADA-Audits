@@ -11,11 +11,30 @@ def generate_report(data):
     
     if data['findings']:
         report.append("\n## Hallazgos Detallados")
-        report.append("| Hallazgo | Severidad | Impacto en el negocio |")
-        report.append("| --- | --- | --- |")
+        report.append("| Hallazgo | Severidad | Impacto en el negocio | Impacto financiero estimado |")
+        report.append("| --- | --- | --- | --- |")
         
         for item in data['findings']:
-            report.append(f"| {item['issue']} | {item['severity']} | {item['business_impact']} |")
+            # Estimar impacto financiero basado en severidad y tipo de hallazgo
+            impacto_financiero = "No estimado"
+            severidad = item.get('severity', '').lower()
+            issue_texto = item.get('issue', '').lower()
+            # Lógica simple de estimación financiera
+            if 'contraste' in issue_texto or 'color' in issue_texto:
+                impacto_financiero = "$500 - $2,000 (pérdida de conversiones)"
+            elif 'navegación' in issue_texto or 'menu' in issue_texto or 'teclado' in issue_texto:
+                impacto_financiero = "$1,000 - $5,000 (abandono de sitio)"
+            elif 'formulario' in issue_texto or 'input' in issue_texto or 'alt text' in issue_texto or 'imagen' in issue_texto:
+                impacto_financiero = "$1,500 - $3,000 (pérdida de leads/ventas)"
+            elif 'encabezado' in issue_texto or 'heading' in issue_texto:
+                impacto_financiero = "$400 - $1,800 (usabilidad y retención)"
+            elif severidad in ['critical', 'high']:
+                impacto_financiero = "$2,000 - $10,000 (riesgo legal y pérdida significativa)"
+            elif severidad == 'medium':
+                impacto_financiero = "$500 - $3,000 (mejora de experiencia y retención)"
+            else:
+                impacto_financiero = "$100 - $1,000 (mejora menor)"
+            report.append(f"| {item['issue']} | {item['severity']} | {item['business_impact']} | {impacto_financiero} |")
         
         # Antes → Después sub‑sections
         for item in data['findings']:
@@ -30,8 +49,11 @@ def generate_report(data):
         for rec in data['recommendations']:
             report.append(f"- {rec}")
     
-    # CTA fijo al final
-    report.append("\n💡 Arreglamos esto por vos — [contratá el fix](mailto:emilio@ranuk.dev)")
+    # CTA mejorado con estimado de precio y llamado a la acción más directo
+    total_estimado = "Consultá nuestro presupuesto personalizado (ej: arreglos básicos desde $800, auditoría completa + fix desde $1500)"
+    report.append(f"\n💡 **¿Listo para hacer tu sitio accesible y evitar demandas?**")
+    report.append(f"Arreglamos estos problemas por vos. Presupuesto estimado: {total_estimado}.")
+    report.append(f"👉 [Contratá el servicio de fix ahora](mailto:emilio@ranuk.dev?subject=Auditoría%20y%20Fix%20de%20Accesibilidad)")
     
     return "\n".join(report)
 
