@@ -11,31 +11,22 @@ def generate_report(data):
     
     if data['findings']:
         report.append("\n## Hallazgos Detallados")
-        report.append("| Hallazgo | Severidad | Impacto en el negocio |")
-        report.append("| --- | --- | --- |")
+        report.append("| Hallazgo | Severidad | Impacto | Antes/Después | CTA |")
+        report.append("| --- | --- | --- | --- | --- |")
         
-        for item in data['findings']:
-            report.append(f"| {item['issue']} | {item['severity']} | {item['business_impact']} |")
-        
-        # Antes → Después sub‑sections
-        for item in data['findings']:
-            report.append(f"\n### {item['issue']}")
-            report.append(f"**Impacto en el negocio:** {item['business_impact']}")
-            report.append("**Antes → Después**")
-            report.append(f"**Antes:** {item['before']}")
-            report.append(f"**Después:** {item['after']}")
+        for idx, item in enumerate(data['findings'], 1):
+            impacto = item.get('business_impact', '—')
+            antes_despues = f'<div style="display:flex;gap:12px;"><img src="assets/before_{idx}.png" alt="Antes" style="max-width:180px;border:1px solid #ddd;border-radius:4px;"><img src="assets/after_{idx}.png" alt="Después" style="max-width:180px;border:1px solid #ddd;border-radius:4px;"></div>'
+            cta = '[Contratar fix](mailto:emilio@ranuk.dev)'
+            report.append(f"| {item['issue']} | {item['severity']} | {impacto} | {antes_despues} | {cta} |")
     
     if data['recommendations']:
         report.append("\n## Recomendaciones")
         for rec in data['recommendations']:
             report.append(f"- {rec}")
     
-    # CTA fijo al final
-    report.append(f"\n💡 Arreglamos esto por vos — [contratá el fix](mailto:emilio@ranuk.dev)"
-    # CTA por hallazgo
-    for item in data['findings']:
-        # ... (existente)
-        report.append(f"\n💡 Arreglamos esto por vos — [contratá el fix](mailto:emilio@ranuk.dev)")
+    # CTA final único
+    report.append(f"\n💡 Arreglamos esto por vos — [contratá el fix](mailto:emilio@ranuk.dev)")
     
     return "\n".join(report)
 
