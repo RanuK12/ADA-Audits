@@ -1,5 +1,8 @@
+import sys
+sys.path.insert(0, '.')
 import json
 from datetime import datetime
+from impact import IMPACT_MAP
 
 def generate_report(data):
     report = []
@@ -11,11 +14,14 @@ def generate_report(data):
     
     if data['findings']:
         report.append("\n## Hallazgos Detallados")
-        report.append("| Hallazgo | Severidad | Impacto en el negocio |")
-        report.append("| --- | --- | --- |")
+        report.append("| Hallazgo | Severidad | Impacto económico | Riesgo legal |")
+        report.append("| --- | --- | --- | --- |")
         
         for item in data['findings']:
-            report.append(f"| {item['issue']} | {item['severity']} | {item['business_impact']} |")
+            # Derive a code from the issue string if not provided
+            code = item.get('code', item['issue'].lower().replace(' ', '_').replace('-', '_'))
+            impact = IMPACT_MAP.get(code, {"cost": "N/D", "risk": "N/D"})
+            report.append(f"| {item['issue']} | {item['severity']} | {impact['cost']} | {impact['risk']} |")
         
         # Antes → Después sub‑sections
         for item in data['findings']:
@@ -24,6 +30,11 @@ def generate_report(data):
             report.append("**Antes → Después**")
             report.append(f"**Antes:** {item['before']}")
             report.append(f"**Después:** {item['after']}")
+            # CTA por hallazgo
+            code = item.get('code', item['issue'].lower().replace(' ', '_').replace('-', '_'))
+            impact = IMPACT_MAP.get(code, {"cost": "N/D", "risk": "N/D"})
+            report.append(f"💡 **Impacto estimado:** {impact['cost']} | **Riesgo:** {impact['risk']}")
+            report.append(f"👉 Contrate el fix para este issue: https://ada-audits.example.com/quote?issue={code}")
     
     if data['recommendations']:
         report.append("\n## Recomendaciones")
@@ -31,11 +42,7 @@ def generate_report(data):
             report.append(f"- {rec}")
     
     # CTA fijo al final
-    report.append(f"\n💡 Arreglamos esto por vos — [contratá el fix](mailto:emilio@ranuk.dev)"
-    # CTA por hallazgo
-    for item in data['findings']:
-        # ... (existente)
-        report.append(f"\n💡 Arreglamos esto por vos — [contratá el fix](mailto:emilio@ranuk.dev)")
+    report.append(f"\n💡 Arreglamos esto por vos — [contratá el fix](mailto:emilio@ranuk.dev)")
     
     return "\n".join(report)
 
@@ -46,6 +53,7 @@ def main():
         "summary": "Auditoría de accesibilidad WCAG 2.1 AA — se detectaron barreras que afectan la experiencia de usuarios con discapacidad y exponen a la empresa a riesgos legales.",
         "findings": [
             {
+                "code": "low_contrast",
                 "issue": "Contraste bajo en botón de compra",
                 "severity": "High",
                 "business_impact": "–12% conversión mobile / demanda ADA Title III",
@@ -53,6 +61,7 @@ def main():
                 "after": "`<button style=\"background: #D2691E; color: #FFFFFF;\">Comprar</button>` (contraste 4.5:1)"
             },
             {
+                "code": "missing_alt",
                 "issue": "Imágenes de producto sin alt text",
                 "severity": "Medium",
                 "business_impact": "Lectores de pantalla no pueden describir los productos → pérdida de ventas y riesgo de demanda",
@@ -60,6 +69,7 @@ def main():
                 "after": "`<img src=\"producto.jpg\" alt=\"Zapatillas running azul\">`"
             },
             {
+                "code": "keyboard_trap",
                 "issue": "Menú de navegación no operable por teclado",
                 "severity": "Critical",
                 "business_impact": "Usuarios sin mouse no pueden navegar → abandono del sitio y posible demanda ADA",
