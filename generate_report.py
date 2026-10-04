@@ -2,7 +2,31 @@ import sys
 sys.path.insert(0, '.')
 import json
 from datetime import datetime
+import os
 from impact import IMPACT_MAP
+
+def format_findings(findings):
+    """Return list of dicts with impact, before_after, cta for each finding."""
+    formatted = []
+    for item in findings:
+        # Derive a code from the issue string if not provided
+        code = item.get('code', item['issue'].lower().replace(' ', '_').replace('-', '_'))
+        impact_info = IMPACT_MAP.get(code, {"cost": "N/D", "risk": "N/D"})
+        # Impact line: "Riesgo legal: $X sanción (ley 26.653)" using cost from IMPACT_MAP
+        # We'll format as: f"Riesgo legal: {impact_info['cost']} sanción (ley 26.653)"
+        impact_line = f"Riesgo legal: {impact_info['cost']} sanción (ley 26.653)"
+        # before_after: path to image, use placeholder if not exists
+        img_path = "placeholder.png"
+        if not os.path.exists(img_path):
+            img_path = "placeholder.png"  # still placeholder
+        # CTA: markdown link
+        cta = f"Contratar fix: [Contacto](mailto:ada@ejemplo.com)"
+        formatted.append({
+            "impact": impact_line,
+            "before_after": img_path,
+            "cta": cta
+        })
+    return formatted
 
 def generate_report(data):
     report = []
@@ -13,28 +37,25 @@ def generate_report(data):
     report.append(f"{data['summary']}")
     
     if data['findings']:
+        formatted = format_findings(data['findings'])
         report.append("\n## Hallazgos Detallados")
-        report.append("| Hallazgo | Severidad | Impacto económico | Riesgo legal |")
-        report.append("| --- | --- | --- | --- |")
+        report.append("| Hallazgo | Severidad | Impacto |")
+        report.append("| --- | --- | --- |")
         
-        for item in data['findings']:
-            # Derive a code from the issue string if not provided
-            code = item.get('code', item['issue'].lower().replace(' ', '_').replace('-', '_'))
-            impact = IMPACT_MAP.get(code, {"cost": "N/D", "risk": "N/D"})
-            report.append(f"| {item['issue']} | {item['severity']} | {impact['cost']} | {impact['risk']} |")
+        for idx, item in enumerate(data['findings']):
+            report.append(f"| {item['issue']} | {item['severity']} | {formatted[idx]['impact']} |")
         
-        # Antes → Después sub‑sections
-        for item in data['findings']:
+        # Antes → Después sub‑sections with CTA
+        for idx, item in enumerate(data['findings']):
             report.append(f"\n### {item['issue']}")
             report.append(f"**Impacto en el negocio:** {item['business_impact']}")
             report.append("**Antes → Después**")
             report.append(f"**Antes:** {item['before']}")
             report.append(f"**Después:** {item['after']}")
             # CTA por hallazgo
-            code = item.get('code', item['issue'].lower().replace(' ', '_').replace('-', '_'))
-            impact = IMPACT_MAP.get(code, {"cost": "N/D", "risk": "N/D"})
-            report.append(f"💡 **Impacto estimado:** {impact['cost']} | **Riesgo:** {impact['risk']}")
-            report.append(f"👉 Contrate el fix para este issue: https://ada-audits.example.com/quote?issue={code}")
+            report.append(formatted[idx]['cta'])
+            # Show before/after image reference
+            report.append(f"![Antes/Después]({formatted[idx]['before_after']})")
     
     if data['recommendations']:
         report.append("\n## Recomendaciones")
