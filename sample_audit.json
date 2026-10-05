@@ -1,0 +1,31 @@
+{
+  "client_name": "TiendaOnline Demo",
+  "date": "2026-10-06",
+  "summary": "Auditoría de accesibilidad WCAG 2.1 AA — se detectaron barreras que afectan la experiencia de usuarios con discapacidad y exponen a la empresa a riesgos legales.",
+  "findings": [
+    {
+      "title": "Contraste bajo en botón de compra",
+      "description": "Contraste insuficiente en el botón de compra principal",
+      "issue": "low_contrast",
+      "severity": "High",
+      "code": "low_contrast",
+      "before_after_image": "before_after_low_contrast.png"
+    },
+    {
+      "title": "Imágenes de producto sin alt text",
+      "description": "Varias imágenes de producto carecen de atributo alt descriptivo",
+      "issue": "missing_alt",
+      "severity": "Medium",
+      "code": "missing_alt",
+      "before_after_image": "before_after_missing_alt.png"
+    },
+    {
+      "title": "Menú de navegación no operable por teclado",
+      "description": "El menú de navegación no puede ser operado únicamente con teclado",
+      "issue": "keyboard_trap",
+      "severity": "Critical",
+      "code": "keyboard_trap",
+      "before_after_image": "before_after_keyboard_trap.png"
+    }
+  ]
+}

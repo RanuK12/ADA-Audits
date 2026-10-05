@@ -3,32 +3,25 @@ sys.path.insert(0, '.')
 import json
 from datetime import datetime
 import os
-from impact import IMPACT_MAP
+from utils.economic_impact import estimate_impact
 
-def format_findings(findings):
+def format_findings(findings, visitors_per_month=1000):
     """Return list of dicts with impact, before_after, cta for each finding."""
+    impact_results = estimate_impact(findings, visitors_per_month)
     formatted = []
     for item in findings:
         # Derive a code from the issue string if not provided
         code = item.get('code', item['issue'].lower().replace(' ', '_').replace('-', '_'))
-        impact_info = IMPACT_MAP.get(code, {"cost": "N/D", "risk": "N/D"})
-        # Impact line: "Riesgo legal: $X sanción (ley 26.653)" using cost from IMPACT_MAP
-        # We'll format as: f"Riesgo legal: {impact_info['cost']} sanción (ley 26.653)"
-        impact_line = f"Riesgo legal: {impact_info['cost']} sanción (ley 26.653)"
-        # before_after: path to image, use placeholder if not exists
-        img_path = "placeholder.png"
-        if not os.path.exists(img_path):
-            img_path = "placeholder.png"  # still placeholder
-        # CTA: markdown link
-        cta = f"Contratar fix: [Contacto](mailto:ada@ejemplo.com)"
+        impact_info = next((impact for impact in impact_results if impact['code'] == code), {"economic_impact": "N/D", "legal_risk": "N/D"})
         formatted.append({
-            "impact": impact_line,
-            "before_after": img_path,
-            "cta": cta
+            "economic_impact": impact_info.get('economic_impact', 'N/D'),
+            "legal_risk": impact_info.get('legal_risk', 'N/D'),
+            "before_after": item.get('before_after_image', ''),
+            "cta": "Contratar fix: [Contacto](mailto:emilio@ranuk.dev)"
         })
     return formatted
 
-def generate_report(data):
+def generate_report(data, output_format='markdown', visitors_per_month=1000):
     report = []
     report.append(f"# Auditoría de Accesibilidad WCAG: {data['client_name']}")
     report.append(f"**Fecha:** {data['date']}")
@@ -37,13 +30,13 @@ def generate_report(data):
     report.append(f"{data['summary']}")
     
     if data['findings']:
-        formatted = format_findings(data['findings'])
+        formatted = format_findings(data['findings'], visitors_per_month)
         report.append("\n## Hallazgos Detallados")
-        report.append("| Hallazgo | Severidad | Impacto |")
-        report.append("| --- | --- | --- |")
+        report.append("| Hallazgo | Severidad | Impacto Económico | Riesgo Legal |")
+        report.append("| --- | --- | --- | --- |")
         
         for idx, item in enumerate(data['findings']):
-            report.append(f"| {item['issue']} | {item['severity']} | {formatted[idx]['impact']} |")
+            report.append(f"| {item['issue']} | {item['severity']} | {formatted[idx]['economic_impact']} | {formatted[idx]['legal_risk']} |")
         
         # Antes → Después sub‑sections with CTA
         for idx, item in enumerate(data['findings']):
@@ -79,7 +72,8 @@ def main():
                 "severity": "High",
                 "business_impact": "–12% conversión mobile / demanda ADA Title III",
                 "before": "`<button style=\"background: #FFA500; color: #FFFFFF;\">Comprar</button>` (contraste 2.1:1)",
-                "after": "`<button style=\"background: #D2691E; color: #FFFFFF;\">Comprar</button>` (contraste 4.5:1)"
+                "after": "`<button style=\"background: #D2691E; color: #FFFFFF;\">Comprar</button>` (contraste 4.5:1)",
+                "before_after_image": "before_after_low_contrast.png"
             },
             {
                 "code": "missing_alt",
@@ -87,7 +81,8 @@ def main():
                 "severity": "Medium",
                 "business_impact": "Lectores de pantalla no pueden describir los productos → pérdida de ventas y riesgo de demanda",
                 "before": "`<img src=\"producto.jpg\">`",
-                "after": "`<img src=\"producto.jpg\" alt=\"Zapatillas running azul\">`"
+                "after": "`<img src=\"producto.jpg\" alt=\"Zapatillas running azul\">`",
+                "before_after_image": "before_after_missing_alt.png"
             },
             {
                 "code": "keyboard_trap",
@@ -95,7 +90,8 @@ def main():
                 "severity": "Critical",
                 "business_impact": "Usuarios sin mouse no pueden navegar → abandono del sitio y posible demanda ADA",
                 "before": "`<div class=\"menu\" onclick=\"toggleMenu()\">` (sin `tabindex` ni `role`)",
-                "after": "`<nav aria-label=\"Principal\"><ul role=\"menubar\">…</ul></nav>` con manejo de teclado"
+                "after": "`<nav aria-label=\"Principal\"><ul role=\"menubar\">…</ul></nav>` con manejo de teclado",
+                "before_after_image": "before_after_keyboard_trap.png"
             }
         ],
         "recommendations": [
