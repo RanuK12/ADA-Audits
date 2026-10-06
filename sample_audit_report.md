@@ -13,7 +13,7 @@ Auditoría de accesibilidad WCAG 2.1 AA — se detectaron barreras que afectan l
 | Menú de navegación no operable por teclado | Critical | $300–600 | Exclusión de usuarios con discapacidad motriz |
 
 ### Contraste bajo en botón de compra
-**Impacto económico:** $$150–$300
+**Impacto económico:** $150–300
 **Riesgo legal:** Deserción de usuarios
 **Antes → Después**
 **Antes:** `<button style="background: #FFA500; color: #FFFFFF;">Comprar</button>` (contraste 2.1:1)
@@ -22,7 +22,7 @@ Auditoría de accesibilidad WCAG 2.1 AA — se detectaron barreras que afectan l
 ![Antes/Después](before_after_low_contrast.png)
 
 ### Imágenes de producto sin alt text
-**Impacto económico:** $$200–$500
+**Impacto económico:** $200–500
 **Riesgo legal:** Posible demanda por inaccesibilidad
 **Antes → Después**
 **Antes:** `<img src="producto.jpg">`
@@ -31,7 +31,7 @@ Auditoría de accesibilidad WCAG 2.1 AA — se detectaron barreras que afectan l
 ![Antes/Después](before_after_missing_alt.png)
 
 ### Menú de navegación no operable por teclado
-**Impacto económico:** $$300–$600
+**Impacto económico:** $300–600
 **Riesgo legal:** Exclusión de usuarios con discapacidad motriz
 **Antes → Después**
 **Antes:** `<div class="menu" onclick="toggleMenu()">` (sin `tabindex` ni `role`)
