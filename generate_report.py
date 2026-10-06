@@ -49,7 +49,7 @@ def generate_report(data, output_format='markdown', visitors_per_month=1000):
             report.append(f"| {item['issue']} | {item['severity']} | ${item.get('impact_cost', 'No definido').replace('$', '')} | {item.get('impact_risk', 'No aplica')} |")
         
         # Antes → Después sub‑sections with CTA
-        for idx, item in enumerate(formatted):
+        for idx, item in enumerate(findings_with_impact):
             report.append(f"\n### {item['issue']}")
             report.append(f"**Impacto económico:** ${item.get('impact_cost', 'No definido').replace('$', '')}")
             report.append(f"**Riesgo legal:** {item.get('impact_risk', 'No aplica')}")
