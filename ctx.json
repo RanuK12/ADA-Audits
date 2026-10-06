@@ -1,0 +1,21 @@
+{
+    "repo": "RanuK12/ADA-Audits",
+    "branch": "ranukita/b7e253",
+    "title": "Añadido campos impacto_en_plata y riesgo_legal en informes de accesibilidad",
+    "description": "Mejoró el informe de accesibilidad con impacto económico y riesgo legal por hallazgo. El cambio está basado en el commit previo 2088230 y cumple con el objetivo de hacer que los informes vendan mostrando impacto y riesgo de manera clara.",
+    "files_changed": ["generate_report.py"],
+    "impact": "low",
+    "urgency": "medium",
+    "requested_by": "Emilio Ranucoli",
+    "prerequisites": [
+        {"task": "Verificar que el informe muestra los campos impacto_en_plata y riesgo_legal",
+         "status": "done",
+         "evidence": "sample_audit_report.md"
+        }
+    ],
+    "references": [
+        {"url": "https://github.com/RanuK12/ADA-Audits/commit/2088230",
+         "description": "Commit previo con el cambio en generate_report.py"
+        }
+    ]
+}
