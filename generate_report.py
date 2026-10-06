@@ -3,23 +3,33 @@ sys.path.insert(0, '.')
 import json
 from datetime import datetime
 import os
-from utils.economic_impact import estimate_impact
 
 def format_findings(findings, visitors_per_month=1000):
     """Return list of dicts with impact, before_after, cta for each finding."""
-    impact_results = estimate_impact(findings, visitors_per_month)
-    formatted = []
-    for item in findings:
-        # Derive a code from the issue string if not provided
-        code = item.get('code', item['issue'].lower().replace(' ', '_').replace('-', '_'))
-        impact_info = next((impact for impact in impact_results if impact['code'] == code), {"economic_impact": "N/D", "legal_risk": "N/D"})
-        formatted.append({
-            "economic_impact": impact_info.get('economic_impact', 'N/D'),
-            "legal_risk": impact_info.get('legal_risk', 'N/D'),
-            "before_after": item.get('before_after_image', ''),
-            "cta": "Contratar fix: [Contacto](mailto:emilio@ranuk.dev)"
-        })
-    return formatted
+    # Importar IMPACT_MAP desde ada_audits.impact para calcular impacto económico y legal
+    from ada_audits.impact import IMPACT_MAP
+    
+    # Mapear issue_type del JSON a claves de IMPACT_MAP
+    issue_type_mapping = {
+        'low_contrast': 'low_contrast',
+        'missing_alt': 'missing_alt',
+        'keyboard_trap': 'keyboard_nav',
+        'aria_label': 'aria_label',
+        'form_label': 'form_label',
+        'heading_structure': 'heading_structure'
+    }
+    
+    # Calcular impacto económico y legal para cada hallazgo
+    findings_with_impact = []
+    for finding in findings:
+        # Usar 'code' como fallback si no hay 'issue_type'
+        issue_type = finding.get('issue_type', finding.get('code', '')).lower()
+        mapped_type = issue_type_mapping.get(issue_type, issue_type)
+        impact_info = IMPACT_MAP.get(mapped_type, {"cost": "No definido", "risk": "No aplica"})
+        finding['impact_cost'] = impact_info['cost']
+        finding['impact_risk'] = impact_info['risk']
+        findings_with_impact.append(finding)
+    return findings_with_impact
 
 def generate_report(data, output_format='markdown', visitors_per_month=1000):
     report = []
@@ -30,25 +40,26 @@ def generate_report(data, output_format='markdown', visitors_per_month=1000):
     report.append(f"{data['summary']}")
     
     if data['findings']:
-        formatted = format_findings(data['findings'], visitors_per_month)
+        findings_with_impact = format_findings(data['findings'], visitors_per_month)
         report.append("\n## Hallazgos Detallados")
         report.append("| Hallazgo | Severidad | Impacto Económico | Riesgo Legal |")
         report.append("| --- | --- | --- | --- |")
         
-        for idx, item in enumerate(data['findings']):
-            report.append(f"| {item['issue']} | {item['severity']} | {formatted[idx]['economic_impact']} | {formatted[idx]['legal_risk']} |")
+        for idx, item in enumerate(findings_with_impact):
+            report.append(f"| {item['issue']} | {item['severity']} | ${item.get('impact_cost', 'No definido').replace('$', '')} | {item.get('impact_risk', 'No aplica')} |")
         
         # Antes → Después sub‑sections with CTA
-        for idx, item in enumerate(data['findings']):
+        for idx, item in enumerate(formatted):
             report.append(f"\n### {item['issue']}")
-            report.append(f"**Impacto en el negocio:** {item['business_impact']}")
+            report.append(f"**Impacto económico:** ${item.get('impact_cost', 'No definido').replace('$', '')}")
+            report.append(f"**Riesgo legal:** {item.get('impact_risk', 'No aplica')}")
             report.append("**Antes → Después**")
             report.append(f"**Antes:** {item['before']}")
             report.append(f"**Después:** {item['after']}")
             # CTA por hallazgo
-            report.append(formatted[idx]['cta'])
+            report.append(f"**CTA:** [Contratar solución](mailto:emilio@ranuk.dev)")
             # Show before/after image reference
-            report.append(f"![Antes/Después]({formatted[idx]['before_after']})")
+            report.append(f"![Antes/Después]({item.get('before_after_image', '')})")
     
     if data['recommendations']:
         report.append("\n## Recomendaciones")

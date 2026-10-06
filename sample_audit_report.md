@@ -8,32 +8,35 @@ Auditoría de accesibilidad WCAG 2.1 AA — se detectaron barreras que afectan l
 ## Hallazgos Detallados
 | Hallazgo | Severidad | Impacto Económico | Riesgo Legal |
 | --- | --- | --- | --- |
-| Contraste bajo en botón de compra | High | $50.00 | bajo |
-| Imágenes de producto sin alt text | Medium | $100.00 | medio |
-| Menú de navegación no operable por teclado | Critical | $200.00 | alto |
+| Contraste bajo en botón de compra | High | $150–300 | Deserción de usuarios |
+| Imágenes de producto sin alt text | Medium | $200–500 | Posible demanda por inaccesibilidad |
+| Menú de navegación no operable por teclado | Critical | $300–600 | Exclusión de usuarios con discapacidad motriz |
 
 ### Contraste bajo en botón de compra
-**Impacto en el negocio:** –12% conversión mobile / demanda ADA Title III
+**Impacto económico:** $$150–$300
+**Riesgo legal:** Deserción de usuarios
 **Antes → Después**
 **Antes:** `<button style="background: #FFA500; color: #FFFFFF;">Comprar</button>` (contraste 2.1:1)
 **Después:** `<button style="background: #D2691E; color: #FFFFFF;">Comprar</button>` (contraste 4.5:1)
-Contratar fix: [Contacto](mailto:emilio@ranuk.dev)
+**CTA:** [Contratar solución](mailto:emilio@ranuk.dev)
 ![Antes/Después](before_after_low_contrast.png)
 
 ### Imágenes de producto sin alt text
-**Impacto en el negocio:** Lectores de pantalla no pueden describir los productos → pérdida de ventas y riesgo de demanda
+**Impacto económico:** $$200–$500
+**Riesgo legal:** Posible demanda por inaccesibilidad
 **Antes → Después**
 **Antes:** `<img src="producto.jpg">`
 **Después:** `<img src="producto.jpg" alt="Zapatillas running azul">`
-Contratar fix: [Contacto](mailto:emilio@ranuk.dev)
+**CTA:** [Contratar solución](mailto:emilio@ranuk.dev)
 ![Antes/Después](before_after_missing_alt.png)
 
 ### Menú de navegación no operable por teclado
-**Impacto en el negocio:** Usuarios sin mouse no pueden navegar → abandono del sitio y posible demanda ADA
+**Impacto económico:** $$300–$600
+**Riesgo legal:** Exclusión de usuarios con discapacidad motriz
 **Antes → Después**
 **Antes:** `<div class="menu" onclick="toggleMenu()">` (sin `tabindex` ni `role`)
 **Después:** `<nav aria-label="Principal"><ul role="menubar">…</ul></nav>` con manejo de teclado
-Contratar fix: [Contacto](mailto:emilio@ranuk.dev)
+**CTA:** [Contratar solución](mailto:emilio@ranuk.dev)
 ![Antes/Después](before_after_keyboard_trap.png)
 
 ## Recomendaciones
