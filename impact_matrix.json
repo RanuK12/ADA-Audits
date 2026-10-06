@@ -1,0 +1,13 @@
+{
+    "WCAG2.1": {
+        "AA": {
+            "missing_alt": {"cost": 100, "legal_risk": "medio"},
+            "low_contrast": {"cost": 50, "legal_risk": "bajo"},
+            "keyboard_trap": {"cost": 200, "legal_risk": "alto"}
+        },
+        "AAA": {
+            "missing_alt": {"cost": 300, "legal_risk": "alto"},
+            "low_contrast": {"cost": 150, "legal_risk": "moderado"}
+        }
+    }
+}

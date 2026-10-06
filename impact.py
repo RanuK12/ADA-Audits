@@ -1,12 +1,33 @@
-IMPACT_MAP = {
-    "missing_alt": {"cost": "$200–$500", "risk": "Posible demanda por inaccesibilidad"},
-    "low_contrast": {"cost": "$150–$300", "risk": "Deserción de usuarios"},
-    "keyboard_trap": {"cost": "$500–$1000", "risk": "Demanda por falta de accesibilidad teclado"},
-    "aria_label_missing": {"cost": "$100–$250", "risk": "Usuarios de lectores de pantalla pierden contexto"},
-    "color_only_info": {"cost": "$100–$200", "risk": "Usuarios daltónicos pierden información"},
-    "focus_visible_missing": {"cost": "$150–$300", "risk": "Usuario no ve dónde está el foco"},
-    "heading_order": {"cost": "$100–$200", "risk": "Estructura confusa para lectores de pantalla"},
-    "form_label_missing": {"cost": "$200–$400", "risk": "Usuarios no saben qué ingresar en campos"},
-    "table_headers_missing": {"cost": "$150–$300", "risk": "Datos tabulares ininteligibles para AT"},
-    "video_no_captions": {"cost": "$300–$600", "risk": "Exclusión de sordos y riesgo legal"},
-}
+#!/usr/bin/env python3
+import json
+from utils.economic_impact import estimate_cost
+
+# Carga la matriz de impacto desde un archivo JSON
+def load_impact_matrix():
+    with open('impact_matrix.json', 'r') as f:
+        return json.load(f)
+
+# Estima el impacto económico y legal para un hallazgo específico
+def estimate_impact(wcag_level, severity, issue_type):
+    impact_matrix = load_impact_matrix()
+    
+    # Obtener el costo estimado basado en el tipo de hallazgo y severidad
+    cost = estimate_cost(issue_type, severity)
+    
+    # Obtener el riesgo legal basado en la severidad
+    legal_risk = "bajo"
+    if severity.lower() == "critical":
+        legal_risk = "alto"
+    elif severity.lower() == "high":
+        legal_risk = "moderado"
+    elif severity.lower() == "medium":
+        legal_risk = "medio"
+    
+    return {
+        "cost": cost,
+        "legal_risk": legal_risk
+    }
+
+# Ejemplo de uso
+if __name__ == "__main__":
+    print(estimate_impact("WCAG2.1", "Medium", "missing_alt"))

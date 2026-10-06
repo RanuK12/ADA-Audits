@@ -3,19 +3,23 @@ sys.path.insert(0, '.')
 import json
 from datetime import datetime
 import os
-from utils.economic_impact import estimate_impact
+from utils.economic_impact import estimate_cost, calculate_legal_risk
+from impact import estimate_impact as estimate_legal_impact
 
 def format_findings(findings, visitors_per_month=1000):
     """Return list of dicts with impact, before_after, cta for each finding."""
-    impact_results = estimate_impact(findings, visitors_per_month)
     formatted = []
     for item in findings:
-        # Derive a code from the issue string if not provided
         code = item.get('code', item['issue'].lower().replace(' ', '_').replace('-', '_'))
-        impact_info = next((impact for impact in impact_results if impact['code'] == code), {"economic_impact": "N/D", "legal_risk": "N/D"})
+        severity = item['severity'].lower()
+        
+        # Estimate economic and legal impact using the new function
+        legal_impact = calculate_legal_risk(code, severity)
+        economic_impact = estimate_cost(code, severity, visitors_per_month)
+        
         formatted.append({
-            "economic_impact": impact_info.get('economic_impact', 'N/D'),
-            "legal_risk": impact_info.get('legal_risk', 'N/D'),
+            "economic_impact": f"${economic_impact:.0f}",
+            "legal_risk": legal_impact,
             "before_after": item.get('before_after_image', ''),
             "cta": "Contratar fix: [Contacto](mailto:emilio@ranuk.dev)"
         })

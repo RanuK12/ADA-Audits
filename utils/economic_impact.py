@@ -18,83 +18,50 @@ IMPACT_FACTORS = {
 }
 
 
-def calculate_economic_impact(findings: List[Dict], visitors_per_month: int = 1000) -> Dict[str, float]:
+def calculate_economic_impact(finding_code: str, visitors_per_month: int = 1000) -> float:
     """
-    Calculate the estimated economic impact of findings.
+    Calculate the estimated economic impact of a finding.
     Args:
-        findings: List of findings with 'code' key.
+        finding_code: The code of the finding (e.g., 'missing_alt').
         visitors_per_month: Number of visitors per month to the site.
     Returns:
-        Dict with total economic impact and breakdown by finding.
+        Estimated monthly economic impact in USD.
     """
-    total_impact = 0.0
-    impact_by_finding = {}
-    
-    for finding in findings:
-        finding_code = finding.get('code', '').lower()
-        if finding_code in IMPACT_FACTORS:
-            factor = IMPACT_FACTORS[finding_code]
-            monthly_loss = visitors_per_month * factor["cost_per_user"]
-            total_impact += monthly_loss
-            impact_by_finding[finding_code] = {
-                "cost": f"${monthly_loss:,.2f}",
-                "risk": factor["legal_risk"],
-                "description": factor["description"]
-            }
-        else:
-            impact_by_finding[finding_code] = {
-                "cost": "$N/D",
-                "risk": "N/D",
-                "description": "No data available"
-            }
-    
-    return {
-        "total": f"${total_impact:,.2f}",
-        "breakdown": impact_by_finding
-    }
+    if finding_code in IMPACT_FACTORS:
+        factor = IMPACT_FACTORS[finding_code]
+        monthly_loss = visitors_per_month * factor["cost_per_user"]
+        return int(round(monthly_loss))  # Convertir a entero y redondear
+    else:
+        return 0  # Valor por defecto si no hay datos
 
 
-def calculate_legal_risk(findings: List[Dict]) -> Dict[str, str]:
+def calculate_legal_risk(finding_code: str, severity: str) -> str:
     """
-    Calculate the legal risk level for each finding.
+    Calculate the legal risk level for a finding based on its severity.
     Args:
-        findings: List of findings with 'code' key.
+        finding_code: The code of the finding (e.g., 'missing_alt').
+        severity: The severity level (e.g., 'high', 'medium', 'low').
     Returns:
-        Dict with legal risk breakdown by finding.
+        Legal risk level as a string (e.g., 'alto', 'moderado', 'bajo').
     """
-    legal_risk_by_finding = {}
-    
-    for finding in findings:
-        finding_code = finding.get('code', '').lower()
-        if finding_code in IMPACT_FACTORS:
-            factor = IMPACT_FACTORS[finding_code]
-            legal_risk_by_finding[finding_code] = factor["legal_risk"]
-        else:
-            legal_risk_by_finding[finding_code] = "N/D"
-    
-    return legal_risk_by_finding
+    if severity.lower() == "critical":
+        return "alto"
+    elif severity.lower() == "high":
+        return "moderado"
+    elif severity.lower() == "medium":
+        return "medio"
+    else:
+        return "bajo"
 
 
-def estimate_impact(findings: List[Dict], visitors_per_month: int = 1000) -> List[Dict]:
+def estimate_cost(finding_code: str, severity: str, visitors_per_month: int = 1000) -> float:
     """
-    Estimate the economic impact and legal risk for each finding.
+    Estimate the economic impact for a finding.
     Args:
-        findings: List of findings with 'code' key.
+        finding_code: The code of the finding (e.g., 'missing_alt').
+        severity: The severity level (not used in calculation, but kept for consistency).
         visitors_per_month: Number of visitors per month to the site.
     Returns:
-        List of dicts with impact and risk info for each finding.
+        Estimated monthly economic impact in USD.
     """
-    economic_impact = calculate_economic_impact(findings, visitors_per_month)
-    legal_risk = calculate_legal_risk(findings)
-    
-    result = []
-    for finding in findings:
-        finding_code = finding.get('code', '').lower()
-        result.append({
-            "code": finding_code,
-            "economic_impact": economic_impact['breakdown'].get(finding_code, {"cost": "$N/D"})["cost"],
-            "legal_risk": legal_risk.get(finding_code, "N/D"),
-            "description": economic_impact['breakdown'].get(finding_code, {"description": "No data available"})["description"]
-        })
-    
-    return result
+    return calculate_economic_impact(finding_code, visitors_per_month)
