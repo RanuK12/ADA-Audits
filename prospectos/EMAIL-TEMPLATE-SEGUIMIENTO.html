@@ -1,0 +1,70 @@
+<!--
+  Ranuk IT Solutions — Plantilla de email de seguimiento para ADA/WCAG.
+  Reemplá {{first_name}}, {{business_name}}, {{domain}}, {{issue_1..3}} con datos REALES.
+  Logo inline: Content-ID "ranuklogo" (cid:ranuklogo) -> adjuntar
+  ~/Apps/ranukita-bridge/assets/ranuk-it-logo.png  (logo de la EMPRESA Ranuk IT, NO el lobo).
+  OBLIGATORIO enviar con: rk-skymailer-send --html-file <este> --inline ranuklogo=<ruta logo>
+  Subject (minúscula, <=6 palabras): "seguimiento sobre {{domain}}" / "actualización para {{business_name}}"
+-->
+<div style="background:#f4f6f8;padding:24px 0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+<div style="background:#ffffff;max-width:600px;margin:0 auto;border:1px solid #e6e9ee;border-radius:10px;overflow:hidden;">
+
+  <!-- El jpeg ya trae el gris #131d26. Va de borde a borde, sin padding: si no, queda un parche. -->
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;background:#131d26;">
+    <tr><td bgcolor="#131d26" align="center" style="padding:0;margin:0;background:#131d26;line-height:0;font-size:0;">
+      <img src="cid:ranuklogo" alt="Ranuk IT Solutions" width="600" style="display:block;width:100%;max-width:600px;height:auto;border:0;outline:none;text-decoration:none;">
+    </td></tr>
+  </table>
+
+  <!-- Body -->
+  <div style="padding:28px;font-size:15px;line-height:1.6;color:#1f2937;">
+    <p style="margin:0 0 16px;">Hola {{first_name}},</p>
+
+    <p style="margin:0 0 16px;">Te escribo de nuevo para ver si tuviste oportunidad de revisar mi mensaje anterior sobre la accesibilidad web de {{business_name}}. Como mencioné, el sitio {{domain}} presenta algunos riesgos bajo ADA Title III que podrían exponer a la empresa a demandas legales.</p>
+
+    <p style="margin:0 0 16px;">Para asegurarme de que esta información sea útil, me gustaría ofrecerte una <strong>auditoría completa de accesibilidad con un 20% de descuento</strong> como muestra de nuestro compromiso con el éxito de tu negocio. Nuestro servicio incluye:</p>
+
+    <ul style="margin:0 0 18px;padding-left:20px;">
+      <li style="margin-bottom:6px;">Análisis completo de 17 puntos de WCAG 2.1</li>
+      <li style="margin-bottom:6px;">Reporte detallado con código de corrección listo para implementar</li>
+      <li style="margin-bottom:6px;">Garantía de cumplimiento 6 meses después de la implementación</li>
+      <li style="margin-bottom:6px;">Soporte prioritario durante el proceso</li>
+    </ul>
+
+    <p style="margin:0 0 16px;"><strong>Con el descuento del 20%, el costo sería de $960 (en lugar de $1,200)</strong>, completado en dos semanas y con resultados garantizados.</p>
+
+    <p style="margin:0 0 4px;">¿Te gustaría que te envíe el reporte completo para que puedas evaluar los cambios necesarios?</p>
+
+    <!-- CTA -->
+    <div style="margin:22px 0 8px;">
+      <a href="https://calendly.com/emilio-ranuk/30min" style="background:#f97316;color:#ffffff;text-decoration:none;
+         font-weight:600;font-size:14px;padding:11px 22px;border-radius:6px;display:inline-block;">
+         Agendar llamada de 30 min</a>
+    </div>
+    
+    <p style="margin:0 0 16px;">O si prefieres, puedo enviar el reporte por email sin compromiso.</p>
+  </div>
+
+  <!-- Signature -->
+  <div style="border-top:1px solid #e6e9ee;padding:20px 28px;background:#fafbfc;">
+    <table cellpadding="0" cellspacing="0" style="font-family:inherit;">
+      <tr>
+        <td style="vertical-align:middle;">
+          <div style="font-size:15px;font-weight:600;color:#0f172a;">Emilio Ranucoli</div>
+          <div style="font-size:13px;color:#64748b;margin:2px 0 6px;">Founder &middot; Ranuk IT Solutions</div>
+          <div style="font-size:13px;color:#475569;">
+            <a href="https://ranuk.dev" style="color:#0ea5e9;text-decoration:none;">ranuk.dev</a>
+            &nbsp;&middot;&nbsp;
+            <a href="mailto:emilio@ranuk.dev" style="color:#0ea5e9;text-decoration:none;">emilio@ranuk.dev</a>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <div style="font-size:11px;color:#94a3b8;margin-top:14px;line-height:1.5;">
+      Ranuk IT Solutions &mdash; Web accessibility &amp; ADA/WCAG compliance audits.<br>
+      Si este mensaje no es relevante, por favor responde "no gracias" y no te contactaré nuevamente.
+    </div>
+  </div>
+
+</div>
+</div>

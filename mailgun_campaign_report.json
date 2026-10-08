@@ -1,0 +1,128 @@
+{
+  "campaign_date": "2026-08-10",
+  "total_prospects": 20,
+  "successful": 0,
+  "failed": 20,
+  "results": [
+    {
+      "email": "hola@seonet.com.ar",
+      "business_name": "Seonet Digital",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "info@mejordigital.com.ar",
+      "business_name": "Agencia Mejor Digital",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "contacto@imaat.com.ar",
+      "business_name": "iMaat Agencia",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "hola@clientum.ar",
+      "business_name": "Clientum",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "info@axyoma.com.ar",
+      "business_name": "Axyoma",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "contacto@mktmarketingdigital.com",
+      "business_name": "MKT Marketing Digital",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "info@md-marketingdigital.com.ar",
+      "business_name": "MD Marketing Digital",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "info@sociodigital.com.ar",
+      "business_name": "SocioDigital",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "info@agencianombre.com",
+      "business_name": "Agencia Nombre",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "info@mediaticainteractive.com",
+      "business_name": "Mediática Interactive",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "info@mentory.com.ar",
+      "business_name": "Mentory",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "info@genmarketing.com.ar",
+      "business_name": "GenMarketing",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "info@vpa-internet.com.ar",
+      "business_name": "VPA Marketing Digital",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "info@mosmedia.com.ar",
+      "business_name": "Mosmedia",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "info@argentinamarketingdigital.com.ar",
+      "business_name": "AMD Agencia",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "info@metared.ar",
+      "business_name": "MetaRed",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "info@disenowebcordoba.com.ar",
+      "business_name": "Disenowebcordoba",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "info@bigmedia.ar",
+      "business_name": "BigMedia",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "info@rednodo.com",
+      "business_name": "Rednodo",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    },
+    {
+      "email": "info@ddbargentina.com",
+      "business_name": "DDB Argentina",
+      "success": false,
+      "error": "Mailgun API error: 401 - Forbidden"
+    }
+  ]
+}

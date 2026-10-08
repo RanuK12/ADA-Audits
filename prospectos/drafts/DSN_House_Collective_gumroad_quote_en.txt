@@ -1,0 +1,23 @@
+Hi David,
+
+Thank you for your continued interest in improving the accessibility of DSN House Collective’s website. After reviewing your site (https://www.dsnhousecollective.com/), I’ve identified several key opportunities to bring it into full compliance with WCAG 2.1 AA and ADA standards, ensuring an inclusive experience for all visitors.
+
+Here’s a concise outline of what I propose:
+
+**ADA Accessibility Audit & Remediation Package – $149**
+- Comprehensive automated + manual audit of homepage and up to 5 key inner pages
+- Detailed report with prioritized issues (WCAG 2.1 AA) and clear remediation steps
+- Implementation of critical fixes (color contrast, ARIA labels, keyboard navigation, form accessibility, image alt text)
+- One round of re‑testing to confirm compliance
+- Delivery of final report and accessibility statement via Gumroad (secure download link)
+
+Timeline: 5 business days from receipt of payment.
+
+If this looks good, I can send a Gumroad payment link for $149 and we’ll get started right away.
+
+Please let me know if you have any questions or’d like to adjust the scope. If you prefer not to receive further proposals, just reply “Opt‑out” and I’ll remove you from our outreach list.
+
+Best regards,
+Emilio Ranucoli
+Ranuk IT Solutions
+emilio@ranuk.dev | +39 344 5721753

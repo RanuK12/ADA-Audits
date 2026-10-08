@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADA Accessibility Audit - Ranuk IT Solutions</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            background-color: #1a1a2e;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        h1 {
+            color: #1a1a2e;
+            margin: 0;
+            font-size: 24px;
+        }
+        .subtitle {
+            color: #6c757d;
+            margin: 10px 0 0;
+            font-size: 14px;
+        }
+        .alert {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .alert h2 {
+            color: #856404;
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+        .alert p {
+            color: #856404;
+            margin: 0;
+            font-size: 14px;
+        }
+        .issues {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .issues h3 {
+            color: #721c24;
+            margin: 0 0 15px;
+            font-size: 16px;
+        }
+        .issues ul {
+            color: #721c24;
+            margin: 0;
+            padding-left: 20px;
+        }
+        .issues li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .cta {
+            background-color: #1a1a2e;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 6px;
+            display: inline-block;
+            text-align: center;
+            margin: 25px 0;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .cta:hover {
+            background-color: #00d4ff;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+            font-size: 12px;
+            color: #6c757d;
+            text-align: center;
+        }
+        .contact {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .contact p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">R</div>
+            <h1>ADA Accessibility Audit Results</h1>
+            <p class="subtitle">Ranuk IT Solutions</p>
+        </div>
+
+        <div class="alert">
+            <h2>⚠️ Legal Risk Alert</h2>
+            <p>I found {{total_nodes_affected}} accessibility issues on {{domain}} that put your business at ADA Title III risk. In 2025, there have been 5,000+ lawsuits against small businesses for similar violations, with 69% targeting companies under $25M in revenue.</p>
+        </div>
+
+        <div class="issues">
+            <h3>Top 3 Most Critical Issues:</h3>
+            <ul>
+                <li>{{top_issue_1}}</li>
+                <li>{{top_issue_2}}</li>
+                <li>{{top_issue_3}}</li>
+            </ul>
+        </div>
+
+        <p>These issues violate WCAG 2.1 AA standards and could expose your business to legal action, fines, and accessibility discrimination claims.</p>
+
+        <p>I can provide you with a complete 17-point audit report with specific remediation code your webmaster can implement. If you'd prefer I handle the fixes myself, I can complete full ADA compliance for a flat fee of $1,200 within 2 weeks.</p>
+
+        <a href="#" class="cta">Get Your Free Audit Report</a>
+
+        <div class="contact">
+            <p><strong>Emilio Ranucoli</strong></p>
+            <p>Systems Engineer — Accessibility & Compliance Audits</p>
+            <p>📧 ranucoliemilio@gmail.com</p>
+            <p>🌐 ranuk.dev</p>
+        </div>
+
+        <div class="footer">
+            <p>Ranuk IT Solutions | Professional accessibility audit services</p>
+            <p>This email contains time-sensitive information about your legal compliance status.</p>
+        </div>
+    </div>
+</body>
+</html>
