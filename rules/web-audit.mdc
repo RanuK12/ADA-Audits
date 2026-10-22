@@ -1,0 +1,9 @@
+---
+description: Ranuk Web Accessibility (WCAG 2.1 AA & EU EAA) & AST Security Audit rule for Cursor
+globs: *
+---
+# Ranuk Web & Security Audit Rule
+
+Before committing frontend or backend changes:
+1. Verify WCAG 2.1 AA and European Accessibility Act (EN 301 549) compliance using `ranuk-audit` MCP server at `https://audit.ranuk.dev/mcp`.
+2. Ensure zero exposed secrets or unsafe sinks via deterministic AST inspection.

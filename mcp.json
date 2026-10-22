@@ -1,0 +1,12 @@
+{
+  "name": "ranuk-web-audit",
+  "displayName": "Ranuk Web Accessibility (WCAG 2.1 AA & EU EAA) & AST Security Auditor",
+  "description": "Live DOM auditing for WCAG 2.1 AA / European Accessibility Act (EN 301 549) and deterministic Python AST security scanning.",
+  "url": "https://audit.ranuk.dev/mcp",
+  "discoveryUrl": "https://audit.ranuk.dev/.well-known/mcp.json",
+  "mcpServers": {
+    "ranuk-audit": {
+      "url": "https://audit.ranuk.dev/mcp"
+    }
+  }
+}
