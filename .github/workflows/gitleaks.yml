@@ -13,8 +13,10 @@ jobs:
           TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          git clone --no-recurse-submodules "https://x-access-token:${TOKEN}@github.com/${{ github.repository }}" src
-          cd src && git checkout --quiet "${{ github.sha }}"
+          git clone --quiet --no-recurse-submodules "https://x-access-token:${TOKEN}@github.com/${{ github.repository }}" src
+          cd src
+          git fetch --quiet --no-recurse-submodules origin "+${{ github.ref }}:refs/remotes/origin/ci-target"
+          git checkout --quiet --detach refs/remotes/origin/ci-target
       - name: Install gitleaks v8.30.1 (checksum verified)
         env:
           V: 8.30.1
