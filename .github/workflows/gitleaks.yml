@@ -8,15 +8,13 @@ jobs:
   scan:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout (no submodules)
+      - name: Clone (no submodules, read-only token)
         env:
           TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          git clone --no-recurse-submodules "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}" .
-          git fetch --no-recurse-submodules origin "$GITHUB_SHA" || git fetch --no-recurse-submodules origin "$GITHUB_REF"
-          git checkout --detach "$GITHUB_SHA"
-          git remote set-url origin "https://github.com/${GITHUB_REPOSITORY}"
+          git clone --no-recurse-submodules "https://x-access-token:${TOKEN}@github.com/${{ github.repository }}" src
+          cd src && git checkout --quiet "${{ github.sha }}"
       - name: Install gitleaks v8.30.1 (checksum verified)
         env:
           V: 8.30.1
@@ -28,7 +26,7 @@ jobs:
           curl -sSfL "$base/gitleaks_${V}_checksums.txt" | grep " $f\$" | sha256sum -c -
           tar -xzf "$f" gitleaks
       - name: Scan (redacted report)
-        run: ./gitleaks git --redact --no-banner --exit-code 1 --report-format json --report-path gitleaks-report.json .
+        run: ./gitleaks git --redact --no-banner --exit-code 1 --report-format json --report-path gitleaks-report.json src
       - name: Upload redacted report
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
