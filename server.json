@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.RanuK12/ada-audits",
+  "title": "Ranuk Web Accessibility & AST Security Auditor",
+  "description": "Edge MCP Server for live WCAG 2.1 AA accessibility compliance and AST security audits.",
+  "repository": {
+    "url": "https://github.com/RanuK12/ADA-Audits",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://audit.ranuk.dev/mcp"
+    }
+  ]
+}
