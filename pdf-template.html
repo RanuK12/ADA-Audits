@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Auditoría ADA — {{ company }}</title>
+<link rel="stylesheet" href="pdf-style.css">
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover">
+  <div class="brand-bar"></div>
+  <h1>Auditoría de Accesibilidad Digital</h1>
+  <div class="subtitle">WCAG 2.1 AA · ADA Title III Compliance</div>
+  <table class="meta-table">
+    <tr><td>Cliente</td><td>{{ company }}</td></tr>
+    <tr><td>Sitio auditado</td><td>{{ url }}</td></tr>
+    <tr><td>Fecha</td><td>{{ date }}</td></tr>
+    <tr><td>Auditor</td><td>Emilio Ranúcoli — Ranuk IT Solutions</td></tr>
+    <tr><td>Normativa</td><td>ADA Title III + WCAG 2.1 Nivel AA</td></tr>
+  </table>
+  <div class="classification">Confidencial — Solo para el destinatario</div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<!-- SCORE -->
+<div class="score-section">
+  <div class="score-row">
+    <div class="score-circle {{ score_class }}">{{ score }}/100</div>
+    <div>
+      <div class="score-label">WCAG 2.1 AA Compliance Score</div>
+      <div class="score-desc">{{ score_desc }}</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-card st-crit"><span class="num">{{ critical_count }}</span><span class="label">Críticos</span></div>
+  <div class="stat-card st-serious"><span class="num">{{ serious_count }}</span><span class="label">Altos</span></div>
+  <div class="stat-card st-mod"><span class="num">{{ moderate_count }}</span><span class="label">Medios</span></div>
+  <div class="stat-card st-total"><span class="num">{{ total_count }}</span><span class="label">Total</span></div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<h2>1. Resumen Ejecutivo</h2>
+<p>{{ executive_summary }}</p>
+
+<div class="callout callout-warning">
+  <strong>⚠️ Nivel de riesgo:</strong> {{ risk_level }}<br>
+  {{ risk_description }}
+</div>
+
+<!-- METHODOLOGY -->
+<h2>2. Metodología</h2>
+<p>{{ methodology }}</p>
+
+<!-- FINDINGS -->
+<h2>3. Hallazgos por Severidad</h2>
+
+{% for severity, items in findings.items() %}
+<h3>{{ severity }}</h3>
+<table class="findings">
+  <thead>
+    <tr><th>ID</th><th>Criterio WCAG</th><th>Descripción</th><th>Impacto</th><th>Elementos</th><th>Esfuerzo</th></tr>
+  </thead>
+  <tbody>
+  {% for f in items %}
+    <tr>
+      <td><strong>{{ f.id }}</strong></td>
+      <td>{{ f.wcag_criterion }}</td>
+      <td>{{ f.description }}</td>
+      <td class="impact-cell">
+        <div class="impact-explanation">
+          {{ f.impact_explanation }}
+        </div>
+      </td>
+      <td>{{ f.nodes_affected }}</td>
+      <td>{{ f.effort }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endfor %}
+
+<!-- TOP 3 URGENT -->
+<h2>4. Top 3 Riesgos Urgentes</h2>
+{% for issue in top3_issues %}
+<div class="risk-box risk-{{ issue.risk_class }}">
+  <h4>{{ loop.index }}. {{ issue.title }}</h4>
+  <p>{{ issue.description }}</p>
+  <p><strong>WCAG:</strong> {{ issue.wcag_criterion }} · <strong>Esfuerzo:</strong> {{ issue.effort }}</p>
+</div>
+{% endfor %}
+
+<!-- REMEDIATION PLAN -->
+<h2>5. Plan de Remediación</h2>
+{% for phase in remediation_phases %}
+<div class="risk-box risk-{{ phase.risk_class }}">
+  <h4>{{ phase.title }}</h4>
+  <ul>
+  {% for task in phase.tasks %}
+    <li>{{ task }}</li>
+  {% endfor %}
+  </ul>
+  <p><strong>Entrega:</strong> {{ phase.deliverable }}</p>
+</div>
+{% endfor %}
+
+<!-- PRICING -->
+<div class="price-box">
+  <h3>Inversión Propuesta</h3>
+  <div class="price">USD {{ price }}</div>
+  <p>{{ pricing_note }}</p>
+  <p>Pago: 50% al inicio · 50% a la entrega · Soporte 30 días incluido</p>
+</div>
+
+<!-- CONSEQUENCES -->
+<h2>6. Qué Ocurre Si No Se Remedia</h2>
+{{ consequences }}
+
+<!-- COMPLIANCE TABLE -->
+<h2>7. Resumen Cuantitativo WCAG</h2>
+<table class="findings">
+  <thead>
+    <tr><th>Criterio</th><th>Estado</th><th>Hallazgos</th></tr>
+  </thead>
+  <tbody>
+  {% for row in compliance_table %}
+    <tr>
+      <td>{{ row.criterion }}</td>
+      <td><span class="badge {{ row.badge_class }}">{{ row.status }}</span></td>
+      <td>{{ row.violations }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<!-- CONTACT -->
+<h2>Contacto</h2>
+<p><strong>Emilio Ranúcoli</strong> — Consultoría de Accesibilidad Digital</p>
+<p>ranucoliemilio@gmail.com · ranuk.dev</p>
+<p><em>Este reporte es confidencial. No constituye asesoramiento legal.</em></p>
+
+</div>
+</body>
+</html>

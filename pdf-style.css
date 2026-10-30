@@ -1,0 +1,61 @@
+@page{size:A4;margin:20mm 18mm 25mm 18mm;@bottom-center{content:"Ranuk IT Solutions — Confidential";font-size:8pt;color:#94a3b8;}@bottom-right{content:counter(page)"/"counter(pages);font-size:8pt;color:#94a3b8;}}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Helvetica Neue',Arial,sans-serif;font-size:10pt;line-height:1.55;color:#1e293b;}
+.cover{page-break-after:always;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:240mm;text-align:center;padding:40mm 20mm;}
+.brand-bar{width:80px;height:4px;background:linear-gradient(90deg,#0ea5e9,#2563eb);margin:0 auto 30px;border-radius:2px;}
+.cover h1{font-size:28pt;font-weight:700;color:#0f172a;margin-bottom:8px;}
+.cover .subtitle{font-size:14pt;color:#0ea5e9;font-weight:500;margin-bottom:40px;}
+.meta-table{margin:30px auto;border-collapse:collapse;width:70%;}
+.meta-table td{padding:8px 16px;font-size:10pt;border-bottom:1px solid #e2e8f0;}
+.meta-table td:first-child{color:#64748b;font-weight:500;width:40%;text-align:right;}
+.meta-table td:last-child{color:#0f172a;font-weight:600;text-align:left;}
+.classification{margin-top:60px;padding:8px 24px;background:#fef2f2;border:1px solid #fecaca;border-radius:4px;color:#b91c1c;font-size:8pt;font-weight:600;text-transform:uppercase;letter-spacing:1px;}
+.content{padding-top:10mm;}
+h2{font-size:16pt;font-weight:700;color:#0f172a;margin:30px 0 12px 0;padding-bottom:6px;border-bottom:2px solid #0ea5e9;page-break-after:avoid;}
+h3{font-size:12pt;font-weight:600;color:#1e40af;margin:20px 0 8px 0;page-break-after:avoid;}
+h4{font-size:10.5pt;font-weight:600;color:#334155;margin:14px 0 6px 0;page-break-after:avoid;}
+p{margin:6px 0;}ul,ol{margin:6px 0 6px 20px;}li{margin:3px 0;}
+.score-section{page-break-inside:avoid;margin:20px 0 30px 0;padding:20px 24px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;}
+.score-row{display:flex;align-items:center;gap:24px;}
+.score-circle{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24pt;font-weight:700;color:#fff;flex-shrink:0;}
+.sc-crit{background:#dc2626;}.sc-serious{background:#ea580c;}.sc-mod{background:#eab308;}.sc-good{background:#22c55e;}
+.stats-bar{display:flex;gap:12px;margin:16px 0;page-break-inside:avoid;}
+.stat-card{flex:1;padding:12px 16px;border-radius:6px;text-align:center;}
+.stat-card .num{font-size:20pt;font-weight:700;display:block;line-height:1.2;}
+.stat-card .label{font-size:7.5pt;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;}
+.st-crit{background:#fef2f2;border:1px solid #fecaca;}.st-crit .num{color:#dc2626;}.st-crit .label{color:#b91c1c;}
+.st-serious{background:#fff7ed;border:1px solid #fed7aa;}.st-serious .num{color:#ea580c;}.st-serious .label{color:#c2410c;}
+.st-mod{background:#fefce8;border:1px solid #fde68a;}.st-mod .num{color:#ca8a04;}.st-mod .label{color:#a16207;}
+.st-total{background:#f0f9ff;border:1px solid #bae6fd;}.st-total .num{color:#0284c7;}.st-total .label{color:#0369a1;}
+table.findings{width:100%;border-collapse:collapse;margin:12px 0;font-size:9pt;}
+table.findings th{background:#0f172a;color:#fff;padding:8px 10px;text-align:left;font-weight:600;font-size:8pt;text-transform:uppercase;}
+table.findings td{padding:7px 10px;border-bottom:1px solid #e2e8f0;vertical-align:top;}
+table.findings tr:nth-child(even){background:#f8fafc;}
+.badge{display:inline-block;padding:2px 8px;border-radius:3px;font-size:7.5pt;font-weight:700;text-transform:uppercase;}
+.badge-critical{background:#dc2626;color:#fff;}.badge-serious{background:#ea580c;color:#fff;}.badge-moderate{background:#eab308;color:#1e293b;}.badge-minor{background:#94a3b8;color:#fff;}
+.risk-box{page-break-inside:avoid;padding:16px 20px;border-radius:6px;margin:16px 0;}
+.risk-critical{background:#fef2f2;border-left:4px solid #dc2626;}.risk-high{background:#fff7ed;border-left:4px solid #ea580c;}.risk-medium{background:#fefce8;border-left:4px solid #eab308;}.risk-low{background:#f0f9ff;border-left:4px solid #0ea5e9;}
+.risk-box h4{margin-top:0;}
+code{background:#f1f5f9;padding:1px 4px;border-radius:2px;font-size:8.5pt;}
+pre{background:#1e293b;color:#e2e8f0;padding:12px 16px;border-radius:6px;font-size:8pt;overflow-x:auto;margin:8px 0;}
+pre code{background:none;padding:0;color:inherit;}
+.price-box{page-break-inside:avoid;margin:20px 0;padding:20px 24px;background:linear-gradient(135deg,#0f172a,#1e40af);color:#fff;border-radius:8px;}
+.price-box h3{color:#fff;margin-top:0;}.price-box .price{font-size:22pt;font-weight:700;color:#38bdf8;margin:8px 0;}
+.callout{page-break-inside:avoid;padding:14px 18px;border-radius:6px;margin:14px 0;font-size:9.5pt;}
+.callout-warning{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;}
+.callout-info{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;}
+.two-col{display:flex;gap:20px;}.two-col>div{flex:1;}
+
+/* IMPACT EXPLANATION */
+.impact-cell {
+  background: #f8f9fa;
+  padding: 0.5rem;
+  border-left: 3px solid #ffc107;
+}
+
+.impact-explanation {
+  font-size: 0.85em;
+  line-height: 1.3;
+  color: #495057;
+  margin-bottom: 0.25rem;
+}
