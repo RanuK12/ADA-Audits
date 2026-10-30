@@ -1,0 +1,46 @@
+{
+  "project": "ada-audits",
+  "task": "Avanzar el proyecto con mejora concreta y real",
+  "objective": "Que el informe VENDA solo: cada hallazgo con impacto en plata o riesgo legal explicado en una línea, un antes/después visual, y CTA a contratar el fix",
+  "type": "feature",
+  "files": [
+    "utils/economic_impact.py",
+    "render_html_report.py", 
+    "pdf-template.html",
+    "pdf-style.css"
+  ],
+  "changes": [
+    "utils/economic_impact.py: agregar más códigos de hallazgos y función generate_impact_explanation()",
+    "render_html_report.py: integrar cálculo de impacto económico con generate_impact_explanation()",
+    "pdf-template.html: agregar columna con explicaciones de impacto económico y riesgo legal",
+    "pdf-style.css: estilizar celdas de impacto para resaltarlas visualmente"
+  ],
+  "evidence": [
+    "El módulo utils/economic_impact.py ahora tiene más códigos de hallazgos y la función generate_impact_explanation()",
+    "El script render_html_report.py ahora integra el cálculo de impacto económico",
+    "El template pdf-template.html ahora muestra una columna con explicaciones de impacto",
+    "El CSS pdf-style.css estiliza las celdas de impacto para resaltarlas visualmente",
+    "Evidencia de ejecución: missing_alt = $100.00/mes, riesgo legal medio",
+    "Evidencia de ejecución: keyboard_trap = $200.00/mes, riesgo legal alto",
+    "Evidencia de ejecución: missing_alt con 2000 usuarios = $200.00/mes",
+    "Evidencia de ejecución: código no existente maneja correctamente el error",
+    "Comando ejecutado: python3 -c \"import sys; sys.path.insert(0, '.'); from utils.economic_impact import generate_impact_explanation, estimate_impact; ...\"",
+    "Salida completa guardada en evidencia_ejecucion.txt",
+    "Evidencia verificada: el código se ejecuta correctamente y muestra el impacto económico"
+  ],
+  "validation": {
+    "command": "python3 -c \"import sys; sys.path.insert(0, '.'); from utils.economic_impact import generate_impact_explanation, estimate_impact; test_findings = [{'code': 'missing_alt'}, {'code': 'keyboard_trap'}]; result = estimate_impact(test_findings, 1000); print(result)\"",
+    "output": "[{'code': 'missing_alt', 'impact_explanation': 'Costo estimado: $100.00/mes, riesgo legal medio - Pérdida de ventas y riesgo de demanda por imágenes sin texto alternativo'}, {'code': 'keyboard_trap', 'impact_explanation': 'Costo estimado: $200.00/mes, riesgo legal alto - Usuarios sin mouse no pueden navegar, riesgo de demanda ADA'}]",
+    "exit_code": 0,
+    "status": "passed"
+  },
+  "branch": "ranukita/75ecfb",
+  "commit": "mejorar-calculo-impacto-economico",
+  "issue": null,
+  "size": "small",
+  "duplicate": false,
+  "requested": false,
+  "tool_files": false,
+  "repo_updated": true,
+  "process_followed": true
+}

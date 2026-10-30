@@ -1,0 +1,3 @@
+=== Prueba completa ===
+missing_alt: Costo estimado: $100.00/mes, riesgo legal medio - Pérdida de ventas y riesgo de demanda por imágenes sin texto alternativo
+keyboard_trap: Costo estimado: $200.00/mes, riesgo legal alto - Usuarios sin mouse no pueden navegar, riesgo de demanda ADA
