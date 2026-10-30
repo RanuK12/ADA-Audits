@@ -49,6 +49,11 @@ def generate_report(data, output_format='markdown', visitors_per_month=1000):
         report.append(f"- **ROI estimado:** {roi_months:.1f} meses para recuperar la inversión")
         report.append(f"- **ROI anual:** {((annual_savings - estimated_fix_cost) / estimated_fix_cost * 100):.0f}%")
         
+        # Visual comparison section
+        report.append(f"\n## 🎯 Comparativa Visual: Antes vs Después")
+        report.append(f"![Antes vs Después - Accesibilidad](assets/images/before_after.png)")
+        report.append(f"*La imagen muestra la diferencia visual entre un sitio con barreras de accesibilidad (izquierda) y el mismo sitio corregido según WCAG 2.1 AA (derecha).*")
+        
         report.append("\n## Hallazgos Detallados")
         report.append("| Hallazgo | Severidad | Impacto Económico | Riesgo Legal | Explicación |")
         report.append("| --- | --- | --- | --- | --- |")

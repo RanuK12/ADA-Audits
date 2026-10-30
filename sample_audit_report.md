@@ -12,6 +12,10 @@ Auditoría de accesibilidad WCAG 2.1 AA — se detectaron barreras que afectan l
 - **ROI estimado:** 1.3 meses para recuperar la inversión
 - **ROI anual:** 833%
 
+## 🎯 Comparativa Visual: Antes vs Después
+![Antes vs Después - Accesibilidad](assets/images/before_after.png)
+*La imagen muestra la diferencia visual entre un sitio con barreras de accesibilidad (izquierda) y el mismo sitio corregido según WCAG 2.1 AA (derecha).*
+
 ## Hallazgos Detallados
 | Hallazgo | Severidad | Impacto Económico | Riesgo Legal | Explicación |
 | --- | --- | --- | --- | --- |
