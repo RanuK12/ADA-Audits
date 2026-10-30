@@ -1,86 +1,57 @@
-# Criterios de Targeting — ADA Audits
+# Criterios de Targeting — ADA Audits & Outbound Ranuk IT Solutions
 
-## Verticals prioritarias (alto riesgo legal, alto presupuesto)
+## Verticals Prioritarias (Perfil B2B Validado — Caso Ramón Borrás)
 
-### Tier 1: Prioridad máxima
-- **Dentistas y clínicas dentales** (especialmente ortodoncia, implantes)
-  - Motivo: 42% de demandas ADA contra servicios médicos
-  - Precio: $800-1,500
-  - Contacto: Dr. [Nombre], office@clinica.com
-  - Ideal: ciudades con >50 clínicas (NY, LA, Miami, Chicago)
+Validado en producción: los mejores clientes con mayor tasa de respuesta, presupuesto y necesidad de servicios de software/IA/accesibilidad son agencias digitales, estudios de diseño, empresas de tecnología y consultoras de servicios profesionales.
 
-- **Abogados y firmas legales** (especialmente injury law, immigration)
-  - Motivo: 28% de demandas ADA contra servicios legales
-  - Precio: $1,000-2,000
-  - Contacto: Attorney [Nombre], info@firma.com
-  - Ideal: ciudades con alta concentración de firmas (NY, LA, Chicago, Houston)
+### Tier 1: Prioridad Máxima (Agencias, Tech, Diseño y Consultoría)
+- **Agencias de publicidad y comunicación (`office=advertising_agency`, `office=marketing`)**
+  - Motivo: Tienen clientes corporativos, sufren de webs lentas en WordPress, buscan activamente modernización a Jamstack/Astro y automatización de leads con agentes de IA. (Perfil validado: Ramón Borrás).
+  - Ticket: 390 € - 1.500 € (auditoría, migración web a Astro, bot RAG de atención).
+  - Contacto: Fundador, Director de Tecnología, contacto@, hola@.
 
-### Tier 2: Alto potencial
-- **Hoteles boutique y B&Bs**
-  - Motivo: 15% de demandas ADA contra hospedaje
-  - Precio: $800-1,200
-  - Contacto: Manager [Nombre], reservations@hotel.com
+- **Empresas de tecnología y software (`office=it`)**
+  - Motivo: Alto conocimiento técnico, exigencia de cumplimiento normativo (EAA / WCAG 2.1 AA) y contratación de desarrollo por capacidad.
+  - Ticket: 500 € - 2.500 €.
 
-- **Clínicas médicas y consultorios**
-  - Motivo: 18% de demandas ADA contra servicios médicos
-  - Precio: $800-1,500
-  - Contacto: Dr. [Nombre], info@clinica.com
+- **Estudios de diseño web y branding (`office=web_design`, `office=graphic_design`)**
+  - Motivo: Necesitan garantizar que los sitios entregados a sus clientes cumplan accesibilidad y no tengan sobrecarga técnica ni bloat de plugins.
+  - Ticket: 390 € - 1.200 €.
 
-### Tier 3: Oportunidad
-- **Centros de bienestar y spas médicos**
-  - Motivo: 8% de demandas ADA contra wellness
-  - Precio: $800-1,200
-  - Contacto: Director [Nombre], info@centro.com
+- **Consultoras estratégicas y de gestión (`office=consulting`)**
+  - Motivo: Portales corporativos B2B que requieren máxima velocidad de carga, intake de leads automatizado y reputación institucional.
+  - Ticket: 590 € - 1.800 €.
 
-- **Centros de rehabilitación y fisioterapia**
-  - Motivo: 7% de demandas ADA contra salud
-  - Precio: $800-1,200
-  - Contacto: Dr. [Nombre], info@centro.com
+### Tier 2: Servicios Profesionales de Alto Ticket
+- **Estudios de arquitectura (`office=architect`)**
+  - Motivo: Portfolios visuales pesados que colapsan en móviles; alto presupuesto de branding y presencia digital.
+  - Ticket: 490 € - 1.500 €.
 
-## Criterios de filtrado de leads
+- **Firmas legales y bufetes (`office=lawyer`)**
+  - Motivo: Alto riesgo regulatorio ADA / EAA, formularios de contacto complejos sin accesibilidad, alto ticket medio.
+  - Ticket: 800 € - 2.000 €.
 
-### ✅ Incluir si:
-- Sitio web existente (no solo Facebook/Google My Business)
-- Dominio profesional (.com, .net, .org, .us)
-- Presencia física en EE.UU. (para ADA Title III)
-- Contacto visible (email, teléfono, formulario)
-- Presupuesto estimado >$800 (según industria)
+- **Asesorías fiscales y contables (`office=accountant`, `office=financial`)**
+  - Motivo: Portales de clientes, cumplimiento técnico normativo y necesidad de automatización documental.
+  - Ticket: 400 € - 1.200 €.
 
-### ❌ Excluir si:
-- Solo presencia en redes sociales
-- Dominio gratuito (wix.com, squarespace.com, wordpress.com)
-- Sitio en construcción ("coming soon")
-- Sin información de contacto
-- Empresas muy grandes (>500 empleados, presupuesto >$25M)
-- Non-profits (exentos de ADA Title III)
+- **Inmobiliarias boutique (`office=estate_agent`)**
+  - Motivo: Buscadores de inmuebles lentos en móviles, necesidad de asistentes virtuales de atención rápida 24/7.
+  - Ticket: 500 € - 1.500 €.
 
-## Estrategia de ciudades
+---
 
-### Semana 1: Nueva York
-- 20 dentistas (Brooklyn, Manhattan, Queens)
-- 10 abogados (injury law, immigration)
-- 10 hoteles boutique (Manhattan, Brooklyn)
+## Criterios de Filtrado y Scoring de Leads
 
-### Semana 2: Miami
-- 20 dentistas (Miami Beach, Coral Gables)
-- 10 abogados (injury law, immigration)
-- 10 clínicas médicas
+### ✅ Señales de Alta Conversión (Fit Score $\ge 75$):
+- Rubro agencia / consultoría / tecnología (+15 pts).
+- Sitio desarrollado en **WordPress** (`wp-content`, `wp-includes`): candidato perfecto para ofrecer migración a Astro / Jamstack ultrarrápido y seguro (+15 pts).
+- **Sin bot conversacional ni WhatsApp** visible: candidato directo para integración de agente de IA (+15 pts).
+- No adaptado a móvil / sin viewport (+15 pts).
+- Sin HTTPS o certificado desactualizado (+10 pts).
+- Copyright desactualizado ($\le 2024$) (+10 pts).
 
-### Semana 3: Chicago
-- 20 dentistas (suburbios de Chicago)
-- 10 abogados
-- 10 centros de rehabilitación
-
-### Semana 4: Los Ángeles
-- 20 dentistas (Beverly Hills, Santa Mónica)
-- 10 abogados (entertainment law)
-- 10 hoteles boutique
-
-## Métricas de éxito por vertical
-
-| Vertical | Tasa de respuesta | Cierre promedio | Revenue semanal |
-|----------|-------------------|-----------------|-----------------|
-| Dentistas | 8-12% | 15-20% | $1,600-2,400 |
-| Abogados | 10-15% | 20-25% | $2,000-3,000 |
-| Hoteles | 5-8% | 10-15% | $800-1,200 |
-| Clínicas | 6-10% | 12-18% | $1,000-1,800 |
+### ❌ Exclusión Estricta (Comercios y servicios B2C locales):
+- Comercios minoristas: peluquerías, talleres mecánicos, cerrajerías, ópticas, farmacias, veterinarias, autoescuelas.
+- Sitios sin dominio propio (subdominios wix/linktree/facebook).
+- Dominios sin MX o que no resuelven correo.
