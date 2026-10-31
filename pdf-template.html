@@ -64,7 +64,7 @@
 <h3>{{ severity }}</h3>
 <table class="findings">
   <thead>
-    <tr><th>ID</th><th>Criterio WCAG</th><th>Descripción</th><th>Impacto</th><th>Elementos</th><th>Esfuerzo</th></tr>
+    <tr><th>ID</th><th>Criterio WCAG</th><th>Descripción</th><th>Impacto</th><th>Elementos</th><th>Esfuerzo</th><th>Acción</th></tr>
   </thead>
   <tbody>
   {% for f in items %}
@@ -79,6 +79,9 @@
       </td>
       <td>{{ f.nodes_affected }}</td>
       <td>{{ f.effort }}</td>
+      <td class="cta-cell">
+        <a href="https://ranuk.dev/contact?issue={{ f.id }}" class="btn">Solicitar corrección</a>
+      </td>
     </tr>
   {% endfor %}
   </tbody>

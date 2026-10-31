@@ -59,3 +59,22 @@ pre code{background:none;padding:0;color:inherit;}
   color: #495057;
   margin-bottom: 0.25rem;
 }
+
+/* CTA BUTTON */
+.cta-cell {
+  text-align: center;
+  vertical-align: top;
+}
+.cta-cell .btn {
+  display: inline-block;
+  background: #0066cc;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 8pt;
+  font-weight: 600;
+}
+.cta-cell .btn:hover {
+  background: #004c99;
+}
