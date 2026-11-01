@@ -28,7 +28,8 @@ ENTREGABLES = BASE / "entregables"
 def run_axe(url, out_dir):
     axe_json = out_dir / "axe-raw.json"
     subprocess.run(["axe", url, "--save", "axe-raw.json",
-        "--tags", "wcag2a,wcag2aa,wcag21aa,best-practice", "--timeout", "60"],
+        "--tags", "wcag2a,wcag2aa,wcag21aa,best-practice", "--timeout", "60",
+        "--chromedriver-path", "/private/tmp/ada_scan/chromedriver-mac-arm64/chromedriver"],
         cwd=out_dir, check=False, capture_output=True)
     if not axe_json.exists() or axe_json.stat().st_size < 50:
         return {"violations": [], "error": "scan_failed"}
