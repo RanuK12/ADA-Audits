@@ -1,0 +1,61 @@
+{
+ "title": "Auditoria de Accesibilidad WCAG 2.1 AA",
+ "subtitle": "W&S Abogados (Wsy & Asociados) - wsyasociados.com.ar - 02/11/2026",
+ "sections": [
+  {
+   "heading": "1. Resumen ejecutivo",
+   "body": "Se ejecuto un analisis automatizado con axe-core 4.10.2 (motor de referencia del W3C) sobre la home de wsyasociados.com.ar el 02/11/2026, con viewport de escritorio 1280x900 y reglas WCAG 2.0/2.1 niveles A y AA mas buenas practicas. Resultado: 7 tipos de violacion, 14 nodos afectados, 2 de severidad critica. Los problemas detectados son de plantilla (Elementor + theme), por lo que se repiten en todas las paginas del sitio: un visitante con lector de pantalla o baja vision encuentra barreras en la lectura de los enlaces principales y en la navegacion por secciones. Bajo ADA Title III y el Acta Europea de Accesibilidad (EAA, vigente desde junio 2025), un estudio juridico es exactamente el tipo de sitio de servicio publico que queda alcanzado.",
+   "bullets": [
+    "2 violaciones criticas: ARIA mal aplicado en el widget de pestanas de Elementor",
+    "7 nodos con contraste de color insuficiente (ratio 1.43:1 contra el minimo AA de 4.5:1)",
+    "Jerarquia de encabezados rota: h6 y h4 sin h2/h3 previos",
+    "3 problemas de landmarks: footer duplicado y anidado",
+    "0 errores de formulario detectados (la home no tiene formularios)"
+   ]
+  },
+  {
+   "heading": "2. Hallazgos verificables",
+   "body": "Cada hallazgo incluye el selector real y el impacto medido por el motor. Todos son reproducibles con la misma herramienta sobre la misma URL.",
+   "table": {
+    "headers": ["Regla", "Severidad", "Nodos", "Criterio WCAG", "Que significa"],
+    "rows": [
+     ["aria-allowed-attr", "Critica", "1", "4.1.2 Name, Role, Value", "El tab de Elementor (#elementor-tab-title-2221) declara atributos ARIA que su rol no admite; el lector de pantalla anuncia el control de forma incorrecta."],
+     ["aria-required-children", "Critica", "1", "1.3.1 Info and Relationships", ".elementor-tabs-content-wrapper usa role=tablist sin los hijos role=tab obligatorios; el panel de contenido queda inaccesible por teclado y por lector."],
+     ["color-contrast", "Serious", "7", "1.4.3 Contrast (Minimum)", "7 enlaces en negrita del bloque principal tienen ratio 1.43:1 contra el fondo; el minimo AA es 4.5:1. Practicamente invisibles para baja vision."],
+     ["heading-order", "Moderate", "2", "1.3.1 Info and Relationships", "Salta de nivel (h6 y h4 sin encabezados intermedios): rompe el indice navegable del sitio."],
+     ["landmark-contentinfo-is-top-level", "Moderate", "1", "1.3.1 / 2.4.1", "El footer .ws-main-footer esta anidado dentro de otro landmark."],
+     ["landmark-no-duplicate-contentinfo", "Moderate", "1", "1.3.1 / 2.4.1", "Dos elementos footer (#footer y .ws-main-footer) declarados como contentinfo."],
+     ["landmark-unique", "Moderate", "1", "1.3.1 / 2.4.1", "#footer no tiene nombre accesible unico frente al otro footer."]
+    ]
+   }
+  },
+  {
+   "heading": "3. Impacto legal y de negocio",
+   "body": "Un estudio juridico que promociona servicios de reclamo por accidentes de transito compite por la confianza del cliente en el primer segundo. Los 7 enlaces con contraste 1.43:1 son justamente los llamados a la accion del bloque principal: si el visitante no los lee, no convierte. En el plano legal, ADA Title III y la EAA (Directiva UE 2019/882) habilitan reclamos y sanciones por barreras digitales en servicios al publico; la exposicion crece con cada campana de marketing que dirige trafico al sitio.",
+   "bullets": [
+    "Riesgo reputacional: el sitio es la primera impresion del estudio",
+    "Riesgo legal: ADA Title III y EAA aplican a servicios profesionales al publico",
+    "Riesgo comercial: los CTA ilegibles frenan consultas directas"
+   ]
+  },
+  {
+   "heading": "4. Remediacion propuesta",
+   "body": "Ranuk IT Solutions puede dejar el sitio en conformidad WCAG 2.1 AA en 48-72 horas habiles, con verificacion automatizada antes/despues incluida en el entregable.",
+   "bullets": [
+    "Correccion del widget de pestanas Elementor con ARIA roles tab/tabpanel correctos",
+    "Ajuste de contraste de los 7 enlaces a ratio igual o mayor a 4.5:1 sin cambiar la identidad visual",
+    "Reordenamiento de la jerarquia de encabezados (h1 > h2 > h3)",
+    "Unificacion de landmarks de footer y nombres accesibles unicos",
+    "Re-escaneo axe-core y reporte de conformidad firmado"
+   ]
+  },
+  {
+   "heading": "5. Inversion y proximos pasos",
+   "body": "Reporte tecnico completo con el detalle de cada nodo: USD 29 (pago unico via Stripe). Remediacion llave en mano implementada por nuestro equipo: USD 400. Ambos items incluyen el re-escaneo de verificacion. El reporte de USD 29 se descuenta del paquete de remediacion si se contrata dentro de los 30 dias.",
+   "bullets": [
+    "Pago del reporte: https://buy.stripe.com/7sY4gs5vV4E6e6venj4Ja0a",
+    "Contacto directo: emilio@ranuk.dev - Ranuk IT Solutions"
+   ]
+  }
+ ]
+}

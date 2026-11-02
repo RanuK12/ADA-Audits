@@ -1,0 +1,179 @@
+[
+ {
+  "id": "aria-allowed-attr",
+  "impact": "critical",
+  "help": "Elements must only use supported ARIA attributes",
+  "desc": "Ensure an element's role supports its ARIA attributes",
+  "wcag": [
+   "wcag2a",
+   "wcag412"
+  ],
+  "count": 1,
+  "nodes": [
+   {
+    "target": [
+     "#elementor-tab-title-2221"
+    ],
+    "html": "<div id=\"elementor-tab-title-2221\" class=\"elementor-tab-title elementor-active\" data-tab=\"1\" role=\"button\" aria-controls=\"elementor-tab-content-2221\" aria-expanded=\"true\" tabindex=\"0\" aria-selected=\"true\">",
+    "failure": "Fix all of the following:\n  ARIA attribute is not allowed: aria-selected=\"true\""
+   }
+  ]
+ },
+ {
+  "id": "aria-required-children",
+  "impact": "critical",
+  "help": "Certain ARIA roles must contain particular children",
+  "desc": "Ensure elements with an ARIA role that require child roles contain them",
+  "wcag": [
+   "wcag2a",
+   "wcag131"
+  ],
+  "count": 1,
+  "nodes": [
+   {
+    "target": [
+     ".elementor-tabs-content-wrapper"
+    ],
+    "html": "<div class=\"elementor-tabs-content-wrapper\" role=\"tablist\" aria-orientation=\"vertical\">",
+    "failure": "Fix any of the following:\n  Element has children which are not allowed: [role=tabpanel]"
+   }
+  ]
+ },
+ {
+  "id": "color-contrast",
+  "impact": "serious",
+  "help": "Elements must meet minimum color contrast ratio thresholds",
+  "desc": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+  "wcag": [
+   "wcag2aa",
+   "wcag143"
+  ],
+  "count": 7,
+  "nodes": [
+   {
+    "target": [
+     "p:nth-child(2) > a:nth-child(2) > strong"
+    ],
+    "html": "<strong style=\"font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit;\">abogado laboralista en Capital Federal</strong>",
+    "failure": "Fix any of the following:\n  Element has insufficient color contrast of 1.43 (foreground color: #ffcd05, background color: #f8fafc, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+   },
+   {
+    "target": [
+     "a:nth-child(4) > strong"
+    ],
+    "html": "<strong style=\"font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit;\">divorcio express en CABA</strong>",
+    "failure": "Fix any of the following:\n  Element has insufficient color contrast of 1.43 (foreground color: #ffcd05, background color: #f8fafc, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+   },
+   {
+    "target": [
+     "a:nth-child(6) > strong"
+    ],
+    "html": "<strong style=\"font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit;\">abogados penalistas en Capital Federal</strong>",
+    "failure": "Fix any of the following:\n  Element has insufficient color contrast of 1.43 (foreground color: #ffcd05, background color: #f8fafc, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+   },
+   {
+    "target": [
+     "p:nth-child(3) > a:nth-child(1) > strong"
+    ],
+    "html": "<strong>accidente de tránsito en la Ciudad de Buenos Aires</strong>",
+    "failure": "Fix any of the following:\n  Element has insufficient color contrast of 1.43 (foreground color: #ffcd05, background color: #f8fafc, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+   },
+   {
+    "target": [
+     "p:nth-child(3) > a:nth-child(2) > strong"
+    ],
+    "html": "<strong>sucesiones en CABA</strong>",
+    "failure": "Fix any of the following:\n  Element has insufficient color contrast of 1.43 (foreground color: #ffcd05, background color: #f8fafc, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+   },
+   {
+    "target": [
+     ".ws-footer-cta-btn"
+    ],
+    "html": "<a href=\"https://api.whatsapp.com/send?phone=5491123992570&amp;text=Hola,%20necesito%20realizar%20una%20consulta%20legal.\" class=\"ws-footer-cta-btn\">",
+    "failure": "Fix any of the following:\n  Element has insufficient color contrast of 4.48 (foreground color: #ffffff, background color: #8b7355, font size: 10.5pt (14px), font weight: bold). Expected contrast ratio of 4.5:1"
+   },
+   {
+    "target": [
+     ".ws-footer-bottom"
+    ],
+    "html": "<div class=\"ws-footer-bottom\">",
+    "failure": "Fix any of the following:\n  Element has insufficient color contrast of 3.75 (foreground color: #64748b, background color: #0f172a, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+   }
+  ]
+ },
+ {
+  "id": "heading-order",
+  "impact": "moderate",
+  "help": "Heading levels should only increase by one",
+  "desc": "Ensure the order of headings is semantically correct",
+  "wcag": [],
+  "count": 2,
+  "nodes": [
+   {
+    "target": [
+     "h6"
+    ],
+    "html": "<h6 class=\"elementor-heading-title elementor-size-default\"><span style=\"font-family: Helvetica;font-size: 32px\">WAWRZYNIAK, SASSONE &amp; ASOC.</span></h6>",
+    "failure": "Fix any of the following:\n  Heading order invalid"
+   },
+   {
+    "target": [
+     ".ws-feature-item:nth-child(1) > .ws-feature-text > h4"
+    ],
+    "html": "<h4>Visión Integral</h4>",
+    "failure": "Fix any of the following:\n  Heading order invalid"
+   }
+  ]
+ },
+ {
+  "id": "landmark-contentinfo-is-top-level",
+  "impact": "moderate",
+  "help": "Contentinfo landmark should not be contained in another landmark",
+  "desc": "Ensure the contentinfo landmark is at top level",
+  "wcag": [],
+  "count": 1,
+  "nodes": [
+   {
+    "target": [
+     ".ws-main-footer"
+    ],
+    "html": "<footer class=\"ws-main-footer\">",
+    "failure": "Fix any of the following:\n  The contentinfo landmark is contained in another landmark."
+   }
+  ]
+ },
+ {
+  "id": "landmark-no-duplicate-contentinfo",
+  "impact": "moderate",
+  "help": "Document should not have more than one contentinfo landmark",
+  "desc": "Ensure the document has at most one contentinfo landmark",
+  "wcag": [],
+  "count": 1,
+  "nodes": [
+   {
+    "target": [
+     "#footer"
+    ],
+    "html": "<footer id=\"footer\" class=\"ct-footer\" data-id=\"type-1\" itemscope=\"\" itemtype=\"https://schema.org/WPFooter\">",
+    "failure": "Fix any of the following:\n  Document has more than one contentinfo landmark"
+   }
+  ]
+ },
+ {
+  "id": "landmark-unique",
+  "impact": "moderate",
+  "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+  "desc": "Ensure landmarks are unique",
+  "wcag": [],
+  "count": 1,
+  "nodes": [
+   {
+    "target": [
+     "#footer"
+    ],
+    "html": "<footer id=\"footer\" class=\"ct-footer\" data-id=\"type-1\" itemscope=\"\" itemtype=\"https://schema.org/WPFooter\">",
+    "failure": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+   }
+  ]
+ }
+]
