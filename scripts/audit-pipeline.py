@@ -280,6 +280,29 @@ def generate_pdf(html_path, css_path, pdf_path):
             return
         except subprocess.CalledProcessError as e:
             print(f"wkhtmltopdf failed: {e}")
+
+    # Fallback to Chrome / Chromium headless
+    chrome_paths = [
+        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        "/Applications/Chromium.app/Contents/MacOS/Chromium",
+        shutil.which("google-chrome"),
+        shutil.which("chromium"),
+    ]
+    for cp in chrome_paths:
+        if cp and Path(cp).exists():
+            try:
+                subprocess.run([
+                    str(cp),
+                    "--headless",
+                    "--disable-gpu",
+                    f"--print-to-pdf={str(pdf_path)}",
+                    str(temp_html_path)
+                ], check=True, capture_output=True)
+                if pdf_path.exists() and pdf_path.stat().st_size > 1000:
+                    temp_html_path.unlink()
+                    return
+            except Exception as e:
+                print(f"Chrome headless print-to-pdf failed: {e}")
     
     # Clean up and raise error
     temp_html_path.unlink()
