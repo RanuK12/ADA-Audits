@@ -71,14 +71,12 @@ def humanize_issue_es(issue):
         return f"Hay atributos ARIA mal vinculados en {el} del código, lo que puede trabar el foco al desplazarse por la página."
     return f"{issue.get('help', 'Detalle técnico de accesibilidad')} ({el} afectados en el DOM)."
 
-def clean_first_name(raw_name, business_name, lang="en"):
+def clean_first_name(raw_name):
     fn = (raw_name or "").strip()
-    generic = {"there", "info", "contact", "hola", "admin", "sales", "hello", "office", "agencia", "estudio", "equipo", "clinica", "centro"}
-    if not fn or fn.lower() in generic or "@" in fn or "." in fn or len(fn) < 2:
-        b_clean = (business_name or "").split("|")[0].split("-")[0].strip()
-        if b_clean:
-            return f"{b_clean} team" if lang == "en" else f"equipo de {b_clean}"
-        return "there" if lang == "en" else "equipo"
+    generic = {"there", "info", "contact", "hola", "admin", "sales", "hello", "office", "agencia", "estudio", "equipo", "clinica", "centro", "sent"}
+    if not fn or fn.lower() in generic or "@" in fn or "." in fn or len(fn) < 2 or any(char.isdigit() for char in fn):
+        return None
+    # Capitalizar apropiadamente
     return fn[0].upper() + fn[1:]
 
 def load_exclusions():
@@ -196,22 +194,36 @@ def main():
             return False
         return True
 
-    # A) Primero leads_enriquecidos.csv (US)
+    # A) leads_enriquecidos.csv (manejo de esquemas duales)
     leads_enr = PROSPECTOS / "leads_enriquecidos.csv"
     if leads_enr.exists():
         with open(leads_enr, encoding="utf-8", errors="ignore") as f:
-            for row in csv.DictReader(f):
-                dom = (row.get("domain") or "").strip().lower()
-                email = (row.get("owner_email") or "").strip().lower()
-                name = (row.get("business_name") or dom).strip()
-                fname = (row.get("owner_name") or "").strip()
+            reader = csv.reader(f)
+            for row in reader:
+                if not row or len(row) < 3:
+                    continue
+                # Ignorar encabezados
+                if "domain" in row[0].lower() or "status" in row[0].lower():
+                    continue
+                
+                if row[0].lower() in ("pending", "sent", "failed", "delivered", "draft"):
+                    dom = row[1].strip().lower()
+                    name = row[2].strip() if len(row) > 2 else ""
+                    fname = row[3].strip() if len(row) > 3 else ""
+                    email = row[4].strip().lower() if len(row) > 4 else ""
+                else:
+                    dom = row[0].strip().lower()
+                    name = row[1].strip() if len(row) > 1 else ""
+                    email = row[2].strip().lower() if len(row) > 2 else ""
+                    fname = ""
+
                 if is_valid_candidate(email, dom):
                     seen_domains.add(dom)
                     candidates.append({
                         "domain": dom,
                         "email": email,
-                        "business_name": name,
-                        "first_name": fname,
+                        "business_name": name or dom.split(".")[0].title(),
+                        "first_name": clean_first_name(fname),
                         "region": "US",
                         "lang": "en"
                     })
@@ -222,9 +234,11 @@ def main():
         try:
             c_data = json.load(curados_f.read_text())
             c_list = c_data if isinstance(c_data, list) else c_data.get("leads", list(c_data.values()))
-            if isinstance(c_list, dict): c_list = list(c_list.values())
+            if isinstance(c_list, dict):
+                c_list = list(c_list.values())
             for row in c_list:
-                if not isinstance(row, dict): continue
+                if not isinstance(row, dict):
+                    continue
                 dom = (row.get("domain") or "").strip().lower()
                 email = (row.get("email") or "").strip().lower()
                 name = (row.get("name") or dom).strip()
@@ -235,41 +249,44 @@ def main():
                         "domain": dom,
                         "email": email,
                         "business_name": name,
-                        "first_name": fname,
+                        "first_name": clean_first_name(fname),
                         "region": "US",
                         "lang": "en"
                     })
         except Exception:
             pass
 
-    # C) leads.csv (ES / LATAM / Global)
+    # C) leads.csv (ES / LATAM)
     leads_csv = PROSPECTOS / "leads.csv"
     if leads_csv.exists():
         with open(leads_csv, encoding="utf-8", errors="ignore") as f:
             r = csv.reader(f)
             next(r, None)
             for row in r:
-                if not row or len(row) < 3: continue
+                if not row or len(row) < 3:
+                    continue
                 name = row[0].strip()
                 email = row[2].strip().lower()
                 dom = ""
-                if "@" in email: dom = email.split("@")[1].strip().lower()
-                elif "." in name and " " not in name: dom = name.strip().lower()
+                if "@" in email:
+                    dom = email.split("@")[1].strip().lower()
+                elif "." in name and " " not in name:
+                    dom = name.strip().lower()
                 if is_valid_candidate(email, dom):
                     seen_domains.add(dom)
                     candidates.append({
                         "domain": dom,
                         "email": email,
                         "business_name": name if name != dom else dom.split(".")[0].title(),
-                        "first_name": "",
+                        "first_name": None,
                         "region": "ES/LATAM",
                         "lang": "es"
                     })
 
-    # Seleccionar 50 (priorizando tener mezcla de US y ES/LATAM con escaneos reales)
+    # Seleccionar 50 (32 US + 18 ES/LATAM)
     us_cands = [c for c in candidates if c["lang"] == "en"]
     es_cands = [c for c in candidates if c["lang"] == "es"]
-    selected_50 = (us_cands[:32] + es_cands[:18])[:50]
+    selected_50 = (us_cands[:32] + es_cands[:18])
     if len(selected_50) < 50:
         rest = [c for c in candidates if c not in selected_50]
         selected_50.extend(rest[:50 - len(selected_50)])
@@ -299,7 +316,8 @@ def main():
         lang = item["lang"]
         b_name = item["business_name"]
         email = item["email"]
-        greeting_name = clean_first_name(item["first_name"], b_name, lang=lang)
+        fn = item.get("first_name")
+        is_person = bool(fn)
 
         scan = scanned_map.get(dom)
         if not scan or not scan.get("top_issues"):
@@ -327,7 +345,12 @@ def main():
                 if ext not in bullets:
                     bullets.append(ext)
             subject = f"a few technical notes I put together for {dom}"
-            body = f"""Hi {greeting_name}, hope your week is going well.
+            
+            salutation = f"Hi {fn}, hope your week is going well." if is_person else "Hi everyone, hope you're having a great week."
+            refer_target = "you" if is_person else "your team"
+            dev_target = "your web developer" if is_person else "your web developer or team"
+
+            body = f"""{salutation}
 
 My name is Emilio Ranucoli, and I run Ranuk IT Solutions (ranuk.dev), a software engineering and technical auditing firm. To be completely transparent with you: instead of sending generic sales pitches, the way we introduce our work and earn new clients is by proactively reviewing websites of businesses we come across, spotting technical errors that often go unnoticed, and sharing what we found upfront.
 
@@ -339,9 +362,11 @@ I spent some time analyzing {b_name} ({dom}) earlier today and noticed a few spe
 
 3. {bullets[2]}
 
-Aside from keeping the site aligned with current ADA Title III / WCAG 2.1 AA standards, fixing these small friction points makes it much easier for mobile visitors to navigate and contact you without getting stuck.
+Aside from keeping the site aligned with current ADA Title III / WCAG 2.1 AA standards, fixing these small friction points makes it much easier for mobile visitors to navigate and reach out without getting stuck.
 
-I already put together a clean technical report showing where these issues are and the exact code snippets your web developer would need to fix them (or if you ever need an extra pair of hands, our team can also handle the fixes for you).
+If you'd like to see who we are, our engineering standards, and some of the live web platforms and software projects we build, feel free to take a look at our portfolio at ranuk.dev/portfolio (or our main site at ranuk.dev).
+
+I already put together a clean technical report showing where these issues are and the exact code snippets {dev_target} would need to fix them (or if you ever need an extra pair of hands, our team can also handle the fixes for you).
 
 There's no catch or cost—it's simply how we introduce ourselves. Mind if I send the PDF report your way so you have it on hand?
 
@@ -349,7 +374,8 @@ Best regards,
 
 Emilio Ranucoli
 Systems Engineer · Founder, Ranuk IT Solutions
-ranuk.dev  |  emilio@ranuk.dev"""
+Portfolio: ranuk.dev/portfolio  |  ranuk.dev
+emilio@ranuk.dev"""
         else:
             bullets = [humanize_issue_es(i) for i in raw_issues[:3]]
             extra_es = [
@@ -363,9 +389,25 @@ ranuk.dev  |  emilio@ranuk.dev"""
                 if ext not in bullets:
                     bullets.append(ext)
             subject = f"Diagnóstico técnico que preparé para {dom}"
-            body = f"""Hola {greeting_name}, ¿cómo estás?
 
-Mi nombre es Emilio Ranucoli y soy fundador de Ranuk IT Solutions (ranuk.dev). Te escribo con total transparencia: nos dedicamos al desarrollo de software y auditorías técnicas, y nuestra forma de darnos a conocer y sumar nuevos clientes es analizando por nuestra cuenta sitios web de empresas reales, encontrando errores que suelen pasar desapercibidos y compartiendo el diagnóstico de entrada para mostrar cómo trabajamos.
+            if is_person:
+                salutation = f"Hola {fn}, ¿cómo estás?"
+                pronoun_intro = "Te escribo con total transparencia"
+                pronoun_contact = "contactarte desde el teléfono"
+                pronoun_portfolio = "Para que puedas ver quiénes somos, nuestra forma de programar y algunos de los proyectos y desarrollos web que mantenemos en producción, podés ver nuestro portfolio en ranuk.dev/portfolio (o nuestra web principal en ranuk.dev)."
+                pronoun_dev = "para que tu programador o equipo lo pueda resolver rápido"
+                pronoun_close = "¿Te parece bien si te paso el informe en PDF por acá para que lo tengas a mano?"
+            else:
+                salutation = "Hola, ¿cómo están?"
+                pronoun_intro = "Les escribo con total transparencia"
+                pronoun_contact = "contactarlos desde el teléfono"
+                pronoun_portfolio = "Para que puedan ver quiénes somos, nuestra forma de programar y algunos de los proyectos y desarrollos web que mantenemos en producción, pueden ver nuestro portfolio en ranuk.dev/portfolio (o nuestra web principal en ranuk.dev)."
+                pronoun_dev = "para que su programador o equipo lo pueda resolver rápido"
+                pronoun_close = "¿Les parece bien si les paso el informe en PDF por acá para que lo tengan a mano?"
+
+            body = f"""{salutation}
+
+Mi nombre es Emilio Ranucoli y soy fundador de Ranuk IT Solutions (ranuk.dev). {pronoun_intro}: nos dedicamos a la ingeniería de software y auditorías técnicas, y nuestra forma de darnos a conocer y sumar nuevos clientes es analizando por nuestra cuenta sitios web de empresas reales, encontrando errores que suelen pasar desapercibidos y compartiendo el diagnóstico de entrada para mostrar cómo trabajamos.
 
 Hoy estuve revisando personalmente la web de {b_name} ({dom}) y encontré algunos detalles técnicos en el código (puntualmente en {nodes} elementos) que afectan la experiencia desde el celular, el posicionamiento en Google y la accesibilidad web:
 
@@ -375,17 +417,20 @@ Hoy estuve revisando personalmente la web de {b_name} ({dom}) y encontré alguno
 
 3. {bullets[2]}
 
-Más allá de que hoy las normativas de accesibilidad digital (WCAG 2.1 AA / EAA) son cada vez más exigentes, corregir estos puntos mejora mucho la fluidez de la página y evita que potenciales clientes se traben al navegar o contactarlos desde el teléfono.
+Más allá de que hoy las normativas de accesibilidad digital (WCAG 2.1 AA / EAA) son cada vez más exigentes, corregir estos puntos mejora mucho la fluidez de la página y evita que potenciales clientes se traben al navegar o {pronoun_contact}.
 
-Ya dejé armado un informe técnico con el detalle exacto y el fragmento de código para que tu programador o equipo lo pueda resolver rápido (y si en algún momento necesitan una mano externa para implementarlo, también podemos encargarnos nosotros).
+{pronoun_portfolio}
 
-No tiene ningún costo ni compromiso; es simplemente nuestra carta de presentación. ¿Te parece bien si te paso el informe en PDF por acá para que lo tengan a mano?
+Ya dejé armado un informe técnico con el detalle exacto y los fragmentos de código {pronoun_dev} (y si en algún momento necesitan una mano externa para implementarlo, también podemos encargarnos nosotros).
+
+No tiene ningún costo ni compromiso; es simplemente nuestra carta de presentación. {pronoun_close}
 
 Un saludo cordial,
 
 Emilio Ranucoli
 Ingeniero de Sistemas · Fundador de Ranuk IT Solutions
-ranuk.dev  |  emilio@ranuk.dev"""
+Portfolio: ranuk.dev/portfolio  |  ranuk.dev
+emilio@ranuk.dev"""
 
         filename = f"{idx:02d}-{slugify(dom)}.txt"
         file_path = OUTBOX_QUEUE / filename

@@ -68,7 +68,9 @@ I spent some time analyzing {domain} earlier today and noticed a few specific co
 
 3. {bullets[2] if len(bullets)>2 else '(no 3rd issue)'}
 
-Aside from keeping the site aligned with current ADA Title III / WCAG 2.1 AA standards, fixing these small friction points makes it much easier for mobile visitors to navigate and contact you without getting stuck.
+Aside from keeping the site aligned with current ADA Title III / WCAG 2.1 AA standards, fixing these small friction points makes it much easier for mobile visitors to navigate and reach out without getting stuck.
+
+If you'd like to see who we are, our engineering standards, and some of the live web platforms and software projects we build, feel free to take a look at our portfolio at ranuk.dev/portfolio (or our main site at ranuk.dev).
 
 I already put together a clean technical report showing where these issues are and the exact code snippets your web developer would need to fix them (or if you ever need an extra pair of hands, our team can also handle the fixes for you).
 
@@ -78,7 +80,8 @@ Best regards,
 
 Emilio Ranucoli
 Systems Engineer · Founder, Ranuk IT Solutions
-ranuk.dev  |  emilio@ranuk.dev"""
+Portfolio: ranuk.dev/portfolio  |  ranuk.dev
+emilio@ranuk.dev"""
 
 print("=" * 60)
 print(f"{score_color} LEAD: {domain}")

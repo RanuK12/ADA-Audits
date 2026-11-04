@@ -1,0 +1,36 @@
+EMAIL #33 — MD Marketing Digital
+============================================================
+TO:       info@md-marketingdigital.com.ar
+SUBJECT:  Diagnóstico técnico que preparé para md-marketingdigital.com.ar
+DOMAIN:   md-marketingdigital.com.ar
+SCORE:    73/100
+NODES:    15
+LANG:     ES
+STATUS:   QUEUED (READY_FOR_SEND)
+------------------------------------------------------------
+Hola, ¿cómo están?
+
+Mi nombre es Emilio Ranucoli y soy fundador de Ranuk IT Solutions (ranuk.dev). Les escribo con total transparencia: nos dedicamos a la ingeniería de software y auditorías técnicas, y nuestra forma de darnos a conocer y sumar nuevos clientes es analizando por nuestra cuenta sitios web de empresas reales, encontrando errores que suelen pasar desapercibidos y compartiendo el diagnóstico de entrada para mostrar cómo trabajamos.
+
+Hoy estuve revisando personalmente la web de MD Marketing Digital (md-marketingdigital.com.ar) y encontré algunos detalles técnicos en el código (puntualmente en 15 elementos) que afectan la experiencia desde el celular, el posicionamiento en Google y la accesibilidad web:
+
+1. El contraste de color en 7 elementos está por debajo de la relación 4.5:1, dificultando leer textos o botones desde el celular o con brillo bajo (WCAG 1.4.3).
+
+2. 5 imágenes no tienen cargado el atributo descriptivo 'alt' en el HTML, lo que penaliza el posicionamiento SEO en Google y afecta a lectores de pantalla (WCAG 1.1.1).
+
+3. 3 botones o enlaces interactivos no tienen etiqueta de texto interna en el código, impidiendo identificar su función en navegación asistida (WCAG 4.1.2).
+
+Más allá de que hoy las normativas de accesibilidad digital (WCAG 2.1 AA / EAA) son cada vez más exigentes, corregir estos puntos mejora mucho la fluidez de la página y evita que potenciales clientes se traben al navegar o contactarlos desde el teléfono.
+
+Para que puedan ver quiénes somos, nuestra forma de programar y algunos de los proyectos y desarrollos web que mantenemos en producción, pueden ver nuestro portfolio en ranuk.dev/portfolio (o nuestra web principal en ranuk.dev).
+
+Ya dejé armado un informe técnico con el detalle exacto y los fragmentos de código para que su programador o equipo lo pueda resolver rápido (y si en algún momento necesitan una mano externa para implementarlo, también podemos encargarnos nosotros).
+
+No tiene ningún costo ni compromiso; es simplemente nuestra carta de presentación. ¿Les parece bien si les paso el informe en PDF por acá para que lo tengan a mano?
+
+Un saludo cordial,
+
+Emilio Ranucoli
+Ingeniero de Sistemas · Fundador de Ranuk IT Solutions
+Portfolio: ranuk.dev/portfolio  |  ranuk.dev
+emilio@ranuk.dev
