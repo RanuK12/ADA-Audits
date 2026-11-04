@@ -64,7 +64,7 @@ def humanize_issue_es(issue):
     if 'landmark' in h and 'main' in h:
         return "A la estructura HTML le falta definir la etiqueta semántica principal (<main>), dificultando ir directo al contenido central."
     if 'landmark' in h or 'region' in h:
-        return f"Hay {el} ubicados fuera de regiones semánticas HTML, desordenando la estructura de lectura."
+        return f"Hay {el} {'ubicados' if n>1 else 'ubicado'} fuera de regiones semánticas HTML, desordenando la estructura de lectura."
     if 'heading' in h:
         return f"{n} {'encabezados saltan' if n>1 else 'encabezado salta'} de jerarquía sin orden lógico (por ejemplo de H2 a H4), afectando la estructura SEO para buscadores."
     if 'aria' in h:

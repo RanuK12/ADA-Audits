@@ -18,7 +18,7 @@ Hoy estuve revisando personalmente la web de Mediática Interactive (mediaticain
 
 2. 6 botones o enlaces interactivos no tienen etiqueta de texto interna en el código, impidiendo identificar su función en navegación asistida (WCAG 4.1.2).
 
-3. Hay 1 elemento ubicados fuera de regiones semánticas HTML, desordenando la estructura de lectura.
+3. Hay 1 elemento ubicado fuera de regiones semánticas HTML, desordenando la estructura de lectura.
 
 Más allá de que hoy las normativas de accesibilidad digital (WCAG 2.1 AA / EAA) son cada vez más exigentes, corregir estos puntos mejora mucho la fluidez de la página y evita que potenciales clientes se traben al navegar o contactarlos desde el teléfono.
 
