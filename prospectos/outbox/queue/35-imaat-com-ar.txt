@@ -1,0 +1,29 @@
+EMAIL #35 — iMaat Agencia
+============================================================
+TO:       contacto@imaat.com.ar
+SUBJECT:  consulta breve sobre imaat.com.ar
+DOMAIN:   imaat.com.ar
+SCORE:    70/100
+NODES:    14
+LANG:     ES
+STATUS:   QUEUED (READY_FOR_SEND)
+------------------------------------------------------------
+Hola iMaat,
+
+Realicé un escaneo de accesibilidad web sobre imaat.com.ar esta mañana y detecté 14 elementos con no-conformidades críticas frente a los estándares WCAG 2.1 AA y normativas de accesibilidad digital.
+
+Los 3 hallazgos prioritarios detectados:
+
+1. 1 imágenes sin atributo de texto alternativo (alt) — los lectores de pantalla para personas con discapacidad visual pierden el contexto.
+
+2. 2 elementos visuales con contraste de color inferior a 4.5:1 (mínimo WCAG) — principal disparador de reclamos legales por accesibilidad.
+
+3. Frames must have an accessible name (1 elemento)
+
+Puedo compartirles el informe técnico completo de 17 puntos (con el código exacto de remediación para su webmaster) — sin costo ni compromiso. En caso de que prefieran delegar la corrección completa, ofrezco el servicio llave en mano por un costo fijo de $1.200 USD, finalizado en 2 semanas.
+
+¿Les gustaría que les envíe el reporte completo?
+
+— Emilio Ranucoli
+Ingeniero en Sistemas — Accesibilidad Web y Compliance
+ranuk.dev  |  ranucoliemilio@gmail.com

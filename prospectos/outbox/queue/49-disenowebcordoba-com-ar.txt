@@ -1,0 +1,29 @@
+EMAIL #49 — Disenowebcordoba
+============================================================
+TO:       info@disenowebcordoba.com.ar
+SUBJECT:  consulta breve sobre disenowebcordoba.com.ar
+DOMAIN:   disenowebcordoba.com.ar
+SCORE:    92/100
+NODES:    10
+LANG:     ES
+STATUS:   QUEUED (READY_FOR_SEND)
+------------------------------------------------------------
+Hola Disenowebcordoba,
+
+Realicé un escaneo de accesibilidad web sobre disenowebcordoba.com.ar esta mañana y detecté 10 elementos con no-conformidades críticas frente a los estándares WCAG 2.1 AA y normativas de accesibilidad digital.
+
+Los 3 hallazgos prioritarios detectados:
+
+1. 9 elementos visuales con contraste de color inferior a 4.5:1 (mínimo WCAG) — principal disparador de reclamos legales por accesibilidad.
+
+2. 1 botones o enlaces sin texto accesible identificable — impiden la navegación asistida en botones de contacto o llamado a la acción.
+
+3. Varios controles interactivos carecen de etiquetas semánticas y atributos ARIA para navegación asistida.
+
+Puedo compartirles el informe técnico completo de 17 puntos (con el código exacto de remediación para su webmaster) — sin costo ni compromiso. En caso de que prefieran delegar la corrección completa, ofrezco el servicio llave en mano por un costo fijo de $1.200 USD, finalizado en 2 semanas.
+
+¿Les gustaría que les envíe el reporte completo?
+
+— Emilio Ranucoli
+Ingeniero en Sistemas — Accesibilidad Web y Compliance
+ranuk.dev  |  ranucoliemilio@gmail.com
