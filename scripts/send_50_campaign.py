@@ -97,6 +97,33 @@ def main():
             # Actualizar master tras cada envío para persistencia
             with open(MASTER_JSON, "w", encoding="utf-8") as f:
                 json.dump(entries, f, indent=2, ensure_ascii=False)
+
+            # Registrar en cache_gmail_sent.json para evitar recontacto futuro
+            cache_file = Path.home() / ".ranukita" / "ada_outreach" / "cache_gmail_sent.json"
+            if cache_file.exists():
+                try:
+                    c_data = json.loads(cache_file.read_text())
+                    if to_email.lower() not in c_data:
+                        c_data.append(to_email.lower())
+                        cache_file.write_text(json.dumps(c_data, indent=2))
+                except Exception:
+                    pass
+
+            # Registrar en leads.csv
+            leads_csv = ROOT / "prospectos" / "leads.csv"
+            if leads_csv.exists():
+                try:
+                    with open(leads_csv, "a", encoding="utf-8") as lf:
+                        today_str = datetime.now().strftime("%Y-%m-%d")
+                        row_vals = [
+                            "pending", dom, item.get("business_name", ""),
+                            item.get("first_name", "") or "", to_email,
+                            "", "", "", str(item.get("score", "")), str(item.get("nodes", "")),
+                            "", "", "", today_str, "false", "false", "0", "Campaign 50 humanized batch"
+                        ]
+                        lf.write(",".join(f'"{v}"' if "," in v else v for v in row_vals) + "\n")
+                except Exception:
+                    pass
         elif not ok:
             item["status"] = "failed"
             item["last_error"] = output
