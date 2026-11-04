@@ -6,7 +6,7 @@ DOMAIN:   juno.care
 SCORE:    70/100
 NODES:    20
 LANG:     EN
-FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/Banner.jpeg)
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/ranuk-email-header-640.png)
 HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/30-juno-care.html
 STATUS:   QUEUED (READY_FOR_SEND)
 ============================================================

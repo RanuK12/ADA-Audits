@@ -23,7 +23,7 @@ DEFAULT_MASTER_JSON = ROOT / "prospectos" / "outbox" / "campaign_visual_master.j
 LOG_FILE = ROOT / "logs" / "campaign_send.log"
 LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
 
-BANNER_LOGO = Path.home() / "Apps" / "ranukita-bridge" / "assets" / "Banner.jpeg"
+BANNER_LOGO = Path.home() / "Apps" / "ranukita-bridge" / "assets" / "ranuk-email-header-640.png"
 SKYMAILER_SEND = Path("/Users/emilioranucoli/Apps/ranukita-bridge/scripts/rk-skymailer-send")
 
 def log(msg):

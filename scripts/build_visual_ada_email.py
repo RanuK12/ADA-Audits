@@ -174,111 +174,120 @@ def render_visual_html(lead_info):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{subject}</title>
 </head>
-<body style="margin:0;padding:24px 0;background:#f1f5f9;font-family:{ff};-webkit-font-smoothing:antialiased;">
+<body style="margin:0;padding:24px 0;background-color:#f1f5f9;background:#f1f5f9;font-family:{ff};-webkit-font-smoothing:antialiased;">
 
-<div style="max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;background-color:#f1f5f9;background:#f1f5f9;margin:0;padding:0;">
+  <tr>
+    <td align="center" style="padding:0 12px;">
+      <!-- Card Container (640px) -->
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;width:100%;background-color:#ffffff;background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);border-collapse:separate;">
+        
+        <!-- 1. Header con Banner Oficial Ranuk IT Solutions (640x76) -->
+        <tr>
+          <td bgcolor="#0f172a" style="background-color:#0f172a !important;background:#0f172a;padding:0;margin:0;line-height:0;font-size:0;border-top-left-radius:11px;border-top-right-radius:11px;overflow:hidden;">
+            <img src="cid:ranuklogo" alt="Ranuk IT Solutions" width="640" style="display:block;width:100%;max-width:640px;height:auto;border:0;outline:none;text-decoration:none;">
+          </td>
+        </tr>
 
-  <!-- 1. Header con Logo Oficial de Ranuk IT Solutions -->
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0f172a;border-collapse:collapse;">
-    <tr>
-      <td bgcolor="#0f172a" align="left" style="padding:18px 30px;background:#0f172a;">
-        <img src="cid:ranuklogo" alt="Ranuk IT Solutions" height="42" style="display:block;height:42px;width:auto;border:0;outline:none;text-decoration:none;">
-      </td>
-    </tr>
-  </table>
+        <!-- 2. Contenido Principal -->
+        <tr>
+          <td bgcolor="#ffffff" style="background-color:#ffffff;padding:32px 30px;font-size:15px;line-height:1.62;color:#1e293b;">
 
-  <!-- 2. Contenido Principal -->
-  <div style="padding:32px 30px;font-size:15px;line-height:1.62;color:#1e293b;">
+            <!-- Saludo -->
+            <p style="margin:0 0 16px;font-size:17px;color:#0f172a;">{greeting_html}</p>
 
-    <!-- Saludo -->
-    <p style="margin:0 0 16px;font-size:17px;color:#0f172a;">{greeting_html}</p>
+            <p style="margin:0 0 14px;">{intro_p1}</p>
+            <p style="margin:0 0 18px;">{intro_p2}</p>
 
-    <p style="margin:0 0 14px;">{intro_p1}</p>
-    <p style="margin:0 0 18px;">{intro_p2}</p>
+            <!-- 3. Caja Ámbar: Contexto Regulatorio Crítico -->
+            <div style="border-left:4px solid #f59e0b;background:#fffbeb;padding:14px 18px;margin:22px 0;border-radius:4px;">
+              <p style="margin:0 0 6px 0;font-weight:700;color:#92400e;font-size:14px;">{reg_title}</p>
+              <p style="margin:0;font-size:13px;color:#78350f;line-height:1.55;">{reg_body}</p>
+            </div>
 
-    <!-- 3. Caja Ámbar: Contexto Regulatorio Crítico -->
-    <div style="border-left:4px solid #f59e0b;background:#fffbeb;padding:14px 18px;margin:22px 0;border-radius:4px;">
-      <p style="margin:0 0 6px 0;font-weight:700;color:#92400e;font-size:14px;">{reg_title}</p>
-      <p style="margin:0;font-size:13px;color:#78350f;line-height:1.55;">{reg_body}</p>
-    </div>
+            <!-- 4. Resumen del Diagnóstico con Barra Azul -->
+            <div style="border-left:4px solid #2563eb;padding-left:16px;margin:24px 0;">
+              <h3 style="color:#0f172a;margin:0 0 8px 0;font-size:16px;font-weight:700;">{diag_title}</h3>
+              <p style="margin:0 0 12px 0;font-size:14px;color:#475569;">{diag_sub}</p>
+              <ol style="margin:0;padding-left:18px;color:#1e293b;font-size:14px;">
+                {issues_html}
+              </ol>
+            </div>
 
-    <!-- 4. Resumen del Diagnóstico con Barra Azul -->
-    <div style="border-left:4px solid #2563eb;padding-left:16px;margin:24px 0;">
-      <h3 style="color:#0f172a;margin:0 0 8px 0;font-size:16px;font-weight:700;">{diag_title}</h3>
-      <p style="margin:0 0 12px 0;font-size:14px;color:#475569;">{diag_sub}</p>
-      <ol style="margin:0;padding-left:18px;color:#1e293b;font-size:14px;">
-        {issues_html}
-      </ol>
-    </div>
+            <!-- 5. Tarjeta de Proyectos y Portfolio en Vivo -->
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin:24px 0;">
+              <h4 style="margin:0 0 8px 0;font-size:14px;color:#0f172a;font-weight:700;">{port_title}</h4>
+              <p style="margin:0 0 10px 0;font-size:13px;color:#475569;line-height:1.5;">{port_sub}</p>
+              <ul style="margin:0;padding-left:18px;font-size:13px;color:#334155;line-height:1.65;">
+                <li style="margin-bottom:6px;">{port_item1}</li>
+                <li style="margin-bottom:6px;">{port_item2}</li>
+                <li>{port_item3}</li>
+              </ul>
+            </div>
 
-    <!-- 5. Tarjeta de Proyectos y Portfolio en Vivo -->
-    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin:24px 0;">
-      <h4 style="margin:0 0 8px 0;font-size:14px;color:#0f172a;font-weight:700;">{port_title}</h4>
-      <p style="margin:0 0 10px 0;font-size:13px;color:#475569;line-height:1.5;">{port_sub}</p>
-      <ul style="margin:0;padding-left:18px;font-size:13px;color:#334155;line-height:1.65;">
-        <li style="margin-bottom:6px;">{port_item1}</li>
-        <li style="margin-bottom:6px;">{port_item2}</li>
-        <li>{port_item3}</li>
-      </ul>
-    </div>
+            <!-- 6. Números y Presupuestos de Referencia -->
+            <h4 style="color:#0f172a;margin:26px 0 10px 0;font-size:15px;font-weight:700;">{num_title}</h4>
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin-bottom:20px;">
+              <p style="margin:0 0 10px 0;font-size:14px;color:#1e293b;line-height:1.5;">{num_opt1}</p>
+              <p style="margin:0 0 10px 0;font-size:14px;color:#1e293b;line-height:1.5;">{num_opt2}</p>
+              <p style="margin:0;font-size:14px;color:#1e293b;line-height:1.5;">{num_opt3}</p>
+            </div>
 
-    <!-- 6. Números y Presupuestos de Referencia -->
-    <h4 style="color:#0f172a;margin:26px 0 10px 0;font-size:15px;font-weight:700;">{num_title}</h4>
-    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin-bottom:20px;">
-      <p style="margin:0 0 10px 0;font-size:14px;color:#1e293b;line-height:1.5;">{num_opt1}</p>
-      <p style="margin:0 0 10px 0;font-size:14px;color:#1e293b;line-height:1.5;">{num_opt2}</p>
-      <p style="margin:0;font-size:14px;color:#1e293b;line-height:1.5;">{num_opt3}</p>
-    </div>
+            <!-- 7. Botones CTA -->
+            <div style="margin:22px 0 10px 0;">
+              <a href="{url_opt1}" style="background:#2563eb;color:#ffffff;text-decoration:none;font-weight:600;font-size:14px;padding:12px 24px;border-radius:6px;display:inline-block;margin-bottom:8px;">{btn1_text}</a>
+            </div>
+            <div style="margin:0 0 24px 0;">
+              <a href="{url_opt2}" style="background:#059669;color:#ffffff;text-decoration:none;font-weight:600;font-size:14px;padding:12px 24px;border-radius:6px;display:inline-block;">{btn2_text}</a>
+            </div>
 
-    <!-- 7. Botones CTA -->
-    <div style="margin:22px 0 10px 0;">
-      <a href="{url_opt1}" style="background:#2563eb;color:#ffffff;text-decoration:none;font-weight:600;font-size:14px;padding:12px 24px;border-radius:6px;display:inline-block;margin-bottom:8px;">{btn1_text}</a>
-    </div>
-    <div style="margin:0 0 24px 0;">
-      <a href="{url_opt2}" style="background:#059669;color:#ffffff;text-decoration:none;font-weight:600;font-size:14px;padding:12px 24px;border-radius:6px;display:inline-block;">{btn2_text}</a>
-    </div>
+            <!-- 8. Bloque Navy de Agendamiento Directo -->
+            <div style="background:#0f172a;color:#ffffff;border-radius:8px;padding:20px 24px;margin:24px 0;">
+              <p style="margin:0 0 10px 0;font-weight:600;font-size:15px;color:#ffffff;">{call_title}</p>
+              <ul style="margin:0 0 14px 0;padding-left:20px;color:#cbd5e1;font-size:13px;line-height:1.6;">
+                <li>{call_b1}</li>
+                <li>{call_b2}</li>
+                <li>{call_b3}</li>
+              </ul>
+              <p style="margin:0 0 6px 0;font-size:13px;color:#94a3b8;line-height:1.5;">
+                {call_link_text}<a href="https://calendly.com/emilio-ranuk/30min" style="color:#38bdf8;text-decoration:none;font-weight:600;">calendly.com/emilio-ranuk/30min</a>
+              </p>
+              <p style="margin:0;font-size:13px;color:#e2e8f0;font-style:italic;">
+                {call_free_note}
+              </p>
+            </div>
 
-    <!-- 8. Bloque Navy de Agendamiento Directo -->
-    <div style="background:#0f172a;color:#ffffff;border-radius:8px;padding:20px 24px;margin:24px 0;">
-      <p style="margin:0 0 10px 0;font-weight:600;font-size:15px;color:#ffffff;">{call_title}</p>
-      <ul style="margin:0 0 14px 0;padding-left:20px;color:#cbd5e1;font-size:13px;line-height:1.6;">
-        <li>{call_b1}</li>
-        <li>{call_b2}</li>
-        <li>{call_b3}</li>
-      </ul>
-      <p style="margin:0 0 6px 0;font-size:13px;color:#94a3b8;line-height:1.5;">
-        {call_link_text}<a href="https://calendly.com/emilio-ranuk/30min" style="color:#38bdf8;text-decoration:none;font-weight:600;">calendly.com/emilio-ranuk/30min</a>
-      </p>
-      <p style="margin:0;font-size:13px;color:#e2e8f0;font-style:italic;">
-        {call_free_note}
-      </p>
-    </div>
+          </td>
+        </tr>
 
-  </div>
+        <!-- 9. Firma Corporativa Verificada -->
+        <tr>
+          <td bgcolor="#fafbfc" style="background-color:#fafbfc;border-top:1px solid #e2e8f0;padding:20px 30px;border-bottom-left-radius:11px;border-bottom-right-radius:11px;">
+            <table cellpadding="0" cellspacing="0" style="font-family:{ff};width:100%;">
+              <tr>
+                <td style="vertical-align:middle;">
+                  <div style="font-size:15px;font-weight:700;color:#0f172a;">Emilio Ranucoli</div>
+                  <div style="font-size:13px;color:#64748b;margin:2px 0 6px;">{role_title}</div>
+                  <div style="font-size:13px;color:#475569;">
+                    <a href="https://ranuk.dev/portfolio" style="color:#0ea5e9;text-decoration:none;font-weight:600;">Portfolio</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="https://ranuk.dev" style="color:#0ea5e9;text-decoration:none;">ranuk.dev</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="mailto:emilio@ranuk.dev" style="color:#0ea5e9;text-decoration:none;">emilio@ranuk.dev</a>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <div style="font-size:11px;color:#94a3b8;margin-top:14px;line-height:1.5;">
+              {optout_text}
+            </div>
+          </td>
+        </tr>
 
-  <!-- 9. Firma Corporativa Verificada -->
-  <div style="border-top:1px solid #e2e8f0;padding:20px 30px;background:#fafbfc;">
-    <table cellpadding="0" cellspacing="0" style="font-family:{ff};width:100%;">
-      <tr>
-        <td style="vertical-align:middle;">
-          <div style="font-size:15px;font-weight:700;color:#0f172a;">Emilio Ranucoli</div>
-          <div style="font-size:13px;color:#64748b;margin:2px 0 6px;">{role_title}</div>
-          <div style="font-size:13px;color:#475569;">
-            <a href="https://ranuk.dev/portfolio" style="color:#0ea5e9;text-decoration:none;font-weight:600;">Portfolio</a>
-            &nbsp;&middot;&nbsp;
-            <a href="https://ranuk.dev" style="color:#0ea5e9;text-decoration:none;">ranuk.dev</a>
-            &nbsp;&middot;&nbsp;
-            <a href="mailto:emilio@ranuk.dev" style="color:#0ea5e9;text-decoration:none;">emilio@ranuk.dev</a>
-          </div>
-        </td>
-      </tr>
-    </table>
-    <div style="font-size:11px;color:#94a3b8;margin-top:14px;line-height:1.5;">
-      {optout_text}
-    </div>
-  </div>
-
-</div>
+      </table>
+    </td>
+  </tr>
+</table>
 
 </body>
 </html>"""
