@@ -1,0 +1,12 @@
+EMAIL #33 — Central Texas Pediatric Dentistry
+============================================================
+TO:       ctpd@ctpdkid.com
+SUBJECT:  a few technical notes I put together for ctpdkid.com
+DOMAIN:   ctpdkid.com
+SCORE:    73/100
+NODES:    15
+LANG:     EN
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/Banner.jpeg)
+HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/33-ctpdkid-com.html
+STATUS:   QUEUED (READY_FOR_SEND)
+============================================================

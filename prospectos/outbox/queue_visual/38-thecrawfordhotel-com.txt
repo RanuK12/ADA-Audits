@@ -1,0 +1,12 @@
+EMAIL #38 — The Crawford Hotel
+============================================================
+TO:       info@thecrawfordhotel.com
+SUBJECT:  a few technical notes I put together for thecrawfordhotel.com
+DOMAIN:   thecrawfordhotel.com
+SCORE:    78/100
+NODES:    20
+LANG:     EN
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/Banner.jpeg)
+HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/38-thecrawfordhotel-com.html
+STATUS:   QUEUED (READY_FOR_SEND)
+============================================================

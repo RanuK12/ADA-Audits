@@ -1,0 +1,12 @@
+EMAIL #43 — Clínica ArtDental
+============================================================
+TO:       info@clinicaartdentalmadrid.es
+SUBJECT:  a few technical notes I put together for clinicaartdentalmadrid.es
+DOMAIN:   clinicaartdentalmadrid.es
+SCORE:    83/100
+NODES:    17
+LANG:     EN
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/Banner.jpeg)
+HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/43-clinicaartdentalmadrid-es.html
+STATUS:   QUEUED (READY_FOR_SEND)
+============================================================

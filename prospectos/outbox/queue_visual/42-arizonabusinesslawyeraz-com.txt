@@ -1,0 +1,12 @@
+EMAIL #42 — Phoenix Business Lawyer
+============================================================
+TO:       service@dentonpeterson.com
+SUBJECT:  a few technical notes I put together for arizonabusinesslawyeraz.com
+DOMAIN:   arizonabusinesslawyeraz.com
+SCORE:    82/100
+NODES:    16
+LANG:     EN
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/Banner.jpeg)
+HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/42-arizonabusinesslawyeraz-com.html
+STATUS:   QUEUED (READY_FOR_SEND)
+============================================================

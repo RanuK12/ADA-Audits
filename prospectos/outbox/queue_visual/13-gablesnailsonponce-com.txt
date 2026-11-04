@@ -1,0 +1,12 @@
+EMAIL #13 — Gables Nails
+============================================================
+TO:       gablesnailsonponce@gmail.com
+SUBJECT:  a few technical notes I put together for gablesnailsonponce.com
+DOMAIN:   gablesnailsonponce.com
+SCORE:    83/100
+NODES:    19
+LANG:     EN
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/Banner.jpeg)
+HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/13-gablesnailsonponce-com.html
+STATUS:   QUEUED (READY_FOR_SEND)
+============================================================

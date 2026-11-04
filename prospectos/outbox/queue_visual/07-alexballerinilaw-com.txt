@@ -1,0 +1,12 @@
+EMAIL #07 — The Law Firm of Alexandre Ballerini
+============================================================
+TO:       info@ballerini.law
+SUBJECT:  a few technical notes I put together for alexballerinilaw.com
+DOMAIN:   alexballerinilaw.com
+SCORE:    77/100
+NODES:    21
+LANG:     EN
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/Banner.jpeg)
+HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/07-alexballerinilaw-com.html
+STATUS:   QUEUED (READY_FOR_SEND)
+============================================================

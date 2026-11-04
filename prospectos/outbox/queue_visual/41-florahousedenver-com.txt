@@ -1,0 +1,12 @@
+EMAIL #41 — Flora House Denver
+============================================================
+TO:       hello@florahousedenver.com
+SUBJECT:  a few technical notes I put together for florahousedenver.com
+DOMAIN:   florahousedenver.com
+SCORE:    81/100
+NODES:    15
+LANG:     EN
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/Banner.jpeg)
+HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/41-florahousedenver-com.html
+STATUS:   QUEUED (READY_FOR_SEND)
+============================================================

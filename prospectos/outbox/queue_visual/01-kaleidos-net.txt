@@ -1,0 +1,12 @@
+EMAIL #01 — Kaleidos INC sucursal España
+============================================================
+TO:       hello@kaleidos.net
+SUBJECT:  Diagnóstico técnico y notas que preparé para kaleidos.net
+DOMAIN:   kaleidos.net
+SCORE:    71/100
+NODES:    15
+LANG:     ES
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/Banner.jpeg)
+HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/01-kaleidos-net.html
+STATUS:   QUEUED (READY_FOR_SEND)
+============================================================

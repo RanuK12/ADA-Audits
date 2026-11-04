@@ -1,0 +1,12 @@
+EMAIL #36 — Valencia Smiles
+============================================================
+TO:       info@valenciasmilesdentalcare.com
+SUBJECT:  a few technical notes I put together for valenciasmilesdentalcare.com
+DOMAIN:   valenciasmilesdentalcare.com
+SCORE:    76/100
+NODES:    18
+LANG:     EN
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/Banner.jpeg)
+HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/36-valenciasmilesdentalcare-com.html
+STATUS:   QUEUED (READY_FOR_SEND)
+============================================================

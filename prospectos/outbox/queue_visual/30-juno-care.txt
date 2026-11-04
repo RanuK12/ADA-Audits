@@ -1,0 +1,12 @@
+EMAIL #30 — Juno
+============================================================
+TO:       harlem@juno.care
+SUBJECT:  a few technical notes I put together for juno.care
+DOMAIN:   juno.care
+SCORE:    70/100
+NODES:    20
+LANG:     EN
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/Banner.jpeg)
+HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/30-juno-care.html
+STATUS:   QUEUED (READY_FOR_SEND)
+============================================================

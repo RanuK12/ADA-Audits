@@ -1,0 +1,12 @@
+EMAIL #26 — Poon & Rinn LLC.
+============================================================
+TO:       poonrinn@poonrinn.com
+SUBJECT:  a few technical notes I put together for poonrinn.com
+DOMAIN:   poonrinn.com
+SCORE:    81/100
+NODES:    16
+LANG:     EN
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/Banner.jpeg)
+HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/26-poonrinn-com.html
+STATUS:   QUEUED (READY_FOR_SEND)
+============================================================

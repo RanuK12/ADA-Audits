@@ -1,0 +1,12 @@
+EMAIL #18 — First Impressions Dental PC
+============================================================
+TO:       info@brooklyndentalspa.com
+SUBJECT:  a few technical notes I put together for 1stidental.com
+DOMAIN:   1stidental.com
+SCORE:    73/100
+NODES:    16
+LANG:     EN
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/Banner.jpeg)
+HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/18-1stidental-com.html
+STATUS:   QUEUED (READY_FOR_SEND)
+============================================================

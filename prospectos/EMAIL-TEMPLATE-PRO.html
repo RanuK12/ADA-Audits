@@ -1,82 +1,126 @@
 <!--
-  Ranuk IT Solutions — Plantilla de email profesional para outreach ADA/WCAG.
-  Reemplazá {{first_name}}, {{business_name}}, {{domain}}, {{issue_1..3}} con datos REALES.
-  Logo inline: Content-ID "ranuklogo" (cid:ranuklogo) -> adjuntar
-  ~/Apps/ranukita-bridge/assets/ranuk-it-logo.png  (logo de la EMPRESA Ranuk IT, NO el lobo).
-  OBLIGATORIO enviar con: rk-skymailer-send --html-file <este> --inline ranuklogo=<ruta logo>
-  Subject (minúscula, <=6 palabras): "accessibility issues on {{domain}}" / "quick note on {{domain}}"
+  Ranuk IT Solutions — Plantilla de email profesional para outreach ADA / EAA.
+  Estándar visual 2026:
+  - Header oscuro con logo corporativo Ranuk IT Solutions (cid:ranuklogo -> Banner.jpeg).
+  - Saludo amigable y personalizado.
+  - Intro transparente y humana de Emilio Ranucoli (ingeniería y auditoría técnica).
+  - Caja ámbar de contexto regulatorio (EAA / ADA Title III).
+  - Resumen de diagnóstico técnico con barra de acento azul y badges WCAG.
+  - Tarjeta de proyectos en producción y portfolio (ranuk.dev/portfolio, notarobot.es, audit.ranuk.dev).
+  - Tarjeta de presupuestos de referencia (39 € / $39 USD, 290 € / $249 USD, ~590 - 890 €).
+  - Botones CTA de acción directa.
+  - Bloque oscuro de agendamiento directo / llamada de 15 minutos (Calendly).
+  - Firma corporativa verificada con links.
 -->
-<div style="background:#f4f6f8;padding:24px 0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
-<div style="background:#ffffff;max-width:600px;margin:0 auto;border:1px solid #e6e9ee;border-radius:10px;overflow:hidden;">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico técnico para {{domain}}</title>
+</head>
+<body style="margin:0;padding:24px 0;background:#f1f5f9;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;-webkit-font-smoothing:antialiased;">
 
-  <!-- Header (tabla + bgcolor = robusto en todo cliente de mail; el logo ya trae el fondo
-       azul-oscuro horneado, así se ve aunque el cliente ignore el background del contenedor) -->
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0f172a;">
-    <tr><td bgcolor="#0f172a" align="left" style="padding:14px 24px;background:#0f172a;">
-      <img src="cid:ranuklogo" alt="Ranuk IT Solutions" height="44" style="display:block;border:0;outline:none;text-decoration:none;">
-    </td></tr>
+<div style="max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
+
+  <!-- 1. Header con Logo Oficial de Ranuk IT Solutions -->
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0f172a;border-collapse:collapse;">
+    <tr>
+      <td bgcolor="#0f172a" align="left" style="padding:18px 30px;background:#0f172a;">
+        <img src="cid:ranuklogo" alt="Ranuk IT Solutions" height="42" style="display:block;height:42px;width:auto;border:0;outline:none;text-decoration:none;">
+      </td>
+    </tr>
   </table>
 
-  <!-- Body -->
-  <div style="padding:28px;font-size:15px;line-height:1.6;color:#1f2937;">
-    <p style="margin:0 0 16px;">Hi {{first_name}}, hope your week is going well.</p>
+  <!-- 2. Contenido Principal -->
+  <div style="padding:32px 30px;font-size:15px;line-height:1.62;color:#1e293b;">
 
-    <p style="margin:0 0 16px;">My name is Emilio Ranucoli, and I run <strong>Ranuk IT Solutions</strong> (<a href="https://ranuk.dev" style="color:#2563eb;text-decoration:none;">ranuk.dev</a>), a software engineering and technical auditing firm. To be completely transparent with you: instead of sending generic sales pitches, the way we introduce our work and earn new clients is by proactively reviewing websites of businesses we come across, spotting technical errors that often go unnoticed, and sharing what we found upfront.</p>
+    <!-- Saludo -->
+    <p style="margin:0 0 16px;font-size:17px;color:#0f172a;">Hola, <span style="background:#fef08a;padding:2px 8px;border-radius:4px;font-weight:700;color:#854d0e;">¿cómo están?</span></p>
 
-    <p style="margin:0 0 14px;">I spent some time analyzing <strong>{{domain}}</strong> ({{business_name}}) earlier today and noticed three specific code issues that are currently affecting mobile usability, search visibility, and WCAG / ADA accessibility:</p>
-    <ol style="margin:0 0 18px;padding-left:20px;">
-      <li style="margin-bottom:6px;">{{issue_1_with_location}}</li>
-      <li style="margin-bottom:6px;">{{issue_2_with_location}}</li>
-      <li style="margin-bottom:6px;">{{issue_3_with_location}}</li>
-    </ol>
+    <p style="margin:0 0 14px;">Mi nombre es Emilio Ranucoli y soy fundador de <strong>Ranuk IT Solutions</strong> (<a href="https://ranuk.dev" style="color:#2563eb;text-decoration:none;font-weight:600;">ranuk.dev</a>), estudio de ingeniería de software y auditorías técnicas. Les escribo con total transparencia: nos dedicamos a auditar código y construir plataformas de alto rendimiento, y nuestra forma de darnos a conocer y sumar nuevos clientes es analizando por nuestra cuenta sitios web de empresas reales, encontrando errores técnicos que suelen pasar desapercibidos y compartiendo el diagnóstico de entrada para mostrar cómo trabajamos.</p>
+    <p style="margin:0 0 18px;">Hoy estuve revisando personalmente la web de <strong><a href="https://{{domain}}" style="color:#2563eb;text-decoration:none;font-weight:600;">{{business_name}} ({{domain}})</a></strong> y preparé este análisis técnico para su equipo.</p>
 
-    <p style="margin:0 0 16px;">Aside from keeping the site aligned with current ADA Title III / WCAG 2.1 AA standards, fixing these small friction points makes it much easier for mobile visitors to navigate and reach out without getting stuck.</p>
-
-    <p style="margin:0 0 16px;">If you'd like to see who we are, our engineering standards, and some of the live web platforms and software projects we build, feel free to take a look at our portfolio at <a href="https://ranuk.dev/portfolio" style="color:#2563eb;text-decoration:none;font-weight:500;">ranuk.dev/portfolio</a> (or our main site at <a href="https://ranuk.dev" style="color:#2563eb;text-decoration:none;">ranuk.dev</a>).</p>
-
-    <p style="margin:0 0 16px;">If you'd like to get these sorted out for {{domain}} (or simply reply to this email and I'll happily send over a free summary first):</p>
-    <ol style="margin:0 0 18px;padding-left:20px;">
-      <li style="margin-bottom:6px;"><strong>Option 1: Full Technical Audit Report ($39 USD):</strong> Prioritized WCAG 2.1 AA PDF audit showing the exact lines of code and snippets for your web developer.</li>
-      <li style="margin-bottom:6px;"><strong>Option 2: Turnkey Code Remediation ($249 USD):</strong> Our engineering team directly fixes and tests the source code (GitHub Pull Request or ready patch) with zero hours needed from your team.</li>
-    </ol>
-
-    <!-- CTA Buttons -->
-    <div style="margin:20px 0 10px;">
-      <a href="{{checkout_url}}" style="background:#2563eb;color:#ffffff;text-decoration:none;
-         font-weight:600;font-size:14px;padding:12px 22px;border-radius:6px;display:inline-block;margin-bottom:8px;">
-         👉 Option 1: Order Technical PDF Audit ($39 USD)</a>
-    </div>
-    <div style="margin:0 0 20px;">
-      <a href="{{checkout_url}}&tier=remediation" style="background:#059669;color:#ffffff;text-decoration:none;
-         font-weight:600;font-size:14px;padding:12px 22px;border-radius:6px;display:inline-block;">
-         🛠️ Option 2: Turnkey Code Remediation PR ($249 USD)</a>
+    <!-- 3. Caja Ámbar: Contexto Regulatorio Crítico -->
+    <div style="border-left:4px solid #f59e0b;background:#fffbeb;padding:14px 18px;margin:22px 0;border-radius:4px;">
+      <p style="margin:0 0 6px 0;font-weight:700;color:#92400e;font-size:14px;">Contexto regulatorio crítico:</p>
+      <p style="margin:0;font-size:13px;color:#78350f;line-height:1.55;">A partir de la plena vigencia de la <strong>Ley Europea de Accesibilidad (Directiva UE 2019/882 y Ley 11/2023)</strong> y normativas ADA, las plataformas comerciales deben garantizar accesibilidad digital (WCAG 2.1 AA) para evitar sanciones de 5.000 € a 40.000 € y la pérdida de hasta un <strong>15% de clientes móviles</strong> por fricción y botones no legibles.</p>
     </div>
 
-    <p style="margin:0 0 4px;font-size:13px;color:#64748b;font-style:italic;">Prefer a quick free summary first? Just reply to this email and I'll send the top 3 findings for your site.</p>
+    <!-- 4. Resumen del Diagnóstico con Barra Azul -->
+    <div style="border-left:4px solid #2563eb;padding-left:16px;margin:24px 0;">
+      <h3 style="color:#0f172a;margin:0 0 8px 0;font-size:16px;font-weight:700;">Resumen del Diagnóstico Técnico</h3>
+      <p style="margin:0 0 12px 0;font-size:14px;color:#475569;">Detectamos estos 3 hallazgos prioritarios en el código de <strong>{{domain}}</strong> ({{nodes_count}} elementos afectados en el DOM):</p>
+      <ol style="margin:0;padding-left:18px;color:#1e293b;font-size:14px;">
+        {{issues_list_html}}
+      </ol>
+    </div>
+
+    <!-- 5. Tarjeta de Proyectos y Portfolio en Vivo -->
+    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin:24px 0;">
+      <h4 style="margin:0 0 8px 0;font-size:14px;color:#0f172a;font-weight:700;">Proyectos y Portfolio en Producción</h4>
+      <p style="margin:0 0 10px 0;font-size:13px;color:#475569;line-height:1.5;">Para que puedan comprobar nuestra calidad de código, velocidad (100/100 Lighthouse) y seriedad antes de tomar cualquier decisión, pueden ver nuestros proyectos en vivo:</p>
+      <ul style="margin:0;padding-left:18px;font-size:13px;color:#334155;line-height:1.65;">
+        <li style="margin-bottom:6px;"><strong><a href="https://ranuk.dev/portfolio" style="color:#2563eb;text-decoration:none;font-weight:700;">ranuk.dev/portfolio</a></strong> &mdash; Portfolio oficial de desarrollo web a medida, landing pages y optimización de velocidad.</li>
+        <li style="margin-bottom:6px;"><strong><a href="https://notarobot.es/" style="color:#2563eb;text-decoration:none;font-weight:700;">notarobot.es</a></strong> &mdash; Verificación de identidad humana y seguridad anti-bot (100% Lighthouse, Edge CDN).</li>
+        <li><strong><a href="https://audit.ranuk.dev/" style="color:#2563eb;text-decoration:none;font-weight:700;">audit.ranuk.dev</a></strong> &mdash; Motor de auditoría y certificación técnica de accesibilidad web.</li>
+      </ul>
+    </div>
+
+    <!-- 6. Números y Presupuestos de Referencia -->
+    <h4 style="color:#0f172a;margin:26px 0 10px 0;font-size:15px;font-weight:700;">Números y presupuestos de referencia:</h4>
+    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin-bottom:20px;">
+      <p style="margin:0 0 10px 0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Opción 1: Informe Técnico Completo EAA / WCAG 2.2 AA (39 € / $39 USD):</strong> Auditoría priorizada de 15 páginas con certificado de verificación y líneas exactas de código para su programador o equipo.</p>
+      <p style="margin:0 0 10px 0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Opción 2: Remediación Llave en Mano (290 € / $249 USD):</strong> Nos encargamos de corregir y testear directamente el código fuente (Pull Request en GitHub o parche listo) sin consumir horas de tu equipo.</p>
+      <p style="margin:0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Pack Solución Integral (Web a Medida + Agente IA):</strong> ~<strong>590 € - 890 € / $590 - $890 USD</strong> todo resuelto.</p>
+    </div>
+
+    <!-- 7. Botones CTA -->
+    <div style="margin:22px 0 10px 0;">
+      <a href="{{checkout_url_report}}" style="background:#2563eb;color:#ffffff;text-decoration:none;font-weight:600;font-size:14px;padding:12px 24px;border-radius:6px;display:inline-block;margin-bottom:8px;">👉 Opción 1: Encargar Informe Técnico (39 € / $39 USD)</a>
+    </div>
+    <div style="margin:0 0 24px 0;">
+      <a href="{{checkout_url_remediation}}" style="background:#059669;color:#ffffff;text-decoration:none;font-weight:600;font-size:14px;padding:12px 24px;border-radius:6px;display:inline-block;">🛠️ Opción 2: Remediación Llave en Mano (290 € / $249 USD)</a>
+    </div>
+
+    <!-- 8. Bloque Navy de Agendamiento Directo -->
+    <div style="background:#0f172a;color:#ffffff;border-radius:8px;padding:20px 24px;margin:24px 0;">
+      <p style="margin:0 0 10px 0;font-weight:600;font-size:15px;color:#ffffff;">Podemos coordinar una breve llamada (15-20 minutos) para:</p>
+      <ul style="margin:0 0 14px 0;padding-left:20px;color:#cbd5e1;font-size:13px;line-height:1.6;">
+        <li>Revisar los puntos técnicos de {{domain}} en vivo</li>
+        <li>Explicar nuestra metodología de corrección paso a paso</li>
+        <li>Resolver cualquier consulta técnica de su equipo sin compromiso</li>
+      </ul>
+      <p style="margin:0 0 6px 0;font-size:13px;color:#94a3b8;line-height:1.5;">
+        Pueden agendar directamente acá: <a href="https://calendly.com/emilio-ranuk/30min" style="color:#38bdf8;text-decoration:none;font-weight:600;">calendly.com/emilio-ranuk/30min</a>
+      </p>
+      <p style="margin:0;font-size:13px;color:#e2e8f0;font-style:italic;">
+        (O si prefieren ver un adelanto sin costo, solo respondan este correo y les envío los fragmentos de código para su desarrollador).
+      </p>
+    </div>
+
   </div>
 
-  <!-- Signature -->
-  <div style="border-top:1px solid #e6e9ee;padding:20px 28px;background:#fafbfc;">
-    <table cellpadding="0" cellspacing="0" style="font-family:inherit;">
+  <!-- 9. Firma Corporativa Verificada -->
+  <div style="border-top:1px solid #e2e8f0;padding:20px 30px;background:#fafbfc;">
+    <table cellpadding="0" cellspacing="0" style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;width:100%;">
       <tr>
         <td style="vertical-align:middle;">
-          <div style="font-size:15px;font-weight:600;color:#0f172a;">Emilio Ranucoli</div>
-          <div style="font-size:13px;color:#64748b;margin:2px 0 6px;">Founder &middot; Ranuk IT Solutions</div>
+          <div style="font-size:15px;font-weight:700;color:#0f172a;">Emilio Ranucoli</div>
+          <div style="font-size:13px;color:#64748b;margin:2px 0 6px;">Ingeniero de Sistemas · Fundador, Ranuk IT Solutions</div>
           <div style="font-size:13px;color:#475569;">
-            <a href="https://ranuk.dev/portfolio" style="color:#0ea5e9;text-decoration:none;font-weight:600;">Portfolio: ranuk.dev/portfolio</a>
+            <a href="https://ranuk.dev/portfolio" style="color:#0ea5e9;text-decoration:none;font-weight:600;">Portfolio</a>
             &nbsp;&middot;&nbsp;
             <a href="https://ranuk.dev" style="color:#0ea5e9;text-decoration:none;">ranuk.dev</a>
             &nbsp;&middot;&nbsp;
-            <a href="mailto:emilio@ranuk.dev" style="color:#0ea5e9;text-decoration:none;">emilio@ranuk.dev</a>
+            <a href="https://audit.ranuk.dev" style="color:#0ea5e9;text-decoration:none;">audit.ranuk.dev</a>
           </div>
         </td>
       </tr>
     </table>
-    <div style="font-size:11px;color:#94a3b8;margin-top:14px;line-height:1.5;">
-      Ranuk IT Solutions &mdash; Web accessibility &amp; ADA/WCAG compliance audits.<br>
-      If this isn't relevant, just reply "no thanks" and I won't follow up.
-    </div>
   </div>
 
 </div>
-</div>
+
+</body>
+</html>

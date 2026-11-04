@@ -1,0 +1,12 @@
+EMAIL #21 — Law Office of Elwaleed Ahmed PLLC
+============================================================
+TO:       eahmed@elwaleedandassociates.com
+SUBJECT:  a few technical notes I put together for elwaleedandassociates.com
+DOMAIN:   elwaleedandassociates.com
+SCORE:    76/100
+NODES:    19
+LANG:     EN
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/Banner.jpeg)
+HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/21-elwaleedandassociates-com.html
+STATUS:   QUEUED (READY_FOR_SEND)
+============================================================

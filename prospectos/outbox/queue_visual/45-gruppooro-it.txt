@@ -1,0 +1,12 @@
+EMAIL #45 — Gruppo Oro
+============================================================
+TO:       sanpaolo@gruppooro.it
+SUBJECT:  a few technical notes I put together for gruppooro.it
+DOMAIN:   gruppooro.it
+SCORE:    70/100
+NODES:    19
+LANG:     EN
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/Banner.jpeg)
+HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/45-gruppooro-it.html
+STATUS:   QUEUED (READY_FOR_SEND)
+============================================================

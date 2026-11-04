@@ -1,0 +1,12 @@
+EMAIL #46 — ICT Dynamic
+============================================================
+TO:       help@ictdynamic.com
+SUBJECT:  a few technical notes I put together for ictdynamic.it
+DOMAIN:   ictdynamic.it
+SCORE:    71/100
+NODES:    20
+LANG:     EN
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/Banner.jpeg)
+HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/46-ictdynamic-it.html
+STATUS:   QUEUED (READY_FOR_SEND)
+============================================================

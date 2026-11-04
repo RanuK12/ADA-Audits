@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+# © 2026 Ranuk IT Solutions — ranuk.dev
 """ADA Audits Campaign Dispatcher: Sends queued outreach emails via SkyMailer.
 
 Features:
+- Full visual HTML standard support with embedded CID logo.
 - Idempotent and resumable (skips already sent emails).
 - Anti-spam pacing (default 45s interval).
 - Comprehensive audit logging in logs/campaign_send.log.
@@ -17,10 +19,11 @@ from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-MASTER_JSON = ROOT / "prospectos" / "outbox" / "campaign_50_master.json"
+DEFAULT_MASTER_JSON = ROOT / "prospectos" / "outbox" / "campaign_visual_master.json"
 LOG_FILE = ROOT / "logs" / "campaign_send.log"
 LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
 
+BANNER_LOGO = Path.home() / "Apps" / "ranukita-bridge" / "assets" / "Banner.jpeg"
 SKYMAILER_SEND = Path("/Users/emilioranucoli/Apps/ranukita-bridge/scripts/rk-skymailer-send")
 
 def log(msg):
@@ -33,21 +36,29 @@ def log(msg):
 def send_one(entry, dry_run=False):
     to_email = entry["to"]
     subject = entry["subject"]
-    body = entry["body"]
+    html_path = entry.get("html_path")
     
     if dry_run:
-        log(f"[DRY-RUN] Would send to {to_email} | Subject: '{subject}'")
+        mode = f"HTML ({html_path})" if html_path else "PLAIN"
+        log(f"[DRY-RUN] Would send to {to_email} | Mode: {mode} | Subject: '{subject}'")
         return True, "dry_run"
 
     cmd = [
         str(SKYMAILER_SEND),
         "--to", to_email,
         "--subject", subject,
-        "--body", body,
-        "--plain"
     ]
+
+    if html_path and os.path.exists(html_path):
+        cmd.extend(["--html-file", str(html_path)])
+        if BANNER_LOGO.exists():
+            cmd.extend(["--inline", f"ranuklogo={str(BANNER_LOGO)}"])
+    else:
+        body = entry.get("body", "")
+        cmd.extend(["--body", body, "--plain"])
+
     try:
-        res = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        res = subprocess.run(cmd, capture_output=True, text=True, timeout=35)
         if res.returncode == 0:
             log(f"[SENT] To: {to_email} | {res.stdout.strip()}")
             return True, res.stdout.strip()
@@ -61,16 +72,18 @@ def send_one(entry, dry_run=False):
 
 def main():
     parser = argparse.ArgumentParser(description="ADA Audits 50 Campaign Sender")
+    parser.add_argument("--master", type=str, default=str(DEFAULT_MASTER_JSON), help="Path to master campaign json")
     parser.add_argument("--dry-run", action="store_true", help="Simulate sends without dispatching")
     parser.add_argument("--limit", type=int, default=0, help="Limit number of emails to send (0 = all)")
     parser.add_argument("--interval", type=int, default=45, help="Seconds to sleep between sends (default: 45)")
     args = parser.parse_args()
 
-    if not MASTER_JSON.exists():
-        log(f"Error: Master file not found at {MASTER_JSON}")
+    master_path = Path(args.master)
+    if not master_path.exists():
+        log(f"Error: Master file not found at {master_path}")
         sys.exit(1)
 
-    with open(MASTER_JSON, "r", encoding="utf-8") as f:
+    with open(master_path, "r", encoding="utf-8") as f:
         entries = json.load(f)
 
     pending = [e for e in entries if e.get("status") != "sent"]
@@ -95,7 +108,7 @@ def main():
             item["sent_output"] = output
             sent_count += 1
             # Actualizar master tras cada envío para persistencia
-            with open(MASTER_JSON, "w", encoding="utf-8") as f:
+            with open(master_path, "w", encoding="utf-8") as f:
                 json.dump(entries, f, indent=2, ensure_ascii=False)
 
             # Registrar en cache_gmail_sent.json para evitar recontacto futuro
@@ -119,16 +132,16 @@ def main():
                             "pending", dom, item.get("business_name", ""),
                             item.get("first_name", "") or "", to_email,
                             "", "", "", str(item.get("score", "")), str(item.get("nodes", "")),
-                            "", "", "", today_str, "false", "false", "0", "Campaign 50 humanized batch"
+                            "", "", "", today_str, "false", "false", "0", "Campaign visual batch"
                         ]
                         lf.write(",".join(f'"{v}"' if "," in v else v for v in row_vals) + "\n")
                 except Exception:
                     pass
-        elif not ok:
+        elif not ok and not args.dry_run:
             item["status"] = "failed"
             item["last_error"] = output
             fail_count += 1
-            with open(MASTER_JSON, "w", encoding="utf-8") as f:
+            with open(master_path, "w", encoding="utf-8") as f:
                 json.dump(entries, f, indent=2, ensure_ascii=False)
 
         if idx < len(pending) and not args.dry_run:
