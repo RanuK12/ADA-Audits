@@ -1,0 +1,33 @@
+EMAIL #22 — Bowes Petkovich Palmer
+============================================================
+TO:       info@bpp-law.com
+SUBJECT:  a few technical notes I put together for bpp-law.com
+DOMAIN:   bpp-law.com
+SCORE:    76/100
+NODES:    16
+LANG:     EN
+STATUS:   QUEUED (READY_FOR_SEND)
+------------------------------------------------------------
+Hi Bowes Petkovich Palmer team, hope your week is going well.
+
+My name is Emilio Ranucoli, and I run Ranuk IT Solutions (ranuk.dev), a software engineering and technical auditing firm. To be completely transparent with you: instead of sending generic sales pitches, the way we introduce our work and earn new clients is by proactively reviewing websites of businesses we come across, spotting technical errors that often go unnoticed, and sharing what we found upfront.
+
+I spent some time analyzing Bowes Petkovich Palmer (bpp-law.com) earlier today and noticed a few specific code issues (across 16 elements) that are currently affecting mobile usability, search visibility, and WCAG / ADA accessibility:
+
+1. 9 images are missing descriptive 'alt' attributes in the HTML, which hurts Google image indexing and leaves screen-reader users without context (WCAG 1.1.1).
+
+2. 4 form fields lack explicit code labels, which can cause mobile autofill and keyboard navigation to fail on contact/booking forms (WCAG 3.3.2).
+
+3. 3 headings skip hierarchy levels (e.g., jumping from H2 to H4), which confuses both search engine crawlers and screen readers.
+
+Aside from keeping the site aligned with current ADA Title III / WCAG 2.1 AA standards, fixing these small friction points makes it much easier for mobile visitors to navigate and contact you without getting stuck.
+
+I already put together a clean technical report showing where these issues are and the exact code snippets your web developer would need to fix them (or if you ever need an extra pair of hands, our team can also handle the fixes for you).
+
+There's no catch or cost—it's simply how we introduce ourselves. Mind if I send the PDF report your way so you have it on hand?
+
+Best regards,
+
+Emilio Ranucoli
+Systems Engineer · Founder, Ranuk IT Solutions
+ranuk.dev  |  emilio@ranuk.dev

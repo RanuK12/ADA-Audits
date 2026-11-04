@@ -54,13 +54,13 @@ for issue in lead.get('top_issues', [])[:3]:
 # Construir pitch
 score_color = "🔴" if lead['critical_count']>0 else ("🟠" if lead['serious_count']>2 else "🟡")
 
-email = f"""Subject: quick note about {domain}
+email = f"""Subject: a few technical notes I put together for {domain}
 
-Hi {{{{first_name}}}},
+Hi {{{{first_name}}}}, hope your week is going well.
 
-Ran an accessibility scan on {domain} this morning and found {lead['total_nodes_affected']} elements that put it at ADA Title III risk — the same category of issues driving 5,000+ small-business lawsuits in 2025 (69% against companies under $25M).
+My name is Emilio Ranucoli, and I run Ranuk IT Solutions (ranuk.dev), a software engineering and technical auditing firm. To be completely transparent with you: instead of sending generic sales pitches, the way we introduce our work and earn new clients is by proactively reviewing websites of businesses we come across, spotting technical errors that often go unnoticed, and sharing what we found upfront.
 
-The three most urgent on your site:
+I spent some time analyzing {domain} earlier today and noticed a few specific code issues (across {lead['total_nodes_affected']} elements) that are currently affecting mobile usability, search visibility, and WCAG / ADA accessibility:
 
 1. {bullets[0] if len(bullets)>0 else '(no top issue)'}
 
@@ -68,13 +68,17 @@ The three most urgent on your site:
 
 3. {bullets[2] if len(bullets)>2 else '(no 3rd issue)'}
 
-I can send you the full audit (17-point report with remediation code your webmaster can copy-paste) — free, no strings. If you want me to fix it, flat $1,200, done in 2 weeks.
+Aside from keeping the site aligned with current ADA Title III / WCAG 2.1 AA standards, fixing these small friction points makes it much easier for mobile visitors to navigate and contact you without getting stuck.
 
-Want the report?
+I already put together a clean technical report showing where these issues are and the exact code snippets your web developer would need to fix them (or if you ever need an extra pair of hands, our team can also handle the fixes for you).
 
-— Emilio Ranucoli
-Systems Engineer — accessibility & compliance audits
-ranuk.dev  |  ranucoliemilio@gmail.com"""
+There's no catch or cost—it's simply how we introduce ourselves. Mind if I send the PDF report your way so you have it on hand?
+
+Best regards,
+
+Emilio Ranucoli
+Systems Engineer · Founder, Ranuk IT Solutions
+ranuk.dev  |  emilio@ranuk.dev"""
 
 print("=" * 60)
 print(f"{score_color} LEAD: {domain}")

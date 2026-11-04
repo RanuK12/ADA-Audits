@@ -1,0 +1,33 @@
+EMAIL #10 — Marina Plastic Surgery
+============================================================
+TO:       info@marinaplasticsurgery.com
+SUBJECT:  a few technical notes I put together for marinaplasticsurgery.com
+DOMAIN:   marinaplasticsurgery.com
+SCORE:    88/100
+NODES:    62
+LANG:     EN
+STATUS:   QUEUED (READY_FOR_SEND)
+------------------------------------------------------------
+Hi Justin, hope your week is going well.
+
+My name is Emilio Ranucoli, and I run Ranuk IT Solutions (ranuk.dev), a software engineering and technical auditing firm. To be completely transparent with you: instead of sending generic sales pitches, the way we introduce our work and earn new clients is by proactively reviewing websites of businesses we come across, spotting technical errors that often go unnoticed, and sharing what we found upfront.
+
+I spent some time analyzing Marina Plastic Surgery (marinaplasticsurgery.com) earlier today and noticed a few specific code issues (across 62 elements) that are currently affecting mobile usability, search visibility, and WCAG / ADA accessibility:
+
+1. Color contrast on 1 element falls below the 4.5:1 threshold, making text and buttons harder to read on mobile screens or in bright light (WCAG 1.4.3).
+
+2. Elements should not have tabindex greater than zero (1 element affected in the DOM).
+
+3. Zooming and scaling must not be disabled (1 element affected in the DOM).
+
+Aside from keeping the site aligned with current ADA Title III / WCAG 2.1 AA standards, fixing these small friction points makes it much easier for mobile visitors to navigate and contact you without getting stuck.
+
+I already put together a clean technical report showing where these issues are and the exact code snippets your web developer would need to fix them (or if you ever need an extra pair of hands, our team can also handle the fixes for you).
+
+There's no catch or cost—it's simply how we introduce ourselves. Mind if I send the PDF report your way so you have it on hand?
+
+Best regards,
+
+Emilio Ranucoli
+Systems Engineer · Founder, Ranuk IT Solutions
+ranuk.dev  |  emilio@ranuk.dev

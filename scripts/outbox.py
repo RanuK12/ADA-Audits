@@ -47,45 +47,45 @@ def save_index(data):
 
 def humanize_issue(issue):
     h = issue.get('help', '').lower()
-    n = issue.get('nodes_affected', 0)
+    n = issue.get('nodes_affected', 0) or 1
+    el = f"{n} element" if n == 1 else f"{n} elements"
     if 'contrast' in h:
-        return f"{n} UI elements with color contrast below 4.5:1 (WCAG minimum). This is the #1 trigger for ADA drive-by lawsuits against small practices."
+        return f"Color contrast on {el} falls below the 4.5:1 threshold, making text and buttons harder to read on mobile screens or in bright light (WCAG 1.4.3)."
     if 'alternative text' in h or 'alt' in h:
-        return f"{n} images without alt text — screen-reader users lose critical context. Most-litigated issue category in 2025."
+        return f"{n} {'images are' if n>1 else 'image is'} missing descriptive 'alt' attributes in the HTML, which hurts Google image indexing and leaves screen-reader users without context (WCAG 1.1.1)."
     if 'discernible text' in h:
-        return f"{n} links with no discernible text — screen readers announce them as 'link' with no destination. Booking and contact flows are especially exposed."
+        return f"{n} interactive {'buttons or links lack' if n>1 else 'button or link lacks'} a clear text label in the code, so assistive browsers can't tell visitors where they lead (WCAG 4.1.2)."
     if 'label' in h and 'form' in h:
-        return f"{n} form fields without visible labels — blind users hit them and hear only 'edit, blank'."
+        return f"{n} form {'fields lack' if n>1 else 'field lacks'} explicit code labels, which can cause mobile autofill and keyboard navigation to fail on contact/booking forms (WCAG 3.3.2)."
     if 'landmark' in h and 'main' in h:
-        return "The page lacks a main landmark — screen-reader users cannot skip directly to content."
+        return "The page layout is missing a primary <main> semantic landmark, making keyboard and assistive navigation slower."
     if 'landmark' in h:
-        return f"{n} content blocks sitting outside semantic landmarks — blind users can't jump-navigate."
+        return f"{el} {'sit' if n>1 else 'sits'} outside semantic HTML landmark regions, which makes it harder for assistive tech to jump-navigate the page."
     if 'color' in h and 'rely' in h:
-        return "Links distinguishable only by color — fails WCAG 1.4.1 Use of Color."
+        return "Links are distinguishable only by color, making them harder to spot for low-vision visitors (WCAG 1.4.1)."
     if 'heading' in h:
-        return f"{n} headings with hierarchy issues — breaks document outline for assistive tech."
+        return f"{n} {'headings skip' if n>1 else 'heading skips'} hierarchy levels (e.g., jumping from H2 to H4), which confuses both search engine crawlers and screen readers."
     if 'aria' in h and 'name' in h:
-        return f"An interactive control ({n} element) has no accessible name — blind users can't reach the function."
+        return f"An interactive control ({el}) has no accessible name in the code, preventing assistive navigation."
     if 'aria' in h:
-        return f"ARIA attributes used incorrectly on {n} element(s), breaking screen-reader navigation."
-    return f"{issue.get('help','accessibility issue')} ({n} elements)"
+        return f"{el} {'have' if n>1 else 'has'} mismatched ARIA attributes in the DOM, which can cause focus traps when navigating on mobile or by keyboard."
+    return f"{issue.get('help','Technical accessibility barrier')} ({el} affected in the DOM)."
 
 
 def generate_email_body(domain, first_name, scan_lead):
-    """Arma el body del email cold, sin markdown."""
+    """Arma el body del email cold con el formato humanizado de Ranuk IT Solutions."""
     bullets = [humanize_issue(i) for i in scan_lead.get('top_issues', [])[:3]]
-    # Rellenar si hay menos de 3
     while len(bullets) < 3:
-        bullets.append("Multiple interactive elements lack proper accessibility metadata, affecting screen-reader users.")
+        bullets.append("Several interactive controls are missing explicit ARIA labels in the HTML, making keyboard navigation harder (WCAG 4.1.2).")
 
-    salutation = f"Hi {first_name}," if first_name and first_name.lower() not in ("there", "") else "Hi there,"
+    salutation = f"Hi {first_name}, hope your week is going well." if first_name and first_name.lower() not in ("there", "") else "Hi there, hope your week is going well."
     nodes = scan_lead.get('total_nodes_affected', 0)
 
     body = f"""{salutation}
 
-Ran an accessibility scan on {domain} this morning and found {nodes} elements that put the site at ADA Title III risk — the same category of issues driving 5,000+ small-business lawsuits in 2025 (69% against companies under $25M).
+My name is Emilio Ranucoli, and I run Ranuk IT Solutions (ranuk.dev), a software engineering and technical auditing firm. To be completely transparent with you: instead of sending generic sales pitches, the way we introduce our work and earn new clients is by proactively reviewing websites of businesses we come across, spotting technical errors that often go unnoticed, and sharing what we found upfront.
 
-Three most urgent on your site:
+I spent some time analyzing {domain} earlier today and noticed a few specific code issues (across {nodes} elements) that are currently affecting mobile usability, search visibility, and WCAG / ADA accessibility:
 
 1. {bullets[0]}
 
@@ -93,13 +93,17 @@ Three most urgent on your site:
 
 3. {bullets[2]}
 
-I can send you the full 17-point audit (with remediation code your webmaster can copy-paste) — free, no strings. If you want me to fix it, flat $1,200, done in 2 weeks.
+Aside from keeping the site aligned with current ADA Title III / WCAG 2.1 AA standards, fixing these small friction points makes it much easier for mobile visitors to navigate and contact you without getting stuck.
 
-Want the report?
+I already put together a clean technical report showing where these issues are and the exact code snippets your web developer would need to fix them (or if you ever need an extra pair of hands, our team can also handle the fixes for you).
 
-— Emilio Ranucoli
-Systems Engineer — accessibility & compliance audits
-ranuk.dev  |  ranucoliemilio@gmail.com
+There's no catch or cost—it's simply how we introduce ourselves. Mind if I send the PDF report your way so you have it on hand?
+
+Best regards,
+
+Emilio Ranucoli
+Systems Engineer · Founder, Ranuk IT Solutions
+ranuk.dev  |  emilio@ranuk.dev
 """
     return body
 

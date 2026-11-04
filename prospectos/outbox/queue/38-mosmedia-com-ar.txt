@@ -1,0 +1,33 @@
+EMAIL #38 — Mosmedia
+============================================================
+TO:       info@mosmedia.com.ar
+SUBJECT:  Diagnóstico técnico que preparé para mosmedia.com.ar
+DOMAIN:   mosmedia.com.ar
+SCORE:    78/100
+NODES:    15
+LANG:     ES
+STATUS:   QUEUED (READY_FOR_SEND)
+------------------------------------------------------------
+Hola equipo de Mosmedia, ¿cómo estás?
+
+Mi nombre es Emilio Ranucoli y soy fundador de Ranuk IT Solutions (ranuk.dev). Te escribo con total transparencia: nos dedicamos al desarrollo de software y auditorías técnicas, y nuestra forma de darnos a conocer y sumar nuevos clientes es analizando por nuestra cuenta sitios web de empresas reales, encontrando errores que suelen pasar desapercibidos y compartiendo el diagnóstico de entrada para mostrar cómo trabajamos.
+
+Hoy estuve revisando personalmente la web de Mosmedia (mosmedia.com.ar) y encontré algunos detalles técnicos en el código (puntualmente en 15 elementos) que afectan la experiencia desde el celular, el posicionamiento en Google y la accesibilidad web:
+
+1. 6 botones o enlaces interactivos no tienen etiqueta de texto interna en el código, impidiendo identificar su función en navegación asistida (WCAG 4.1.2).
+
+2. El contraste de color en 8 elementos está por debajo de la relación 4.5:1, dificultando leer textos o botones desde el celular o con brillo bajo (WCAG 1.4.3).
+
+3. A la estructura HTML le falta definir la etiqueta semántica principal (<main>), dificultando ir directo al contenido central.
+
+Más allá de que hoy las normativas de accesibilidad digital (WCAG 2.1 AA / EAA) son cada vez más exigentes, corregir estos puntos mejora mucho la fluidez de la página y evita que potenciales clientes se traben al navegar o contactarlos desde el teléfono.
+
+Ya dejé armado un informe técnico con el detalle exacto y el fragmento de código para que tu programador o equipo lo pueda resolver rápido (y si en algún momento necesitan una mano externa para implementarlo, también podemos encargarnos nosotros).
+
+No tiene ningún costo ni compromiso; es simplemente nuestra carta de presentación. ¿Te parece bien si te paso el informe en PDF por acá para que lo tengan a mano?
+
+Un saludo cordial,
+
+Emilio Ranucoli
+Ingeniero de Sistemas · Fundador de Ranuk IT Solutions
+ranuk.dev  |  emilio@ranuk.dev
