@@ -6,7 +6,7 @@ DOMAIN:   brilliancenewyork.com
 SCORE:    82/100
 NODES:    18
 LANG:     EN
-FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/ranuk-email-header-640.png)
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/ranuk-it-logo-tight.png)
 HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/12-brilliancenewyork-com.html
 STATUS:   QUEUED (READY_FOR_SEND)
 ============================================================

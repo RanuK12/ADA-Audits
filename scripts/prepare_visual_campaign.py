@@ -28,7 +28,7 @@ QUEUE_DIR.mkdir(parents=True, exist_ok=True)
 MASTER_JSON = PROSPECTOS / "outbox" / "campaign_visual_master.json"
 ENTREGABLES = ROOT / "entregables"
 LOGDIR = Path.home() / ".ranukita" / "ada_outreach"
-BANNER_LOGO = Path.home() / "Apps" / "ranukita-bridge" / "assets" / "ranuk-email-header-640.png"
+BANNER_LOGO = Path.home() / "Apps" / "ranukita-bridge" / "assets" / "ranuk-it-logo-tight.png"
 
 def slugify(text):
     return re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')[:35]

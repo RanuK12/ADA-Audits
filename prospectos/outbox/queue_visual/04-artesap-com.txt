@@ -6,7 +6,7 @@ DOMAIN:   artesap.com
 SCORE:    74/100
 NODES:    18
 LANG:     ES
-FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/ranuk-email-header-640.png)
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/ranuk-it-logo-tight.png)
 HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/04-artesap-com.html
 STATUS:   QUEUED (READY_FOR_SEND)
 ============================================================

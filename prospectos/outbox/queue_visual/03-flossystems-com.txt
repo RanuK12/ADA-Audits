@@ -6,7 +6,7 @@ DOMAIN:   flossystems.com
 SCORE:    73/100
 NODES:    17
 LANG:     ES
-FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/ranuk-email-header-640.png)
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/ranuk-it-logo-tight.png)
 HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/03-flossystems-com.html
 STATUS:   QUEUED (READY_FOR_SEND)
 ============================================================

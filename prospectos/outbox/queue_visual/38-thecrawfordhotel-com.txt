@@ -6,7 +6,7 @@ DOMAIN:   thecrawfordhotel.com
 SCORE:    78/100
 NODES:    20
 LANG:     EN
-FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/ranuk-email-header-640.png)
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/ranuk-it-logo-tight.png)
 HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/38-thecrawfordhotel-com.html
 STATUS:   QUEUED (READY_FOR_SEND)
 ============================================================

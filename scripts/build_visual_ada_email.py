@@ -176,22 +176,28 @@ def render_visual_html(lead_info):
 </head>
 <body style="margin:0;padding:24px 0;background-color:#f1f5f9;background:#f1f5f9;font-family:{ff};-webkit-font-smoothing:antialiased;">
 
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;background-color:#f1f5f9;background:#f1f5f9;margin:0;padding:0;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;margin:0;padding:0;">
   <tr>
     <td align="center" style="padding:0 12px;">
-      <!-- Card Container (640px) -->
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;width:100%;background-color:#ffffff;background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);border-collapse:separate;">
+      <!-- Card Container (640px) SIN background-color general para no contaminar la barra -->
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;width:100%;margin:0 auto;border:1px solid #cbd5e1;border-radius:12px;overflow:hidden;border-collapse:collapse;">
         
-        <!-- 1. Header con Banner Oficial Ranuk IT Solutions (640x76) -->
-        <tr>
-          <td bgcolor="#0f172a" style="background-color:#0f172a !important;background:#0f172a;padding:0;margin:0;line-height:0;font-size:0;border-top-left-radius:11px;border-top-right-radius:11px;overflow:hidden;">
-            <img src="cid:ranuklogo" alt="Ranuk IT Solutions" width="640" style="display:block;width:100%;max-width:640px;height:auto;border:0;outline:none;text-decoration:none;">
+        <!-- 1. Header con Barra Oficial Ranuk IT Solutions (100% #0f172a uniforme) -->
+        <tr bgcolor="#0f172a" style="background-color:#0f172a;background:#0f172a;">
+          <td bgcolor="#0f172a" align="left" style="background-color:#0f172a;background:#0f172a;padding:22px 28px;border-top-left-radius:11px;border-top-right-radius:11px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+              <tr>
+                <td valign="middle" style="vertical-align:middle;padding:0;">
+                  <img src="cid:ranuklogo" alt="Ranuk IT Solutions" height="38" style="display:block;height:38px;width:auto;border:0;outline:none;text-decoration:none;">
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
 
         <!-- 2. Contenido Principal -->
-        <tr>
-          <td bgcolor="#ffffff" style="background-color:#ffffff;padding:32px 30px;font-size:15px;line-height:1.62;color:#1e293b;">
+        <tr bgcolor="#ffffff" style="background-color:#ffffff;background:#ffffff;">
+          <td bgcolor="#ffffff" style="background-color:#ffffff;background:#ffffff;padding:32px 30px;font-size:15px;line-height:1.62;color:#1e293b;">
 
             <!-- Saludo -->
             <p style="margin:0 0 16px;font-size:17px;color:#0f172a;">{greeting_html}</p>
@@ -261,8 +267,8 @@ def render_visual_html(lead_info):
         </tr>
 
         <!-- 9. Firma Corporativa Verificada -->
-        <tr>
-          <td bgcolor="#fafbfc" style="background-color:#fafbfc;border-top:1px solid #e2e8f0;padding:20px 30px;border-bottom-left-radius:11px;border-bottom-right-radius:11px;">
+        <tr bgcolor="#fafbfc" style="background-color:#fafbfc;background:#fafbfc;">
+          <td bgcolor="#fafbfc" style="background-color:#fafbfc;background:#fafbfc;border-top:1px solid #e2e8f0;padding:20px 30px;border-bottom-left-radius:11px;border-bottom-right-radius:11px;">
             <table cellpadding="0" cellspacing="0" style="font-family:{ff};width:100%;">
               <tr>
                 <td style="vertical-align:middle;">
