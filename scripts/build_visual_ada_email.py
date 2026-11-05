@@ -30,7 +30,7 @@ def build_checkout_url(domain, email="", lang="es", is_eur=False, tier="report")
         params["email"] = email.strip()
     return CHECKOUT_ENDPOINT + "?" + _up.urlencode(params)
 
-def render_visual_html(lead_info):
+def render_visual_html(lead_info, offset=0):
     """
     lead_info dict keys:
     - domain: str

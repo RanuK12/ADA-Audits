@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
+<title>Diagnóstico técnico y notas que preparé para mydentiss.es</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    supported-color-schemes: light dark;
+  }
+</style>
+</head>
+<body style="margin:0;padding:24px 0;background-color:#f1f5f9;background:#f1f5f9;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;-webkit-font-smoothing:antialiased;">
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;margin:0;padding:0;">
+  <tr>
+    <td align="center" style="padding:0 12px;">
+      <!-- Card Container (640px) SIN background-color general para no contaminar la barra -->
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;width:100%;margin:0 auto;border:1px solid #cbd5e1;border-radius:12px;overflow:hidden;border-collapse:collapse;">
+        
+        <!-- 1. Header con Barra Oficial Ranuk IT Solutions (Banner Retina Inmune a Inversión Dark Mode) -->
+        <tr bgcolor="#0f172a" style="background-color:#0f172a;background:#0f172a;margin:0;padding:0;">
+          <td bgcolor="#0f172a" align="left" style="background-color:#0f172a;background:#0f172a;margin:0;padding:0;line-height:0;font-size:0;border-top-left-radius:11px;border-top-right-radius:11px;">
+            <img src="cid:ranuklogo" alt="Ranuk IT Solutions" width="640" style="display:block;width:100%;max-width:640px;height:auto;border:0;outline:none;text-decoration:none;border-top-left-radius:11px;border-top-right-radius:11px;">
+          </td>
+        </tr>
+
+        <!-- 2. Contenido Principal -->
+        <tr bgcolor="#ffffff" style="background-color:#ffffff;background:#ffffff;">
+          <td bgcolor="#ffffff" style="background-color:#ffffff;background:#ffffff;padding:32px 30px;font-size:15px;line-height:1.62;color:#1e293b;">
+
+            <!-- Saludo -->
+            <p style="margin:0 0 16px;font-size:17px;color:#0f172a;">Hola, un saludo al equipo de MyDentiss:</p>
+
+            <p style="margin:0 0 14px;">Mi nombre es Emilio Ranucoli y soy fundador de <strong>Ranuk IT Solutions</strong> (<a href="https://ranuk.dev" style="color:#2563eb;text-decoration:none;font-weight:600;">ranuk.dev</a>), estudio de ingeniería de software y auditorías técnicas. Les escribo con total transparencia: nos dedicamos a auditar código y construir plataformas de alto rendimiento, y nuestra forma de darnos a conocer y sumar nuevos clientes es analizando por nuestra cuenta sitios web de empresas reales, encontrando errores técnicos que suelen pasar desapercibidos y compartiendo el diagnóstico de entrada para mostrar cómo trabajamos.</p>
+            <p style="margin:0 0 18px;">Hoy estuve revisando personalmente la web de <strong><a href="https://mydentiss.es" style="color:#2563eb;text-decoration:none;font-weight:600;">MyDentiss (mydentiss.es)</a></strong> y preparé este análisis técnico para su equipo.</p>
+
+            <!-- 3. Caja Ámbar: Contexto Regulatorio Crítico -->
+            <div style="border-left:4px solid #f59e0b;background:#fffbeb;padding:14px 18px;margin:22px 0;border-radius:4px;">
+              <p style="margin:0 0 6px 0;font-weight:700;color:#92400e;font-size:14px;">Contexto regulatorio crítico:</p>
+              <p style="margin:0;font-size:13px;color:#78350f;line-height:1.55;">A partir de la plena vigencia de la <strong>Ley Europea de Accesibilidad (Directiva UE 2019/882 y Ley 11/2023)</strong>, las plataformas comerciales deben garantizar accesibilidad digital (WCAG 2.1 AA) para evitar sanciones aplicables de 5.000 € a 40.000 € y la pérdida de hasta un <strong>15% de clientes móviles</strong> por fricción y botones no legibles.</p>
+            </div>
+
+            <!-- 4. Resumen del Diagnóstico con Barra Azul -->
+            <div style="border-left:4px solid #2563eb;padding-left:16px;margin:24px 0;">
+              <h3 style="color:#0f172a;margin:0 0 8px 0;font-size:16px;font-weight:700;">Resumen del Diagnóstico Técnico</h3>
+              <p style="margin:0 0 12px 0;font-size:14px;color:#475569;">Detectamos estos 3 hallazgos prioritarios en el código de <strong>mydentiss.es</strong> (14 elementos afectados en el DOM):</p>
+              <ol style="margin:0;padding-left:18px;color:#1e293b;font-size:14px;">
+                <li style="margin-bottom:10px;line-height:1.55;"><strong>Formulario de Cita Previa sin Etiquetado Accesible:</strong> Los selectores de especialidad y fecha carecen de etiquetas vinculadas en HTML, bloqueando el autocompletado en navegadores móviles. <span style="background:#e0f2fe;color:#0369a1;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle;">WCAG 3.3.2</span></li><li style="margin-bottom:10px;line-height:1.55;"><strong>Contraste Insuficiente en Tratamientos y Horarios:</strong> Textos secundarios en tonos grises o celestes sobre fondo blanco no alcanzan el ratio 4.5:1, dificultando la lectura en pantallas con luz natural. <span style="background:#e0f2fe;color:#0369a1;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle;">WCAG 1.4.3</span></li><li style="margin-bottom:10px;line-height:1.55;"><strong>Iconos y Botones de Contacto Rápido sin Nombre Accesible:</strong> Los botones flotantes de llamada y WhatsApp carecen de aria-label en código, impidiendo la interacción asistida. <span style="background:#e0f2fe;color:#0369a1;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle;">WCAG 4.1.2</span></li>
+              </ol>
+            </div>
+
+            <!-- 5. Tarjeta de Proyectos y Portfolio en Vivo -->
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin:24px 0;">
+              <h4 style="margin:0 0 8px 0;font-size:14px;color:#0f172a;font-weight:700;">Proyectos y Portfolio en Producción</h4>
+              <p style="margin:0 0 10px 0;font-size:13px;color:#475569;line-height:1.5;">Para que puedan comprobar nuestra calidad de código, velocidad (100/100 Lighthouse) y seriedad antes de tomar cualquier decisión, pueden ver nuestros proyectos en vivo:</p>
+              <ul style="margin:0;padding-left:18px;font-size:13px;color:#334155;line-height:1.65;">
+                <li style="margin-bottom:6px;"><strong><a href="https://ranuk.dev/portfolio" style="color:#2563eb;text-decoration:none;font-weight:700;">ranuk.dev/portfolio</a></strong> &mdash; Portfolio oficial de desarrollo web a medida, landing pages y optimización de velocidad.</li>
+                <li style="margin-bottom:6px;"><strong><a href="https://notarobot.es/" style="color:#2563eb;text-decoration:none;font-weight:700;">notarobot.es</a></strong> &mdash; Verificación de identidad humana y seguridad anti-bot (100% Lighthouse, Edge CDN).</li>
+                <li><strong><a href="https://audit.ranuk.dev/" style="color:#2563eb;text-decoration:none;font-weight:700;">audit.ranuk.dev</a></strong> &mdash; Motor de auditoría y certificación técnica de accesibilidad web.</li>
+              </ul>
+            </div>
+
+            <!-- 6. Números y Presupuestos de Referencia -->
+            <h4 style="color:#0f172a;margin:26px 0 10px 0;font-size:15px;font-weight:700;">Números y presupuestos de referencia:</h4>
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin-bottom:20px;">
+              <p style="margin:0 0 10px 0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Opción 1: Informe Técnico Completo EAA / WCAG 2.2 AA (39 €):</strong> Auditoría priorizada de 15 páginas con certificado de verificación y líneas exactas de código para su programador o equipo.</p>
+              <p style="margin:0 0 10px 0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Opción 2: Remediación Llave en Mano (290 €):</strong> Nos encargamos de corregir y testear directamente el código fuente (Pull Request en GitHub o parche listo) sin consumir horas de tu equipo.</p>
+              <p style="margin:0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Pack Solución Integral (Web a Medida + Agente IA):</strong> ~<strong>590 € - 890 € / $590 - $890 USD</strong> todo resuelto.</p>
+            </div>
+
+            <!-- 7. Marco Legal, Facturación y Compromiso Formal -->
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #0f172a;border-radius:6px;padding:16px 20px;margin:24px 0;">
+              <p style="margin:0 0 6px 0;font-size:14px;color:#0f172a;font-weight:700;">
+                🛡️ Compromiso formal de servicio y facturación oficial:
+              </p>
+              <p style="margin:0 0 10px 0;font-size:13px;color:#475569;line-height:1.55;">
+                Si deciden encargar el trabajo de inmediato, la operación se procesa de forma cifrada mediante Stripe y constituye un <strong>compromiso de servicio formal y cerrado</strong> por nuestra parte: emitimos automáticamente <strong>factura y comprobante fiscal oficial</strong> con validez contable y tributaria plena, e iniciamos la entrega técnica en un plazo máximo garantizado de 24 horas hábiles.
+              </p>
+              <p style="margin:0;font-size:12.5px;color:#64748b;line-height:1.5;">
+                Pueden consultar nuestros términos contractuales, SLA y garantía de cumplimiento en: <a href="https://audit.ranuk.dev/legal?lang=es" style="color:#2563eb;text-decoration:underline;font-weight:600;">audit.ranuk.dev/legal?lang=es</a>
+              </p>
+            </div>
+
+            <!-- 8. Opciones de Contratación con Acciones Sobrias -->
+            <div style="border:1px solid #e2e8f0;background:#ffffff;border-radius:8px;padding:14px 18px;margin-bottom:12px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                <tr>
+                  <td valign="middle" align="left">
+                    <div style="font-size:13.5px;font-weight:700;color:#0f172a;">Opción 1: Encargar Informe Técnico Completo (39 €)</div>
+                    <div style="font-size:12px;color:#64748b;margin-top:2px;">Dossier priorizado de 15 páginas con comprobante fiscal y líneas exactas de remediación para su programador o equipo.</div>
+                  </td>
+                  <td valign="middle" align="right" style="padding-left:14px;white-space:nowrap;">
+                    <a href="https://audit.ranuk.dev/checkout?domain=mydentiss.es&lang=es&currency=eur&tier=report" style="background-color:#0f172a;background:#0f172a;color:#ffffff;text-decoration:none;font-weight:600;font-size:12.5px;padding:8px 16px;border-radius:6px;display:inline-block;">Encargar Informe &rarr;</a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <div style="border:1px solid #e2e8f0;background:#ffffff;border-radius:8px;padding:14px 18px;margin-bottom:24px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                <tr>
+                  <td valign="middle" align="left">
+                    <div style="font-size:13.5px;font-weight:700;color:#0f172a;">Opción 2: Remediación Llave en Mano (290 €)</div>
+                    <div style="font-size:12px;color:#64748b;margin-top:2px;">Nos encargamos de corregir el código fuente (Pull Request o parche listo) sin consumir horas de su equipo.</div>
+                  </td>
+                  <td valign="middle" align="right" style="padding-left:14px;white-space:nowrap;">
+                    <a href="https://audit.ranuk.dev/checkout?domain=mydentiss.es&lang=es&currency=eur&tier=remediation" style="background-color:#1e293b;background:#1e293b;border:1px solid #334155;color:#ffffff;text-decoration:none;font-weight:600;font-size:12.5px;padding:8px 16px;border-radius:6px;display:inline-block;">Solicitar Remediación &rarr;</a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- 8. Bloque Navy de Agendamiento Directo -->
+            <div style="background:#0f172a;color:#ffffff;border-radius:8px;padding:20px 24px;margin:24px 0;">
+              <p style="margin:0 0 10px 0;font-weight:600;font-size:15px;color:#ffffff;">Podemos coordinar una breve llamada (15-20 minutos) para:</p>
+              <ul style="margin:0 0 14px 0;padding-left:20px;color:#cbd5e1;font-size:13px;line-height:1.6;">
+                <li>Revisar los puntos técnicos de mydentiss.es en vivo</li>
+                <li>Explicar nuestra metodología de corrección paso a paso</li>
+                <li>Resolver cualquier consulta técnica de su equipo sin compromiso</li>
+              </ul>
+              <p style="margin:0 0 6px 0;font-size:13px;color:#94a3b8;line-height:1.5;">
+                Pueden agendar directamente acá: <a href="https://calendly.com/emilio-ranuk/30min" style="color:#38bdf8;text-decoration:none;font-weight:600;">calendly.com/emilio-ranuk/30min</a>
+              </p>
+              <p style="margin:0;font-size:13px;color:#e2e8f0;font-style:italic;">
+                (O si prefieren ver un adelanto sin costo, solo respondan este correo y les envío los fragmentos de código para su desarrollador).
+              </p>
+            </div>
+
+          </td>
+        </tr>
+
+        <!-- 9. Firma Corporativa Verificada -->
+        <tr bgcolor="#fafbfc" style="background-color:#fafbfc;background:#fafbfc;">
+          <td bgcolor="#fafbfc" style="background-color:#fafbfc;background:#fafbfc;border-top:1px solid #e2e8f0;padding:20px 30px;border-bottom-left-radius:11px;border-bottom-right-radius:11px;">
+            <table cellpadding="0" cellspacing="0" style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;width:100%;">
+              <tr>
+                <td style="vertical-align:middle;">
+                  <div style="font-size:15px;font-weight:700;color:#0f172a;">Emilio Ranucoli</div>
+                  <div style="font-size:13px;color:#64748b;margin:2px 0 6px;">Ingeniero de Sistemas · Fundador, Ranuk IT Solutions</div>
+                  <div style="font-size:13px;color:#475569;">
+                    <a href="https://ranuk.dev/portfolio" style="color:#0ea5e9;text-decoration:none;font-weight:600;">Portfolio</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="https://ranuk.dev" style="color:#0ea5e9;text-decoration:none;">ranuk.dev</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="mailto:emilio@ranuk.dev" style="color:#0ea5e9;text-decoration:none;">emilio@ranuk.dev</a>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <div style="font-size:11px;color:#94a3b8;margin-top:14px;line-height:1.5;">
+              Ranuk IT Solutions &mdash; Auditorías de accesibilidad web &amp; desarrollo a medida.<br>Si no es de su interés, respondan con "no gracias" y no volveré a contactarlos.
+            </div>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
