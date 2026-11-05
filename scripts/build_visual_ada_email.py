@@ -68,6 +68,12 @@ def render_visual_html(lead_info):
                 "desc": "Navigation buttons and form inputs lack accessible labels in code, blocking assistive readers and mobile autofill.",
                 "wcag": "WCAG 4.1.2"
             })
+        elif lang == "it":
+            issues.append({
+                "title": "Elementi Interattivi Senza Nome Accessibile",
+                "desc": "I pulsanti di navigazione e i campi modulo non presentano label accessibili nel codice, ostacolando screen reader e navigazione da tastiera.",
+                "wcag": "WCAG 4.1.2"
+            })
         else:
             issues.append({
                 "title": "Controles Interactivos sin Etiqueta Accesible",
@@ -126,6 +132,56 @@ def render_visual_html(lead_info):
 
         role_title = "Systems Engineer · Founder, Ranuk IT Solutions"
         optout_text = 'Ranuk IT Solutions &mdash; Software Engineering &amp; WCAG Compliance.<br>If this isn\'t relevant, just reply "no thanks" and I won\'t follow up.'
+
+    elif lang == "it":
+        subject = f"Diagnosi tecnica e note che ho preparato per {domain}"
+        greeting_html = f"Ciao {_html.escape(first_name)}, un saluto." if is_person else f"Ciao, un saluto al team di {_html.escape(business_name)}:"
+        
+        intro_p1 = f'Mi chiamo Emilio Ranucoli e sono il fondatore di <strong>Ranuk IT Solutions</strong> (<a href="https://ranuk.dev" style="color:#2563eb;text-decoration:none;font-weight:600;">ranuk.dev</a>), studio di ingegneria del software e audit tecnici. Vi scrivo con totale trasparenza: ci occupiamo di revisionare codice e creare piattaforme ad alte prestazioni, e il nostro modo di farci conoscere e acquisire nuovi clienti è analizzare in modo proattivo i siti web di aziende reali, individuando errori tecnici che spesso passano inosservati e condividendo subito la diagnosi per mostrare come lavoriamo.'
+        intro_p2 = f'Oggi ho analizzato personalmente il sito di <strong><a href="https://{domain}" style="color:#2563eb;text-decoration:none;font-weight:600;">{business_name} ({domain})</a></strong> e ho preparato questo riepilogo tecnico prioritario per il vostro team.'
+
+        reg_title = "Contesto normativo critico (European Accessibility Act):"
+        reg_body = f'Con la piena entrata in vigore della <strong>Direttiva UE 2019/882 (European Accessibility Act) e del D.Lgs 82/2005 (CAD)</strong>, le piattaforme commerciali devono garantire l\'accessibilità digitale (WCAG 2.1 AA) per evitare sanzioni e non perdere fino al <strong>15% di clienti su smartphone</strong> a causa di bottoni non leggibili o form bloccati.'
+
+        diag_title = "Riepilogo della Diagnosi Tecnica"
+        diag_sub = f'Abbiamo rilevato questi 3 aspetti prioritari nel codice di <strong>{domain}</strong> ({nodes} elementi interessati nel DOM):'
+
+        port_title = "Piattaforme e Portfolio in Produzione"
+        port_sub = "Per verificare la qualità del nostro codice, la velocità (100/100 Lighthouse) e la serietà prima di prendere qualsiasi decisione, potete consultare i nostri progetti attivi:"
+        port_item1 = '<strong><a href="https://ranuk.dev/portfolio" style="color:#2563eb;text-decoration:none;font-weight:700;">ranuk.dev/portfolio</a></strong> &mdash; Portfolio ufficiale di sviluppo web su misura, landing page ad alta velocità e applicazioni.'
+        port_item2 = '<strong><a href="https://notarobot.es/" style="color:#2563eb;text-decoration:none;font-weight:700;">notarobot.es</a></strong> &mdash; Verifica di identità umana e sicurezza anti-bot (100% Lighthouse, Edge CDN).'
+        port_item3 = '<strong><a href="https://audit.ranuk.dev/" style="color:#2563eb;text-decoration:none;font-weight:700;">audit.ranuk.dev</a></strong> &mdash; Motore di audit e certificazione continua di accessibilità web.'
+
+        num_title = "Costi e riferimenti tariffari trasparenti:"
+        num_opt1 = f'🔹 <strong>Opzione 1: Report Tecnico Completo EAA / WCAG 2.2 AA ({precio_tag}):</strong> Audit dettagliato di 15 pagine con certificato di verifica e linee di codice esatte per il vostro sviluppatore.'
+        num_opt2 = f'🔹 <strong>Opzione 2: Remediazione Chiavi in Mano ({remed_tag}):</strong> Ci occupiamo direttamente di correggere e testare il codice sorgente (Pull Request su GitHub o patch pronta) senza occupare ore del vostro team.'
+        num_opt3 = '🔹 <strong>Pacchetto Soluzione Integrale (Sito su Misura + Agente IA):</strong> ~<strong>590 € - 890 €</strong> tutto incluso.'
+
+        trust_title = "Impegno formale di servizio e fatturazione fiscale ufficiale"
+        trust_body = (
+            f"Se decidete di procedere subito con l'Opzione 1 o 2, l'operazione viene elaborata in modo cifrato tramite Stripe e costituisce un "
+            f"<strong>impegno contrattuale vincolante</strong> da parte nostra: emettiamo automaticamente <strong>fattura fiscale ufficiale con partita IVA e ricevuta contabile</strong>, "
+            f"avviando la consegna tecnica entro un massimo garantito di 24 ore lavorative."
+        )
+        trust_link_text = "Potete consultare i nostri termini contrattuali, SLA e garanzia di conformità su:"
+
+        opt1_card_title = f"Opzione 1: Ordina Report Tecnico Completo ({precio_tag})"
+        opt1_card_desc = f"Dossier di 15 pagine con ricevuta fiscale e linee esatte di correzione per il vostro sviluppatore."
+        opt1_btn_text = "Ordina Report &rarr;"
+
+        opt2_card_title = f"Opzione 2: Remediazione Chiavi in Mano ({remed_tag})"
+        opt2_card_desc = "Correggiamo direttamente il codice sorgente (Pull Request o patch pronta) senza occupare tempo del vostro team."
+        opt2_btn_text = "Richiedi Correzione &rarr;"
+
+        call_title = "Possiamo concordare una breve chiamata (15-20 minuti) per:"
+        call_b1 = f"Esaminare i punti tecnici di {domain} in tempo reale"
+        call_b2 = "Spiegare la metodologia di correzione passo dopo passo"
+        call_b3 = "Rispondere a qualsiasi domanda tecnica del vostro team senza impegno"
+        call_link_text = "Potete prenotare direttamente su Calendly: "
+        call_free_note = "(Oppure, se preferite un'anteprima gratuita, rispondete semplicemente a questa email e vi invierò gli snippet di codice per il vostro sviluppatore)."
+
+        role_title = "Ingegnere Informatico · Fondatore, Ranuk IT Solutions"
+        optout_text = 'Ranuk IT Solutions &mdash; Ingegneria del software &amp; conformità WCAG.<br>Se non siete interessati, rispondete con "no grazie" e non vi ricontatterò più.'
 
     else:
         # Español (default)
@@ -274,7 +330,7 @@ def render_visual_html(lead_info):
                 {trust_body}
               </p>
               <p style="margin:0;font-size:12.5px;color:#64748b;line-height:1.5;">
-                {trust_link_text} <a href="https://audit.ranuk.dev/legal" style="color:#2563eb;text-decoration:underline;font-weight:600;">audit.ranuk.dev/legal</a>
+                {trust_link_text} <a href="https://audit.ranuk.dev/legal?lang={lang}" style="color:#2563eb;text-decoration:underline;font-weight:600;">audit.ranuk.dev/legal?lang={lang}</a>
               </p>
             </div>
 

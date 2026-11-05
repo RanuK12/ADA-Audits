@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnosi tecnica e note che ho preparato per hotelraffaello.it</title>
+</head>
+<body style="margin:0;padding:24px 0;background-color:#f1f5f9;background:#f1f5f9;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;-webkit-font-smoothing:antialiased;">
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;margin:0;padding:0;">
+  <tr>
+    <td align="center" style="padding:0 12px;">
+      <!-- Card Container (640px) SIN background-color general para no contaminar la barra -->
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;width:100%;margin:0 auto;border:1px solid #cbd5e1;border-radius:12px;overflow:hidden;border-collapse:collapse;">
+        
+        <!-- 1. Header con Barra Oficial Ranuk IT Solutions (100% #0f172a uniforme) -->
+        <tr bgcolor="#0f172a" style="background-color:#0f172a;background:#0f172a;">
+          <td bgcolor="#0f172a" align="left" style="background-color:#0f172a;background:#0f172a;padding:22px 28px;border-top-left-radius:11px;border-top-right-radius:11px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+              <tr>
+                <td valign="middle" style="vertical-align:middle;padding:0;">
+                  <img src="cid:ranuklogo" alt="Ranuk IT Solutions" height="38" style="display:block;height:38px;width:auto;border:0;outline:none;text-decoration:none;">
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- 2. Contenido Principal -->
+        <tr bgcolor="#ffffff" style="background-color:#ffffff;background:#ffffff;">
+          <td bgcolor="#ffffff" style="background-color:#ffffff;background:#ffffff;padding:32px 30px;font-size:15px;line-height:1.62;color:#1e293b;">
+
+            <!-- Saludo -->
+            <p style="margin:0 0 16px;font-size:17px;color:#0f172a;">Ciao, un saluto al team di Hotel Raffaello Roma:</p>
+
+            <p style="margin:0 0 14px;">Mi chiamo Emilio Ranucoli e sono il fondatore di <strong>Ranuk IT Solutions</strong> (<a href="https://ranuk.dev" style="color:#2563eb;text-decoration:none;font-weight:600;">ranuk.dev</a>), studio di ingegneria del software e audit tecnici. Vi scrivo con totale trasparenza: ci occupiamo di revisionare codice e creare piattaforme ad alte prestazioni, e il nostro modo di farci conoscere e acquisire nuovi clienti è analizzare in modo proattivo i siti web di aziende reali, individuando errori tecnici che spesso passano inosservati e condividendo subito la diagnosi per mostrare come lavoriamo.</p>
+            <p style="margin:0 0 18px;">Oggi ho analizzato personalmente il sito di <strong><a href="https://hotelraffaello.it" style="color:#2563eb;text-decoration:none;font-weight:600;">Hotel Raffaello Roma (hotelraffaello.it)</a></strong> e ho preparato questo riepilogo tecnico prioritario per il vostro team.</p>
+
+            <!-- 3. Caja Ámbar: Contexto Regulatorio Crítico -->
+            <div style="border-left:4px solid #f59e0b;background:#fffbeb;padding:14px 18px;margin:22px 0;border-radius:4px;">
+              <p style="margin:0 0 6px 0;font-weight:700;color:#92400e;font-size:14px;">Contesto normativo critico (European Accessibility Act):</p>
+              <p style="margin:0;font-size:13px;color:#78350f;line-height:1.55;">Con la piena entrata in vigore della <strong>Direttiva UE 2019/882 (European Accessibility Act) e del D.Lgs 82/2005 (CAD)</strong>, le piattaforme commerciali devono garantire l'accessibilità digitale (WCAG 2.1 AA) per evitare sanzioni e non perdere fino al <strong>15% di clienti su smartphone</strong> a causa di bottoni non leggibili o form bloccati.</p>
+            </div>
+
+            <!-- 4. Resumen del Diagnóstico con Barra Azul -->
+            <div style="border-left:4px solid #2563eb;padding-left:16px;margin:24px 0;">
+              <h3 style="color:#0f172a;margin:0 0 8px 0;font-size:16px;font-weight:700;">Riepilogo della Diagnosi Tecnica</h3>
+              <p style="margin:0 0 12px 0;font-size:14px;color:#475569;">Abbiamo rilevato questi 3 aspetti prioritari nel codice di <strong>hotelraffaello.it</strong> (19 elementi interessati nel DOM):</p>
+              <ol style="margin:0;padding-left:18px;color:#1e293b;font-size:14px;">
+                <li style="margin-bottom:10px;line-height:1.55;"><strong>Modulo Richiesta Disponibilità Senza Label nel Codice:</strong> I campi del form di contatto e richiesta preventivo mancano di associazione di etichetta programmatica per id. <span style="background:#e0f2fe;color:#0369a1;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle;">WCAG 3.3.2</span></li><li style="margin-bottom:10px;line-height:1.55;"><strong>Contrasto Ridotto su Servizi e Posizione:</strong> I testi informativi sulla posizione nel Rione Monti e i servizi inclusi scendono sotto la soglia 4.5:1. <span style="background:#e0f2fe;color:#0369a1;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle;">WCAG 1.4.3</span></li><li style="margin-bottom:10px;line-height:1.55;"><strong>Struttura Pagina Senza Regione Landmark &lt;main&gt;:</strong> Il layout HTML non include il contenitore semantico principale &lt;main&gt;, penalizzando la scansione da parte dei motori di ricerca e screen reader. <span style="background:#e0f2fe;color:#0369a1;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle;">WCAG 2.4.1</span></li>
+              </ol>
+            </div>
+
+            <!-- 5. Tarjeta de Proyectos y Portfolio en Vivo -->
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin:24px 0;">
+              <h4 style="margin:0 0 8px 0;font-size:14px;color:#0f172a;font-weight:700;">Piattaforme e Portfolio in Produzione</h4>
+              <p style="margin:0 0 10px 0;font-size:13px;color:#475569;line-height:1.5;">Per verificare la qualità del nostro codice, la velocità (100/100 Lighthouse) e la serietà prima di prendere qualsiasi decisione, potete consultare i nostri progetti attivi:</p>
+              <ul style="margin:0;padding-left:18px;font-size:13px;color:#334155;line-height:1.65;">
+                <li style="margin-bottom:6px;"><strong><a href="https://ranuk.dev/portfolio" style="color:#2563eb;text-decoration:none;font-weight:700;">ranuk.dev/portfolio</a></strong> &mdash; Portfolio ufficiale di sviluppo web su misura, landing page ad alta velocità e applicazioni.</li>
+                <li style="margin-bottom:6px;"><strong><a href="https://notarobot.es/" style="color:#2563eb;text-decoration:none;font-weight:700;">notarobot.es</a></strong> &mdash; Verifica di identità umana e sicurezza anti-bot (100% Lighthouse, Edge CDN).</li>
+                <li><strong><a href="https://audit.ranuk.dev/" style="color:#2563eb;text-decoration:none;font-weight:700;">audit.ranuk.dev</a></strong> &mdash; Motore di audit e certificazione continua di accessibilità web.</li>
+              </ul>
+            </div>
+
+            <!-- 6. Números y Presupuestos de Referencia -->
+            <h4 style="color:#0f172a;margin:26px 0 10px 0;font-size:15px;font-weight:700;">Costi e riferimenti tariffari trasparenti:</h4>
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin-bottom:20px;">
+              <p style="margin:0 0 10px 0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Opzione 1: Report Tecnico Completo EAA / WCAG 2.2 AA (39 €):</strong> Audit dettagliato di 15 pagine con certificato di verifica e linee di codice esatte per il vostro sviluppatore.</p>
+              <p style="margin:0 0 10px 0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Opzione 2: Remediazione Chiavi in Mano (290 €):</strong> Ci occupiamo direttamente di correggere e testare il codice sorgente (Pull Request su GitHub o patch pronta) senza occupare ore del vostro team.</p>
+              <p style="margin:0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Pacchetto Soluzione Integrale (Sito su Misura + Agente IA):</strong> ~<strong>590 € - 890 €</strong> tutto incluso.</p>
+            </div>
+
+            <!-- 7. Marco Legal, Facturación y Compromiso Formal -->
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #0f172a;border-radius:6px;padding:16px 20px;margin:24px 0;">
+              <p style="margin:0 0 6px 0;font-size:14px;color:#0f172a;font-weight:700;">
+                🛡️ Impegno formale di servizio e fatturazione fiscale ufficiale:
+              </p>
+              <p style="margin:0 0 10px 0;font-size:13px;color:#475569;line-height:1.55;">
+                Se decidete di procedere subito con l'Opzione 1 o 2, l'operazione viene elaborata in modo cifrato tramite Stripe e costituisce un <strong>impegno contrattuale vincolante</strong> da parte nostra: emettiamo automaticamente <strong>fattura fiscale ufficiale con partita IVA e ricevuta contabile</strong>, avviando la consegna tecnica entro un massimo garantito di 24 ore lavorative.
+              </p>
+              <p style="margin:0;font-size:12.5px;color:#64748b;line-height:1.5;">
+                Potete consultare i nostri termini contrattuali, SLA e garanzia di conformità su: <a href="https://audit.ranuk.dev/legal?lang=it" style="color:#2563eb;text-decoration:underline;font-weight:600;">audit.ranuk.dev/legal?lang=it</a>
+              </p>
+            </div>
+
+            <!-- 8. Opciones de Contratación con Acciones Sobrias -->
+            <div style="border:1px solid #e2e8f0;background:#ffffff;border-radius:8px;padding:14px 18px;margin-bottom:12px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                <tr>
+                  <td valign="middle" align="left">
+                    <div style="font-size:13.5px;font-weight:700;color:#0f172a;">Opzione 1: Ordina Report Tecnico Completo (39 €)</div>
+                    <div style="font-size:12px;color:#64748b;margin-top:2px;">Dossier di 15 pagine con ricevuta fiscale e linee esatte di correzione per il vostro sviluppatore.</div>
+                  </td>
+                  <td valign="middle" align="right" style="padding-left:14px;white-space:nowrap;">
+                    <a href="https://audit.ranuk.dev/checkout?domain=hotelraffaello.it&lang=it&currency=eur&tier=report&email=info%40hotelraffaello.it" style="background-color:#0f172a;background:#0f172a;color:#ffffff;text-decoration:none;font-weight:600;font-size:12.5px;padding:8px 16px;border-radius:6px;display:inline-block;">Ordina Report &rarr;</a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <div style="border:1px solid #e2e8f0;background:#ffffff;border-radius:8px;padding:14px 18px;margin-bottom:24px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                <tr>
+                  <td valign="middle" align="left">
+                    <div style="font-size:13.5px;font-weight:700;color:#0f172a;">Opzione 2: Remediazione Chiavi in Mano (290 €)</div>
+                    <div style="font-size:12px;color:#64748b;margin-top:2px;">Correggiamo direttamente il codice sorgente (Pull Request o patch pronta) senza occupare tempo del vostro team.</div>
+                  </td>
+                  <td valign="middle" align="right" style="padding-left:14px;white-space:nowrap;">
+                    <a href="https://audit.ranuk.dev/checkout?domain=hotelraffaello.it&lang=it&currency=eur&tier=remediation&email=info%40hotelraffaello.it" style="background-color:#1e293b;background:#1e293b;border:1px solid #334155;color:#ffffff;text-decoration:none;font-weight:600;font-size:12.5px;padding:8px 16px;border-radius:6px;display:inline-block;">Richiedi Correzione &rarr;</a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- 8. Bloque Navy de Agendamiento Directo -->
+            <div style="background:#0f172a;color:#ffffff;border-radius:8px;padding:20px 24px;margin:24px 0;">
+              <p style="margin:0 0 10px 0;font-weight:600;font-size:15px;color:#ffffff;">Possiamo concordare una breve chiamata (15-20 minuti) per:</p>
+              <ul style="margin:0 0 14px 0;padding-left:20px;color:#cbd5e1;font-size:13px;line-height:1.6;">
+                <li>Esaminare i punti tecnici di hotelraffaello.it in tempo reale</li>
+                <li>Spiegare la metodologia di correzione passo dopo passo</li>
+                <li>Rispondere a qualsiasi domanda tecnica del vostro team senza impegno</li>
+              </ul>
+              <p style="margin:0 0 6px 0;font-size:13px;color:#94a3b8;line-height:1.5;">
+                Potete prenotare direttamente su Calendly: <a href="https://calendly.com/emilio-ranuk/30min" style="color:#38bdf8;text-decoration:none;font-weight:600;">calendly.com/emilio-ranuk/30min</a>
+              </p>
+              <p style="margin:0;font-size:13px;color:#e2e8f0;font-style:italic;">
+                (Oppure, se preferite un'anteprima gratuita, rispondete semplicemente a questa email e vi invierò gli snippet di codice per il vostro sviluppatore).
+              </p>
+            </div>
+
+          </td>
+        </tr>
+
+        <!-- 9. Firma Corporativa Verificada -->
+        <tr bgcolor="#fafbfc" style="background-color:#fafbfc;background:#fafbfc;">
+          <td bgcolor="#fafbfc" style="background-color:#fafbfc;background:#fafbfc;border-top:1px solid #e2e8f0;padding:20px 30px;border-bottom-left-radius:11px;border-bottom-right-radius:11px;">
+            <table cellpadding="0" cellspacing="0" style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;width:100%;">
+              <tr>
+                <td style="vertical-align:middle;">
+                  <div style="font-size:15px;font-weight:700;color:#0f172a;">Emilio Ranucoli</div>
+                  <div style="font-size:13px;color:#64748b;margin:2px 0 6px;">Ingegnere Informatico · Fondatore, Ranuk IT Solutions</div>
+                  <div style="font-size:13px;color:#475569;">
+                    <a href="https://ranuk.dev/portfolio" style="color:#0ea5e9;text-decoration:none;font-weight:600;">Portfolio</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="https://ranuk.dev" style="color:#0ea5e9;text-decoration:none;">ranuk.dev</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="mailto:emilio@ranuk.dev" style="color:#0ea5e9;text-decoration:none;">emilio@ranuk.dev</a>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <div style="font-size:11px;color:#94a3b8;margin-top:14px;line-height:1.5;">
+              Ranuk IT Solutions &mdash; Ingegneria del software &amp; conformità WCAG.<br>Se non siete interessati, rispondete con "no grazie" e non vi ricontatterò più.
+            </div>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

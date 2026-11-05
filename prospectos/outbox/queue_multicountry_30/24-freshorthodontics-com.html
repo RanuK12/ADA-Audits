@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>a few technical notes I put together for freshorthodontics.com</title>
+</head>
+<body style="margin:0;padding:24px 0;background-color:#f1f5f9;background:#f1f5f9;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;-webkit-font-smoothing:antialiased;">
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;margin:0;padding:0;">
+  <tr>
+    <td align="center" style="padding:0 12px;">
+      <!-- Card Container (640px) SIN background-color general para no contaminar la barra -->
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;width:100%;margin:0 auto;border:1px solid #cbd5e1;border-radius:12px;overflow:hidden;border-collapse:collapse;">
+        
+        <!-- 1. Header con Barra Oficial Ranuk IT Solutions (100% #0f172a uniforme) -->
+        <tr bgcolor="#0f172a" style="background-color:#0f172a;background:#0f172a;">
+          <td bgcolor="#0f172a" align="left" style="background-color:#0f172a;background:#0f172a;padding:22px 28px;border-top-left-radius:11px;border-top-right-radius:11px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+              <tr>
+                <td valign="middle" style="vertical-align:middle;padding:0;">
+                  <img src="cid:ranuklogo" alt="Ranuk IT Solutions" height="38" style="display:block;height:38px;width:auto;border:0;outline:none;text-decoration:none;">
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- 2. Contenido Principal -->
+        <tr bgcolor="#ffffff" style="background-color:#ffffff;background:#ffffff;">
+          <td bgcolor="#ffffff" style="background-color:#ffffff;background:#ffffff;padding:32px 30px;font-size:15px;line-height:1.62;color:#1e293b;">
+
+            <!-- Saludo -->
+            <p style="margin:0 0 16px;font-size:17px;color:#0f172a;">Hi everyone,</p>
+
+            <p style="margin:0 0 14px;">My name is Emilio Ranucoli, and I run <strong>Ranuk IT Solutions</strong> (<a href="https://ranuk.dev" style="color:#2563eb;text-decoration:none;font-weight:600;">ranuk.dev</a>), a software engineering and technical auditing studio. To be completely transparent with you: instead of sending generic sales pitches, the way we introduce our work and earn new clients is by proactively reviewing websites of businesses we come across, spotting technical friction points that often go unnoticed, and sharing our findings upfront.</p>
+            <p style="margin:0 0 18px;">I spent some time analyzing <strong><a href="https://freshorthodontics.com" style="color:#2563eb;text-decoration:none;font-weight:600;">Fresh Orthodontics (freshorthodontics.com)</a></strong> earlier today and prepared this prioritized technical summary for your team.</p>
+
+            <!-- 3. Caja Ámbar: Contexto Regulatorio Crítico -->
+            <div style="border-left:4px solid #f59e0b;background:#fffbeb;padding:14px 18px;margin:22px 0;border-radius:4px;">
+              <p style="margin:0 0 6px 0;font-weight:700;color:#92400e;font-size:14px;">Regulatory & Mobile Conversion Notice:</p>
+              <p style="margin:0;font-size:13px;color:#78350f;line-height:1.55;">Under <strong>ADA Title III, Section 508</strong>, and the European Accessibility Act (EAA), non-compliant commercial websites face substantial regulatory scrutiny and demand letter risk ($5,000 to $40,000 settlements), while losing up to <strong>15% of mobile customers</strong> due to broken tap targets and form validation friction.</p>
+            </div>
+
+            <!-- 4. Resumen del Diagnóstico con Barra Azul -->
+            <div style="border-left:4px solid #2563eb;padding-left:16px;margin:24px 0;">
+              <h3 style="color:#0f172a;margin:0 0 8px 0;font-size:16px;font-weight:700;">Technical Diagnostic Summary</h3>
+              <p style="margin:0 0 12px 0;font-size:14px;color:#475569;">We flagged these 3 critical priority issues in the code of <strong>freshorthodontics.com</strong> (16 elements affected in the DOM):</p>
+              <ol style="margin:0;padding-left:18px;color:#1e293b;font-size:14px;">
+                <li style="margin-bottom:10px;line-height:1.55;"><strong>Virtual Consultation Form Missing Explicit Labels:</strong> Photo upload and patient detail inputs lack programmatic label tags, triggering mobile submission errors. <span style="background:#e0f2fe;color:#0369a1;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle;">WCAG 3.3.2</span></li><li style="margin-bottom:10px;line-height:1.55;"><strong>Color Contrast on Braces &amp; Invisalign Pricing:</strong> Pricing comparison tables use low-contrast gray text falling below the mandatory 4.5:1 ratio. <span style="background:#e0f2fe;color:#0369a1;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle;">WCAG 1.4.3</span></li><li style="margin-bottom:10px;line-height:1.55;"><strong>Navigation Controls Missing Accessible Names:</strong> Location and doctor filter controls do not expose accessible text to assistive technologies. <span style="background:#e0f2fe;color:#0369a1;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle;">WCAG 4.1.2</span></li>
+              </ol>
+            </div>
+
+            <!-- 5. Tarjeta de Proyectos y Portfolio en Vivo -->
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin:24px 0;">
+              <h4 style="margin:0 0 8px 0;font-size:14px;color:#0f172a;font-weight:700;">Live Projects & Engineering Portfolio</h4>
+              <p style="margin:0 0 10px 0;font-size:13px;color:#475569;line-height:1.5;">To verify our code quality, technical execution, and Lighthouse 95+ performance before taking any decision, feel free to explore our live platforms:</p>
+              <ul style="margin:0;padding-left:18px;font-size:13px;color:#334155;line-height:1.65;">
+                <li style="margin-bottom:6px;"><strong><a href="https://ranuk.dev/portfolio" style="color:#2563eb;text-decoration:none;font-weight:700;">ranuk.dev/portfolio</a></strong> &mdash; Official portfolio of bespoke web platforms, high-speed landing pages, and web apps.</li>
+                <li style="margin-bottom:6px;"><strong><a href="https://notarobot.es/" style="color:#2563eb;text-decoration:none;font-weight:700;">notarobot.es</a></strong> &mdash; Human verification and anti-bot security service (100% Lighthouse, Edge CDN).</li>
+                <li><strong><a href="https://audit.ranuk.dev/" style="color:#2563eb;text-decoration:none;font-weight:700;">audit.ranuk.dev</a></strong> &mdash; Automated web accessibility verification and continuous compliance platform.</li>
+              </ul>
+            </div>
+
+            <!-- 6. Números y Presupuestos de Referencia -->
+            <h4 style="color:#0f172a;margin:26px 0 10px 0;font-size:15px;font-weight:700;">Numbers and transparent pricing reference:</h4>
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin-bottom:20px;">
+              <p style="margin:0 0 10px 0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Option 1: Full Technical Audit Report ($39 USD):</strong> Prioritized 15-page PDF report with verification certificate and exact line-by-line code patches for your web developer.</p>
+              <p style="margin:0 0 10px 0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Option 2: Turnkey Code Remediation ($249 USD):</strong> We directly remediate and test your source code (GitHub Pull Request or production-ready patch) with zero developer hours needed from your team.</p>
+              <p style="margin:0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Turnkey Modern Web / AI Pack:</strong> ~<strong>$590 - $890 USD</strong> (High-performance web revamp or custom AI intake integration).</p>
+            </div>
+
+            <!-- 7. Marco Legal, Facturación y Compromiso Formal -->
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #0f172a;border-radius:6px;padding:16px 20px;margin:24px 0;">
+              <p style="margin:0 0 6px 0;font-size:14px;color:#0f172a;font-weight:700;">
+                🛡️ Formal Service Commitment & Official Tax Invoicing:
+              </p>
+              <p style="margin:0 0 10px 0;font-size:13px;color:#475569;line-height:1.55;">
+                If you choose to proceed with Option 1 or 2, payments are processed securely via Stripe and establish a <strong>legally binding service commitment</strong> from Ranuk IT Solutions: an <strong>official tax invoice and receipt</strong> is automatically issued for your corporate accounting, with delivery guaranteed within 24 business hours.
+              </p>
+              <p style="margin:0;font-size:12.5px;color:#64748b;line-height:1.5;">
+                Review our service agreement, SLA terms, and compliance warranty at: <a href="https://audit.ranuk.dev/legal?lang=en" style="color:#2563eb;text-decoration:underline;font-weight:600;">audit.ranuk.dev/legal?lang=en</a>
+              </p>
+            </div>
+
+            <!-- 8. Opciones de Contratación con Acciones Sobrias -->
+            <div style="border:1px solid #e2e8f0;background:#ffffff;border-radius:8px;padding:14px 18px;margin-bottom:12px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                <tr>
+                  <td valign="middle" align="left">
+                    <div style="font-size:13.5px;font-weight:700;color:#0f172a;">Option 1: Full Technical Audit Report ($39 USD)</div>
+                    <div style="font-size:12px;color:#64748b;margin-top:2px;">Prioritized 15-page PDF dossier with verification certificate and exact line-by-line patches.</div>
+                  </td>
+                  <td valign="middle" align="right" style="padding-left:14px;white-space:nowrap;">
+                    <a href="https://audit.ranuk.dev/checkout?domain=freshorthodontics.com&lang=en&currency=usd&tier=report&email=hello%40freshorthodontics.com" style="background-color:#0f172a;background:#0f172a;color:#ffffff;text-decoration:none;font-weight:600;font-size:12.5px;padding:8px 16px;border-radius:6px;display:inline-block;">Order Report &rarr;</a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <div style="border:1px solid #e2e8f0;background:#ffffff;border-radius:8px;padding:14px 18px;margin-bottom:24px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                <tr>
+                  <td valign="middle" align="left">
+                    <div style="font-size:13.5px;font-weight:700;color:#0f172a;">Option 2: Turnkey Code Remediation ($249 USD)</div>
+                    <div style="font-size:12px;color:#64748b;margin-top:2px;">We directly fix and test your source code (GitHub PR or ready patch) with zero hours from your team.</div>
+                  </td>
+                  <td valign="middle" align="right" style="padding-left:14px;white-space:nowrap;">
+                    <a href="https://audit.ranuk.dev/checkout?domain=freshorthodontics.com&lang=en&currency=usd&tier=remediation&email=hello%40freshorthodontics.com" style="background-color:#1e293b;background:#1e293b;border:1px solid #334155;color:#ffffff;text-decoration:none;font-weight:600;font-size:12.5px;padding:8px 16px;border-radius:6px;display:inline-block;">Request Fix &rarr;</a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- 8. Bloque Navy de Agendamiento Directo -->
+            <div style="background:#0f172a;color:#ffffff;border-radius:8px;padding:20px 24px;margin:24px 0;">
+              <p style="margin:0 0 10px 0;font-weight:600;font-size:15px;color:#ffffff;">We can schedule a brief 15-minute call to:</p>
+              <ul style="margin:0 0 14px 0;padding-left:20px;color:#cbd5e1;font-size:13px;line-height:1.6;">
+                <li>Review the specific code issues on freshorthodontics.com in real time</li>
+                <li>Walk through the exact remediation steps for your team</li>
+                <li>Answer any technical questions with zero commitment</li>
+              </ul>
+              <p style="margin:0 0 6px 0;font-size:13px;color:#94a3b8;line-height:1.5;">
+                Schedule directly on Calendly: <a href="https://calendly.com/emilio-ranuk/30min" style="color:#38bdf8;text-decoration:none;font-weight:600;">calendly.com/emilio-ranuk/30min</a>
+              </p>
+              <p style="margin:0;font-size:13px;color:#e2e8f0;font-style:italic;">
+                (Or if you prefer a quick free preview first, just reply to this email and I'll send over the code snippets).
+              </p>
+            </div>
+
+          </td>
+        </tr>
+
+        <!-- 9. Firma Corporativa Verificada -->
+        <tr bgcolor="#fafbfc" style="background-color:#fafbfc;background:#fafbfc;">
+          <td bgcolor="#fafbfc" style="background-color:#fafbfc;background:#fafbfc;border-top:1px solid #e2e8f0;padding:20px 30px;border-bottom-left-radius:11px;border-bottom-right-radius:11px;">
+            <table cellpadding="0" cellspacing="0" style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;width:100%;">
+              <tr>
+                <td style="vertical-align:middle;">
+                  <div style="font-size:15px;font-weight:700;color:#0f172a;">Emilio Ranucoli</div>
+                  <div style="font-size:13px;color:#64748b;margin:2px 0 6px;">Systems Engineer · Founder, Ranuk IT Solutions</div>
+                  <div style="font-size:13px;color:#475569;">
+                    <a href="https://ranuk.dev/portfolio" style="color:#0ea5e9;text-decoration:none;font-weight:600;">Portfolio</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="https://ranuk.dev" style="color:#0ea5e9;text-decoration:none;">ranuk.dev</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="mailto:emilio@ranuk.dev" style="color:#0ea5e9;text-decoration:none;">emilio@ranuk.dev</a>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <div style="font-size:11px;color:#94a3b8;margin-top:14px;line-height:1.5;">
+              Ranuk IT Solutions &mdash; Software Engineering &amp; WCAG Compliance.<br>If this isn't relevant, just reply "no thanks" and I won't follow up.
+            </div>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
