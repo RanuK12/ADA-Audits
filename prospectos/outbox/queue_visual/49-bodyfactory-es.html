@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>a few technical notes I put together for bodyfactory.es</title>
+<title>Diagnóstico técnico y notas que preparé para bodyfactory.es</title>
 </head>
 <body style="margin:0;padding:24px 0;background-color:#f1f5f9;background:#f1f5f9;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;-webkit-font-smoothing:antialiased;">
 
@@ -31,55 +31,55 @@
           <td bgcolor="#ffffff" style="background-color:#ffffff;background:#ffffff;padding:32px 30px;font-size:15px;line-height:1.62;color:#1e293b;">
 
             <!-- Saludo -->
-            <p style="margin:0 0 16px;font-size:17px;color:#0f172a;">Hi everyone,</p>
+            <p style="margin:0 0 16px;font-size:17px;color:#0f172a;">Hola, un saludo al equipo de Body Factory:</p>
 
-            <p style="margin:0 0 14px;">My name is Emilio Ranucoli, and I run <strong>Ranuk IT Solutions</strong> (<a href="https://ranuk.dev" style="color:#2563eb;text-decoration:none;font-weight:600;">ranuk.dev</a>), a software engineering and technical auditing studio. To be completely transparent with you: instead of sending generic sales pitches, the way we introduce our work and earn new clients is by proactively reviewing websites of businesses we come across, spotting technical friction points that often go unnoticed, and sharing our findings upfront.</p>
-            <p style="margin:0 0 18px;">I spent some time analyzing <strong><a href="https://bodyfactory.es" style="color:#2563eb;text-decoration:none;font-weight:600;">Body Factory (bodyfactory.es)</a></strong> earlier today and prepared this prioritized technical summary for your team.</p>
+            <p style="margin:0 0 14px;">Mi nombre es Emilio Ranucoli y soy fundador de <strong>Ranuk IT Solutions</strong> (<a href="https://ranuk.dev" style="color:#2563eb;text-decoration:none;font-weight:600;">ranuk.dev</a>), estudio de ingeniería de software y auditorías técnicas. Les escribo con total transparencia: nos dedicamos a auditar código y construir plataformas de alto rendimiento, y nuestra forma de darnos a conocer y sumar nuevos clientes es analizando por nuestra cuenta sitios web de empresas reales, encontrando errores técnicos que suelen pasar desapercibidos y compartiendo el diagnóstico de entrada para mostrar cómo trabajamos.</p>
+            <p style="margin:0 0 18px;">Hoy estuve revisando personalmente la web de <strong><a href="https://bodyfactory.es" style="color:#2563eb;text-decoration:none;font-weight:600;">Body Factory (bodyfactory.es)</a></strong> y preparé este análisis técnico para su equipo.</p>
 
             <!-- 3. Caja Ámbar: Contexto Regulatorio Crítico -->
             <div style="border-left:4px solid #f59e0b;background:#fffbeb;padding:14px 18px;margin:22px 0;border-radius:4px;">
-              <p style="margin:0 0 6px 0;font-weight:700;color:#92400e;font-size:14px;">Regulatory & Mobile Conversion Notice:</p>
-              <p style="margin:0;font-size:13px;color:#78350f;line-height:1.55;">Under <strong>ADA Title III, Section 508</strong>, and the European Accessibility Act (EAA), non-compliant commercial websites face substantial regulatory scrutiny and demand letter risk ($5,000 to $40,000 settlements), while losing up to <strong>15% of mobile customers</strong> due to broken tap targets and form validation friction.</p>
+              <p style="margin:0 0 6px 0;font-weight:700;color:#92400e;font-size:14px;">Contexto regulatorio crítico:</p>
+              <p style="margin:0;font-size:13px;color:#78350f;line-height:1.55;">A partir de la plena vigencia de la <strong>Ley Europea de Accesibilidad (Directiva UE 2019/882 y Ley 11/2023)</strong>, las plataformas comerciales deben garantizar accesibilidad digital (WCAG 2.1 AA) para evitar sanciones aplicables de 5.000 € a 40.000 € y la pérdida de hasta un <strong>15% de clientes móviles</strong> por fricción y botones no legibles.</p>
             </div>
 
             <!-- 4. Resumen del Diagnóstico con Barra Azul -->
             <div style="border-left:4px solid #2563eb;padding-left:16px;margin:24px 0;">
-              <h3 style="color:#0f172a;margin:0 0 8px 0;font-size:16px;font-weight:700;">Technical Diagnostic Summary</h3>
-              <p style="margin:0 0 12px 0;font-size:14px;color:#475569;">We flagged these 3 critical priority issues in the code of <strong>bodyfactory.es</strong> (15 elements affected in the DOM):</p>
+              <h3 style="color:#0f172a;margin:0 0 8px 0;font-size:16px;font-weight:700;">Resumen del Diagnóstico Técnico</h3>
+              <p style="margin:0 0 12px 0;font-size:14px;color:#475569;">Detectamos estos 3 hallazgos prioritarios en el código de <strong>bodyfactory.es</strong> (16 elementos afectados en el DOM):</p>
               <ol style="margin:0;padding-left:18px;color:#1e293b;font-size:14px;">
-                <li style="margin-bottom:10px;line-height:1.55;"><strong>Interactive Controls Missing Accessible Name:</strong> Navigation icon buttons lack explicit aria-labels, preventing assistive browsers from announcing where they lead. <span style="background:#e0f2fe;color:#0369a1;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle;">WCAG 4.1.2</span></li><li style="margin-bottom:10px;line-height:1.55;"><strong>Color Contrast Below Minimum Threshold:</strong> Navigation links fall below the contrast ratio required by ADA Title III and WCAG 2.1 AA standards. <span style="background:#e0f2fe;color:#0369a1;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle;">WCAG 1.4.3</span></li><li style="margin-bottom:10px;line-height:1.55;"><strong>Page Structure Missing Main Landmark:</strong> The DOM lacks a designated primary &lt;main&gt; region, slowing down keyboard navigation and search engine crawlers. <span style="background:#e0f2fe;color:#0369a1;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle;">WCAG 2.4.1</span></li>
+                <li style="margin-bottom:10px;line-height:1.55;"><strong>Menú de Centros y Cuotas sin Nombre Accesible:</strong> Botones interactivos en la navegación no exponen texto accesible en código para tecnologías asistivas. <span style="background:#e0f2fe;color:#0369a1;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle;">WCAG 4.1.2</span></li><li style="margin-bottom:10px;line-height:1.55;"><strong>Imágenes de Instalaciones sin Atributo Alt:</strong> Fotografías clave de los gimnasios carecen de texto alternativo descriptivo para lectores de pantalla y SEO. <span style="background:#e0f2fe;color:#0369a1;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle;">WCAG 1.1.1</span></li><li style="margin-bottom:10px;line-height:1.55;"><strong>Contraste en Textos Informativos de Horarios:</strong> Textos de soporte en tonalidades grises no alcanzan el ratio mínimo recomendado de contraste en pantallas táctiles. <span style="background:#e0f2fe;color:#0369a1;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px;vertical-align:middle;">WCAG 1.4.3</span></li>
               </ol>
             </div>
 
             <!-- 5. Tarjeta de Proyectos y Portfolio en Vivo -->
             <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin:24px 0;">
-              <h4 style="margin:0 0 8px 0;font-size:14px;color:#0f172a;font-weight:700;">Live Projects & Engineering Portfolio</h4>
-              <p style="margin:0 0 10px 0;font-size:13px;color:#475569;line-height:1.5;">To verify our code quality, technical execution, and Lighthouse 95+ performance before taking any decision, feel free to explore our live platforms:</p>
+              <h4 style="margin:0 0 8px 0;font-size:14px;color:#0f172a;font-weight:700;">Proyectos y Portfolio en Producción</h4>
+              <p style="margin:0 0 10px 0;font-size:13px;color:#475569;line-height:1.5;">Para que puedan comprobar nuestra calidad de código, velocidad (100/100 Lighthouse) y seriedad antes de tomar cualquier decisión, pueden ver nuestros proyectos en vivo:</p>
               <ul style="margin:0;padding-left:18px;font-size:13px;color:#334155;line-height:1.65;">
-                <li style="margin-bottom:6px;"><strong><a href="https://ranuk.dev/portfolio" style="color:#2563eb;text-decoration:none;font-weight:700;">ranuk.dev/portfolio</a></strong> &mdash; Official portfolio of bespoke web platforms, high-speed landing pages, and web apps.</li>
-                <li style="margin-bottom:6px;"><strong><a href="https://notarobot.es/" style="color:#2563eb;text-decoration:none;font-weight:700;">notarobot.es</a></strong> &mdash; Human verification and anti-bot security service (100% Lighthouse, Edge CDN).</li>
-                <li><strong><a href="https://audit.ranuk.dev/" style="color:#2563eb;text-decoration:none;font-weight:700;">audit.ranuk.dev</a></strong> &mdash; Automated web accessibility verification and continuous compliance platform.</li>
+                <li style="margin-bottom:6px;"><strong><a href="https://ranuk.dev/portfolio" style="color:#2563eb;text-decoration:none;font-weight:700;">ranuk.dev/portfolio</a></strong> &mdash; Portfolio oficial de desarrollo web a medida, landing pages y optimización de velocidad.</li>
+                <li style="margin-bottom:6px;"><strong><a href="https://notarobot.es/" style="color:#2563eb;text-decoration:none;font-weight:700;">notarobot.es</a></strong> &mdash; Verificación de identidad humana y seguridad anti-bot (100% Lighthouse, Edge CDN).</li>
+                <li><strong><a href="https://audit.ranuk.dev/" style="color:#2563eb;text-decoration:none;font-weight:700;">audit.ranuk.dev</a></strong> &mdash; Motor de auditoría y certificación técnica de accesibilidad web.</li>
               </ul>
             </div>
 
             <!-- 6. Números y Presupuestos de Referencia -->
-            <h4 style="color:#0f172a;margin:26px 0 10px 0;font-size:15px;font-weight:700;">Numbers and transparent pricing reference:</h4>
+            <h4 style="color:#0f172a;margin:26px 0 10px 0;font-size:15px;font-weight:700;">Números y presupuestos de referencia:</h4>
             <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin-bottom:20px;">
-              <p style="margin:0 0 10px 0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Option 1: Full Technical Audit Report ($39 USD):</strong> Prioritized 15-page PDF report with verification certificate and exact line-by-line code patches for your web developer.</p>
-              <p style="margin:0 0 10px 0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Option 2: Turnkey Code Remediation ($249 USD):</strong> We directly remediate and test your source code (GitHub Pull Request or production-ready patch) with zero developer hours needed from your team.</p>
-              <p style="margin:0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Turnkey Modern Web / AI Pack:</strong> ~<strong>$590 - $890 USD</strong> (High-performance web revamp or custom AI intake integration).</p>
+              <p style="margin:0 0 10px 0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Opción 1: Informe Técnico Completo EAA / WCAG 2.2 AA (39 €):</strong> Auditoría priorizada de 15 páginas con certificado de verificación y líneas exactas de código para su programador o equipo.</p>
+              <p style="margin:0 0 10px 0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Opción 2: Remediación Llave en Mano (290 €):</strong> Nos encargamos de corregir y testear directamente el código fuente (Pull Request en GitHub o parche listo) sin consumir horas de tu equipo.</p>
+              <p style="margin:0;font-size:14px;color:#1e293b;line-height:1.5;">🔹 <strong>Pack Solución Integral (Web a Medida + Agente IA):</strong> ~<strong>590 € - 890 € / $590 - $890 USD</strong> todo resuelto.</p>
             </div>
 
             <!-- 7. Marco Legal, Facturación y Compromiso Formal -->
             <div style="background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #0f172a;border-radius:6px;padding:16px 20px;margin:24px 0;">
               <p style="margin:0 0 6px 0;font-size:14px;color:#0f172a;font-weight:700;">
-                🛡️ Formal Service Commitment & Official Tax Invoicing:
+                🛡️ Compromiso formal de servicio y facturación oficial:
               </p>
               <p style="margin:0 0 10px 0;font-size:13px;color:#475569;line-height:1.55;">
-                If you choose to proceed with Option 1 or 2, payments are processed securely via Stripe and establish a <strong>legally binding service commitment</strong> from Ranuk IT Solutions: an <strong>official tax invoice and receipt</strong> is automatically issued for your corporate accounting, with delivery guaranteed within 24 business hours.
+                Si deciden encargar el trabajo de inmediato, la operación se procesa de forma cifrada mediante Stripe y constituye un <strong>compromiso de servicio formal y cerrado</strong> por nuestra parte: emitimos automáticamente <strong>factura y comprobante fiscal oficial</strong> con validez contable y tributaria plena, e iniciamos la entrega técnica en un plazo máximo garantizado de 24 horas hábiles.
               </p>
               <p style="margin:0;font-size:12.5px;color:#64748b;line-height:1.5;">
-                Review our service agreement, SLA terms, and compliance warranty at: <a href="https://audit.ranuk.dev/legal" style="color:#2563eb;text-decoration:underline;font-weight:600;">audit.ranuk.dev/legal</a>
+                Pueden consultar nuestros términos contractuales, SLA y garantía de cumplimiento en: <a href="https://audit.ranuk.dev/legal" style="color:#2563eb;text-decoration:underline;font-weight:600;">audit.ranuk.dev/legal</a>
               </p>
             </div>
 
@@ -88,11 +88,11 @@
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
                 <tr>
                   <td valign="middle" align="left">
-                    <div style="font-size:13.5px;font-weight:700;color:#0f172a;">Option 1: Full Technical Audit Report ($39 USD)</div>
-                    <div style="font-size:12px;color:#64748b;margin-top:2px;">Prioritized 15-page PDF dossier with verification certificate and exact line-by-line patches.</div>
+                    <div style="font-size:13.5px;font-weight:700;color:#0f172a;">Opción 1: Encargar Informe Técnico Completo (39 €)</div>
+                    <div style="font-size:12px;color:#64748b;margin-top:2px;">Dossier priorizado de 15 páginas con comprobante fiscal y líneas exactas de remediación para su programador o equipo.</div>
                   </td>
                   <td valign="middle" align="right" style="padding-left:14px;white-space:nowrap;">
-                    <a href="https://audit.ranuk.dev/checkout?domain=bodyfactory.es&lang=en&currency=usd&tier=report&email=administracion%40bodyfactory.es" style="background-color:#0f172a;background:#0f172a;color:#ffffff;text-decoration:none;font-weight:600;font-size:12.5px;padding:8px 16px;border-radius:6px;display:inline-block;">Order Report &rarr;</a>
+                    <a href="https://audit.ranuk.dev/checkout?domain=bodyfactory.es&lang=es&currency=eur&tier=report&email=administracion%40bodyfactory.es" style="background-color:#0f172a;background:#0f172a;color:#ffffff;text-decoration:none;font-weight:600;font-size:12.5px;padding:8px 16px;border-radius:6px;display:inline-block;">Encargar Informe &rarr;</a>
                   </td>
                 </tr>
               </table>
@@ -102,11 +102,11 @@
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
                 <tr>
                   <td valign="middle" align="left">
-                    <div style="font-size:13.5px;font-weight:700;color:#0f172a;">Option 2: Turnkey Code Remediation ($249 USD)</div>
-                    <div style="font-size:12px;color:#64748b;margin-top:2px;">We directly fix and test your source code (GitHub PR or ready patch) with zero hours from your team.</div>
+                    <div style="font-size:13.5px;font-weight:700;color:#0f172a;">Opción 2: Remediación Llave en Mano (290 €)</div>
+                    <div style="font-size:12px;color:#64748b;margin-top:2px;">Nos encargamos de corregir el código fuente (Pull Request o parche listo) sin consumir horas de su equipo.</div>
                   </td>
                   <td valign="middle" align="right" style="padding-left:14px;white-space:nowrap;">
-                    <a href="https://audit.ranuk.dev/checkout?domain=bodyfactory.es&lang=en&currency=usd&tier=remediation&email=administracion%40bodyfactory.es" style="background-color:#1e293b;background:#1e293b;border:1px solid #334155;color:#ffffff;text-decoration:none;font-weight:600;font-size:12.5px;padding:8px 16px;border-radius:6px;display:inline-block;">Request Fix &rarr;</a>
+                    <a href="https://audit.ranuk.dev/checkout?domain=bodyfactory.es&lang=es&currency=eur&tier=remediation&email=administracion%40bodyfactory.es" style="background-color:#1e293b;background:#1e293b;border:1px solid #334155;color:#ffffff;text-decoration:none;font-weight:600;font-size:12.5px;padding:8px 16px;border-radius:6px;display:inline-block;">Solicitar Remediación &rarr;</a>
                   </td>
                 </tr>
               </table>
@@ -114,17 +114,17 @@
 
             <!-- 8. Bloque Navy de Agendamiento Directo -->
             <div style="background:#0f172a;color:#ffffff;border-radius:8px;padding:20px 24px;margin:24px 0;">
-              <p style="margin:0 0 10px 0;font-weight:600;font-size:15px;color:#ffffff;">We can schedule a brief 15-minute call to:</p>
+              <p style="margin:0 0 10px 0;font-weight:600;font-size:15px;color:#ffffff;">Podemos coordinar una breve llamada (15-20 minutos) para:</p>
               <ul style="margin:0 0 14px 0;padding-left:20px;color:#cbd5e1;font-size:13px;line-height:1.6;">
-                <li>Review the specific code issues on bodyfactory.es in real time</li>
-                <li>Walk through the exact remediation steps for your team</li>
-                <li>Answer any technical questions with zero commitment</li>
+                <li>Revisar los puntos técnicos de bodyfactory.es en vivo</li>
+                <li>Explicar nuestra metodología de corrección paso a paso</li>
+                <li>Resolver cualquier consulta técnica de su equipo sin compromiso</li>
               </ul>
               <p style="margin:0 0 6px 0;font-size:13px;color:#94a3b8;line-height:1.5;">
-                Schedule directly on Calendly: <a href="https://calendly.com/emilio-ranuk/30min" style="color:#38bdf8;text-decoration:none;font-weight:600;">calendly.com/emilio-ranuk/30min</a>
+                Pueden agendar directamente acá: <a href="https://calendly.com/emilio-ranuk/30min" style="color:#38bdf8;text-decoration:none;font-weight:600;">calendly.com/emilio-ranuk/30min</a>
               </p>
               <p style="margin:0;font-size:13px;color:#e2e8f0;font-style:italic;">
-                (Or if you prefer a quick free preview first, just reply to this email and I'll send over the code snippets).
+                (O si prefieren ver un adelanto sin costo, solo respondan este correo y les envío los fragmentos de código para su desarrollador).
               </p>
             </div>
 
@@ -138,7 +138,7 @@
               <tr>
                 <td style="vertical-align:middle;">
                   <div style="font-size:15px;font-weight:700;color:#0f172a;">Emilio Ranucoli</div>
-                  <div style="font-size:13px;color:#64748b;margin:2px 0 6px;">Systems Engineer · Founder, Ranuk IT Solutions</div>
+                  <div style="font-size:13px;color:#64748b;margin:2px 0 6px;">Ingeniero de Sistemas · Fundador, Ranuk IT Solutions</div>
                   <div style="font-size:13px;color:#475569;">
                     <a href="https://ranuk.dev/portfolio" style="color:#0ea5e9;text-decoration:none;font-weight:600;">Portfolio</a>
                     &nbsp;&middot;&nbsp;
@@ -150,7 +150,7 @@
               </tr>
             </table>
             <div style="font-size:11px;color:#94a3b8;margin-top:14px;line-height:1.5;">
-              Ranuk IT Solutions &mdash; Software Engineering &amp; WCAG Compliance.<br>If this isn't relevant, just reply "no thanks" and I won't follow up.
+              Ranuk IT Solutions &mdash; Auditorías de accesibilidad web &amp; desarrollo a medida.<br>Si no es de su interés, respondan con "no gracias" y no volveré a contactarlos.
             </div>
           </td>
         </tr>
