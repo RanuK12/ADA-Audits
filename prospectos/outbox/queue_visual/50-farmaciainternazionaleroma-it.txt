@@ -6,7 +6,7 @@ DOMAIN:   farmaciainternazionaleroma.it
 SCORE:    75/100
 NODES:    16
 LANG:     EN
-FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/ranuk-it-logo-tight.png)
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/ranuk_it_solutions_header_36.png)
 HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/50-farmaciainternazionaleroma-it.html
 STATUS:   QUEUED (READY_FOR_SEND)
 ============================================================

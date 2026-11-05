@@ -79,7 +79,7 @@ def render_visual_html(lead_info):
 
     if lang == "en":
         subject = f"a few technical notes I put together for {domain}"
-        greeting_html = f'Hi <span style="background:#fef08a;padding:2px 8px;border-radius:4px;font-weight:700;color:#854d0e;">{_html.escape(first_name)}</span>,' if is_person else 'Hi everyone, <span style="background:#fef08a;padding:2px 8px;border-radius:4px;font-weight:700;color:#854d0e;">hope you\'re having a great week!</span>'
+        greeting_html = f"Hi {_html.escape(first_name)}," if is_person else "Hi everyone,"
         
         intro_p1 = f'My name is Emilio Ranucoli, and I run <strong>Ranuk IT Solutions</strong> (<a href="https://ranuk.dev" style="color:#2563eb;text-decoration:none;font-weight:600;">ranuk.dev</a>), a software engineering and technical auditing studio. To be completely transparent with you: instead of sending generic sales pitches, the way we introduce our work and earn new clients is by proactively reviewing websites of businesses we come across, spotting technical friction points that often go unnoticed, and sharing our findings upfront.'
         intro_p2 = f'I spent some time analyzing <strong><a href="https://{domain}" style="color:#2563eb;text-decoration:none;font-weight:600;">{business_name} ({domain})</a></strong> earlier today and prepared this prioritized technical summary for your team.'
@@ -101,8 +101,21 @@ def render_visual_html(lead_info):
         num_opt2 = f'🔹 <strong>Option 2: Turnkey Code Remediation ({remed_tag}):</strong> We directly remediate and test your source code (GitHub Pull Request or production-ready patch) with zero developer hours needed from your team.'
         num_opt3 = f'🔹 <strong>Turnkey Modern Web / AI Pack:</strong> ~<strong>$590 - $890 USD</strong> (High-performance web revamp or custom AI intake integration).'
 
-        btn1_text = f"👉 Option 1: Order Technical Audit Report ({precio_tag})"
-        btn2_text = f"🛠️ Option 2: Turnkey Code Remediation PR ({remed_tag})"
+        trust_title = "Formal Service Commitment & Official Tax Invoicing"
+        trust_body = (
+            f"If you choose to proceed with Option 1 or 2, payments are processed securely via Stripe and establish a "
+            f"<strong>legally binding service commitment</strong> from Ranuk IT Solutions: an <strong>official tax invoice and receipt</strong> "
+            f"is automatically issued for your corporate accounting, with delivery guaranteed within 24 business hours."
+        )
+        trust_link_text = "Review our service agreement, SLA terms, and compliance warranty at:"
+
+        opt1_card_title = f"Option 1: Full Technical Audit Report ({precio_tag})"
+        opt1_card_desc = "Prioritized 15-page PDF dossier with verification certificate and exact line-by-line patches."
+        opt1_btn_text = "Order Report &rarr;"
+
+        opt2_card_title = f"Option 2: Turnkey Code Remediation ({remed_tag})"
+        opt2_card_desc = "We directly fix and test your source code (GitHub PR or ready patch) with zero hours from your team."
+        opt2_btn_text = "Request Fix &rarr;"
 
         call_title = "We can schedule a brief 15-minute call to:"
         call_b1 = f"Review the specific code issues on {domain} in real time"
@@ -117,7 +130,7 @@ def render_visual_html(lead_info):
     else:
         # Español (default)
         subject = f"Diagnóstico técnico y notas que preparé para {domain}"
-        greeting_html = f'Hola <span style="background:#fef08a;padding:2px 8px;border-radius:4px;font-weight:700;color:#854d0e;">{_html.escape(first_name)}</span>,' if is_person else 'Hola, <span style="background:#fef08a;padding:2px 8px;border-radius:4px;font-weight:700;color:#854d0e;">¿cómo están?</span>'
+        greeting_html = f"Hola {_html.escape(first_name)}, un saludo." if is_person else f"Hola, un saludo al equipo de {_html.escape(business_name)}:"
         
         pronoun_intro = "Te escribo" if is_person else "Les escribo"
         pronoun_target = "tu equipo" if is_person else "su equipo"
@@ -143,8 +156,21 @@ def render_visual_html(lead_info):
         num_opt2 = f'🔹 <strong>Opción 2: Remediación Llave en Mano ({remed_tag}):</strong> Nos encargamos de corregir y testear directamente el código fuente (Pull Request en GitHub o parche listo) sin consumir horas de tu equipo.'
         num_opt3 = f'🔹 <strong>Pack Solución Integral (Web a Medida + Agente IA):</strong> ~<strong>590 € - 890 € / $590 - $890 USD</strong> todo resuelto.'
 
-        btn1_text = f"👉 Opción 1: Encargar Informe Técnico ({precio_tag})"
-        btn2_text = f"🛠️ Opción 2: Remediación Llave en Mano ({remed_tag})"
+        trust_title = "Compromiso formal de servicio y facturación oficial"
+        trust_body = (
+            f"Si deciden encargar el trabajo de inmediato, la operación se procesa de forma cifrada mediante Stripe y constituye un "
+            f"<strong>compromiso de servicio formal y cerrado</strong> por nuestra parte: emitimos automáticamente <strong>factura y comprobante fiscal oficial</strong> "
+            f"con validez contable y tributaria plena, e iniciamos la entrega técnica en un plazo máximo garantizado de 24 horas hábiles."
+        )
+        trust_link_text = "Pueden consultar nuestros términos contractuales, SLA y garantía de cumplimiento en:"
+
+        opt1_card_title = f"Opción 1: Encargar Informe Técnico Completo ({precio_tag})"
+        opt1_card_desc = f"Dossier priorizado de 15 páginas con comprobante fiscal y líneas exactas de remediación para {pronoun_dev}."
+        opt1_btn_text = "Encargar Informe &rarr;"
+
+        opt2_card_title = f"Opción 2: Remediación Llave en Mano ({remed_tag})"
+        opt2_card_desc = "Nos encargamos de corregir el código fuente (Pull Request o parche listo) sin consumir horas de su equipo."
+        opt2_btn_text = "Solicitar Remediación &rarr;"
 
         call_title = "Podemos coordinar una breve llamada (15-20 minutos) para:"
         call_b1 = f"Revisar los puntos técnicos de {domain} en vivo"
@@ -239,12 +265,46 @@ def render_visual_html(lead_info):
               <p style="margin:0;font-size:14px;color:#1e293b;line-height:1.5;">{num_opt3}</p>
             </div>
 
-            <!-- 7. Botones CTA -->
-            <div style="margin:22px 0 10px 0;">
-              <a href="{url_opt1}" style="background:#2563eb;color:#ffffff;text-decoration:none;font-weight:600;font-size:14px;padding:12px 24px;border-radius:6px;display:inline-block;margin-bottom:8px;">{btn1_text}</a>
+            <!-- 7. Marco Legal, Facturación y Compromiso Formal -->
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #0f172a;border-radius:6px;padding:16px 20px;margin:24px 0;">
+              <p style="margin:0 0 6px 0;font-size:14px;color:#0f172a;font-weight:700;">
+                🛡️ {trust_title}:
+              </p>
+              <p style="margin:0 0 10px 0;font-size:13px;color:#475569;line-height:1.55;">
+                {trust_body}
+              </p>
+              <p style="margin:0;font-size:12.5px;color:#64748b;line-height:1.5;">
+                {trust_link_text} <a href="https://audit.ranuk.dev/legal" style="color:#2563eb;text-decoration:underline;font-weight:600;">audit.ranuk.dev/legal</a>
+              </p>
             </div>
-            <div style="margin:0 0 24px 0;">
-              <a href="{url_opt2}" style="background:#059669;color:#ffffff;text-decoration:none;font-weight:600;font-size:14px;padding:12px 24px;border-radius:6px;display:inline-block;">{btn2_text}</a>
+
+            <!-- 8. Opciones de Contratación con Acciones Sobrias -->
+            <div style="border:1px solid #e2e8f0;background:#ffffff;border-radius:8px;padding:14px 18px;margin-bottom:12px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                <tr>
+                  <td valign="middle" align="left">
+                    <div style="font-size:13.5px;font-weight:700;color:#0f172a;">{opt1_card_title}</div>
+                    <div style="font-size:12px;color:#64748b;margin-top:2px;">{opt1_card_desc}</div>
+                  </td>
+                  <td valign="middle" align="right" style="padding-left:14px;white-space:nowrap;">
+                    <a href="{url_opt1}" style="background-color:#0f172a;background:#0f172a;color:#ffffff;text-decoration:none;font-weight:600;font-size:12.5px;padding:8px 16px;border-radius:6px;display:inline-block;">{opt1_btn_text}</a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <div style="border:1px solid #e2e8f0;background:#ffffff;border-radius:8px;padding:14px 18px;margin-bottom:24px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                <tr>
+                  <td valign="middle" align="left">
+                    <div style="font-size:13.5px;font-weight:700;color:#0f172a;">{opt2_card_title}</div>
+                    <div style="font-size:12px;color:#64748b;margin-top:2px;">{opt2_card_desc}</div>
+                  </td>
+                  <td valign="middle" align="right" style="padding-left:14px;white-space:nowrap;">
+                    <a href="{url_opt2}" style="background-color:#1e293b;background:#1e293b;border:1px solid #334155;color:#ffffff;text-decoration:none;font-weight:600;font-size:12.5px;padding:8px 16px;border-radius:6px;display:inline-block;">{opt2_btn_text}</a>
+                  </td>
+                </tr>
+              </table>
             </div>
 
             <!-- 8. Bloque Navy de Agendamiento Directo -->

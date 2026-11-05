@@ -6,7 +6,7 @@ DOMAIN:   downtowndentalbrooklyn.com
 SCORE:    92/100
 NODES:    7
 LANG:     EN
-FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/ranuk-it-logo-tight.png)
+FORMAT:   HTML_VISUAL_STANDARD (with inline logo /Users/emilioranucoli/Apps/ranukita-bridge/assets/ranuk_it_solutions_header_36.png)
 HTML_PATH: /Users/emilioranucoli/Apps/ADA-Audits/prospectos/outbox/queue_visual/14-downtowndentalbrooklyn-com.html
 STATUS:   QUEUED (READY_FOR_SEND)
 ============================================================
