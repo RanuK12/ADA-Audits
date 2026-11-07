@@ -25,13 +25,15 @@ TEMPLATE_HTML = BASE / "templates/pdf-template.html"
 TEMPLATE_CSS = BASE / "templates/pdf-style.css"
 ENTREGABLES = BASE / "entregables"
 
-def run_axe(url, out_dir):
+def run_axe(url, out_dir, resolved_ip=None, host=None):
     axe_json = out_dir / "axe-raw.json"
     cd_path = "/opt/homebrew/bin/chromedriver" if Path("/opt/homebrew/bin/chromedriver").exists() else "/private/tmp/ada_scan/chromedriver-mac-arm64/chromedriver"
-    subprocess.run(["axe", url, "--save", "axe-raw.json",
+    cmd = ["axe", url, "--save", "axe-raw.json",
         "--tags", "wcag2a,wcag2aa,wcag21aa,best-practice", "--timeout", "60",
-        "--chromedriver-path", cd_path],
-        cwd=out_dir, check=False, capture_output=True)
+        "--chromedriver-path", cd_path]
+    if resolved_ip and host:
+        cmd.append(f"--chrome-options=--host-resolver-rules=MAP {host} {resolved_ip}")
+    subprocess.run(cmd, cwd=out_dir, check=False, capture_output=True)
     if not axe_json.exists() or axe_json.stat().st_size < 50:
         return {"violations": [], "error": "scan_failed"}
     data = json.loads(axe_json.read_text())
