@@ -32,7 +32,11 @@ def run_axe(url, out_dir, resolved_ip=None, host=None):
         "--tags", "wcag2a,wcag2aa,wcag21aa,best-practice", "--timeout", "60",
         "--chromedriver-path", cd_path]
     if resolved_ip and host:
-        cmd.append(f"--chrome-options=--host-resolver-rules=MAP {host} {resolved_ip}")
+        # Blindaje SSRF / DNS Rebinding: fijar IP validada del host objetivo y bloquear resolución de cualquier otro dominio
+        cmd.append(
+            f"--chrome-options=--host-resolver-rules=MAP {host} {resolved_ip}, MAP * ~NOTFOUND "
+            f"--proxy-bypass-list=<-loopback>;{host};{resolved_ip}"
+        )
     subprocess.run(cmd, cwd=out_dir, check=False, capture_output=True)
     if not axe_json.exists() or axe_json.stat().st_size < 50:
         return {"violations": [], "error": "scan_failed"}
