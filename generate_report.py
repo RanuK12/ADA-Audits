@@ -1,6 +1,7 @@
 import sys
 sys.path.insert(0, '.')
 import json
+import argparse
 from datetime import datetime
 import os
 from utils.economic_impact import estimate_impact, calculate_economic_impact
@@ -85,50 +86,61 @@ def generate_report(data, output_format='markdown', visitors_per_month=1000):
     return "\n".join(report)
 
 def main():
-    sample_data = {
-        "client_name": "TiendaOnline Demo",
-        "date": datetime.now().strftime("%Y-%m-%d"),
-        "summary": "Auditoría de accesibilidad WCAG 2.1 AA — se detectaron barreras que afectan la experiencia de usuarios con discapacidad y exponen a la empresa a riesgos legales.",
-        "findings": [
-            {
-                "code": "low_contrast",
-                "issue": "Contraste bajo en botón de compra",
-                "severity": "High",
-                "business_impact": "–12% conversión mobile / demanda ADA Title III",
-                "before": "`<button style=\"background: #FFA500; color: #FFFFFF;\">Comprar</button>` (contraste 2.1:1)",
-                "after": "`<button style=\"background: #D2691E; color: #FFFFFF;\">Comprar</button>` (contraste 4.5:1)",
-                "before_after_image": "before_after_low_contrast.png"
-            },
-            {
-                "code": "missing_alt",
-                "issue": "Imágenes de producto sin alt text",
-                "severity": "Medium",
-                "business_impact": "Lectores de pantalla no pueden describir los productos → pérdida de ventas y riesgo de demanda",
-                "before": "`<img src=\"producto.jpg\">`",
-                "after": "`<img src=\"producto.jpg\" alt=\"Zapatillas running azul\">`",
-                "before_after_image": "before_after_missing_alt.png"
-            },
-            {
-                "code": "keyboard_trap",
-                "issue": "Menú de navegación no operable por teclado",
-                "severity": "Critical",
-                "business_impact": "Usuarios sin mouse no pueden navegar → abandono del sitio y posible demanda ADA",
-                "before": "`<div class=\"menu\" onclick=\"toggleMenu()\">` (sin `tabindex` ni `role`)",
-                "after": "`<nav aria-label=\"Principal\"><ul role=\"menubar\">…</ul></nav>` con manejo de teclado",
-                "before_after_image": "before_after_keyboard_trap.png"
-            }
-        ],
-        "recommendations": [
-            "Corregir contraste de color en botones y elementos interactivos para cumplir WCAG 2.1 AA (mínimo 4.5:1).",
-            "Agregar texto alternativo descriptivo a todas las imágenes de producto.",
-            "Hacer el menú de navegación operable por teclado usando roles ARIA y gestión de foco."
-        ]
-    }
-    
-    report_content = generate_report(sample_data)
-    with open("sample_audit_report.md", "w") as f:
+    parser = argparse.ArgumentParser(description='Generate accessibility audit report.')
+    parser.add_argument('--input', type=str, help='Path to JSON file containing audit data')
+    parser.add_argument('--output', type=str, help='Path to output markdown file')
+    args = parser.parse_args()
+
+    if args.input:
+        with open(args.input, 'r') as f:
+            audit_data = json.load(f)
+    else:
+        sample_data = {
+            "client_name": "TiendaOnline Demo",
+            "date": datetime.now().strftime("%Y-%m-%d"),
+            "summary": "Auditoría de accesibilidad WCAG 2.1 AA — se detectaron barreras que afectan la experiencia de usuarios con discapacidad y exponen a la empresa a riesgos legales.",
+            "findings": [
+                {
+                    "code": "low_contrast",
+                    "issue": "Contraste bajo en botón de compra",
+                    "severity": "High",
+                    "business_impact": "–12% conversión mobile / demanda ADA Title III",
+                    "before": "`<button style=\"background: #FFA500; color: #FFFFFF;\">Comprar</button>` (contraste 2.1:1)",
+                    "after": "`<button style=\"background: #D2691E; color: #FFFFFF;\">Comprar</button>` (contraste 4.5:1)",
+                    "before_after_image": "before_after_low_contrast.png"
+                },
+                {
+                    "code": "missing_alt",
+                    "issue": "Imágenes de producto sin alt text",
+                    "severity": "Medium",
+                    "business_impact": "Lectores de pantalla no pueden describir los productos → pérdida de ventas y riesgo de demanda",
+                    "before": "`<img src=\"producto.jpg\">`",
+                    "after": "`<img src=\"producto.jpg\" alt=\"Zapatillas running azul\">`",
+                    "before_after_image": "before_after_missing_alt.png"
+                },
+                {
+                    "code": "keyboard_trap",
+                    "issue": "Menú de navegación no operable por teclado",
+                    "severity": "Critical",
+                    "business_impact": "Usuarios sin mouse no pueden navegar → abandono del sitio y posible demanda ADA",
+                    "before": "`<div class=\"menu\" onclick=\"toggleMenu()\">` (sin `tabindex` ni `role`)",
+                    "after": "`<nav aria-label=\"Principal\"><ul role=\"menubar\">…</ul></nav>` con manejo de teclado",
+                    "before_after_image": "before_after_keyboard_trap.png"
+                }
+            ],
+            "recommendations": [
+                "Corregir contraste de color en botones y elementos interactivos para cumplir WCAG 2.1 AA (mínimo 4.5:1).",
+                "Agregar texto alternativo descriptivo a todas las imágenes de producto.",
+                "Hacer el menú de navegación operable por teclado usando roles ARIA y gestión de foco."
+            ]
+        }
+        audit_data = sample_data
+
+    report_content = generate_report(audit_data)
+    output_path = args.output if args.output else "sample_audit_report.md"
+    with open(output_path, "w") as f:
         f.write(report_content)
-    print("Reporte generado en sample_audit_report.md")
+    print(f"Reporte generado en {output_path}")
 
 if __name__ == "__main__":
     main()
