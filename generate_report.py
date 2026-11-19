@@ -14,9 +14,9 @@ def format_findings(findings, visitors_per_month=1000):
         code = item.get('code', item['issue'].lower().replace(' ', '_').replace('-', '_'))
         impact_info = next((impact for impact in impact_results if impact['code'] == code), {"economic_impact": "N/D", "legal_risk": "N/D", "impact_explanation": "N/D"})
         formatted.append({
-            "economic_impact": impact_info.get('economic_impact', 'N/D'),
-            "legal_risk": impact_info.get('legal_risk', 'N/D'),
-            "impact_explanation": impact_info.get('impact_explanation', 'N/D'),
+            "economic_impact": item.get('economic_impact') or impact_info.get('economic_impact', 'N/D'),
+            "legal_risk": item.get('legal_risk') or impact_info.get('legal_risk', 'N/D'),
+            "impact_explanation": item.get('impact_explanation') or impact_info.get('impact_explanation', 'N/D'),
             "before_after": item.get('before_after_image', ''),
             "cta": "Contratar fix: [Contacto](mailto:emilio@ranuk.dev)"
         })
