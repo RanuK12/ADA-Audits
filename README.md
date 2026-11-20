@@ -1,163 +1,36 @@
 # ADA-Audits
 
-Automated Data Accessibility Audits for Python projects.
+Auditorías de accesibilidad WCAG 2.1 AA para PyMEs.
 
-## 📌 Features
+El informe genera venta: cada hallazgo trae su impacto en plata o riesgo legal explicado en una línea, una comparativa antes/después, y un CTA para contratar el fix.
 
-- Scans Python files and notebooks for data accessibility issues
-- Detects missing docstrings, type hints, and accessibility standards
-- Generates reports with actionable insights
-- Integrates with CI/CD pipelines
+## Qué hace el proyecto
 
-## 🚀 Quick Start
+`generate_report.py` lee los resultados de una auditoría de accesibilidad y produce un informe listo para enviar al cliente. El informe no solo lista errores: traduce cada hallazgo en dinero perdido o exposición legal, muestra el antes y el después de la página, y cierra con una llamada a la acción para que el cliente contrate la corrección.
 
-Follow these steps to get started with ADA-Audits:
+## Cómo se genera un informe
 
-### Step 1: Installation
-
-**Using pip:**
-
-```bash
-# Clone the repository
-git clone https://github.com/your-org/ada-audits.git
-cd ada-audits
-
-# Install in development mode
-pip install -e .
+```
+python3 generate_report.py <archivo_de_auditoria.json>
 ```
 
-**Using Poetry:**
+El archivo de entrada debe contener los hallazgos de accesibilidad (nivel WCAG, elemento, descripción, página afectada). El script genera un PDF con:
 
-```bash
-# Clone the repository
-git clone https://github.com/your-org/ada-audits.git
-cd ada-audits
+- Resumen ejecutivo con los hallazgos más críticos
+- Impacto económico total del sitio (pérdida estimada por inaccesibilidad)
+- Comparativa visual antes/después de las páginas clave
+- Cada hallazgo con: descripción, impacto en plata o riesgo legal (una línea), y recomendación de fix
+- CTA final para contactar a Emilio y contratar la corrección
 
-# Install dependencies with Poetry
-poetry install
+## Ejemplo de informe
 
-# Activate the virtual environment
-poetry shell
-```
+Cada hallazgo se presenta así:
 
-### Step 2: Create Configuration File
+> **Falta de contraste en botones de compra** — WCAG 1.4.3  
+> Impacto: usuarios con baja visión no pueden completar la compra → pérdida estimada de ventas.  
+> Fix: ajustar contraste a 4.5:1.  
+> [CTA: Contratar el fix]
 
-Create a `.ada-audit.yml` file in your project root:
+## CTA
 
-```yaml
-# .ada-audit.yml - Minimal working configuration
-targets:
-  - src/
-  - notebooks/
-
-rules:
-  - missing-docstring
-  - missing-type-hint
-  - accessibility-issue
-
-output:
-  format: markdown
-  file: audit-report.md
-```
-
-### Step 3: Run Your First Audit
-
-**Scan a single file:**
-
-```bash
-ada-scan path/to/file.py
-```
-
-Expected output:
-```
-✓ Scanning: path/to/file.py
-Found 3 issues:
-  [WARNING] line 15: Missing docstring for function 'process_data'
-  [WARNING] line 23: Missing type hint for parameter 'input_path'
-  [ERROR]   line 45: Accessibility issue - missing alt text for image
-```
-
-**Scan an entire directory:**
-
-```bash
-ada-scan src/
-```
-
-Expected output:
-```
-✓ Scanning directory: src/
-Found 12 files to analyze
-  src/__init__.py .............. OK
-  src/main.py .................. 2 issues
-  src/utils.py ................. 5 issues
-  src/processors/base.py ....... 1 issue
-  src/processors/transform.py .. 4 issues
-
-Summary: 12 issues found across 4 files
-```
-
-**Generate a full report:**
-
-```bash
-ada-audit --output report.md
-```
-
-Expected output:
-```
-✓ ADA Audit Report Generated
-  Output: report.md
-  Total files scanned: 12
-  Issues found: 15
-  Compliance score: 78%
-```
-
-## 📖 Usage
-
-### Command Line Interface
-
-| Command | Description |
-|---------|-------------|
-| `ada-scan <path>` | Scan a file or directory for accessibility issues |
-| `ada-audit` | Generate a full audit report based on configuration |
-| `ada-audit --output <file>` | Generate report with custom output filename |
-| `ada-audit --format <fmt>` | Output format: `markdown`, `json`, or `html` |
-
-### Configuration Reference
-
-Full configuration options for `.ada-audit.yml`:
-
-```yaml
-# Paths to scan
-targets:
-  - src/              # Python source files
-  - notebooks/        # Jupyter notebooks
-  - tests/            # Test files
-
-# Rules to apply
-rules:
-  - missing-docstring      # Functions/classes without docstrings
-  - missing-type-hint      # Parameters without type annotations
-  - accessibility-issue    # Accessibility standard violations
-
-# Output settings
-output:
-  format: markdown         # Options: markdown, json, html
-  file: audit-report.md   # Output filename
-
-# Optional: Exclude patterns
-exclude:
-  - "**/__pycache__/**"
-  - "**/migrations/**"
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/your-feature`)
-3. Commit your changes (`git commit -m 'feat: add new rule [ranukita:xxxxx]'`)
-4. Push to the branch (`git push origin feature/your-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+¿Tenés una PyME y querés saber cuánto te está costando no ser accesible? Contactá a Emilio para contratar una auditoría y el informe de venta.
