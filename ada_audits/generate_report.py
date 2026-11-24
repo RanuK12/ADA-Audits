@@ -3,7 +3,7 @@ from datetime import datetime
 import os
 import sys
 sys.path.append(os.path.dirname(__file__))
-from impact import IMPACT_MAP
+from impact import IMPACT_MAP, DEFAULT_IMPACT
 
 def _impact_code_from_issue(issue_text: str) -> str:
     """Map issue description to impact code."""
@@ -37,8 +37,8 @@ def generate_report(data):
         
         for item in data['findings']:
             code = _impact_code_from_issue(item['issue'])
-            impact = IMPACT_MAP.get(code, {"cost": "N/D", "risk": "N/D"})
-            report.append(f"| {item['issue']} | {item['severity']} | {impact['cost']} | {impact['risk']} | {item['business_impact']} |")
+            impact = IMPACT_MAP.get(code, DEFAULT_IMPACT)
+            report.append(f"| {item['issue']} | {item['severity']} | {impact['cost_line']} | {impact['risk_line']} | {item['business_impact']} |")
         
         # Antes → Después sub‑sections
         for item in data['findings']:
