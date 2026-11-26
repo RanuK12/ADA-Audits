@@ -24,13 +24,14 @@ def format_findings(findings, visitors_per_month=1000):
 
 def generate_report(data, output_format='markdown', visitors_per_month=1000):
     report = []
-    report.append(f"# Auditoría de Accesibilidad WCAG: {data['client_name']}")
-    report.append(f"**Fecha:** {data['date']}")
+    report.append(f"# Auditoría de Accesibilidad WCAG: {data.get('client_name', 'Cliente')}")
+    report.append(f"**Fecha:** {data.get('date', datetime.now().strftime('%Y-%m-%d'))}")
     report.append(f"**Estado:** Finalizado")
     report.append("\n## Resumen Ejecutivo")
-    report.append(f"{data['summary']}")
+    report.append(f"{data.get('summary', 'Sin resumen disponible.')}")
     
-    if data['findings']:
+    findings = data.get('findings') or []
+    if findings:
         formatted = format_findings(data['findings'], visitors_per_month)
         
         # Calcular impacto económico total
@@ -64,20 +65,22 @@ def generate_report(data, output_format='markdown', visitors_per_month=1000):
         
         # Antes → Después sub‑sections with CTA
         for idx, item in enumerate(data['findings']):
-            report.append(f"\n### {item['issue']}")
-            report.append(f"**Impacto en el negocio:** {item['business_impact']}")
+            report.append(f"\n### {item.get('issue', item.get('title', 'Hallazgo'))}")
+            report.append(f"**Impacto en el negocio:** {item.get('business_impact', 'Impacto en conversión y experiencia de usuario.')}")
             report.append(f"**Explicación de impacto:** {formatted[idx]['impact_explanation']}")
             report.append("**Antes → Después**")
-            report.append(f"**Antes:** {item['before']}")
-            report.append(f"**Después:** {item['after']}")
+            report.append(f"**Antes:** {item.get('before', item.get('description', 'Sin detalle de estado actual.'))}")
+            report.append(f"**Después:** {item.get('after', 'Corregido según WCAG 2.1 AA.')}")
             # CTA por hallazgo
             report.append(formatted[idx]['cta'])
             # Show before/after image reference
-            report.append(f"![Antes/Después]({formatted[idx]['before_after']})")
+            if formatted[idx]['before_after']:
+                report.append(f"![Antes/Después]({formatted[idx]['before_after']})")
     
-    if data['recommendations']:
+    recommendations = data.get('recommendations') or []
+    if recommendations:
         report.append("\n## Recomendaciones")
-        for rec in data['recommendations']:
+        for rec in recommendations:
             report.append(f"- {rec}")
     
     # CTA fijo al final
