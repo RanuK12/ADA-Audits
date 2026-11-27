@@ -1,0 +1,35 @@
+{
+  "cliente": "Seonet Digital",
+  "sitio": "seonet.com.ar",
+  "fecha_auditoria": "2026-11-26",
+  "nivel": "WCAG 2.1 AA",
+  "auditor": "Ranuk IT Solutions",
+  "score_lighthouse_antes": 65,
+  "score_lighthouse_despues": 92,
+  "cumplimiento_nivel_a": "100%",
+  "cumplimiento_nivel_aa": "95%",
+  "cumplimiento_nivel_aaa": "85%",
+  "total_hallazgos": 9,
+  "hallazgos": [
+    {"id": 1, "titulo": "Atributos Alt en Imágenes", "severidad": "Media", "estado": "Implementado", "descripcion": "Se añadieron atributos alt descriptivos a todas las imágenes del sitio, mejorando la experiencia con lectores de pantalla."},
+    {"id": 2, "titulo": "Estructura de Encabezados", "severidad": "Media", "estado": "Implementado", "descripcion": "Reorganización de la jerarquía de encabezados (h1 > h2 > h3) para mejorar la navegación y comprensión del contenido."},
+    {"id": 3, "titulo": "Contraste de Color", "severidad": "Alta", "estado": "Implementado", "descripcion": "Ajuste de colores para cumplir WCAG AA (ratio mínimo 4.5:1), mejorando la legibilidad para usuarios con discapacidad visual."},
+    {"id": 4, "titulo": "Etiquetas ARIA", "severidad": "Alta", "estado": "Implementado", "descripcion": "Se añadieron etiquetas ARIA a elementos interactivos y formularios, mejorando la experiencia con tecnologías de asistencia."},
+    {"id": 5, "titulo": "Enlaces Descriptivos", "severidad": "Media", "estado": "Implementado", "descripcion": "Reemplazo de texto genérico por texto descriptivo en enlaces, mejorando la navegación y comprensión."}
+  ],
+  "recomendaciones": [
+    "Monitoreo continuo: Implementar pruebas automáticas de accesibilidad en el pipeline de CI/CD.",
+    "Formación del equipo: Capacitar al equipo de desarrollo en prácticas de desarrollo accesible.",
+    "Auditorías periódicas: Realizar revisiones trimestrales del cumplimiento WCAG.",
+    "Pruebas con usuarios: Involucrar a personas con discapacidad en el proceso de validación."
+  ],
+  "costo_eur": 300,
+  "stripe_payment_link": "https://buy.stripe.com/seonet-wcag-audit-300eur",
+  "stripe_payment_link_pendiente_confirmacion": true,
+  "fuentes": [
+    "~/Desktop/Oficina_Ranuk/Seonet_Accesibilidad_Audit/audit_analysis.md",
+    "~/Desktop/Oficina_Ranuk/Seonet_Accesibilidad_Audit/audit_fixes.md",
+    "~/Desktop/Oficina_Ranuk/ADA-AUDITS/entregables/seonet_com_ar/auditoria.html",
+    "~/Desktop/Oficina_Ranuk/ADA-AUDITS/entregables/seonet_com_ar/resumen-scan.json"
+  ]
+}
